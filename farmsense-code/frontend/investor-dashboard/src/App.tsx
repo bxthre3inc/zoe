@@ -10,15 +10,15 @@ import { getApiKey, removeApiKey, api } from './services/api';
 
 // Live Ticker Component for authentic Bloomberg feel
 const LiveTicker = () => (
-    <div className="w-full bg-[#0a1910] border-y border-[#10b981]/20 py-1.5 overflow-hidden flex items-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-        <div className="flex animate-[ticker_20s_linear_infinite] whitespace-nowrap text-[#10b981] font-mono text-[10px] tracking-widest font-bold">
-            <span className="mx-8 flex items-center gap-2"><Activity className="w-3 h-3" /> FSN-CARBON (CFS): $84.20 <span className="text-[#10b981]">↑+1.2%</span></span>
+    <div className="w-full bg-slate-900 border-y border-emerald-500/20 py-1.5 overflow-hidden flex items-center shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+        <div className="flex animate-[ticker_20s_linear_infinite] whitespace-nowrap text-emerald-400 font-mono text-[10px] tracking-widest font-bold">
+            <span className="mx-8 flex items-center gap-2"><Activity className="w-3 h-3" /> FSN-CARBON (CFS): $84.20 <span className="text-emerald-400">↑+1.2%</span></span>
             <span className="mx-8">FSN-WATER (WFS): $112.50 <span className="text-red-500">↓-0.4%</span></span>
-            <span className="mx-8 border-l border-[#10b981]/30 pl-8">ACTIVE NODES: 1,402 <span className="text-[#10b981]">+12 TODAY</span></span>
+            <span className="mx-8 border-l border-emerald-500/30 pl-8">ACTIVE NODES: 1,402 <span className="text-emerald-400">+12 TODAY</span></span>
             <span className="mx-8">TOTAL ACRES MONITORED: 42,500</span>
-            <span className="mx-8 border-l border-[#10b981]/30 pl-8 flex items-center gap-2"><Activity className="w-3 h-3" /> FSN-CARBON (CFS): $84.20 <span className="text-[#10b981]">↑+1.2%</span></span>
+            <span className="mx-8 border-l border-emerald-500/30 pl-8 flex items-center gap-2"><Activity className="w-3 h-3" /> FSN-CARBON (CFS): $84.20 <span className="text-emerald-400">↑+1.2%</span></span>
             <span className="mx-8">FSN-WATER (WFS): $112.50 <span className="text-red-500">↓-0.4%</span></span>
-            <span className="mx-8 border-l border-[#10b981]/30 pl-8">ACTIVE NODES: 1,402 <span className="text-[#10b981]">+12 TODAY</span></span>
+            <span className="mx-8 border-l border-emerald-500/30 pl-8">ACTIVE NODES: 1,402 <span className="text-emerald-400">+12 TODAY</span></span>
             <span className="mx-8">TOTAL ACRES MONITORED: 42,500</span>
         </div>
     </div>
@@ -77,39 +77,44 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen bg-black text-[#10b981] flex flex-col font-sans selection:bg-[#10b981] selection:text-black">
+        <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
             <style>{`
                 @keyframes ticker {
                     0% { transform: translateX(0); }
                     100% { transform: translateX(-50%); }
                 }
             `}</style>
-            <header className="bg-black border-b border-[#10b981]/30 sticky top-0 z-50">
+            <header className="bg-slate-950/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <h1 className="text-xl font-bold tracking-tight text-[#10b981] flex items-center gap-2 drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
-                        <Zap className="text-[#10b981] w-6 h-6 animate-pulse" />
-                        FarmSense <span className="text-[#10b981]/60 font-mono text-xs uppercase">• Terminal Ops</span>
-                    </h1>
+                    <div className="flex items-center gap-3">
+                        <div className="bg-emerald-500 p-2 rounded-lg shadow-lg shadow-emerald-500/20">
+                            <Zap className="text-white w-6 h-6" />
+                        </div>
+                        <div>
+                            <h1 className="text-2xl font-black tracking-tighter text-white">farmsenseOS<span className="text-emerald-400">.</span></h1>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mt-1">Investor Terminal</p>
+                        </div>
+                    </div>
                     <div className="flex items-center gap-8">
                         <nav className="flex gap-6">
                             <button
                                 onClick={() => setView('dashboard')}
-                                className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] transition-all ${view === 'dashboard' ? 'text-black bg-[#10b981] px-3 py-1 rounded-sm shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'text-[#10b981]/60 hover:text-[#10b981]'}`}
+                                className={`text-sm font-bold transition-all flex items-center gap-2 ${view === 'dashboard' ? 'text-emerald-400' : 'text-slate-400 hover:text-white'}`}
                             >
-                                <span className="opacity-50 mr-1">[1]</span> Intelligence
+                                Intelligence
                             </button>
                             <button
                                 onClick={() => setView('breakroom')}
-                                className={`text-[10px] font-mono font-bold uppercase tracking-[0.2em] transition-all ${view === 'breakroom' ? 'text-black bg-[#10b981] px-3 py-1 rounded-sm shadow-[0_0_10px_rgba(16,185,129,0.5)]' : 'text-[#10b981]/60 hover:text-[#10b981]'}`}
+                                className={`text-sm font-bold transition-all flex items-center gap-2 ${view === 'breakroom' ? 'text-emerald-400' : 'text-slate-400 hover:text-white'}`}
                             >
-                                <span className="opacity-50 mr-1">[2]</span> Nexus
+                                Nexus Breakroom
                             </button>
                         </nav>
                         <button
                             onClick={handleLogout}
-                            className="text-[#10b981]/60 hover:text-red-500 transition-colors"
+                            className="text-slate-400 hover:text-white transition-colors flex items-center gap-2"
                         >
-                            <LogOut className="w-5 h-5" />
+                            <LogOut className="w-4 h-4" /> <span className="text-xs font-bold uppercase">Exit</span>
                         </button>
                     </div>
                 </div>
@@ -129,9 +134,9 @@ function App() {
                                     <EquityBuyIn />
                                 </div>
                                 <div className="space-y-6">
-                                    <div className="bg-[#050B08] p-8 rounded-none border border-[#10b981]/30 shadow-[0_0_30px_rgba(16,185,129,0.05)]">
-                                        <h3 className="text-sm font-mono font-bold text-[#10b981] mb-6 uppercase tracking-widest flex items-center gap-2">
-                                            <TrendingUp className="w-4 h-4" /> Seed Projections
+                                    <div className="bg-white/5 backdrop-blur-xl p-8 rounded-xl border border-white/10 shadow-2xl">
+                                        <h3 className="text-sm font-bold text-white mb-6 uppercase tracking-widest flex items-center gap-2">
+                                            <TrendingUp className="w-4 h-4 text-emerald-400" /> Seed Projections
                                         </h3>
                                         <div className="h-48 w-full">
                                             <ResponsiveContainer width="100%" height="100%">
@@ -146,12 +151,12 @@ function App() {
                                                 </AreaChart>
                                             </ResponsiveContainer>
                                         </div>
-                                        <p className="text-[10px] font-mono text-[#10b981]/60 uppercase mt-4">> SYSTEM.PREDICT(HQ_BUILDOUT_IMPACT)</p>
+                                        <p className="text-[10px] font-mono text-slate-500 uppercase mt-4">> SYSTEM.PREDICT(HQ_BUILDOUT_IMPACT)</p>
                                     </div>
 
-                                    <div className="bg-[#10b981] p-8 rounded-none text-black flex flex-col justify-between aspect-square lg:aspect-auto shadow-[0_0_40px_rgba(16,185,129,0.3)] border border-[#10b981]">
+                                    <div className="bg-emerald-500 p-8 rounded-xl text-slate-950 flex flex-col justify-between aspect-square lg:aspect-auto shadow-[0_0_40px_rgba(16,185,129,0.3)] border border-emerald-400">
                                         <div className="space-y-2">
-                                            <div className="font-mono text-4xl tracking-tighter leading-none">$26.8M</div>
+                                            <div className="font-mono text-4xl font-black tracking-tighter leading-none">$26.8M</div>
                                             <div className="text-[10px] font-mono font-bold uppercase tracking-widest opacity-80">> BASIS_VALUATION</div>
                                         </div>
                                         <div className="pt-8 flex justify-between items-end">

@@ -62,28 +62,27 @@ function App() {
     }
 
     return (
-    return (
-        <div className="min-h-screen bg-[#070510] text-purple-100 flex flex-col font-sans selection:bg-purple-500/30 selection:text-purple-200">
-            <header className="bg-black/80 border-b border-purple-900/50 backdrop-blur-md sticky top-0 z-40 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+        <div className="min-h-screen bg-slate-950 text-slate-200 flex flex-col font-sans selection:bg-emerald-500/30 selection:text-emerald-200">
+            <header className="bg-slate-950/80 backdrop-blur-md border-b border-white/5 sticky top-0 z-40 shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
-                        <div className="flex items-center gap-4">
-                            <div className="bg-gradient-to-br from-purple-600 to-purple-900 p-2 rounded-lg border border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                        <div className="flex items-center gap-3">
+                            <div className="bg-emerald-500 p-2 rounded-lg shadow-lg shadow-emerald-500/20">
                                 <Microscope className="w-6 h-6 text-white" />
                             </div>
                             <div>
-                                <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">CSU Research <span className="text-purple-500 font-mono text-xs uppercase bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20 shadow-[inset_0_0_10px_rgba(168,85,247,0.2)]">Portal</span></h1>
-                                <p className="text-[10px] text-purple-400 font-mono uppercase tracking-[0.2em] mt-0.5">Heavy-Duty Data Analysis</p>
+                                <h1 className="text-2xl font-black tracking-tighter text-white">farmsenseOS<span className="text-emerald-400">.</span></h1>
+                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mt-1">Research Portal</p>
                             </div>
                         </div>
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-4">
-                                <button className="flex items-center gap-2 px-4 py-2 bg-[#100820] border border-purple-500/30 text-purple-400 rounded-lg text-sm font-mono font-bold uppercase tracking-widest hover:bg-purple-900/40 hover:text-purple-300 transition-colors shadow-[0_0_10px_rgba(168,85,247,0.1)]">
+                                <button className="flex items-center gap-2 px-4 py-2 border border-white/10 rounded-xl bg-white/5 hover:bg-white/10 text-white text-sm font-bold uppercase tracking-widest transition-colors shadow-sm">
                                     <Database className="w-4 h-4" /> Lab Connect
                                 </button>
                                 <button
                                     onClick={handleExport}
-                                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-500 text-white rounded-lg text-sm font-mono font-bold uppercase tracking-widest hover:from-purple-500 hover:to-purple-400 transition-colors shadow-[0_0_15px_rgba(168,85,247,0.5)] border border-purple-400/50 relative overflow-hidden group"
+                                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-xl text-sm font-bold uppercase tracking-widest hover:from-emerald-500 hover:to-emerald-400 transition-colors shadow-lg shadow-emerald-500/20 relative overflow-hidden group"
                                 >
                                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                                     <Download className="w-4 h-4 relative z-10" /> <span className="relative z-10">Export All</span>
@@ -91,7 +90,7 @@ function App() {
                             </div>
                             <button
                                 onClick={handleLogout}
-                                className="text-purple-500/50 hover:text-red-500 transition-colors"
+                                className="text-slate-400 hover:text-red-500 transition-colors"
                             >
                                 <LogOut className="w-5 h-5" />
                             </button>

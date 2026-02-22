@@ -42,28 +42,28 @@ function App() {
     }
 
     return (
-        <div className="min-h-screen bg-[#050B14] flex flex-col font-mono text-slate-300 selection:bg-blue-500 selection:text-white">
+        <div className="min-h-screen bg-slate-950 flex flex-col font-sans text-slate-300 selection:bg-cyan-500 selection:text-white">
             {/* Header */}
-            <header className="bg-black border-b border-blue-900/50 shadow-[0_4px_30px_rgba(0,0,0,0.5)] z-20 relative">
+            <header className="bg-slate-950/80 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.5)] z-20 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center h-16">
                         <div className="flex items-center gap-3">
-                            <div className="bg-blue-600 p-2 rounded-none border border-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                            <div className="bg-emerald-500 p-2 rounded-lg shadow-lg shadow-emerald-500/20">
                                 <FileBadge className="w-6 h-6 text-white" />
                             </div>
                             <div>
-                                <h1 className="text-xl font-black text-white tracking-widest uppercase">Regulatory Command</h1>
-                                <p className="text-[10px] text-blue-400 font-bold uppercase tracking-[0.2em] mb-0.5">Automated Oversight & Compliance</p>
+                                <h1 className="text-2xl font-black tracking-tighter text-white">farmsenseOS<span className="text-emerald-400">.</span></h1>
+                                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mt-1">Regulatory Portal</p>
                             </div>
                         </div>
 
                         <div className="flex items-center gap-6">
-                            <div className="relative">
+                            <div className="relative border border-white/10 rounded-xl bg-white/5 overflow-hidden">
                                 <Search className="w-4 h-4 absolute left-3 top-3 text-slate-500" />
                                 <input
                                     type="text"
                                     placeholder="Search immutable ledgers..."
-                                    className="pl-9 pr-4 py-2 bg-[#0A1120] border border-blue-900/50 rounded-none text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 w-64 text-white placeholder:text-slate-600"
+                                    className="pl-9 pr-4 py-2 bg-transparent text-sm focus:outline-none w-64 text-white placeholder:text-slate-500"
                                 />
                             </div>
                             <button className="relative p-2 text-slate-400 hover:text-white transition-colors">
@@ -89,12 +89,12 @@ function App() {
             </header>
 
             {/* Sub-header Navigation */}
-            <div className="bg-[#0A1120] border-b border-blue-900/30">
+            <div className="bg-slate-900 border-b border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex gap-8 h-12">
                         <button
                             onClick={() => setActiveView('reports')}
-                            className={`flex items-center gap-2 px-1 border-b-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all ${activeView === 'reports' ? 'border-blue-500 text-blue-400' : 'border-transparent text-slate-600 hover:text-slate-300'}`}
+                            className={`flex items-center gap-2 px-1 border-b-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all ${activeView === 'reports' ? 'border-cyan-500 text-cyan-400' : 'border-transparent text-slate-500 hover:text-slate-300'}`}
                         >
                             <ClipboardList className="w-4 h-4" /> Compliance Reports
                         </button>

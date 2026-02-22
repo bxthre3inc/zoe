@@ -71,12 +71,15 @@ const App: React.FC = () => {
   return (
     <div className={`flex h-screen overflow-hidden text-slate-200 transition-colors duration-500 ${isSilasMode ? 'bg-black' : ''}`}>
       {/* Sidebar Navigation */}
-      <aside className="w-72 bg-[#020617] border-r border-white/5 flex flex-col p-6 space-y-8 z-20">
+      <aside className="w-72 bg-slate-950 border-r border-white/5 flex flex-col p-6 space-y-8 z-20">
         <div className="flex items-center gap-3 px-2">
           <div className="bg-emerald-500 p-2 rounded-lg shadow-lg shadow-emerald-500/20">
             <Cpu className="text-white w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-black tracking-tighter text-white">FARMSENSE<span className="text-emerald-500">.</span></h1>
+          <div>
+            <h1 className="text-2xl font-black tracking-tighter text-white">farmsenseOS<span className="text-emerald-400">.</span></h1>
+            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mt-1">Farmer Dashboard</p>
+          </div>
         </div>
 
         <nav className="flex-1 space-y-2">
@@ -114,11 +117,11 @@ const App: React.FC = () => {
 
         <div className="mt-8 pt-8 border-t border-white/5 space-y-6">
           {/* Community Wealth Card */}
-          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 shadow-xl">
+          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 shadow-xl">
             <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1 flex items-center gap-1">
               <TrendingUp className="w-3 h-3" /> Community Equity
             </p>
-            <p className="text-xl font-black text-white">$21.2M</p>
+            <p className="text-xl font-black text-white font-mono">$21.2M</p>
             <p className="text-[9px] text-slate-400 mt-1">Platform Value Created</p>
           </div>
         </div>
@@ -140,7 +143,7 @@ const App: React.FC = () => {
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
         {/* Global Header */}
-        <header className="h-20 bg-[#0b1120]/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-10 z-10">
+        <header className="h-20 bg-slate-950/80 backdrop-blur-md border-b border-white/5 flex items-center justify-between px-10 z-10">
           <div className="flex items-center gap-4 bg-white/5 px-4 py-2 rounded-xl border border-white/10 w-96">
             <Search className="w-4 h-4 text-slate-500" />
             <input type="text" placeholder="Search fields, sensors, or alerts..." className="bg-transparent text-sm border-none focus:outline-none w-full" />
@@ -300,9 +303,9 @@ const App: React.FC = () => {
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
                     {showProfit ? 'Estimated Savings' : 'VFA Truth Node'}
                   </p>
-                  <p className="text-3xl font-black text-white mt-1">
+                  <p className="text-3xl font-black text-white mt-1 font-mono">
                     {showProfit ? '$4,280' : '32.4%'}
-                    {showProfit && <span className="text-sm font-normal text-emerald-400 ml-1">/ season</span>}
+                    {showProfit && <span className="text-sm font-normal text-emerald-400 ml-1 font-sans">/ season</span>}
                   </p>
                 </div>
                 <div className="glass-card p-6 border-l-4 border-orange-500">
@@ -313,7 +316,7 @@ const App: React.FC = () => {
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
                     {showProfit ? 'Fuel/Yield Offset' : 'LRZ Scout Network'}
                   </p>
-                  <p className="text-3xl font-black text-white mt-1">
+                  <p className="text-3xl font-black text-white mt-1 font-mono">
                     {showProfit ? '+$1,120' : '12 Nodes'}
                   </p>
                 </div>
@@ -325,9 +328,9 @@ const App: React.FC = () => {
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
                     {showProfit ? 'Labor Efficiency' : 'PFA Well Flow'}
                   </p>
-                  <p className="text-3xl font-black text-white mt-1">
+                  <p className="text-3xl font-black text-white mt-1 font-mono">
                     {showProfit ? '22%' : '850 GPM'}
-                    {showProfit && <span className="text-sm font-normal text-blue-400 ml-1">Gain</span>}
+                    {showProfit && <span className="text-sm font-normal text-blue-400 ml-1 font-sans">Gain</span>}
                   </p>
                 </div>
                 <div className="glass-card p-6 border-l-4 border-slate-500">
@@ -338,9 +341,9 @@ const App: React.FC = () => {
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">
                     {showProfit ? 'Water Credit (SLV)' : 'PMT Kinematics'}
                   </p>
-                  <p className="text-3xl font-black text-white mt-1">
+                  <p className="text-3xl font-black text-white mt-1 font-mono">
                     {showProfit ? '140' : '2.4 MPH'}
-                    {showProfit && <span className="text-sm font-normal text-slate-500 ml-1">Units Earned</span>}
+                    {showProfit && <span className="text-sm font-normal text-slate-500 ml-1 font-sans">Units Earned</span>}
                   </p>
                 </div>
               </div>
