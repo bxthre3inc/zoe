@@ -280,12 +280,17 @@ class RegressionKriging:
         elev_interp = griddata(sat_coords, sat_elev, grid_coords, method='linear')
         slope_interp = griddata(sat_coords, sat_slope, grid_coords, method='linear')
         
+        # Handle NaN values (outside convex hull) by falling back to nearest neighbor
+        nan_mask = np.isnan(ndvi_interp)
+        if np.any(nan_mask):
+            ndvi_interp[nan_mask] = griddata(sat_coords, sat_ndvi, grid_coords[nan_mask], method='nearest')
+            ndwi_interp[nan_mask] = griddata(sat_coords, sat_ndwi, grid_coords[nan_mask], method='nearest')
+            lst_interp[nan_mask] = griddata(sat_coords, sat_lst, grid_coords[nan_mask], method='nearest')
+            elev_interp[nan_mask] = griddata(sat_coords, sat_elev, grid_coords[nan_mask], method='nearest')
+            slope_interp[nan_mask] = griddata(sat_coords, sat_slope, grid_coords[nan_mask], method='nearest')
+
         # Stack features
         X_grid = np.column_stack([ndvi_interp, ndwi_interp, lst_interp, elev_interp, slope_interp])
-        
-        # Handle NaN values (outside convex hull)
-        nan_mask = np.isnan(X_grid).any(axis=1)
-        X_grid[nan_mask] = 0  # Placeholder, will have high variance
         
         # Predict using trend model
         X_grid_scaled = self.scaler.transform(X_grid)

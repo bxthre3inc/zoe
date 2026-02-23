@@ -92,7 +92,7 @@ function App() {
                             <Zap className="text-white w-6 h-6" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-black tracking-tighter text-white">farmsenseOS<span className="text-emerald-400">.</span></h1>
+                            <h1 className="text-2xl font-black tracking-tighter text-white">FarmSense<span className="text-emerald-400">.</span></h1>
                             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest leading-none mt-1">Investor Terminal</p>
                         </div>
                     </div>
