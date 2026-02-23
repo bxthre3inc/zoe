@@ -12,7 +12,7 @@ Please familiarize yourself with the FarmSense project documentation in the foll
 
 1. **`BLUEPRINT.md`**: Start here to understand the core existential threat of aquifer depletion in the San Luis valley and the FarmSense "Deterministic" solution framework and operational philosophy.  
 2. **`PROJECT_OVERVIEW.md`**: Provides a systemic overview of the codebase delivery, core system layers, and the dual-database architecture.
-3. **`ARCHITECTURE.md`**: Explains the detailed interaction between the Decentralized Cloud intelligence, the Level 2 District Hubs (DHU), and the hardware Edge constraints across the fields (VFA, LRZ, PMT, PFA).
+3. **`ARCHITECTURE.md`**: Explains the detailed interaction between the Decentralized Cloud intelligence, the Level 2 District Hubs (DHU), and the hardware Edge constraints across the fields (PMT Hub, VFA, LRZ, PFA).
 4. **`FEATURESET.md`**: Lists the current production capabilities, zero-cost Edge software expansions, and our dual-use applicability for defense operations (JADC2 integration, FHE, LPI/LPD).
 5. **`IMPLEMENTATION_GUIDE.md`**: Maps out the structural timeline, hardware manufacturing objectives, deployment sequences, and performance validation metrics.
 6. **`todo.md`**: The live, active issue board tracking the double-checkbox sprint tasks.

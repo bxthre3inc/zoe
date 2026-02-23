@@ -20,13 +20,13 @@ Relying entirely on external backhauls in rural zones creates unacceptable vulne
 
 Sensors and actuators deployed below and above ground across field zones. Equipment strictly utilizes UV-shielded (fluoropolymer coated) Polycarbonate due to altitude degradation risks and requires Hybrid Pulse Capacitors (HPC) for extreme-cold \-30°F survivability.
 
-- **Vertical Field Anchors (VFA) [Level 1.5 - Secure Routing Node]:** Intercepts 128-bit encrypted FHSS data from surrounding lateral nodes via local 900MHz LoRa uplinks. The single "truth node" per field. Must include 2.4GHz transceivers for PFA communication.
+- **Vertical Field Anchors (VFA) [Level 1 - Advanced Peer Node]:** The 48-inch deep-profile central ground-truth soil node. Downgraded from a routing hub to a highly efficient peer, it uses a flush 3-foot antenna to transmit 128-bit encrypted FHSS payload data directly to the elevated PMT.
 - **Lateral Root-Zone Scout (LRZ) [Level 1 - Spatial Mapper]:** Mass-produced "dumb nodes" deployed at a 1:15-acre density. Utilizes high-frequency Frequency-Hopping Spread Spectrum (FHSS) chirps, providing inherent Low Probability of Intercept/Detection (LPI/LPD) features natively desirable under DoD architectures. Enclosures feature 50mm non-contact capacitive telemetry fields.
-- **Pressure & Flow Anchor (PFA) [Sentry of the Source]:** Mounts at the wellhead, monitoring vibration torque ripple, cavitation, and bearing wear via 400A CT Clamps. Runs NXP Cortex-M7 edge processors preparing to process Current Harmonic Analysis signatures. Will use 2.4GHz High-Gain links to contact the VFAs.
-- **Pivot Motion Trackers (PMT) [Level 1 - Kinematic Auditor]:** The Nervous System mechanism of center pivots.
-  - Generates \+/\- 1% flow accuracy non-invasively using Badger Meter TFX-5000 ultrasonic transit-time components.
-  - Contains u-blox ZED-F9P RTK GNSS modules for sub-2.5m horizontal spatial resolution.
-  - Monitors vibration harmonics using Bosch BNO055 9-Axis IMUs.
+- **Pressure & Flow Anchor (PFA) [Sentry of the Source]:** Mounts at the wellhead, monitoring vibration torque ripple, cavitation, and bearing wear via 400A CT Clamps. Runs NXP Cortex-M7 edge processors preparing to process Current Harmonic Analysis signatures. Uses 2.4GHz High-Gain links to bounce data to the elevated PMT, safely bypassing canopy interference.
+- **Pivot Motion Trackers (PMT) [Level 1.5 - Field Hub & Edge-EBK Engine]:** The command center and Nervous System of the field, mounted 10-15 feet high on the pivot span.
+  - **RF Umbrella:** Receives 900MHz FHSS chirps from the VFA/LRZs and 2.4GHz payloads from the PFA, bundling the entire field state into a single ~187-byte AES-256 payload and blasting it to the DHU via 900MHz LoRaWAN.
+  - **Sensors:** Generates +/- 1% flow accuracy non-invasively using Badger Meter ultrasonic transit-time components. Contains u-blox ZED-F9P RTK GNSS modules for sub-2.5m horizontal spatial resolution and Bosch BNO055 9-Axis IMUs for vibration harmonics.
+  - **Constant Edge-EBK processing:** Utilizes an onboard ATSAMD51 Cortex-M4 FPU to continuously calculate a 50m-resolution EBK spatial probability grid using "Fisherman's Attention" and Ripple/Collapse logic. This constant baseline enables hierarchical processing upstream (20m grids at DHU, 1m at RSS/Cloud). It inherently serves as zero-downtime VRI failover guidance if the DHU uplink drops.
   - **Corner-Swing Auditor (CSA)** variants utilize dual-node configurations (Primary Span Tracker and Swing-Arm Tracker) to resolve swing-arm irrigation mechanics mathematically.
 
 ## Dual-Layer Spatial Privacy Architecture
