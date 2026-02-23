@@ -79,6 +79,22 @@ async def update_robotics_mission(payload: MissionUpdate, db: Session = Depends(
         
     return {"status": "mission_updated"}
 
+@router.post("/csa/kinematics")
+async def ingest_csa_kinematics(payload: TelemetryPayload, db: Session = Depends(get_db)):
+    """Endpoint for dual-node Corner Swing Auditor logic ingestion."""
+    # Logic to be implemented connecting to csa_alignment.py
+    
+    # 1. Decode PST + SAT nodes
+    # 2. Extract Hydraulic Hammer pulses
+    # 3. Create high-resolution surge mapping volume
+    return {"status": "success", "csa_node_received": True}
+
+@router.post("/kriging/trigger")
+async def trigger_kriging_interpolation(field_id: str, db: Session = Depends(get_db)):
+    """Triggers the 1m Kriging regression for a specified field, ingesting Satellite priors."""
+    # Logic to load VirtualSensorGrid, trigger pipeline/kriging_1m.py logic, and update DB
+    return {"status": "queued", "field": field_id}
+    
 @router.get("/devices", response_model=List[dict])
 async def list_registered_devices(field_id: str, db: Session = Depends(get_db)):
     """Headless access to list all integrated hardware on a field"""
