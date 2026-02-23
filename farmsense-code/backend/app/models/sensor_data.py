@@ -193,6 +193,43 @@ class VirtualSensorGrid50m(Base):
 
 
 
+class VirtualSensorGrid10m(Base):
+    """Cloud-computed 10m high-resolution virtual sensor grid"""
+    __tablename__ = 'virtual_sensor_grid_10m'
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    field_id = Column(String(50), nullable=False, index=True)
+    grid_id = Column(String(50), nullable=False, index=True)
+    timestamp = Column(DateTime, nullable=False, index=True)
+    
+    # Geospatial
+    location = Column(Geometry('POINT', srid=4326), nullable=False)
+    grid_cell = Column(Geometry('POLYGON', srid=4326))
+    
+    # Interpolated values
+    moisture_surface = Column(Float)
+    moisture_root = Column(Float)
+    temperature = Column(Float)
+    
+    # Derived metrics
+    water_deficit_mm = Column(Float)
+    stress_index = Column(Float)
+    irrigation_need = Column(String(20))
+    
+    # Computation metadata
+    computation_mode = Column(String(20))
+    source_sensors = Column(JSON)
+    confidence = Column(Float)
+    
+    created_at = Column(DateTime, default=datetime.utcnow)
+    physical_probe_value = Column(Float)
+    edge_device_id = Column(String(50))
+    
+    __table_args__ = (
+        Index('idx_field_grid_time_10m', 'field_id', 'grid_id', 'timestamp'),
+        Index('idx_spatial_10m', 'location', postgresql_using='gist'),
+    )
+
 class VirtualSensorGrid1m(Base):
     """Cloud-computed 1m high-resolution virtual sensor grid"""
     __tablename__ = 'virtual_sensor_grid_1m'
