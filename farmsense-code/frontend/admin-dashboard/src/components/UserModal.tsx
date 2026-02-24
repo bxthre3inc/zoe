@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X, Mail, Phone, Building2, Shield, Award, Calendar, CheckCircle, AlertCircle, FileText, Key } from 'lucide-react';
+import { X, Phone, Building2, Shield, Award, CheckCircle, AlertCircle, FileText } from 'lucide-react';
 import { api } from '../services/api';
 
 interface User {

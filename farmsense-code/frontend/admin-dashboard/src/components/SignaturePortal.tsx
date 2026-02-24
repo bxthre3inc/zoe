@@ -1,11 +1,11 @@
 
 import React, { useRef, useState, useEffect } from 'react';
-import SignatureCanvas from 'react-signature-canvas';
-import { FileCheck, PenTool, X, CheckCircle2, ShieldLine, Download, Mail } from 'lucide-react';
+import { FileCheck, PenTool, X, CheckCircle2, ShieldCheck, Download, Mail, RefreshCw } from 'lucide-react';
 import { api } from '../services/api';
 
 export const SignaturePortal: React.FC<{ token: string }> = ({ token }) => {
-    const sigPad = useRef<any>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [isDrawing, setIsDrawing] = useState(false);
     const [letter, setLetter] = useState<any>(null);
     const [isSigned, setIsSigned] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
@@ -22,13 +22,19 @@ export const SignaturePortal: React.FC<{ token: string }> = ({ token }) => {
         });
     }, [token]);
 
-    const clear = () => sigPad.current.clear();
+    const clear = () => {
+        const canvas = canvasRef.current;
+        if (canvas) { const ctx = canvas.getContext('2d'); ctx?.clearRect(0, 0, canvas.width, canvas.height); }
+    };
+    const startDraw = (e: React.MouseEvent) => { setIsDrawing(true); const ctx = canvasRef.current?.getContext('2d'); if (ctx) { ctx.beginPath(); ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY); } };
+    const draw = (e: React.MouseEvent) => { if (!isDrawing) return; const ctx = canvasRef.current?.getContext('2d'); if (ctx) { ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY); ctx.stroke(); } };
+    const endDraw = () => setIsDrawing(false);
 
     const save = async () => {
-        if (sigPad.current.isEmpty()) return;
+        if (!canvasRef.current) return;
         setIsProcessing(true);
         try {
-            const signature = sigPad.current.getTrimmedCanvas().toDataURL('image/png');
+            const signature = canvasRef.current?.toDataURL('image/png') || '';
             await api.signLetter(token, signature);
             setIsSigned(true);
         } catch (error) {
@@ -100,11 +106,9 @@ export const SignaturePortal: React.FC<{ token: string }> = ({ token }) => {
                     </div>
 
                     <div className="bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 overflow-hidden relative group">
-                        <SignatureCanvas
-                            ref={sigPad}
-                            penColor="black"
-                            canvasProps={{ width: 386, height: 250, className: 'sigCanvas' }}
-                        />
+                        <canvas ref={canvasRef} width={386} height={250}
+                            onMouseDown={startDraw} onMouseMove={draw} onMouseUp={endDraw} onMouseLeave={endDraw}
+                            style={{ cursor: 'crosshair', touchAction: 'none' }} />
                         <button
                             onClick={clear}
                             className="absolute right-4 top-4 p-2 bg-white/80 hover:bg-white rounded-lg shadow-sm text-slate-400 hover:text-rose-500 transition-all opacity-0 group-hover:opacity-100"
@@ -139,7 +143,7 @@ export const SignaturePortal: React.FC<{ token: string }> = ({ token }) => {
 
                 <div className="pt-8 border-t border-slate-100 mt-8 flex justify-center gap-6 grayscale opacity-40">
                     <Download className="w-5 h-5" />
-                    <ShieldLine className="w-5 h-5" />
+                    <ShieldCheck className="w-5 h-5" />
                     <Mail className="w-5 h-5" />
                 </div>
             </div>

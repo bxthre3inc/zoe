@@ -1,103 +1,145 @@
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { UserList } from './components/UserList';
 import Login from './components/Login';
-import { LayoutDashboard, Settings, LogOut } from 'lucide-react';
+import { GrantDiscovery } from './components/grants/GrantDiscovery';
+import { ApplicationManager } from './components/grants/ApplicationManager';
+import { AwardTracker } from './components/grants/AwardTracker';
+import {
+    LayoutDashboard, Settings, LogOut,
+    Search, Kanban, Trophy
+} from 'lucide-react';
 import { getApiKey, removeApiKey, api } from './services/api';
+
+type View = 'dashboard' | 'discovery' | 'pipeline' | 'awards' | 'settings';
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [metrics, setMetrics] = useState<any>(null);
+    const [view, setView] = useState<View>('dashboard');
 
     useEffect(() => {
         const auth = !!getApiKey();
         setIsAuthenticated(auth);
-        if (auth) {
-            fetchMetrics();
-        }
+        if (auth) fetchMetrics();
     }, []);
 
     const fetchMetrics = async () => {
         try {
             const data = await api.getMetrics();
             setMetrics(data);
-        } catch (error) {
-            console.error('Failed to fetch metrics:', error);
+        } catch {
+            // graceful degradation when backend offline
         }
     };
 
-    const handleLogout = () => {
-        removeApiKey();
-        setIsAuthenticated(false);
-    };
+    const handleLogout = () => { removeApiKey(); setIsAuthenticated(false); };
 
     if (!isAuthenticated) {
-        return <Login onLogin={() => {
-            setIsAuthenticated(true);
-            fetchMetrics();
-        }} />;
+        return <Login onLogin={() => { setIsAuthenticated(true); fetchMetrics(); }} />;
     }
 
+    const NAV = [
+        { id: 'dashboard' as View, label: 'Dashboard', icon: LayoutDashboard, group: 'core' },
+        { id: 'discovery' as View, label: 'Grant Discovery', icon: Search, group: 'grants' },
+        { id: 'pipeline' as View, label: 'Applications', icon: Kanban, group: 'grants' },
+        { id: 'awards' as View, label: 'Award Tracker', icon: Trophy, group: 'grants' },
+        { id: 'settings' as View, label: 'Settings', icon: Settings, group: 'core' },
+    ];
+
+    const viewTitle: Record<View, string> = {
+        dashboard: 'System Overview',
+        discovery: 'Grant Discovery',
+        pipeline: 'Application Pipeline',
+        awards: 'Award Tracker',
+        settings: 'Settings',
+    };
+
     return (
-        <div className="min-h-screen bg-gray-100 flex">
+        <div className="min-h-screen bg-slate-950 text-slate-200 flex font-sans">
             {/* Sidebar */}
-            <aside className="w-64 bg-slate-800 text-white flex flex-col">
-                <div className="p-6 border-b border-slate-700">
-                    <h1 className="text-xl font-bold flex items-center gap-2">
-                        <LayoutDashboard className="w-6 h-6 text-indigo-400" />
-                        Admin Panel
-                    </h1>
-                    <p className="text-xs text-slate-400 mt-1">Role: ADMIN</p>
+            <aside className="w-60 shrink-0 bg-slate-900 border-r border-slate-800 flex flex-col">
+                <div className="p-5 border-b border-slate-800">
+                    <h1 className="text-lg font-black text-white tracking-tight">FarmSense<span className="text-indigo-400">.</span></h1>
+                    <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mt-0.5">Admin Dashboard</p>
                 </div>
 
-                <nav className="flex-1 p-4 space-y-2">
-                    <a href="#" className="flex items-center gap-3 px-4 py-2 bg-slate-700 text-white rounded-lg">
-                        <LayoutDashboard className="w-5 h-5" /> Dashboard
-                    </a>
-                    <a href="#" className="flex items-center gap-3 px-4 py-2 text-slate-300 hover:bg-slate-700 hover:text-white rounded-lg transition-colors">
-                        <Settings className="w-5 h-5" /> Settings
-                    </a>
+                <nav className="flex-1 p-3 space-y-0.5 overflow-y-auto">
+                    <p className="text-[9px] font-black text-slate-600 uppercase tracking-[0.2em] px-3 pt-3 pb-2">Core</p>
+                    {NAV.filter(n => n.group === 'core').map(item => {
+                        const Icon = item.icon;
+                        return (
+                            <button key={item.id} onClick={() => setView(item.id)}
+                                className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${view === item.id ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-800/40' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'}`}>
+                                <Icon className="w-3.5 h-3.5 shrink-0" />{item.label}
+                            </button>
+                        );
+                    })}
+
+                    <p className="text-[9px] font-black text-emerald-700 uppercase tracking-[0.2em] px-3 pt-4 pb-2">Grant Management</p>
+                    {NAV.filter(n => n.group === 'grants').map(item => {
+                        const Icon = item.icon;
+                        return (
+                            <button key={item.id} onClick={() => setView(item.id)}
+                                className={`w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-medium transition-all ${view === item.id ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-800/40' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200'}`}>
+                                <Icon className="w-3.5 h-3.5 shrink-0" />{item.label}
+                            </button>
+                        );
+                    })}
                 </nav>
 
-                <div className="p-4 border-t border-slate-700">
-                    <button
-                        onClick={handleLogout}
-                        className="flex items-center gap-3 w-full px-4 py-2 text-red-400 hover:bg-slate-700 rounded-lg transition-colors"
-                    >
-                        <LogOut className="w-5 h-5" /> Logout
+                <div className="p-3 border-t border-slate-800">
+                    <button onClick={handleLogout}
+                        className="flex items-center gap-2.5 w-full px-3 py-2 text-xs text-red-400 hover:bg-slate-800 rounded-lg transition-colors">
+                        <LogOut className="w-3.5 h-3.5" /> Logout
                     </button>
                 </div>
             </aside>
 
             {/* Main Content */}
             <main className="flex-1 overflow-auto">
-                <header className="bg-white shadow-sm p-4 flex justify-between items-center">
-                    <h2 className="text-lg font-semibold text-gray-800">System Overview</h2>
-                    <div className="flex items-center gap-4">
-                        <span className="text-sm text-gray-500">Last login: Today, 10:23 AM</span>
-                        <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold">A</div>
-                    </div>
+                <header className="bg-slate-900/60 backdrop-blur-md border-b border-slate-800 px-6 py-4 flex justify-between items-center sticky top-0 z-10">
+                    <h2 className="text-sm font-bold text-white">{viewTitle[view]}</h2>
+                    <div className="text-[10px] text-slate-600 font-mono">Role: ADMIN</div>
                 </header>
 
-                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                        <h3 className="text-sm font-medium text-gray-500">Active Users</h3>
-                        <p className="text-3xl font-bold text-gray-900 mt-2">{metrics ? metrics.active_users.toLocaleString() : '---'}</p>
-                        <span className="text-green-600 text-xs font-medium">{metrics ? '+' + metrics.user_growth_pct + '%' : '---'} from last month</span>
-                    </div>
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                        <h3 className="text-sm font-medium text-gray-500">System Health</h3>
-                        <p className="text-3xl font-bold text-green-600 mt-2">{metrics ? metrics.system_health_pct + '%' : '---%'}</p>
-                        <span className="text-gray-400 text-xs font-medium">Uptime valid</span>
-                    </div>
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-                        <h3 className="text-sm font-medium text-gray-500">Pending Audits</h3>
-                        <p className="text-3xl font-bold text-yellow-600 mt-2">{metrics ? metrics.pending_audits : '--'}</p>
-                        <span className="text-yellow-600 text-xs font-medium">Action required</span>
-                    </div>
-                </div>
+                <div className="p-6 max-w-7xl mx-auto">
+                    {/* DASHBOARD */}
+                    {view === 'dashboard' && (
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Active Users</h3>
+                                    <p className="text-3xl font-black text-white mt-2">{metrics ? metrics.active_users.toLocaleString() : '---'}</p>
+                                    <span className="text-emerald-500 text-xs font-bold">{metrics ? `+${metrics.user_growth_pct}%` : '---'} from last month</span>
+                                </div>
+                                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">System Health</h3>
+                                    <p className="text-3xl font-black text-emerald-400 mt-2">{metrics ? `${metrics.system_health_pct}%` : '---%'}</p>
+                                    <span className="text-slate-500 text-xs">Uptime valid</span>
+                                </div>
+                                <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
+                                    <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest">Pending Audits</h3>
+                                    <p className="text-3xl font-black text-amber-400 mt-2">{metrics ? metrics.pending_audits : '--'}</p>
+                                    <span className="text-amber-500 text-xs font-bold">Action required</span>
+                                </div>
+                            </div>
+                            <UserList />
+                        </>
+                    )}
 
-                <UserList />
+                    {/* GRANT VIEWS */}
+                    {view === 'discovery' && <GrantDiscovery />}
+                    {view === 'pipeline' && <ApplicationManager />}
+                    {view === 'awards' && <AwardTracker />}
+
+                    {/* SETTINGS */}
+                    {view === 'settings' && (
+                        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                            <p className="text-sm text-slate-400">Settings panel — coming soon.</p>
+                        </div>
+                    )}
+                </div>
             </main>
         </div>
     );

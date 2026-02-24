@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Users, Shield, Award, RefreshCw, Search, Filter, MoreHorizontal, UserCheck, UserPlus, Mail, Phone, Building2 } from 'lucide-react';
+import { Users, Shield, Award, RefreshCw, Search, Filter, UserPlus, Mail, Building2 } from 'lucide-react';
 import { api } from '../services/api';
 import { UserModal } from './UserModal';
 
@@ -23,7 +23,7 @@ export const UserList: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [, setError] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [roleFilter, setRoleFilter] = useState('ALL');
     const [selectedUser, setSelectedUser] = useState<User | null>(null);
