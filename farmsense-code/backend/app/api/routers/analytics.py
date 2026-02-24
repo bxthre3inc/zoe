@@ -314,3 +314,170 @@ def get_analytics_forecast(field_id: str = Query(..., description="Field ID for 
         return {"forecast": "Partly cloudy, slight chance of rain Thursday."}
     except Exception:
         return {"forecast": "Partly cloudy, slight chance of rain Thursday."}
+
+
+# ──────────────────────────────────────────────────────────
+# Dual-Layer Spatial Privacy Endpoints
+# ──────────────────────────────────────────────────────────
+
+from pydantic import BaseModel as PydanticBase
+from typing import Optional as Opt, List
+
+
+class SensorPointRequest(PydanticBase):
+    sensor_id: str
+    field_id: str
+    latitude: float
+    longitude: float
+    moisture_surface: float
+    moisture_root: float
+    temperature: float
+    ec_surface: Opt[float] = None
+    ph: Opt[float] = None
+    timestamp: Opt[str] = None
+
+
+class AnonymizeRequest(PydanticBase):
+    points: List[SensorPointRequest]
+    tier: str = "research"  # research | partner | internal
+
+
+class AggregateAnonymizeRequest(PydanticBase):
+    field_id: str
+    avg_moisture: float
+    avg_temperature: float
+    contributor_count: int
+    tier: str = "research"
+
+
+@router.post("/privacy/anonymize", tags=["Spatial Privacy"])
+def anonymize_sensor_points(
+    request: AnonymizeRequest,
+    user: User = Depends(get_current_user),
+):
+    """
+    Apply dual-layer spatial privacy transformation to a batch of sensor points.
+
+    Layer 1 — Geometric: GPS jitter + grid-cell snapping
+    Layer 2 — Contextual: k-anonymity enforcement + Laplace differential privacy
+
+    Returns anonymized points and an immutable audit manifest.
+    Suppressed points (k-anonymity not met) are included with suppressed=True
+    and zeroed values — callers MUST NOT export suppressed points.
+    """
+    from app.services.spatial_privacy import (
+        privacy_service, SensorPoint, PrivacyTier
+    )
+
+    try:
+        tier = PrivacyTier(request.tier)
+    except ValueError:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid tier '{request.tier}'. Valid: research, partner, internal, raw"
+        )
+
+    raw_points = [
+        SensorPoint(
+            sensor_id=p.sensor_id,
+            field_id=p.field_id,
+            latitude=p.latitude,
+            longitude=p.longitude,
+            moisture_surface=p.moisture_surface,
+            moisture_root=p.moisture_root,
+            temperature=p.temperature,
+            ec_surface=p.ec_surface,
+            ph=p.ph,
+            timestamp=p.timestamp,
+        )
+        for p in request.points
+    ]
+
+    anon_points, audit_records = privacy_service.apply_privacy(raw_points, tier=tier)
+
+    return {
+        "tier": tier.value,
+        "input_count": len(raw_points),
+        "output_count": len(anon_points),
+        "suppressed_count": sum(1 for p in anon_points if p.suppressed),
+        "points": [
+            {
+                "cluster_id": p.cluster_id,
+                "anon_sensor_token": p.anon_sensor_token,
+                "latitude": p.latitude,
+                "longitude": p.longitude,
+                "moisture_surface": p.moisture_surface,
+                "moisture_root": p.moisture_root,
+                "temperature": p.temperature,
+                "ec_surface": p.ec_surface,
+                "ph": p.ph,
+                "suppressed": p.suppressed,
+                "privacy_tier": p.privacy_tier,
+            }
+            for p in anon_points
+        ],
+        "audit_manifest": [
+            {
+                "event_id": r.event_id,
+                "field_id_hash": r.field_id_hash,
+                "tier_applied": r.tier_applied,
+                "jitter_m": r.jitter_applied_m,
+                "epsilon_moisture": r.laplace_epsilon_moisture,
+                "epsilon_temperature": r.laplace_epsilon_temperature,
+                "k": r.k_threshold,
+                "suppressed": r.suppressed,
+                "timestamp": r.timestamp,
+            }
+            for r in audit_records
+        ],
+    }
+
+
+@router.post("/privacy/anonymize-aggregate", tags=["Spatial Privacy"])
+def anonymize_aggregate_stat(
+    request: AggregateAnonymizeRequest,
+    user: User = Depends(get_current_user),
+):
+    """
+    Lightweight anonymization for already-aggregated basin statistics.
+    Used by federated learning result broadcasts where individual
+    sensor points are never exported — only basin-level averages.
+    """
+    from app.services.spatial_privacy import privacy_service, PrivacyTier
+
+    try:
+        tier = PrivacyTier(request.tier)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid tier '{request.tier}'")
+
+    result = privacy_service.anonymize_aggregate(
+        field_id=request.field_id,
+        avg_moisture=request.avg_moisture,
+        avg_temperature=request.avg_temperature,
+        contributor_count=request.contributor_count,
+        tier=tier,
+    )
+    return result
+
+
+@router.get("/privacy/tiers", tags=["Spatial Privacy"])
+def list_privacy_tiers():
+    """
+    Returns the available privacy tier configurations and their parameters.
+    Useful for research portal UI to display what each tier does.
+    """
+    from app.services.spatial_privacy import TIER_DEFAULTS
+
+    return {
+        tier.value: {
+            "jitter_radius_m": cfg.jitter_radius_m,
+            "grid_snap_m": cfg.grid_snap_m,
+            "k_anonymity_min": cfg.k_anonymity_min,
+            "epsilon_moisture": cfg.epsilon_moisture,
+            "epsilon_temperature": cfg.epsilon_temperature,
+            "strip_field_id": cfg.strip_field_id,
+            "strip_sensor_id": cfg.strip_sensor_id,
+        }
+        for tier, cfg in TIER_DEFAULTS.items()
+    }
+
