@@ -86,7 +86,7 @@ export const InvestorLanding: React.FC<{ onExplore: () => void }> = ({ onExplore
             <div className="bg-neutral-900/30 py-24 border-y border-neutral-900">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div className="space-y-10">
-                        <h3 className="text-5xl font-black tracking-tighter">The Monte Vista <span className="text-green-500">Nexus</span></h3>
+                        <h3 className="text-5xl font-black tracking-tighter">The Monte Vista <span className="text-green-500">HQ</span></h3>
 
                         <div className="space-y-8">
                             <div className="flex gap-6">

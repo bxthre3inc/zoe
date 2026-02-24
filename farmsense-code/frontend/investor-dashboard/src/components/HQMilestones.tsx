@@ -26,14 +26,6 @@ const MILESTONES = [
         status: "pending",
         icon: <Wrench className="w-6 h-6" />,
         impact: "Secures enterprise uptime SLAs"
-    },
-    {
-        id: 4,
-        name: "Nexus Hospitality Center",
-        description: "Automated breakroom and social nexus.",
-        status: "pending",
-        icon: <Building2 className="w-6 h-6" />,
-        impact: "Engineering retention and wow-factor"
     }
 ];
 

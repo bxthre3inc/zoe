@@ -27,7 +27,7 @@ def create_user(
 ):
     """Create a new user (Admin only)"""
     db_user = User(
-        email=f"user_{len(db.query(User).all())}@example.com", # Mock mapping
+        email=user.email,
         api_key=user.api_key
     )
     db.add(db_user)

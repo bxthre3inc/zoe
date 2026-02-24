@@ -14,6 +14,7 @@ class UserBase(BaseModel):
     notes: Optional[str] = None
 
 class UserCreate(BaseModel):
+    email: str
     api_key: str
 
 class UserUpdate(BaseModel):

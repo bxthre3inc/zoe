@@ -5,7 +5,6 @@ import Login from './components/Login';
 import { EquityBuyIn } from './components/EquityBuyIn';
 import { InvestorLanding } from './components/InvestorLanding';
 import { HQMilestones } from './components/HQMilestones';
-import { NexusBreakroom } from './components/NexusBreakroom';
 import { HolographicGlobe } from './components/HolographicGlobe';
 import { getApiKey, removeApiKey, api } from './services/api';
 
@@ -105,12 +104,6 @@ function App() {
                                 Intelligence
                             </button>
                             <button
-                                onClick={() => setView('breakroom')}
-                                className={`text-sm font-bold transition-all flex items-center gap-2 ${view === 'breakroom' ? 'text-emerald-400' : 'text-slate-400 hover:text-white'}`}
-                            >
-                                Nexus Breakroom
-                            </button>
-                            <button
                                 onClick={() => setView('globe')}
                                 className={`text-sm font-bold transition-all flex items-center gap-2 ${view === 'globe' ? 'text-cyan-400' : 'text-slate-400 hover:text-white'}`}
                             >
@@ -128,11 +121,7 @@ function App() {
                 <LiveTicker />
 
                 <main className="flex-1 max-w-7xl mx-auto w-full px-6 py-8 overflow-hidden">
-                    {view === 'breakroom' ? (
-                        <div className="bg-black/40 rounded-[3rem] border border-white/5 overflow-hidden shadow-2xl h-[85vh]">
-                            <NexusBreakroom />
-                        </div>
-                    ) : view === 'globe' ? (
+                    {view === 'globe' ? (
                         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                             <HolographicGlobe />
                         </div>

@@ -7,6 +7,7 @@ from app.api.dependencies import get_current_user, RequireTier, SubscriptionTier
 from app.models.user import User
 
 from app.models.sensor_data import VirtualSensorGrid20m, VirtualSensorGrid50m, VirtualSensorGrid10m, VirtualSensorGrid1m, SensorReading
+from sqlalchemy import func
 from app.services.grid_renderer import GridRenderingService
 from app.services.decision_engine import FieldDecisionEngine, FieldDiagnosticService
 
@@ -202,15 +203,62 @@ def get_field_analytics(
     db: Session = Depends(get_db)
 ):
     """Get current field analytics and irrigation recommendations"""
+    # Grab the latest timestamp from the 10m grid for this field
+    latest_ts = db.query(func.max(VirtualSensorGrid10m.timestamp)).filter(VirtualSensorGrid10m.field_id == field_id).scalar()
+    
+    if not latest_ts:
+        return FieldAnalyticsResponse(
+            field_id=field_id,
+            analysis_time=datetime.utcnow(),
+            avg_moisture=0.0,
+            moisture_std=0.0,
+            stress_area_pct=0.0,
+            irrigation_zones=[],
+            current_mode="dormant",
+            next_recalc=datetime.utcnow() + timedelta(hours=6)
+        )
+        
+    # Calculate stats natively on the Timescale/Postgres DB
+    stats = db.query(
+        func.avg(VirtualSensorGrid10m.moisture_surface).label('avg_moist'),
+        func.stddev(VirtualSensorGrid10m.moisture_surface).label('std_moist'),
+        func.avg(VirtualSensorGrid10m.stress_index).label('avg_stress')
+    ).filter(
+        VirtualSensorGrid10m.field_id == field_id,
+        VirtualSensorGrid10m.timestamp == latest_ts
+    ).first()
+    
+    # Calculate area under critical stress (stress_index > 0.7 assumed critical)
+    total_cells = db.query(VirtualSensorGrid10m).filter(
+        VirtualSensorGrid10m.field_id == field_id,
+        VirtualSensorGrid10m.timestamp == latest_ts
+    ).count()
+    
+    stressed_cells = db.query(VirtualSensorGrid10m).filter(
+        VirtualSensorGrid10m.field_id == field_id,
+        VirtualSensorGrid10m.timestamp == latest_ts,
+        VirtualSensorGrid10m.stress_index > 0.7
+    ).count()
+    
+    stress_pct = (stressed_cells / total_cells * 100) if total_cells > 0 else 0.0
+    
+    # Check adaptive recalcular logic (AttentionMode)
+    from app.services.adaptive_recalc_engine import AttentionMode
+    from app.models.sensor_data import RecalculationLog
+    latest_recalc = db.query(RecalculationLog).filter(RecalculationLog.field_id == field_id).order_by(RecalculationLog.timestamp.desc()).first()
+    
+    mode = latest_recalc.new_mode if latest_recalc else AttentionMode.DORMANT.value
+    next_eval = latest_recalc.next_scheduled if latest_recalc else (datetime.utcnow() + timedelta(hours=6))
+
     return FieldAnalyticsResponse(
         field_id=field_id,
-        analysis_time=datetime.utcnow(),
-        avg_moisture=0.28,
-        moisture_std=0.04,
-        stress_area_pct=5.2,
-        irrigation_zones=[],
-        current_mode="anticipatory",
-        next_recalc=datetime.utcnow() + timedelta(minutes=45)
+        analysis_time=latest_ts,
+        avg_moisture=float(stats.avg_moist or 0.0),
+        moisture_std=float(stats.std_moist or 0.0),
+        stress_area_pct=round(stress_pct, 2),
+        irrigation_zones=[], # Requires zone grouping logic
+        current_mode=mode,
+        next_recalc=next_eval
     )
 
 @router.get("/recommendation/{field_id}", tags=["Analytics"])
@@ -219,11 +267,39 @@ def get_irrigation_recommendation(
     db: Session = Depends(get_db)
 ):
     """Get irrigation recommendations based on current field state"""
+    # Pull current analytic state
+    latest_ts = db.query(func.max(VirtualSensorGrid10m.timestamp)).filter(VirtualSensorGrid10m.field_id == field_id).scalar()
+    if not latest_ts:
+         return {
+            "field_id": field_id,
+            "recommendation": "Insufficient data for recommendation",
+            "confidence_score": 0.0,
+            "estimated_water_savings_m3": 0.0
+        }
+        
+    avg_deficit = db.query(func.avg(VirtualSensorGrid10m.water_deficit_mm)).filter(
+        VirtualSensorGrid10m.field_id == field_id,
+        VirtualSensorGrid10m.timestamp == latest_ts
+    ).scalar() or 0.0
+    
+    if avg_deficit > 10.0:
+        rec = "Initiate sector 4 variable-rate irrigation immediately."
+        conf = 0.94
+        savings = 0.0
+    elif avg_deficit > 5.0:
+        rec = "Schedule irrigation for off-peak hours (02:00 MDT)."
+        conf = 0.88
+        savings = 45.5
+    else:
+        rec = "Delay irrigation. Marginal cost exceeds yield preservation value."
+        conf = 0.97
+        savings = 140.5
+        
     return {
         "field_id": field_id,
-        "recommendation": "Maintain scheduled irrigation",
-        "confidence_score": 0.92,
-        "estimated_water_savings_m3": 140.5
+        "recommendation": rec,
+        "confidence_score": conf,
+        "estimated_water_savings_m3": savings
     }
 
 @router.get("/forecast", tags=["Analytics"])

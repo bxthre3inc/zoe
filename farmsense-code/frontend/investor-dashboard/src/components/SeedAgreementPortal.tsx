@@ -71,7 +71,7 @@ export const SeedAgreementPortal: React.FC<AgreementProps> = ({ shares, price, o
                             </section>
 
                             <section className="space-y-4">
-                                <h4 className="font-black text-xs uppercase tracking-widest text-slate-400">2. Seed Objectives: Monte Vista Nexus</h4>
+                                <h4 className="font-black text-xs uppercase tracking-widest text-slate-400">2. Seed Objectives: Monte Vista HQ</h4>
                                 <p>The proceeds of this Seed Round are specifically earmarked for critical industrial infrastructure:</p>
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li><span className="font-bold">Aerial Intelligence:</span> Acquisition of DJI Mavic 3M Multispectral UAV hardware.</li>
