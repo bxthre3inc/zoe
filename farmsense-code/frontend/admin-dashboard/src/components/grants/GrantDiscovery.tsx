@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Search, ExternalLink, Bookmark, BookmarkCheck, Zap, Calendar, DollarSign, ChevronRight, RefreshCw } from 'lucide-react';
-import SOURCES from '../data/grant-sources.json';
 
 type SortKey = 'relevance' | 'deadline' | 'amount';
 
@@ -11,6 +10,20 @@ interface GrantSource {
     category: string;
     notes: string | null;
 }
+
+// Mirrors src/data/grant-sources.json — update both in sync
+const SOURCES: GrantSource[] = [
+    { id: 'estcp',          name: 'DoD ESTCP',                          url: 'https://www.serdp-estcp.mil',         category: 'DoD',          notes: null },
+    { id: 'usda-nrcs-eqip', name: 'USDA NRCS EQIP',                    url: 'https://www.nrcs.usda.gov',           category: 'USDA',         notes: null },
+    { id: 'usda-ars-cris',  name: 'USDA ARS CRIS',                      url: 'https://www.ars.usda.gov',            category: 'USDA',         notes: null },
+    { id: 'nsf-iucrc',      name: 'NSF IUCRC',                          url: 'https://new.nsf.gov',                 category: 'NSF',          notes: null },
+    { id: 'gates-agdev',    name: 'Gates Foundation — Ag Development',  url: 'https://www.gatesfoundation.org',     category: 'Foundation',   notes: null },
+    { id: 'lor-foundation', name: 'LOR Foundation',                     url: 'https://lorfoundation.org',           category: 'Foundation',   notes: null },
+    { id: 'earthshot',      name: 'Earthshot Prize',                    url: 'https://earthshotprize.org',          category: 'International',notes: null },
+    { id: 'wfp-borlaug',    name: 'World Food Prize — Borlaug Field Award', url: 'https://www.worldfoodprize.org',  category: 'International',notes: null },
+    { id: 'cwcb',           name: 'Colorado Water Conservation Board',  url: 'https://cwcb.colorado.gov',           category: 'State — CO',   notes: null },
+    { id: 'slv-rc',         name: 'SLV Regional Council',               url: 'https://slvrc.org',                   category: 'Regional',     notes: null },
+];
 
 interface Opportunity {
     id: string;
