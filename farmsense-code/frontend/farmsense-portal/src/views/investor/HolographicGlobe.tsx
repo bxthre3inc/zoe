@@ -1,5 +1,4 @@
-```javascript
-import { ShieldCheck, Users, Lock, ChevronRight, Building2, Zap, CheckCircle2, Globe } from 'lucide-react';
+import { Globe, Activity, Network, Network as NetworkIcon } from 'lucide-react';
 
 export const HolographicGlobe = () => {
     return (
@@ -102,7 +101,7 @@ export const HolographicGlobe = () => {
             </div>
 
             <div className="absolute bottom-6 left-6 text-xs text-slate-500 flex items-center gap-2">
-                <Network className="w-4 h-4 text-cyan-500" />
+                <NetworkIcon className="w-4 h-4 text-cyan-500" />
                 <span className="tracking-widest uppercase">Render Engine: FarmSense AR-Core v2.1</span>
             </div>
 

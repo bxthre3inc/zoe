@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Target, Smartphone, Zap, Database } from 'lucide-react';
+import { Target, Droplets, Leaf, Zap, Cpu } from 'lucide-react';
 
 export const ARFieldVision = () => {
     const [scanPosition, setScanPosition] = useState(0);
@@ -108,7 +108,7 @@ export const ARFieldVision = () => {
                         {/* Popout Info Board */}
                         <div className="absolute left-full top-0 ml-10 w-56 bg-slate-900/90 border border-orange-500/40 p-3 rounded-lg backdrop-blur-md transform transition-all group-hover:scale-110 origin-left">
                             <div className="flex items-center gap-2 mb-2">
-                                <Leaf className="w-4 h-4 text-orange-400" />
+                                <Zap className="w-4 h-4 text-orange-400" />
                                 <span className="text-xs font-bold text-white tracking-widest">NODE Beta-4</span>
                             </div>
                             <div className="space-y-1">
