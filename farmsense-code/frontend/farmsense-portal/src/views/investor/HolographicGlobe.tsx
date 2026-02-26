@@ -1,5 +1,5 @@
-import React from 'react';
-import { Globe, Shield, Activity, Share2 } from 'lucide-react';
+```javascript
+import { ShieldCheck, Users, Lock, ChevronRight, Building2, Zap, CheckCircle2, Globe } from 'lucide-react';
 
 export const HolographicGlobe = () => {
     return (

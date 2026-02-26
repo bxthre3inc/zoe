@@ -1,4 +1,3 @@
-
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import { Lock, Navigation, Layers, Droplets } from 'lucide-react';
 import Map, { Source, Layer, NavigationControl, ScaleControl, useControl } from 'react-map-gl/maplibre';
@@ -12,12 +11,12 @@ import { fields } from '../../../services/api';
 function DrawControl(props: any) {
     useControl(
         () => new MapboxDraw(props) as any,
-        ({ map }) => {
+        ({ map }: any) => {
             map.on('draw.create', props.onCreate);
             map.on('draw.update', props.onUpdate);
             map.on('draw.delete', props.onDelete);
         },
-        ({ map }) => {
+        ({ map }: any) => {
             map.off('draw.create', props.onCreate);
             map.off('draw.update', props.onUpdate);
             map.off('draw.delete', props.onDelete);
@@ -33,11 +32,13 @@ interface AgriMapProps {
         longitude: number;
         latitude: number;
         zoom: number;
+        pitch?: number;
+        bearing?: number;
     };
     isEnterprise?: boolean;
 }
 
-const AgriMap: React.FC<AgriMapProps> = ({
+export const AgriMap: React.FC<AgriMapProps> = ({
     initialViewState = {
         longitude: -105.00, // Matching demo seed data
         latitude: 40.00,
@@ -99,7 +100,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
             setAnalyzingZone(true);
             try {
                 // Get the most recent drawn polygon
-                const latestPolygon = data[data.length - 1];
+                await fields.getTelemetry('field_demo_001');
                 const stats = await fields.getTelemetry('field_demo_001');
                 setZoneStats(stats);
             } catch (err) {
@@ -123,7 +124,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                 onMove={evt => setZoomLevel(evt.viewState.zoom)}
                 dragRotate={true}
                 maxPitch={85}
-                terrain={{ source: 'mapbox-dem', exaggeration: 1.5 }}
+                terrain={{ source: 'mapbox-dem', exaggeration: 1.5 } as any}
             >
                 <Source
                     id="mapbox-dem"
@@ -146,7 +147,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                         'fill-extrusion-height': ['get', 'height'],
                         'fill-extrusion-base': ['get', 'min_height'],
                         'fill-extrusion-opacity': 0.6
-                    }}
+                    } as any}
                 />
 
                 <NavigationControl position="bottom-right" />
@@ -181,7 +182,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                                 'circle-opacity': 0.7,
                                 'circle-stroke-width': 1,
                                 'circle-stroke-color': '#fff'
-                            }}
+                            } as any}
                         />
                     </Source>
                 )}

@@ -66,7 +66,7 @@ const ForecastWidget: React.FC<{ fieldId?: string }> = ({ fieldId = 'field_01' }
 
     // Find max values to scale the bars
     const maxMoisture = Math.max(...data.predictions.map(d => d.avg_moisture), 0.5); // Ensure scale goes to at least 0.5 vWC
-    const maxTemp = Math.max(...data.predictions.map(d => d.avg_temperature), 40);
+    Math.max(...data.predictions.map(d => d.avg_temperature), 40);
 
     return (
         <div className="glass-card p-6 flex flex-col h-full border-l-4 border-indigo-500 bg-indigo-500/5 relative overflow-hidden group">

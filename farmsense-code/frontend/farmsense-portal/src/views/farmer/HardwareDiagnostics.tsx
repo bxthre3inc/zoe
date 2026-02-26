@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                         import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Cpu, Zap, Activity, ShieldAlert, CheckCircle2, X } from 'lucide-react';
 
 interface HardwareDiagnosticsProps {
@@ -6,7 +6,7 @@ interface HardwareDiagnosticsProps {
 }
 
 export const HardwareDiagnostics: React.FC<HardwareDiagnosticsProps> = ({ onClose }) => {
-    const [activeNode, setActiveNode] = useState('VFA-1002');
+    const [activeNode] = useState('Gateway_A');
 
     return (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">

@@ -118,4 +118,6 @@ export const letters = {
     signSupportLetter: (id: string, signature: string) => request(`/grants/letters/${id}/sign`, { method: 'POST', body: JSON.stringify({ signature }) }),
 };
 
+export const getApiKey = () => 'mock-api-key';
+
 export const api = { admin, fields, research, grants, regulatory, compliance, investor, privacy, letters };

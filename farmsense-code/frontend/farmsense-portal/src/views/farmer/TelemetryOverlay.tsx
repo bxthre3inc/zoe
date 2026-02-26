@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Activity, Thermometer, Droplets, Zap } from 'lucide-react';
+import { Smartphone, Zap, Database } from 'lucide-react';
 
 interface TelemetryUpdate {
     type: string;

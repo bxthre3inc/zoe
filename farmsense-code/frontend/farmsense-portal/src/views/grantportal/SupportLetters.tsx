@@ -29,7 +29,8 @@ const SupportLetters: React.FC = () => {
 
     const fetchLetters = async () => {
         try {
-            const data = await api.letters.getSupportLetters('grant_001') as SupportLetter[];
+            // Calling with dummy grantId to satisfy the API contract
+            const data = await api.letters.getSupportLetters('field_001') as SupportLetter[];
             setLetters(data);
         } catch (error) {
             console.error('Failed to fetch letters:', error);

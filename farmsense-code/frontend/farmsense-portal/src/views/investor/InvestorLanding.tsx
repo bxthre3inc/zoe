@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Users, Lock, ChevronRight, Activity, Building2, Zap, Award, CheckCircle2 } from 'lucide-react';
-import { api } from '../../services/api';
+import { ShieldCheck, Users, Lock, ChevronRight, Activity, Building2, Zap, CheckCircle2, Globe } from 'lucide-react';
+// import { api } from '../../services/api';
 
 interface PublicLetter {
     id: string;
@@ -13,6 +12,7 @@ interface PublicLetter {
 
 export const InvestorLanding: React.FC<{ onExplore: () => void }> = ({ onExplore }) => {
     const [publicLetters, setPublicLetters] = useState<PublicLetter[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         // In a real app, fetch from /api/v1/public/letters
@@ -22,6 +22,14 @@ export const InvestorLanding: React.FC<{ onExplore: () => void }> = ({ onExplore
         ]);
         setLoading(false);
     }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-black flex items-center justify-center">
+                <div className="text-green-500 font-mono animate-pulse">Synchronizing Secure Vault...</div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-green-500 selection:text-black">
@@ -66,7 +74,7 @@ export const InvestorLanding: React.FC<{ onExplore: () => void }> = ({ onExplore
                     {publicLetters.map(letter => (
                         <div key={letter.id} className="bg-neutral-900 border border-neutral-800 p-8 rounded-3xl hover:border-green-500/40 transition-all group relative overflow-hidden">
                             <div className="absolute -right-4 -top-4 opacity-5 group-hover:opacity-20 transition-opacity">
-                                <Award className="w-24 h-24 text-green-500" />
+                                <Globe className="w-8 h-8 text-emerald-400" />
                             </div>
                             <div className="flex items-center gap-2 text-green-500 font-bold text-[10px] uppercase tracking-widest mb-6">
                                 <ShieldCheck className="w-4 h-4" /> Digitally Attested

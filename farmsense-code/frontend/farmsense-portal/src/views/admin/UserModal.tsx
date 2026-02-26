@@ -40,7 +40,7 @@ export const UserModal: React.FC<UserModalProps> = ({ user, onClose, onUpdate })
     const handleSave = async () => {
         setIsSaving(true);
         try {
-            await api.updateUser(user.id, formData);
+            await api.admin.updateUser(user.id, formData);
             setSuccess(true);
             setTimeout(() => {
                 setSuccess(false);
