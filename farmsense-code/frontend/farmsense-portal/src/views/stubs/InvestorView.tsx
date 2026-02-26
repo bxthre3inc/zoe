@@ -1,2 +1,18 @@
-const InvestorView = () => <div className="p-8 text-slate-300 text-sm"><h1 className="text-xl font-black text-white mb-2">Investor Dashboard</h1><p className="text-slate-500">Obfuscated aggregate impact metrics — migrating from investor-dashboard/src…</p></div>;
-export default InvestorView;
+import { Routes, Route } from 'react-router-dom';
+import { InvestorLanding } from '../investor/InvestorLanding';
+import { HolographicGlobe } from '../investor/HolographicGlobe';
+import { HQMilestones } from '../investor/HQMilestones';
+import { EquityBuyIn } from '../investor/EquityBuyIn';
+import { SeedAgreementPortal } from '../investor/SeedAgreementPortal';
+
+export default function InvestorView() {
+    return (
+        <Routes>
+            <Route index element={<InvestorLanding onExplore={() => { }} />} />
+            <Route path="fleet" element={<HolographicGlobe />} />
+            <Route path="milestones" element={<HQMilestones />} />
+            <Route path="equity" element={<EquityBuyIn />} />
+            <Route path="seed" element={<SeedAgreementPortal />} />
+        </Routes>
+    );
+}
