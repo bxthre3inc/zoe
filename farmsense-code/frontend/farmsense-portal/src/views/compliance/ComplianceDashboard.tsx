@@ -10,6 +10,52 @@ import { api } from '../../services/api';
 export const ComplianceDashboard: React.FC = () => {
     const [activeView, setActiveView] = useState<'reports' | 'science' | 'economy' | 'drone'>('reports');
     const [metrics, setMetrics] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+    const [generating, setGenerating] = useState(false);
+    const [stats, setStats] = useState({
+        overallScore: 0,
+        activeAlerts: 0,
+        pendingAudits: 0,
+        verifiedFields: 0
+    });
+
+    const fetchComplianceData = React.useCallback(async () => {
+        setLoading(true);
+        try {
+            const latest = await api.compliance.getLatestGAPReport('FIELD-001');
+            if (latest) {
+                setReports([latest]);
+                setStats({
+                    overallScore: Math.round(latest.overall_score * 100),
+                    activeAlerts: latest.control_points.filter((cp: any) => cp.level !== 'pass').length,
+                    pendingAudits: 0,
+                    verifiedFields: 1
+                });
+            }
+        } catch (err) {
+            console.error('Failed to fetch compliance data:', err);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    const handleGenerateReport = async () => {
+        setGenerating(true);
+        try {
+            const newReport = await api.compliance.generateGAPReport({
+                field_id: 'FIELD-001',
+                field_name: 'NE Quarter - SLV',
+                farm_name: 'San Luis Valley Operations',
+                grower_id: 'GROW-772'
+            });
+            setReports(prev => [newReport, ...prev]);
+        } catch (err) {
+            console.error('Failed to generate report:', err);
+        } finally {
+            setGenerating(false);
+        }
+    };
+
     const fetchMetrics = React.useCallback(async () => {
         try {
             const data = await api.admin.getMetrics();
@@ -21,7 +67,8 @@ export const ComplianceDashboard: React.FC = () => {
 
     useEffect(() => {
         fetchMetrics();
-    }, [fetchMetrics]);
+        fetchComplianceData();
+    }, [fetchMetrics, fetchComplianceData]);
 
     return (
         <div className="flex flex-col h-full bg-slate-950 text-slate-300 font-sans selection:bg-cyan-500 selection:text-white">
