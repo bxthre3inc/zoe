@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.models.sensor_data import VirtualSensorGrid50m, VirtualSensorGrid20m, VirtualSensorGrid1m, SoilSensorReading
 from app.services.external_data_service import ExternalDataService
 from app.services.satellite_service import SatelliteDataService
+from app.services.rss_kriging import RSSKrigingEngine
 from app.core.env_wrapper import platform_wrapper
 import logging
 import uuid
@@ -100,10 +101,32 @@ class GridRenderingService:
         ).order_by(Model.timestamp.desc()).limit(limit).all()
         
         if not results and resolution == "1m":
-             logger.info("No cached 1m grid found. Generating new high-res points with Fusion...")
-             # Fetch physical sensor ground truth for validation
-             ground_truth = readings[0].moisture_surface if readings else None
-             results = GridRenderingService._generate_synthetic_1m_grid(db, field_id, real_ndvi * final_modifier, ground_truth)
+             logger.info("No cached 1m grid found. Generating new high-res points with RSS Kriging Engine...")
+             # Convert SoilSensorReadings to the format expected by RSSKrigingEngine
+             sensor_list = [
+                 {'lat': r.location.lat, 'lon': r.location.lon, 'moisture': r.moisture_surface} 
+                 for r in readings if r.location
+             ]
+             
+             rss_engine = RSSKrigingEngine()
+             # In production, this would happen on the RSS hardware cluster
+             rss_grid = rss_engine.generate_1m_grid(field_id, sensor_list)
+             
+             # Save to DB and return
+             results = []
+             for g in rss_grid:
+                 db_point = VirtualSensorGrid1m(
+                     field_id=g['field_id'],
+                     grid_id=g['grid_id'],
+                     timestamp=g['timestamp'],
+                     location=f"POINT({g['longitude']} {g['latitude']})",
+                     moisture_surface=g['moisture_surface'] * final_modifier,
+                     confidence_score=g['confidence_score'] * confidence,
+                     computation_mode=g['computation_mode']
+                 )
+                 db.add(db_point)
+                 results.append(db_point)
+             db.commit()
         
         return results
 

@@ -10,6 +10,7 @@ from app.models.sensor_data import VirtualSensorGrid20m, VirtualSensorGrid50m, V
 from sqlalchemy import func
 from app.services.grid_renderer import GridRenderingService
 from app.services.decision_engine import FieldDecisionEngine, FieldDiagnosticService
+from app.services.vri_command_center import VRICommandCenter
 
 from app.schemas.grids import (
     VirtualGridResponse, ZoneAnalysisRequest, ZoneAnalysisResponse,
@@ -151,6 +152,15 @@ def get_1m_grid(
     if start_time: query = query.filter(VirtualSensorGrid1m.timestamp >= start_time)
     if end_time: query = query.filter(VirtualSensorGrid1m.timestamp <= end_time)
     return query.order_by(VirtualSensorGrid1m.timestamp.desc()).limit(limit).all()
+
+@router.get("/grid/vri-bar", tags=["Analytics"])
+def get_vri_bar_grid(
+    field_id: str,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user)
+):
+    """Returns the grid data at the Best Available Resolution (BAR) for the current context."""
+    return VRICommandCenter.fetch_vri_grid(db, field_id)
 
 @router.post("/zone/analyze", tags=["Analytics"])
 def analyze_custom_zone(

@@ -21,6 +21,7 @@ import os
 from typing import Any
 
 from attention_engine import FishermansAttentionEngine, FieldState, AttentionMode
+from edge_kriging import EdgeKrigingEngine
 from .noise import (
     apply_bounded_noise, simulate_battery_drain, simulate_current_harmonics,
     simulate_pivot_vibration, apply_gnss_position_error, simulate_fhss_packet_loss,
@@ -43,6 +44,7 @@ class SensorBridge:
         self.simulators = simulators   # reference to environment-simulator's SIMULATORS dict
         self.client = httpx.AsyncClient(base_url=backend_url, timeout=5.0)
         self.attention = FishermansAttentionEngine(field_id)
+        self.kriging = EdgeKrigingEngine(grid_size=16, resolution_m=50.0)
         self._sequence = 0
         self._lrz_nodes = []   # Will be populated by SensorBridge.register_lrz()
 
@@ -238,24 +240,30 @@ class SensorBridge:
 
     async def _emit_ebk_grid(self, vfa, pmt, mode: AttentionMode):
         """
-        Compute a simplified 16×16 EBK probability grid from the available
-        VFA and LRZ moisture readings and submit it to the PMT EBK grid endpoint.
-        In production, this is replaced by the ATSAMD51 FPU's variogram calculation.
+        Compute a 16×16 EBK probability grid from the available
+        VFA and LRZ moisture readings using the EdgeKrigingEngine.
         """
-        base_moisture = sum(vfa.moisture_profile.values()) / len(vfa.moisture_profile)
-        # Build a distance-decay grid centred on VFA location (simplified IDW stand-in)
-        grid = []
-        for row in range(16):
-            grid_row = []
-            for col in range(16):
-                # Distance from VFA (roughly centred at row=8, col=8)
-                dist = ((row - 8)**2 + (col - 8)**2) ** 0.5
-                # Apply inverse-distance weighting with Gaussian noise
-                cell_val = apply_bounded_noise(base_moisture * (1 - dist / 16), 0.005, 0.0, 0.5)
-                grid_row.append(round(cell_val, 4))
-            grid.append(grid_row)
+        # Collect all active sensor data
+        sensors = []
+        # Main VFA ground truth
+        sensors.append({
+            'lat': vfa.latitude, 
+            'lon': vfa.longitude, 
+            'moisture': sum(vfa.moisture_profile.values()) / len(vfa.moisture_profile)
+        })
+        
+        # LRZ dumb chirps
+        for node in self._lrz_nodes:
+            lrz = node["sim"]
+            if not lrz.is_broken:
+                sensors.append({
+                    'lat': lrz.latitude,
+                    'lon': lrz.longitude,
+                    'moisture': (lrz.moisture_surface + lrz.moisture_root) / 2.0
+                })
 
         cur_lat, cur_lon = pmt.get_current_location()
+        grid = self.kriging.compute_50m_grid(cur_lat, cur_lon, sensors)
         payload = {
             "hardware_id": pmt.hardware_id,
             "field_id": self.field_id,

@@ -20,7 +20,7 @@ import (
 // Configuration
 type EdgeConfig struct {
 	FieldID         string  `json:"field_id"`
-	GridResolution  float64 `json:"grid_resolution_m"` // 20.0 for 20m grid
+	GridResolution  float64 `json:"grid_resolution_m"` // 20.0 or 10.0 for DHU tier
 	IDWPower        float64 `json:"idw_power"`          // 2.0 typical
 	SearchRadius    float64 `json:"search_radius_m"`    // 100.0 - max distance to consider sensors
 	MinSensors      int     `json:"min_sensors"`        // 3 minimum for interpolation
@@ -28,6 +28,26 @@ type EdgeConfig struct {
 	LocalCacheDB    string  `json:"local_cache_db"`
 	SyncInterval    int     `json:"sync_interval_sec"`
 	ComputeInterval int     `json:"compute_interval_sec"`
+	
+	// Mesh Peering
+	PeerDHUAddresses []string `json:"peer_dhu_addresses"` // 10km LoRaWAN mesh peers
+	LoadThreshold    float64  `json:"load_threshold"`    // CPU utilization to start offloading
+}
+
+// DHU Orchestrator manages multiple fields and mesh coordination
+type DHUOrchestrator struct {
+	DHUID       string
+	Processors  map[string]*EdgeProcessor
+	Peers       []string
+	CurrentLoad float64
+}
+
+func NewDHUOrchestrator(dhuID string, peers []string) *DHUOrchestrator {
+	return &DHUOrchestrator{
+		DHUID:      dhuID,
+		Processors: make(map[string]*EdgeProcessor),
+		Peers:      peers,
+	}
 }
 
 // Sensor reading from database
@@ -243,20 +263,24 @@ func (ep *EdgeProcessor) interpolatePoint(point orb.Point, sensors []SensorReadi
 	}
 }
 
-// Generate 20m grid points covering the field
+// Generate grid points covering the field based on resolution
 func (ep *EdgeProcessor) generateGridPoints() []orb.Point {
-	// Generating a rectangular grid for the target field area.
-	
-	// Example: 100m x 100m field = 5x5 grid at 20m resolution
+	// 20m or 10m resolution
+	res := ep.config.GridResolution
+	if res <= 0 {
+		res = 20.0
+	}
+
 	points := make([]orb.Point, 0)
 	
 	// This should be replaced with actual field boundary query
 	minLat, maxLat := 37.7749, 37.7800
 	minLon, maxLon := -122.4194, -122.4100
 	
-	// Convert 20m to approximate degrees (rough approximation)
-	latStep := 0.0002 // ~20m at mid-latitudes
-	lonStep := 0.0002
+	// Convert resolution in meters to approximate degrees
+	// 111111m approx 1 degree lat
+	latStep := res / 111111.0
+	lonStep := res / (111111.0 * math.Cos(minLat*math.Pi/180.0))
 	
 	for lat := minLat; lat <= maxLat; lat += latStep {
 		for lon := minLon; lon <= maxLon; lon += lonStep {
@@ -433,27 +457,23 @@ func (ep *EdgeProcessor) storeCloud(points []VirtualGridPoint) error {
 	return nil
 }
 
-// Sync pending data to cloud when connection restored
-func (ep *EdgeProcessor) syncToCloud() {
-	if !ep.isOnline || ep.cloudDB == nil {
-		// Check if connection restored
-		err := ep.cloudDB.Ping()
-		if err == nil {
-			ep.isOnline = true
-			log.Println("Cloud connection restored")
-		} else {
-			return
-		}
+// PollPeers checks neighbor DHU capacity for workload offloading
+func (do *DHUOrchestrator) PollPeers() (string, error) {
+	for _, peer := range do.Peers {
+		// Mock peering request via 900MHz LoRaWAN mesh
+		log.Printf("[Mesh] Polling peer DHU at %s for capacity...", peer)
+		
+		// In production, this would be an HTTP/LoRa request
+		// If peer load < do.LoadThreshold, return peer address
+		return peer, nil 
 	}
-	
-	if len(ep.pendingSync) > 0 {
-		log.Printf("Syncing %d pending records to cloud...", len(ep.pendingSync))
-		err := ep.storeCloud(ep.pendingSync)
-		if err == nil {
-			ep.pendingSync = make([]VirtualGridPoint, 0)
-			log.Println("Sync complete")
-		}
-	}
+	return "", fmt.Errorf("no peers available")
+}
+
+// DelegateWorkload offloads a field's grid computation to a peer
+func (do *DHUOrchestrator) DelegateWorkload(fieldID string, peer string) {
+	log.Printf("[Mesh] CRITICAL LOAD: Offloading field %s to peer %s", fieldID, peer)
+	// Handover logic would go here
 }
 
 func main() {
