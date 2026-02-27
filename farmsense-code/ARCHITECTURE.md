@@ -4,9 +4,7 @@ The FarmSense infrastructure is an uncompromising, decentralized monolithic grid
 
 ## Backend Intelligence (Decentralized Cloud Layer)
 
-- **Map Servers (Oracle Vault):** Serves as the master data library housing spatial, satellite (Sentinel-2, Landsat), and historical edaphic datasets.
-- **Spatial Query Engine (Map Manager):** Extracts specific values (elevation, slope, aspect, NDVI) mapping specific latitude and longitude coordinates into fast JSON arrays.
-- **Core Compute Server (Zo):** High-Performance Computing cluster executing Bayesian priors and Localized Kriging algorithms (geostatistical interpolation). It outputs deterministic "Worksheets."
+- **RSS Oracle Vault (Master Database & Compute):** The central nervous system of FarmSense. It houses the master spatial library, historical datasets, and the consolidated **Zo Compute Layer**. It is responsible for executing Bayesian priors, generating deterministic "Worksheets," and pre-rendering the 1m-resolution Enterprise map tiles.
 
 ## Regional & District Edge Infrastructure
 
