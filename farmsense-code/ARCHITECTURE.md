@@ -12,8 +12,8 @@ The FarmSense infrastructure is an uncompromising, decentralized monolithic grid
 
 Relying entirely on external backhauls in rural zones creates unacceptable vulnerability. Heavy computational loads process continuously at the edge:
 
-- **Regional Superstation (RSS) [Level 3 - Territory Master]:** A localized cloud counterpart housed in a modified 40-foot High-Cube container. Features a 64-Core AMD Threadripper PRO cluster, 256GB ECC RAM, and a 50TB Enterprise NVMe array securing the master spatial database. Will support FHE (Fully Homomorphic Encryption) Kriging modeling.
-- **District Hubs (DHU) [Level 2 - Regional Mesh Manager]:** Edge coordinators mounted on 35-foot Class 4 timber poles. Line-of-sight 10km radius. Runs an OnLogic CL210 Industrial 8-Core ARM SOC. Capable of instant "Reflex Logic" responses bypassing cellular latency.
+- **Regional Superstation (RSS) [Level 3 - Territory Master]:** A localized cloud counterpart housed in a modified 40-foot High-Cube container. Features a 64-Core AMD Threadripper PRO cluster, 256GB ECC RAM, and a 50TB Enterprise NVMe array securing the master spatial database. Will support FHE (Fully Homomorphic Encryption) Kriging modeling at **1m spatial fidelity**.
+- **District Hubs (DHU) [Level 2 - Regional Mesh Manager]:** Edge coordinators mounted on 35-foot Class 4 timber poles. Line-of-sight 10km radius. Runs an OnLogic CL210 Industrial 8-Core ARM SOC. Capable of instant "Reflex Logic" responses bypassing cellular latency. Processes **20m and 10m spatial fidelity** grids.
   - **Audit Node Addendum**: Houses a cryptographically signed (128-bit AES) "Black Box" cache.
 
 ## Field-Level Edge Hardware
@@ -26,7 +26,7 @@ Sensors and actuators deployed below and above ground across field zones. Equipm
 - **Pivot Motion Trackers (PMT) [Level 1.5 - Field Hub & Edge-EBK Engine]:** The command center and Nervous System of the field, mounted 10-15 feet high on the pivot span.
   - **RF Umbrella:** Receives 900MHz FHSS chirps from the VFA/LRZs and 2.4GHz payloads from the PFA, bundling the entire field state into a single ~187-byte AES-256 payload and blasting it to the DHU via 900MHz LoRaWAN.
   - **Sensors:** Generates +/- 1% flow accuracy non-invasively using Badger Meter ultrasonic transit-time components. Contains u-blox ZED-F9P RTK GNSS modules for sub-2.5m horizontal spatial resolution and Bosch BNO055 9-Axis IMUs for vibration harmonics.
-  - **Constant Edge-EBK processing:** Utilizes an onboard ATSAMD51 Cortex-M4 FPU to continuously calculate a 50m-resolution EBK spatial probability grid using "Fisherman's Attention" and Ripple/Collapse logic. This constant baseline enables hierarchical processing upstream (20m grids at DHU, 1m at RSS/Cloud). It inherently serves as zero-downtime VRI failover guidance if the DHU uplink drops.
+  - **Edge IQ:** Constant Edge-EBK processing utilizing an onboard ATSAMD51 Cortex-M4 FPU to continuously calculate a **50m spatial fidelity** EBK spatial probability grid using "Fisherman's Attention" and Ripple/Collapse logic. This constant baseline enables hierarchical processing upstream (20m/10m grids at DHU, 1m at RSS/Cloud). It inherently serves as zero-downtime VRI failover guidance if the DHU uplink drops.
   - **Corner-Swing Auditor (CSA)** variants utilize dual-node configurations (Primary Span Tracker and Swing-Arm Tracker) to resolve swing-arm irrigation mechanics mathematically.
 
 ## Dual-Layer Spatial Privacy Architecture

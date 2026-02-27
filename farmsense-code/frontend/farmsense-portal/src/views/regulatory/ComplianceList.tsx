@@ -12,27 +12,46 @@ interface Report {
     validation_status: string;
 }
 
-export const ComplianceList: React.FC = () => {
-    const [reports, setReports] = useState<Report[]>([]);
-    const [loading, setLoading] = useState(true);
+interface ComplianceListProps {
+    reports?: Report[];
+    loading?: boolean;
+    stats?: any;
+    onGenerateReport?: () => Promise<void>;
+    generating?: boolean;
+}
+
+export const ComplianceList: React.FC<ComplianceListProps> = ({
+    reports: propReports,
+    loading: propLoading,
+    onGenerateReport,
+    generating
+}) => {
+    const [internalReports, setInternalReports] = useState<Report[]>([]);
+    const [internalLoading, setInternalLoading] = useState(true);
     const [error, setError] = useState('');
 
+    const reports = propReports || internalReports;
+    const loading = propLoading !== undefined ? propLoading : internalLoading;
+
     const fetchReports = async () => {
-        setLoading(true);
+        if (propReports) return; // Use props if provided
+        setInternalLoading(true);
         try {
             const data = await api.regulatory.listReports('field_001') as Report[];
-            setReports(data);
+            setInternalReports(data);
             setError('');
         } catch (err: any) {
             setError(err.message || 'Failed to load reports');
         } finally {
-            setLoading(false);
+            setInternalLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchReports();
-    }, []);
+        if (!propReports) {
+            fetchReports();
+        }
+    }, [propReports]);
 
     return (
         <div className="p-6">
@@ -40,13 +59,25 @@ export const ComplianceList: React.FC = () => {
                 <h2 className="text-2xl font-bold flex items-center gap-2 text-slate-800">
                     <FileText className="w-6 h-6" /> Compliance Audits
                 </h2>
-                <button
-                    onClick={fetchReports}
-                    className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 transition-colors text-sm font-medium"
-                >
-                    <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-                    Refresh
-                </button>
+                <div className="flex gap-2">
+                    {onGenerateReport && (
+                        <button
+                            onClick={onGenerateReport}
+                            disabled={generating}
+                            className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50 transition-colors text-sm font-medium"
+                        >
+                            {generating ? <RefreshCw className="w-4 h-4 animate-spin" /> : <FileText className="w-4 h-4" />}
+                            Generate Report
+                        </button>
+                    )}
+                    <button
+                        onClick={fetchReports}
+                        className="flex items-center gap-2 px-3 py-1.5 bg-blue-50 text-blue-600 rounded-md hover:bg-blue-100 transition-colors text-sm font-medium"
+                    >
+                        <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                        Refresh
+                    </button>
+                </div>
             </div>
 
             {error && (

@@ -7,7 +7,7 @@ FarmSense encompasses a complete suite of precision agriculture optimization met
 - **Digital Water Ledger & Audit Tracking**: Cryptographically signed, immutable chains of custody monitoring precise groundwater extraction and dispersal. Compliant as empirical evidence in State Water Courts.
 - **Deterministic Irrigation Guidance**: Direct "withdraw or pump" boolean logic preventing water dispersal when macroeconomic models note that the operational cost (regulatory fees, energy, labor) outweighs predicted crop yield preservation.
 - **Automated SPAC Modeling (Soil-Plant-Atmosphere Continuum)**: Dynamic integration of Soil Matric Potential (SMP), Volumetric Water Content (SWC), Electrical Conductivity (EC), Vapor Pressure Deficit (VPD), solar radiation, NDVI, and LSTM deep-learning Evapotranspiration forecasting.
-- **Resolution Pop (1m Spatial Grids)**: Integration of high-fidelity 0.7cm/pixel multispectral drone data natively layered above existing 20m sensor extrapolations and Satellite (Sentinel-2, Landsat) covariates.
+- **Resolution Pop (Hierarchical Spatial Grids)**: Integration of high-fidelity 0.7cm/pixel multispectral drone data natively layered above a tiered sensor grid: **50m (PMT Edge IQ)**, **20m/10m (DHU)**, and **1m (RSS/Cloud)** spatial fidelity. Includes support for Satellite (Sentinel-2, Landsat) covariates.
 - **Automated GLOBALG.A.P. Compliance Reports**: Single-click generation translating field hardware hydro-metrics into recognized sustainable farming criteria for global premium supply markets.
 
 ## Software-Driven Edge Hardware Expansions

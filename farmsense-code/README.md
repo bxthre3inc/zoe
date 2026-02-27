@@ -1,509 +1,149 @@
-# FarmSense - Precision Agriculture Platform
+# 🌾 FarmSense: Precision Agriculture & Regulatory Integrity Platform
 
-**Full-stack precision agriculture application with virtual sensor networks, adaptive recalculation, and regulatory compliance.**
+[![Platform: Unified](https://img.shields.io/badge/Platform-Unified-blueviolet?style=for-the-badge)](https://zo.computer)
+[![Compliance: GLOBALG.A.P. v6](https://img.shields.io/badge/Compliance-GLOBALG.A.P._v6-emerald?style=for-the-badge)](https://globalgap.org)
+[![Build: Success](https://img.shields.io/badge/Build-Success-success?style=for-the-badge)](https://github.com/farmsense/farmsense-portal)
+[![Stack: FastAPI + React](https://img.shields.io/badge/Stack-FastAPI_+_React-6366f1?style=for-the-badge)](https://github.com/farmsense/farmsense-portal)
 
----
-
-## 🌾 Overview
-
-FarmSense is a nationally-scalable precision agriculture platform that:
-
-- **Ingests multi-source data**: Soil sensors (2-depth + vertical profiling), pump telemetry, weather stations, Sentinel-1/2 imagery, Landsat historical data
-- **Computes virtual sensor grids**:
-  - **Edge (20m resolution)**: Real-time field-level processing on Raspberry Pi/Jetson
-  - **Cloud (1m resolution)**: High-resolution interpolation with satellite integration
-- **Adaptive recalculation logic**: 1min → 12hr windows based on field trends and events
-- **Compliance reporting**: SLV 2026 regulatory alignment with audit trails
-- **Multi-stakeholder dashboards**: Farmers, regulators, consultants
+**FarmSense** is an enterprise-grade precision agriculture ecosystem designed for cryptographically verifiable water management, soil health analytics, and multi-stakeholder regulatory alignment. Initially deployed for the 2026 San Luis Valley water compacts, it provides a "Source of Truth" for producers, regulators, and investors.
 
 ---
 
-## 📁 Repository Structure
+## 🏔️ The Vision
+
+In many agricultural basins, water extraction is managed through manual logs and opaque estimates. **FarmSense** replaces this with a **Unified Spatial Ledger**:
+
+* **For Producers**: Data-driven irrigation scheduling that saves input costs.
+* **For Regulators**: Immutable audit trails that eliminate "ghost pumping" and reporting friction.
+* **For the Basin**: Long-term aquifer stability through transparent, verifiable extraction data.
+
+---
+
+## 🧩 Architectural Deep-Dive
+
+### 1. Edge IQ (20m Spatial Fidelity)
+
+The `edge-compute` module is designed to run on field-deployed hardware (Raspberry Pi/Jetson).
+
+* **Real-time IDW**: Inverse Distance Weighting interpolation at the field edge.
+* **Attention Engine**: A logic layer that identifies sensor anomalies (e.g., a broken flow meter) before data reaches the cloud.
+* **Offline First**: Local storage with optimistic syncing for low-connectivity environments.
+
+### 2. Cloud Core (1m Spatial Fidelity)
+
+The `cloud-processing` engine provides high-resolution insights by fusing IoT data with multi-spectral satellite imagery.
+
+* **Regression Kriging**: A Sophisticated ML algorithm that interpolates soil moisture by correlating ground sensors with Sentinel-2 NDVI/NDWI indices.
+* **Adaptive Recalculation**: An event-driven engine that adjusts its resolution and window (1min → 1hr → 12hr) based on field dynamics (e.g., active irrigation cycles).
+
+### 3. Regulatory Integrity Engine
+
+FarmSense implements the **GLOBALG.A.P. IFA v6** standard through an automated backend engine.
+
+* **Cryptographic Anchoring**: Every telemetry packet and manual entry is hashed using SHA-256 and anchored to a chronological integrity chain.
+* **Verifiable Reports**: Digital audit reports that can be verified by secondary auditors without accessing confidential producer data.
+
+### 4. Spatial Privacy Protection
+
+To protect producers, FarmSense implements a multi-tier privacy engine in `backend/app/core/spatial_privacy.py`:
+
+* **Tier 1 (Raw)**: Full precision for the producer.
+* **Tier 2 (Audit)**: Grid-snapped and jittered data for auditors.
+* **Tier 3 (Public)**: k-anonymized and Laplace-differentially private aggregates for basin analytics.
+
+---
+
+## 📁 Ecosystem Structure
 
 ```
 farmsense-code/
-├── backend/                    # FastAPI backend services
+├── backend/                    # FastAPI Services (Privacy, Compliance, REST)
 │   ├── app/
-│   │   ├── api/               # REST API endpoints
-│   │   │   └── main.py        # Main API application
-│   │   ├── models/            # SQLAlchemy data models
-│   │   │   └── sensor_data.py # Sensor & grid models
-│   │   ├── services/          # Business logic
-│   │   │   └── adaptive_recalc_engine.py  # Recalculation engine
-│   │   └── core/              # Config, database, auth
-│   ├── Dockerfile
-│   └── requirements.txt
-│
-├── edge-compute/              # Edge processing (20m grid)
-│   ├── src/
-│   │   └── edge_processor.go  # Go-based edge compute
-│   └── config/                # Edge device configurations
-│
-├── cloud-processing/          # Cloud analytics (1m grid)
-│   ├── pipelines/
-│   │   └── kriging_1m.py      # Regression Kriging interpolation
-│   └── analytics/             # Analytics models
-│
-├── frontend/                  # Web applications
-│   ├── farmer-dashboard/      # Farmer interface (React + Mapbox)
-│   └── regulatory-portal/     # Compliance dashboard
-│
-├── database/                  # Database schemas
-│   ├── migrations/            # Alembic migrations
-│   └── seeds/                 # Sample data
-│
-└── deployment/                # Infrastructure
-    ├── docker/
-    │   └── docker-compose.yml # Local dev environment
-    └── kubernetes/            # Production K8s manifests
+│   │   ├── api/               # API Router structure
+│   │   ├── services/          # GLOBALG.A.P. & CSA Alignment Engines
+│   │   └── core/              # Spatial Privacy & Auth Logic
+├── frontend/
+│   ├── farmsense-portal/      # NEW Unified Premium Portal (Vite/TSX)
+│   │   ├── src/
+│   │   │   ├── views/         # 30+ Role-based stakeholder views
+│   │   │   └── auth/          # RBAC & switchRole logic
+├── cloud-processing/          # Regression Kriging & ML Pipelines
+├── edge-compute/              # Go-based Field Processing Modules
+├── database/                  # PostGIS & TimescaleDB Migration Logic
+└── environment-simulator/     # Full-stack simulation for testing
 ```
 
 ---
 
-## 🚀 Quick Start
+## � Unified Stakeholder Roles
 
-### Prerequisites
+FarmSense consolidates 8 legacy applications into one unified portal:
 
-- **Docker & Docker Compose** (20.10+)
-- **Python** 3.11+ (for local development)
-- **Go** 1.21+ (for edge module)
-- **Node.js** 18+ (for frontend)
-
-### 1. Clone Repository
-
-```bash
-# Repository would be cloned here
-cd farmsense-code
-```
-
-### 2. Environment Configuration
-
-```bash
-# Copy environment template
-cp .env.example .env
-
-# Edit with your credentials
-nano .env
-```
-
-**Required environment variables:**
-
-```env
-# Database
-DB_PASSWORD=your_secure_password
-TIMESCALE_PASSWORD=your_timescale_password
-
-# Message Queue
-RABBITMQ_PASSWORD=your_rabbitmq_password
-
-# Third-Party (Optional / Self-Hosted)
-MAP_SERVER_URL=http://localhost:8001
-NTFY_TOPIC=farmsense_critical_alerts
-
-# Security
-SECRET_KEY=your_jwt_secret_key
-
-# Environment
-ENVIRONMENT=development
-```
-
-### 3. Start Services
-
-```bash
-cd deployment/docker
-docker-compose up -d
-```
-
-**Services will be available at:**
-
-- **Backend API**: <http://localhost:8000>
-- **API Docs**: <http://localhost:8000/docs>
-- **Farmer Dashboard**: <http://localhost:3000>
-- **Regulatory Portal**: <http://localhost:3001>
-- **Grafana Monitoring**: <http://localhost:3002>
-- **RabbitMQ Management**: <http://localhost:15672>
-
-### 4. Initialize Database
-
-```bash
-# Run migrations
-docker-compose exec backend alembic upgrade head
-
-# Seed sample data (optional)
-docker-compose exec backend python scripts/seed_data.py
-```
-
-### 5. Test API
-
-```bash
-# Health check
-curl http://localhost:8000/health
-
-# Ingest sensor reading
-curl -X POST http://localhost:8000/api/v1/sensors/readings \
-  -H "Content-Type: application/json" \
-  -d '{
-    "sensor_id": "s001",
-    "field_id": "field_001",
-    "latitude": 37.7749,
-    "longitude": -122.4194,
-    "moisture_surface": 0.25,
-    "moisture_root": 0.30,
-    "temp_surface": 22.5
-  }'
-```
+1. **ADMIN**: Fleet monitoring, system health, and global audit oversight.
+2. **GRANT_MANAGER**: $0 → Award pipeline tracking for LOR and ESTCP grants.
+3. **FARMER**: 3D field maps, VRI scheduling, and "Fisherman's Attention" metrics.
+4. **RESEARCHER**: Raw data feeds, SPAC modeling, and basin-wide analytics.
+5. **AUDITOR**: Remote compliance verification and certificate issuance.
+6. **REGULATOR**: SLV extraction monitoring and water court reporting.
+7. **INVESTOR**: Impact ROI, fleet penetration, and obfuscated aggregate stats.
+8. **DOCS**: Role-tailored documentation portal (Overview to Water Court SOPs).
 
 ---
 
-## 🏗️ Architecture
+## 🚀 Development Quick Start
 
-### System Components
+### 1. Unified Portal (Frontend)
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    FARMSENSE PLATFORM                    │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  ┌────────────┐  ┌────────────┐  ┌───────────────┐    │
-│  │   Sensors  │  │   Pumps    │  │   Weather     │    │
-│  │  (IoT)     │  │ (Telemetry)│  │  (Stations)   │    │
-│  └──────┬─────┘  └──────┬─────┘  └───────┬───────┘    │
-│         │                │                 │             │
-│         └────────────────┴─────────────────┘             │
-│                          │                               │
-│                    ┌─────▼──────┐                       │
-│                    │   EDGE     │  (Raspberry Pi)       │
-│                    │  20m Grid  │  IDW Interpolation    │
-│                    └─────┬──────┘                       │
-│                          │                               │
-│         ┌────────────────┴────────────────┐             │
-│         │                                  │             │
-│    ┌────▼─────┐                   ┌───────▼────────┐   │
-│    │  Cloud   │ ◄─Sentinel/Landsat│   Satellite    │   │
-│    │  1m Grid │                    │   Processing   │   │
-│    │ (Kriging)│                    │                │   │
-│    └────┬─────┘                    └────────────────┘   │
-│         │                                                │
-│    ┌────▼──────────────┐                                │
-│    │  Adaptive Recalc  │ (1min - 12hr windows)         │
-│    │     Engine        │ Event-driven triggers          │
-│    └────┬──────────────┘                                │
-│         │                                                │
-│    ┌────▼──────────────────────────────┐                │
-│    │        Analytics                   │                │
-│    │  • Irrigation scheduling           │                │
-│    │  • Crop stress detection           │                │
-│    │  • Yield forecasting               │                │
-│    └────┬──────────────────────────────┘                │
-│         │                                                │
-│    ┌────▼────────────────────────────────────┐          │
-│    │           Dashboards                    │          │
-│    │  • Farmer (Field view + alerts)        │          │
-│    │  • Regulatory (Compliance reports)     │          │
-│    │  • Consultant (Multi-field analysis)   │          │
-│    └─────────────────────────────────────────┘          │
-│                                                          │
-└─────────────────────────────────────────────────────────┘
+```bash
+cd frontend/farmsense-portal
+npm install
+npm run dev
 ```
 
-### Data Flow
+* **Dev URL**: `http://localhost:5173`
+* **Role Setup**: Use the "Role Switcher" in the top bar to simulate different stakeholders.
 
-1. **Ingestion**: Sensors → REST API → TimescaleDB
-2. **Edge Processing**: Local compute → 20m grid → PostgreSQL/PostGIS
-3. **Cloud Processing**: Satellite integration → Regression Kriging → 1m grid
-4. **Adaptive Logic**: Trend analysis → Mode selection (1min/15min/12hr)
-5. **Analytics**: Deterministic algorithms → Irrigation recommendations → Compliance reports
-6. **Delivery**: WebSocket updates → Real-time dashboards
-
----
-
-## 🔧 Development
-
-### Backend Development
+### 2. Core Service (Backend)
 
 ```bash
 cd backend
-
-# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate
 pip install -r requirements.txt
-
-# Run locally
 uvicorn app.api.main:app --reload --port 8000
 ```
 
-### Edge Module Development
+* **API Docs**: `http://localhost:8000/docs`
+
+### 3. Simulation & Testing
+
+To test the platform with live simulated data:
 
 ```bash
-cd edge-compute/src
-
-# Build
-go build -o edge_processor edge_processor.go
-
-# Run with config
-./edge_processor --config ../config/field_001.json
-```
-
-### Frontend Development
-
-```bash
-cd frontend/farmer-dashboard
-
-# Install dependencies
-npm install
-
-# Run dev server
-npm start
-```
-
-### Database Migrations
-
-```bash
-# Create new migration
-alembic revision --autogenerate -m "Add new table"
-
-# Apply migrations
-alembic upgrade head
-
-# Rollback
-alembic downgrade -1
+cd environment-simulator
+python main.py
 ```
 
 ---
 
-## 📊 API Documentation
+## 🛠️ Hardware Stack Compatibility
 
-### Key Endpoints
+FarmSense is compatible with the following specialized sensors (specifications found in `/specifications/firmware`):
 
-#### Sensor Data Ingestion
-
-```http
-POST /api/v1/sensors/readings
-Content-Type: application/json
-
-{
-  "sensor_id": "s001",
-  "field_id": "field_001",
-  "latitude": 37.7749,
-  "longitude": -122.4194,
-  "moisture_surface": 0.25,
-  "moisture_root": 0.30,
-  "temp_surface": 22.5
-}
-```
-
-#### Get Virtual Grid (20m)
-
-```http
-GET /api/v1/fields/{field_id}/grid/20m?limit=1000
-```
-
-#### Field Analytics
-
-```http
-GET /api/v1/fields/{field_id}/analytics
-```
-
-**Response:**
-
-```json
-{
-  "field_id": "field_001",
-  "avg_moisture": 0.27,
-  "stress_area_pct": 15.3,
-  "irrigation_zones": [
-    {"need": "none", "count": 45},
-    {"need": "low", "count": 30},
-    {"need": "medium", "count": 20},
-    {"need": "high", "count": 5}
-  ],
-  "current_mode": "active",
-  "next_recalc": "2026-02-12T15:30:00Z"
-}
-```
-
-#### Compliance Reports
-
-```http
-POST /api/v1/compliance/reports/generate
-{
-  "field_id": "field_001",
-  "period_start": "2026-01-01T00:00:00Z",
-  "period_end": "2026-01-31T23:59:59Z",
-  "report_type": "monthly"
-}
-```
-
-**Full API documentation**: <http://localhost:8000/docs>
+* **VFA**: Vertical Flow Array (multi-depth soil moisture).
+* **PMT**: Precision Metering Telemetry (pump flow volumes).
+* **PFA**: Pivot Flow Array (distribution uniformity).
+* **LRZ**: Low-Resolution Zone (atmospheric boundary sensors).
+* **CSA**: Corner-Swing Auditor (GPS alignment for non-standard pivot corners).
 
 ---
 
-## 🧪 Testing
+## 📄 License & Legal
 
-### Backend Tests
+Copyright © 2026 FarmSense. Developed for the San Luis Valley Groundwater Pilot. All rights reserved.
 
-```bash
-cd backend
-pytest tests/ -v --cov=app
-```
-
-### Edge Module Tests
-
-```bash
-cd edge-compute
-go test ./src/... -v
-```
-
-### Integration Tests
-
-```bash
-# Start test environment
-docker-compose -f docker-compose.test.yml up -d
-
-# Run integration tests
-pytest tests/integration/ -v
-```
+**Security Vulnerabilities**: Report to <security@farmsense.io>
 
 ---
 
-## 📈 Monitoring
-
-### Metrics Collection
-
-- **Prometheus**: Collects metrics from all services
-- **Grafana**: Visualizes system performance
-
-**Key Dashboards:**
-
-1. **System Health**: API latency, throughput, error rates
-2. **Data Pipeline**: Ingestion rates, processing times
-3. **Field Monitoring**: Grid computation times, recalculation frequency
-4. **Resource Usage**: CPU, memory, disk I/O
-
-### Logging
-
-```bash
-# View backend logs
-docker-compose logs -f backend
-
-# View edge processor logs
-docker-compose logs -f cloud-processor
-
-# View all logs
-docker-compose logs -f
-```
-
----
-
-## 🚢 Production Deployment
-
-### Kubernetes Deployment
-
-```bash
-cd deployment/kubernetes
-
-# Create namespace
-kubectl create namespace farmsense
-
-# Deploy PostgreSQL
-kubectl apply -f database/
-
-# Deploy backend services
-kubectl apply -f backend/
-
-# Deploy frontend
-kubectl apply -f frontend/
-
-# Check status
-kubectl get pods -n farmsense
-```
-
-### Scaling
-
-```bash
-# Scale backend
-kubectl scale deployment farmsense-backend --replicas=5 -n farmsense
-
-# Scale cloud processors
-kubectl scale deployment cloud-processor --replicas=10 -n farmsense
-```
-
-### Edge Device Deployment
-
-```bash
-# Package edge binary
-cd edge-compute
-GOOS=linux GOARCH=arm64 go build -o edge_processor_arm64 src/edge_processor.go
-
-# Deploy to Raspberry Pi
-scp edge_processor_arm64 pi@field-device:/opt/farmsense/
-scp config/field_config.json pi@field-device:/opt/farmsense/
-ssh pi@field-device "sudo systemctl restart farmsense-edge"
-```
-
----
-
-## 🔐 Security
-
-### Authentication
-
-- **JWT tokens** for API authentication
-- **OAuth2** for third-party integrations
-- **Role-based access control** (RBAC)
-
-### Data Protection
-
-- **TLS 1.3** for all communications
-- **AES-256 encryption** for data at rest
-- **Field-level encryption** for sensitive data
-- **Regular security audits** and penetration testing
-
-### Compliance
-
-- **SLV 2026** regulatory alignment
-- **Immutable audit logs** with blockchain-style hashing
-- **GDPR compliance** for user data
-- **ISO 27001** certification roadmap
-
----
-
-## 📚 Additional Resources
-
-### Documentation
-
-- [System Architecture](https://docs.FarmSense.com/architecture) - Complete technical specs
-- [API Reference](http://localhost:8000/docs) - Interactive API docs
-- [Database Schema](./docs/database_schema.md) - Data model documentation
-- [Deployment Guide](./docs/deployment.md) - Production deployment
-
-### Support
-
-- **Issues**: GitHub Issues
-- **Discussions**: GitHub Discussions
-- **Email**: <support@farmsense.io>
-
-### Contributing
-
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
-
----
-
-## 📄 License
-
-Copyright © 2026 FarmSense. All rights reserved.
-
----
-
-## 🙏 Acknowledgments
-
-- **Sentinel Hub** - Satellite imagery
-- **USGS** - Landsat data
-- **Copernicus** - Earth observation data
-- **Open-source community** - Foundational tools and libraries
-
----
-
-**Built with ❤️ for sustainable agriculture** 🌾
+**Built with ❤️ for a resilient agricultural future.** 🌾💧

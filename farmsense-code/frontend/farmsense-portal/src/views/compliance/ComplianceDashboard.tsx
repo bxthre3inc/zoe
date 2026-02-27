@@ -10,6 +10,7 @@ import { api } from '../../services/api';
 export const ComplianceDashboard: React.FC = () => {
     const [activeView, setActiveView] = useState<'reports' | 'science' | 'economy' | 'drone'>('reports');
     const [metrics, setMetrics] = useState<any>(null);
+    const [reports, setReports] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [generating, setGenerating] = useState(false);
     const [stats, setStats] = useState({
@@ -22,12 +23,12 @@ export const ComplianceDashboard: React.FC = () => {
     const fetchComplianceData = React.useCallback(async () => {
         setLoading(true);
         try {
-            const latest = await api.compliance.getLatestGAPReport('FIELD-001');
-            if (latest) {
+            const latest = await api.compliance.getLatestGAPReport('FIELD-001') as any;
+            if (latest && latest.overall_score !== undefined) {
                 setReports([latest]);
                 setStats({
                     overallScore: Math.round(latest.overall_score * 100),
-                    activeAlerts: latest.control_points.filter((cp: any) => cp.level !== 'pass').length,
+                    activeAlerts: (latest.control_points || []).filter((cp: any) => cp.level !== 'pass').length,
                     pendingAudits: 0,
                     verifiedFields: 1
                 });
@@ -47,7 +48,7 @@ export const ComplianceDashboard: React.FC = () => {
                 field_name: 'NE Quarter - SLV',
                 farm_name: 'San Luis Valley Operations',
                 grower_id: 'GROW-772'
-            });
+            }) as any;
             setReports(prev => [newReport, ...prev]);
         } catch (err) {
             console.error('Failed to generate report:', err);
