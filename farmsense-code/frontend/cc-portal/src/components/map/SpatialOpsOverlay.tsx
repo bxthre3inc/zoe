@@ -24,20 +24,33 @@ export function SpatialOpsOverlay() {
 
 function CrewMarker({ crew }: { crew: SpatialOpsCrew }) {
     const groupRef = useRef<THREE.Group>(null);
+    const terrain = useCCStore((state) => state.terrain);
+
+    // Map lat/lng to generic 3D space for the mockup (x, z)
+    // The terrain is centered at 37.5851, -106.1478
+    const x = (crew.coordinates.lng + 106.1478) * 10000;
+    const z = (crew.coordinates.lat - 37.5851) * -10000;
+
+    // Sample terrain height
+    let terrainHeight = 0;
+    if (terrain) {
+        const gridX = Math.round(x + terrain.size / 2);
+        const gridY = Math.round(z + terrain.size / 2);
+
+        if (terrain.elevation[gridY] && terrain.elevation[gridY][gridX] !== undefined) {
+            terrainHeight = (terrain.elevation[gridY][gridX] - 2336.0) * 2.0;
+        }
+    }
 
     // Animate the marker slightly to simulate movement/status
     useFrame((state) => {
         if (groupRef.current) {
-            groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 2 + parseInt(crew.id.split('-')[1])) * 0.5 + 1;
+            groupRef.current.position.y = terrainHeight + Math.sin(state.clock.elapsedTime * 2 + parseInt(crew.id.split('-')[1] || '0')) * 0.5 + 1;
         }
     });
 
-    // Map lat/lng to generic 3D space for the mockup (x, z)
-    const x = (crew.coordinates.lng + 106.14) * 1000;
-    const z = (crew.coordinates.lat - 37.58) * -1000;
-
     return (
-        <group ref={groupRef} position={[x, 0, z]}>
+        <group ref={groupRef} position={[x, terrainHeight, z]}>
             {/* 3D Base Marker */}
             <mesh position={[0, -0.5, 0]}>
                 <cylinderGeometry args={[1, 1, 0.2, 16]} />

@@ -4,6 +4,16 @@
  * Focus: Real-time Telemetry & Water Ledger
  */
 
+export interface TerrainData {
+    elevation: number[][];
+    size: number;
+    resolution: string;
+    center: {
+        lat: number;
+        lon: number;
+    };
+}
+
 /**
  * Represents a single transaction in the Water Ledger.
  * Each entry is cryptographically signed and immutable.
@@ -77,6 +87,7 @@ export interface CCStoreState {
     fleet: Record<string, SpatialOpsCrew>;
     ledgerRecent: LedgerEntry[];
     assetFilter: AssetFilterType;
+    terrain: TerrainData | null;
 
     // Actions
     updateDHU: (data: DHUTelemetry) => void;
@@ -84,4 +95,5 @@ export interface CCStoreState {
     addLedgerEntry: (entry: LedgerEntry) => void;
     setRSS: (data: RSSTelemetry) => void;
     setAssetFilter: (filter: AssetFilterType) => void;
+    setTerrain: (data: TerrainData) => void;
 }

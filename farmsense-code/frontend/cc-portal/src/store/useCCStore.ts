@@ -6,6 +6,7 @@ export const useCCStore = create<CCStoreState>((set) => ({
     fleet: {},
     ledgerRecent: [],
     assetFilter: 'ALL',
+    terrain: null,
 
     updateDHU: (data: DHUTelemetry) =>
         set((state) => ({
@@ -27,4 +28,7 @@ export const useCCStore = create<CCStoreState>((set) => ({
 
     setAssetFilter: (filter: AssetFilterType) =>
         set(() => ({ assetFilter: filter })),
+
+    setTerrain: (data: TerrainData) =>
+        set(() => ({ terrain: data })),
 }));

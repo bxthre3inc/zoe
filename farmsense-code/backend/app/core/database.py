@@ -42,6 +42,7 @@ timescale_engine = create_engine(
 # Session factories
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 TimescaleSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=timescale_engine)
+MapSessionLocal = SessionLocal # Default to main engine for map data in V1
 
 
 def get_db() -> Generator[Session, None, None]:
@@ -58,11 +59,6 @@ def get_db() -> Generator[Session, None, None]:
         yield db
     finally:
         db.close()
-
-
-    finally:
-        db.close()
-
 
 def get_map_db() -> Generator[Session, None, None]:
     """Database dependency for Map/Tile data"""

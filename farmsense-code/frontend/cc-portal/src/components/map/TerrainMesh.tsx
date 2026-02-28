@@ -2,25 +2,20 @@
 
 import { useMemo, useEffect, useState } from 'react';
 import * as THREE from 'three';
-import { useLoader } from '@react-three/fiber';
-
-interface TerrainData {
-  elevation: number[][];
-  size: number;
-  resolution: string;
-}
+import { useCCStore } from '@/store/useCCStore';
 
 export function TerrainMesh() {
-  const [terrainData, setTerrainData] = useState<TerrainData | null>(null);
+  const terrainData = useCCStore((state) => state.terrain);
+  const setTerrain = useCCStore((state) => state.setTerrain);
 
   useEffect(() => {
-    // Fetch 1m DEM from the Oracle backend
-    // In production, field_id would be dynamic
+    if (terrainData) return; // Only fetch if not already in store
+    
     fetch('http://localhost:8000/api/v1/analytics/terrain/field-sub1')
       .then(res => res.json())
-      .then(data => setTerrainData(data))
+      .then(data => setTerrain(data))
       .catch(err => console.error("Failed to fetch terrain data:", err));
-  }, []);
+  }, [terrainData, setTerrain]);
 
   const geometry = useMemo(() => {
     if (!terrainData) return null;
