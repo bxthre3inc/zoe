@@ -40,6 +40,7 @@ type DHUOrchestrator struct {
 	Processors  map[string]*EdgeProcessor
 	Peers       []string
 	CurrentLoad float64
+	Alliance    *AllianceChain
 }
 
 func NewDHUOrchestrator(dhuID string, peers []string) *DHUOrchestrator {
@@ -47,6 +48,7 @@ func NewDHUOrchestrator(dhuID string, peers []string) *DHUOrchestrator {
 		DHUID:      dhuID,
 		Processors: make(map[string]*EdgeProcessor),
 		Peers:      peers,
+		Alliance:   NewAllianceChain(dhuID, peers),
 	}
 }
 

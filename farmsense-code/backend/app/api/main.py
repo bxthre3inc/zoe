@@ -12,7 +12,7 @@ from app.api.integration import router as integration_router
 from app.api import tiles
 from app.core.websocket import manager
 
-from app.api.routers import hardware, users, metrics, grants, analytics, compliance
+from app.api.routers import hardware, users, metrics, grants, analytics, compliance, trading
 
 # Create database tables if they don't exist
 Base.metadata.create_all(bind=engine)
@@ -48,6 +48,7 @@ app.include_router(metrics.router, prefix="/api/v1/metrics", tags=["Stakeholders
 app.include_router(grants.router, prefix="/api/v1/grants", tags=["Grants & Investment"])
 app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["Geospatial Analytics"])
 app.include_router(compliance.router, prefix="/api/v1/compliance", tags=["Compliance Reporting"])
+app.include_router(trading.router, prefix="/api/v1/trade", tags=["Water Rights Trading"])
 
 # Keep legacy integration and tile routers
 app.include_router(integration_router, prefix="/api/v1", tags=["Integration"])
