@@ -7,7 +7,7 @@ class ZoneAnalysisRequest(BaseModel):
 
 class ZoneAnalysisResponse(BaseModel):
     field_id: str
-    zone_area_sqm: float
+    Zone_area_sqm: float
     avg_moisture: float
     avg_temperature: float
     avg_stress_index: float
@@ -50,6 +50,6 @@ class FieldAnalyticsResponse(BaseModel):
     avg_moisture: float
     moisture_std: float
     stress_area_pct: float
-    irrigation_zones: List[dict]
+    irrigation_Zones: List[dict]
     current_mode: str
     next_recalc: datetime

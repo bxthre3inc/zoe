@@ -1,43 +1,57 @@
-# Pivot Motion Tracker (PMT) Firmware Specification
+# Pivot Motion Tracker (PMT) Hardware & Firmware Hyper-Specification
 
-## Overview
+## 1. Field Hub Architecture
 
-The Pivot Motion Tracker (PMT) operates as the **Level 1.5 Field Hub**. It is the deterministic command center of the field, responsible for aggregating all Peer Node telemetry, performing constant 50m geostatistical math, and routing backhaul payloads to the District Hub (DHU).
+The PMT is the primary edge computer for the field, mounted 15ft AGL on the pivot span.
 
-## 1. Hardware Initialization Routine
+### 1.1 Core Processing Cluster
 
-* **Processor:** ATSAMD51 (Cortex-M4, 120MHz FPU).
-* **Sensors:** Badger Meter Ultrasonic Transit-Time, u-blox ZED-F9P RTK GNSS, Bosch BNO055 9-Axis IMU.
-* **Power:** 10W Solar Lid + LiFePO4 Buffer.
-* **Hibernation Logic:** The primary Saft LS14500 LiSOCl2 cell maintains ONLY the GNSS Real-Time Clock through the 120-day SLV winter dormancy.
+- **Main MCU:** Microchip ATSAMD51J20A-AF (ARM Cortex-M4F @ 120MHz).
+- **SRAM:** 256KB for real-time Edge-EBK matrix calculations.
+- **Flash:** 1MB internal + 16MB QSPI external for 72-hour telemetry buffering.
 
-## 2. Continuous Edge-EBK Logic Loop
+### 1.2 Precision Positioning (RTK-GNSS)
 
-The PMT continuously executes Empirical Bayesian Kriging (Edge-EBK) to generate a 50m-resolution spatial probability grid (16x16 matrix). This is **not a failover state**, but the baseline operational mode of the PMT.
+- **SoC:** u-blox ZED-F9P Multi-band RTK.
+- **Precision:** <2cm with RTK correction (backhauled from DHU).
+- **IMU:** Bosch BNO055 9-Axis Absolute Orientation Sensor.
+  - **Logic:** Identifies "Strut Fatigue" via vibration harmonics and "Hydraulic Hammer" via solenoid impact profiles.
 
-* **Data Ingestion:** The PMT intercepts the 128-bit AES encrypted payload chirps from the 2 VFAs and 20 LRZs traversing its 900MHz RF Umbrella.
-* **FPU Calculation:** The hardware FPU processes this spatial data into the 16x16 matrix, quantifying the exact soil moisture probability curve across the 160-acre quarter section.
-* **The "Fisherman's Attention" Scale:** The execution frequency of this calculation is dynamically governed:
-  * *Dormant Baseline:* Every 4 Hours (High soil moisture, pivot parked).
-  * *Anticipatory:* Every 60 Minutes (Sunrise, rapidly rising temperature).
-  * *Ripple:* Every 15 Minutes (Detection of rapid trend shifts; PMT commands peer nodes to increase chirp frequency radially outward from anomaly).
-  * *Collapse:* Every 5 Seconds (Critical failure, or pivot actively sweeping). The FPU zeroes calculation on dormant field sections, "Focus Collapsing" computation exclusively on the trajectory of the active pivot span.
+## 2. Connectivity & Mesh Coordination
 
-## 3. Telemetry & Routing (The "Field Hub")
+### 2.1 The "Umbrella" Receiver (2.4GHz)
 
-* **Data Ingestion:** The PMT intercepts the 128-bit AES encrypted payload chirps from the 2 VFAs and 20 LRZs traversing its 2.4GHz RF Umbrella.
-* **Edge-EBK Payload Assembly:**
-  * Unpacks the VFA moisture profile.
-  * Checks standard validity parameters (timestamps, CRC).
-  * Repackages these raw nodes with the locally computed PMT Kinematics.
-* **Adaptive Backhaul:** Blasts the unified, heavily encrypted ~187-byte Field State Payload to the District Hub (DHU) via the best available architecture string determined by payload demand (e.g., 5GHz LTU).
+- **Role:** Aggregator for 100+ LRZ/VFA/PFA nodes per field.
+- **Topology:** Star-mesh (LRZ chirps vertically).
+- **Radio:** Nordic nRF52840 acting as a dedicated 2.4GHz sink.
 
-## 4. Zero-Downtime VRI Failover Execution
+### 2.2 Regional Backhaul (Dual-Mode)
 
-If the PMT detects a loss of LoRaWAN ping-acknowledgment from the DHU:
+- **Primary:** Private 5GHz LTU (Ubiquiti Rocket compatible) to District Hub (DHU).
+- **Secondary:** LTE-M / NB-IoT carrier failover.
+- **Payload:** 187-byte AES-256 field state vector.
 
-* **Autonomous VRI:** Because the PMT is *already* calculating the 50m EBK grid natively, it instantly switches to executing autonomous Variable Rate Irrigation commands (speeding/slowing the pivot or actuating safety valves) based *only* on its localized intelligence, bypassing the offline DHU/Zo engines entirely.
-* **Audit Buffering:** Stores all 187-byte payload state changes to onboard SPI Flash, burst-transmitting the backlog upon DHU reconnection to preserve the State Engineer audit ledger.
+## 3. Edge Intelligence (Edge-EBK Engine)
+
+### 3.1 50m Spatial Fidelity Grid
+
+The ATSAMD51 executes a simplified **Empirical Bayesian Kriging (EBK)** model locally.
+
+- **Windowing:** 4-hour baseline.
+- **Focus Collapse:** If IMU/GNSS detects movement (Pivot Active), the engine collapses sampling to a 5-second "Ripple" window.
+- **Failover:** In the event of DHU uplink loss, the PMT executes the VRI speed-map worksheet internally using cached priors.
+
+## 4. Bill of Materials (Granular)
+
+| Part Class | Model/Manufacturer | Qty | Role |
+| :--- | :--- | :--- | :--- |
+| **Main SoC** | Microchip ATSAMD51 | 1 | Core Logic |
+| **GNSS SoC** | u-blox ZED-F9P | 1 | RTK Positioning |
+| **IMU** | Bosch BNO055 | 1 | Kinematics |
+| **Mesh Radio** | Nordic nRF52840 | 1 | Sensor Sink |
+| **Backhaul** | LTE-M Bridge | 1 | Fallback |
+| **Storage** | 16MB QSPI Flash | 1 | Black-Box Cache |
+| **Unit Cost** | **$1,112.00** | | |
 
 ---
-*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*
+*Infrastructure Classification: Permanent Command & Control Asset*

@@ -5,7 +5,7 @@ type Variable = { id: string; label: string; unit: string; min: number; max: num
 
 const VARIABLES: Variable[] = [
     { id: 'smp', label: 'Soil Matric Potential', unit: 'bars', min: -3.0, max: 0, step: 0.05, default: -0.5, description: 'Negative values; -0.33 = field capacity, -15 = permanent wilting point' },
-    { id: 'swc', label: 'Volumetric Water Content', unit: '%', min: 5, max: 50, step: 0.5, default: 28, description: 'Measured SWC in the root zone' },
+    { id: 'swc', label: 'Volumetric Water Content', unit: '%', min: 5, max: 50, step: 0.5, default: 28, description: 'Measured SWC in the root Zone' },
     { id: 'ec', label: 'Electrical Conductivity', unit: 'dS/m', min: 0, max: 5, step: 0.1, default: 1.1, description: 'Soil salinity proxy; high EC reduces osmotic potential' },
     { id: 'vpd', label: 'Vapor Pressure Deficit', unit: 'kPa', min: 0, max: 5, step: 0.1, default: 1.8, description: 'Atmospheric demand for transpiration' },
     { id: 'solar', label: 'Solar Radiation', unit: 'W/m²', min: 0, max: 1200, step: 10, default: 620, description: 'Incoming shortwave solar radiation' },
@@ -158,7 +158,7 @@ export const SPACModelSandbox: React.FC = () => {
                                     {saved ? 'Saved!' : 'Save'}
                                 </button>
                             </div>
-                            {saved && <p className="text-[10px] text-emerald-500 mt-2">Configuration "{configName}" queued for Zo Worksheet candidate review.</p>}
+                            {saved && <p className="text-[10px] text-emerald-500 mt-2">Configuration "{configName}" queued for CSE Worksheet candidate review.</p>}
                         </div>
                     </div>
                 </div>

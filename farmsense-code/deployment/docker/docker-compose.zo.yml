@@ -53,7 +53,7 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-farmsense_user}:${POSTGRES_PASSWORD:-changeme}@postgres-core:5432/farmsense_core
       TIMESCALE_URL: postgresql://${TIMESCALE_USER:-timescale_user}:${TIMESCALE_PASSWORD:-changeme}@timescaledb:5432/farmsense_timeseries
-      # Map DB is remote (Oracle) - secure connection required (e.g., VPN/TLS)
+      # Map DB is remote (RDC) - secure connection required (e.g., VPN/TLS)
       MAP_DATABASE_URL: ${MAP_DATABASE_URL} 
     ports:
       - "8000:8000"

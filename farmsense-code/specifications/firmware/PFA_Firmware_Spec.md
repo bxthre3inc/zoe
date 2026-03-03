@@ -1,38 +1,69 @@
-# Pressure & Flow Anchor (PFA) Firmware Specification
+# Pressure & Flow Anchor (PFA) Master Specification V2.0
 
-## Overview
+## 1. Role & Strategic Mandate
 
-The Pressure & Flow Anchor (PFA) operates as the **Sentry of the Source**. Attached directly to the high-voltage 480V/3-Phase center-pivot wellhead, it serves as the critical intersection between agricultural hydrodynamic auditing and predictive mechanical maintenance.
+The Pressure & Flow Anchor (PFA) is the "Sentry of the Source," serving as the primary hardware interface for monitoring groundwater extraction and ensuring the mechanical safety of pumping infrastructure. It provides the forensic ground truth for the **Digital Water Ledger**.
 
-## 1. Hardware Initialization Routine
+## 2. Structural & Environmental Engineering
 
-* **Processor:** NXP i.MX RT (Cortex-M7). Required for localized high-frequency analog-to-digital (ADC) conversion.
-* **Sensors:** Badger Meter TFX-5000 ultrasonic transit-time components, 400A Current Transformer (CT) Clamps, high-frequency internal accelerometers.
-* **Power:** Stepped down directly from the 480V wellhead power block.
+### 2.1 Enclosure (The Faraday Shield)
 
-## 2. Dual-Core Operations Loop
+- **Housing**: Hoffman NEMA 4X Ruggedized Polycarbonate (NEMA 4X / IP68).
+- **EMI Defense**: Internal conductive coating creates a "Faraday Cage" effect to protect analog-to-digital (ADC) conversions from VFD (Variable Frequency Drive) switching noise.
+- **Breather System**: Dual-stage Gore-Tex vents prevent vacuum-suction of alkali dust during -40°F thermal cycles.
 
-The PFA firmware runs two highly specialized logic loops concurrently:
+### 2.2 Sled Hospital Maintenance
 
-**Loop A: Hydrodynamic Auditing (The Legal Truth)**
+- Sleds are extracted seasonally, cleaned, and re-pressurized to +5 psi with Dry Nitrogen.
+- Pressure-decay testing (15-min cycle) ensures Viton (FKM) seal integrity.
 
-* Calculates volumetric flow (Gallons per Minute) utilizing the ultrasonic transit-time differentials across the well pipe.
-* Must maintain rigorous calibration offsets (updated via the Regulatory Portal) to ensure the State Engineer mandated +/- 1% accuracy.
+## 3. Sensing & Actuation Matrix
 
-**Loop B: Current Harmonic Analysis (Predictive Maintenance)**
+### 3.1 Non-Invasive Extraction Audit
 
-* Continuously samples the 400A CT clamps on the pump's 3-phase power line at extremely high frequencies.
-* Executes localized Fast Fourier Transforms (FFTs) on the Cortex-M7 to calculate "Current Harmonic Analysis" and "Voltage Ripple" signatures.
-* These localized FFT models allow the PFA to mathematically detect cavitation (air pockets in the pump), impending bearing failure, or voltage sag *before* a catastrophic $25,000 pump explosion occurs.
+- **Ultrasonic Flow**: Badger Meter TFX-5000 transit-time transducers (±1.0% accuracy).
+- **"Cut-Less" Logic**: Clamp-on transducers maintain pump warranties and eliminate pressure drag.
 
-## 3. Telemetry & PMT Bouncing
+### 3.2 Predictive Motor Sentry (CHA)
 
-* The PFA generates a highly condensed payload combining the strict GPM flow audit and the predictive mechanical hazard flags.
-* Unlike the field sensors, the PFA transmits this data via **2.4GHz High-Gain links** directly to the elevated PMT Field Hub. This physically circumvents the dense water canopy of a full-grown corn crop, which would otherwise attenuate a standard 900MHz signal emitted from the ground-level well pump.
+- **CT Clamps**: 3x 400A Split-Core (Magnelab SCT-1250) monitoring Phase-A/B/C.
+- **FFT Logic**: NXP i.MX RT1060 (600MHz Cortex-M7) executing 1,024-point FFTs.
+- **Failure Detection**: Detects cavitation sidebands, torque ripple, and bearing harmonics before catastrophic failure.
 
-## 4. Autonomous Fail-Safe Actuation
+### 3.3 Hydro-Legal Sensing
 
-The PFA has physical actuation authority over the well pump relay. If the Localized FFT loop detects severe cavitation, or if the PMT (acting as the localized Edge-EBK failover engine) commands an emergency halt due to total VRI failure, the PFA firmware executes an immediate, hard electrical kill-switch to protect the infrastructure.
+- **Well Depth**: Vented 316-SS Pressure Transducer (Dwyer PBLTX).
+- **Vented Compensator**: Atmospheric tube ensures readings are purely hydrostatic, independent of barometric shifts.
+
+## 4. Firmware & Control (Reflex Logic)
+
+### 4.1 "Soft-Stop" Actuation
+
+- **Actuator**: 30A Industrial Dry-Contact Relay (Omron).
+- **Reflex Rules**:
+  - `IF (PMT_STALL == TRUE) THEN ACTUATE_STOP`
+  - `IF (BURST_MAINLINE == TRUE) THEN ACTUATE_STOP`
+  - `IF (SATURATION_ALERT == TRUE) THEN ACTUATE_STOP`
+
+### 4.2 Blackout Buffer
+
+- **Energy Pool**: 40,000mAh Dual-Pack LiFePO4 battery.
+- **Survivability**: 7-day continuous logging during total grid failure (critical for recording static aquifer recovery).
+
+## 5. Bill of Materials (Subdistrict 1 Bulk)
+
+| Part | Manufacturer/Detail | Unit Cost | Ext |
+| :--- | :--- | :--- | :--- |
+| **Housing** | Hoffman NEMA 4X + Conductive Coat | $55.00 | $55 |
+| **MCU** | NXP i.MX RT1060 Sled | $95.00 | $95 |
+| **Clamps** | Magnelab SCT-1250 (x3) | $110.00 | $110 |
+| **Transducer**| Dwyer Vented (SS-316) | $185.00 | $185 |
+| **Tubing** | Vented PVC (300ft) | $45.00 | $45 |
+| **Pressure** | TE Conn 200 PSI SS | $70.00 | $70 |
+| **Power** | 40Ah LiFePO4 + UPS + Heater | $115.00 | $115 |
+| **Relay** | Omron 30A Industrial | $45.00 | $45 |
+| **Labor** | 4hr Licensed Journeyman Install | $175.00 | $175 |
+| **TOTAL** | **PFA INFRASTRUCTURE COST** | | **$895.00** |
 
 ---
-*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*
+*Infrastructure Classification: Permanent Forensic Water Asset*

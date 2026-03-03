@@ -1,31 +1,60 @@
-# Vertical Field Anchor (VFA) Firmware Specification
+# Vertical Field Anchor (VFA) Hardware & Firmware Hyper-Specification
 
-## Overview
+## 1. Deep-Profile Architecture (48U Sequence)
 
-The Vertical Field Anchor (VFA) operates as a **Level 1 Advanced Peer Node**. It is the central 48-inch deep-profile ground truth node for a field quadrant, tasked strictly with telemetry generation and secure RF transmission, leaving heavy computation to the PMT.
+The VFA is the permanent "Ground Truth" node, providing high-resolution soil-water battery status.
 
-## 1. Hardware Initialization Routine
+### 1.1 Mechanical Implementation
 
-* **Processor:** nRF52840 (Ultra-low power ARM Cortex-M4F).
-* **Sensors:** GroPoint Profile multivariant soil moisture, temperature, and salinity probe.
-* **Power:** Flush 5W Polycarbonate Solar Lid + Hybrid Pulse Capacitor (HPC).
-* **Telemetry Range:** 50mm non-contact capacitive telemetry field for physical diagnostics.
+- **Shaft:** 48-inch UV-HDPE permanent co-extruded shell.
+- **Internal Sled:** Modular alpha-sled for seasonal extraction and service ("The Sled Hospital").
+- **Antenna:** Internal 3-foot vertical spine for 2.4GHz FHSS.
 
-## 2. Telemetry Processing & "Dumb Chirp" Transformation
+### 1.2 Sensing Stack (The 48U Array)
 
-The VFA was deliberately downgraded from an AES-routing hub to a highly efficient Peer Node to maximize battery life under snowpack.
+The VFA utilizes a vertical sequence of slots for modular sensor placement:
 
-* **Data Aggregation:** The firmware reads 4 specific depths along the 48-inch profile (8", 16", 24", 36") to determine total matric potential and deep percolation loss.
-* **Encryption at the Edge:** The processor applies AES-128 bit encryption independently to its localized payload before it ever leaves the component.
-* **Transmission:** Actuates the flush 3-foot low-profile antenna to chirp the encrypted payload via 2.4GHz mesh networking directly to the overhead Pivot Motion Tracker (PMT) acting as the Field Hub.
+- **Depth 10", 25", 48":** Tensiometric soil moisture (Matric Potential).
+- **Depth 18", 35":** Volumetric Water Content (VWC) + Soil Temperature + EC.
+- **Chemical:** Integrated pH sensing at deep root-zone (36").
 
-## 3. Dynamic "Ripple" Responsiveness
+## 2. Core Electronics
 
-While fundamentally a "dumb chirp" node, the VFA firmware is governed by the PMT's adaptive scaling logic.
+### 2.1 Processing
 
-* **Baseline Chirp:** Every 4 hours.
-* **Triggered Ripple:** When the PMT detects a rapid statistical shift and initiates a "Focus Ripple," it pings the VFA. The VFA firmware must immediately scale its chirp frequency to every 15 minutes to provide the PMT Kriging engine with real-time ground truth data regarding the spatial expansion of the anomaly.
-* **LPI/LPD Constraints:** The firmware ensures that even at elevated 15-minute chirp rates, the FHSS frequency hopping conforms to DoD Low Probability of Intercept/Detection standards.
+- **MCU:** Nordic nRF52840 (ARM Cortex-M4F).
+- **Role:** Aggregates multi-depth readings into a single 48-byte "Battery State" payload.
+
+### 2.2 Power Architecture
+
+- **Battery:** 4U Sled Cartridges containing high-density 21700 cells (x3 per sled).
+- **Solar:** 5W Monocrystalline Lid (Tempered Glass) with integrated MPPT controller.
+- **Operation:** Designed for "Set and Forget" 10-year field lifespan.
+
+## 3. Firmware Protocol
+
+### 3.1 The MAD Battery Metaphor
+
+The firmware calculates the Management Allowable Depletion (MAD) status locally:
+
+- **Logic:** Aggregates SMP across all 3 depths to determine the "Remaining Charge" in the soil water profile.
+- **Chirp:** Transmits the MAD percentage as a primary telemetry priority.
+
+### 3.2 Seasonal Dormancy
+
+- **Logic:** If soil temperature drops below 33°F for 48 consecutive hours, the node enters "Winter Sleep" (8µA draw, 1-week heartbeats).
+- **Activation:** Wakes on thermal rise or PMT "Spring Wake" radio pulse.
+
+## 4. Bill of Materials (Granular)
+
+| Part Class | Model/Manufacturer | Qty | Role |
+| :--- | :--- | :--- | :--- |
+| **Main SoC** | Nordic nRF52840 | 1 | Logic/Radio |
+| **Moisture 1** | Tensiometric (Custom) | 3 | Deep Profiling |
+| **Moisture 2** | Dielectric Ring | 2 | VWC/Temp |
+| **Cells** | Samsung 50E (21700) | 12 | Energy Storage |
+| **Solar** | 5W Custom Panel | 1 | MPPT Harvesting |
+| **Unit Cost** | **$319.75** | | |
 
 ---
-*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*
+*Infrastructure Classification: Permanent Ground-Truth Asset*

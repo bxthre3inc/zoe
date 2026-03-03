@@ -34,7 +34,7 @@ export const ParameterDial: React.FC<ParameterDialProps> = ({ label, value, min,
             angle = angle + 90; // Adjust so top is 0
             if (angle < 0) angle += 360; // 0 to 360
 
-            // Map angle to value (135 to 225 is dead zone at bottom)
+            // Map angle to value (135 to 225 is dead Zone at bottom)
             let newAngle = angle;
             if (angle > 225) newAngle -= 360; // -135 to 225
 

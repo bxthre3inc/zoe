@@ -88,7 +88,7 @@ class CSAAlignmentService:
         grid_bounds: Tuple[float, float, float, float]
     ):
         """
-        Places the audited liquid volume into the 1m virtual grid used by the Zo Server.
+        Places the audited liquid volume into the 1m virtual grid used by the CSE Server.
         grid_bounds: (min_lat, max_lat, min_lon, max_lon)
         """
         import numpy as np

@@ -33,7 +33,7 @@ from __future__ import annotations
 import hashlib
 import uuid
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime, timeZone
 from enum import Enum
 from typing import Optional
 
@@ -166,7 +166,7 @@ class GAPComplianceEngine:
     """Generates GLOBALG.A.P. IFA v6 compliance reports from FarmSense data."""
 
     def generate(self, inputs: GAP_FieldInputs) -> GAP_Report:
-        now = datetime.now(timezone.utc).isoformat()
+        now = datetime.now(timeZone.utc).isoformat()
         report_id = f"GAP-{inputs.field_id[:8].upper()}-{uuid.uuid4().hex[:6].upper()}"
 
         results: list[ControlPointResult] = []

@@ -12,8 +12,8 @@ The Marketing Site is the primary public-facing portal for FarmSense. It acts as
 
 ## 2. Technical Architecture Showcase
 
-* **Node Teardowns:** High-fidelity 3D renders and exploded views of the PMT, PFA, VFA, and LRZ hardware, emphasizing their ruggedized (Polycarbonate, Hybrid Pulse Capacitor) engineering.
-* **The "Zo" Engine:** Simplifying the concept of spatial interpolation (1m Regression Kriging) and the decentralized edge computing capabilities (PMT Edge-EBK) for non-technical stakeholders.
+* **Node Teardowns:** High-fidelity 3D renders and exploded views of the PMT ($1,090), PFA ($603), VFA ($319), and LRZ ($50) hardware, emphasizing their ruggedized (IP68 Polycarbonate, Li-SOCl2 primary cells, ARM MCU) engineering.
+* **The "CSE" Engine:** Simplifying the concept of spatial interpolation (1m Regression Kriging) and the decentralized edge computing capabilities (PMT Edge-EBK) for non-technical stakeholders.
 
 ## 3. Dual-Use & DoD Applicability
 

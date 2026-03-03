@@ -189,7 +189,7 @@ export interface DatasetPreview {
 
 export interface TrialPayload {
     fieldId: string; treatment: string; control: string;
-    zoneGeojson: unknown;
+    ZoneGeojson: unknown;
 }
 export interface Trial {
     id: string; status: 'design' | 'running' | 'complete';

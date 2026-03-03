@@ -44,11 +44,11 @@ function mockCropNDVI() {
 }
 
 const MOCK_COVERAGE = [
-    { zone: 'Center, CO (Subdistrict 1)', density: 'High', nodes: 142, uncertainty: 'Low' },
-    { zone: 'Monte Vista, CO', density: 'Medium', nodes: 67, uncertainty: 'Moderate' },
-    { zone: 'Alamosa, CO', density: 'Medium', nodes: 81, uncertainty: 'Moderate' },
-    { zone: 'Saguache, CO', density: 'Low', nodes: 14, uncertainty: 'High' },
-    { zone: 'Blanca, CO', density: 'Sparse', nodes: 4, uncertainty: 'Very High' },
+    { Zone: 'Center, CO (Subdistrict 1)', density: 'High', nodes: 142, uncertainty: 'Low' },
+    { Zone: 'Monte Vista, CO', density: 'Medium', nodes: 67, uncertainty: 'Moderate' },
+    { Zone: 'Alamosa, CO', density: 'Medium', nodes: 81, uncertainty: 'Moderate' },
+    { Zone: 'Saguache, CO', density: 'Low', nodes: 14, uncertainty: 'High' },
+    { Zone: 'Blanca, CO', density: 'Sparse', nodes: 4, uncertainty: 'Very High' },
 ];
 
 const densityColor: Record<string, string> = { High: 'text-emerald-400', Medium: 'text-amber-400', Low: 'text-orange-400', Sparse: 'text-red-400' };
@@ -159,20 +159,20 @@ export const BasinAnalytics: React.FC = () => {
                     <div className="space-y-4">
                         <p className="text-[10px] font-bold text-teal-400 uppercase tracking-widest">Sensor Network Coverage Map — SLV Basin</p>
                         <div className="space-y-2">
-                            {MOCK_COVERAGE.map(zone => (
-                                <div key={zone.zone} className="flex items-center gap-4 bg-black/40 border border-purple-900/20 rounded-xl px-4 py-3">
+                            {MOCK_COVERAGE.map(Zone => (
+                                <div key={Zone.Zone} className="flex items-center gap-4 bg-black/40 border border-purple-900/20 rounded-xl px-4 py-3">
                                     <div className="flex-1">
-                                        <p className="text-sm text-slate-300 font-medium">{zone.zone}</p>
-                                        <p className={`text-[10px] font-bold uppercase tracking-widest ${densityColor[zone.density]}`}>{zone.density} density — {zone.nodes} nodes</p>
+                                        <p className="text-sm text-slate-300 font-medium">{Zone.Zone}</p>
+                                        <p className={`text-[10px] font-bold uppercase tracking-widest ${densityColor[Zone.density]}`}>{Zone.density} density — {Zone.nodes} nodes</p>
                                     </div>
-                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${unCertaintyBg[zone.uncertainty]}`}>
-                                        {zone.uncertainty} uncertainty
+                                    <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${unCertaintyBg[Zone.uncertainty]}`}>
+                                        {Zone.uncertainty} uncertainty
                                     </span>
                                 </div>
                             ))}
                         </div>
                         <div className="bg-amber-950/20 border border-amber-900/30 rounded-xl p-4 text-xs text-amber-300">
-                            ⚠ Saguache and Blanca zones have insufficient sensor density. Additional VFA/LRZ deployments recommended before relying on Kriging interpolations in these areas.
+                            ⚠ Saguache and Blanca Zones have insufficient sensor density. Additional VFA/LRZ deployments recommended before relying on Kriging interpolations in these areas.
                         </div>
                     </div>
                 )}

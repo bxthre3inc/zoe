@@ -4,11 +4,11 @@ The FarmSense infrastructure is an uncompromising, decentralized monolithic grid
 
 ## Backend Intelligence (Decentralized Cloud Layer)
 
-- **RSS Oracle Vault (Master Database & Compute):** The central nervous system of FarmSense. It houses the master spatial library, historical datasets, and the consolidated **Zo Compute Layer**. It is responsible for executing Bayesian priors, generating deterministic "Worksheets," and pre-rendering the 1m-resolution Enterprise map tiles.
+- **RSS RDC Vault (Master Database & Compute):** The central nervous system of FarmSense. It houses the master spatial library, historical datasets, and the consolidated **CSE Compute Layer**. It is responsible for executing Bayesian priors, generating deterministic "Worksheets," and pre-rendering the 1m-resolution Enterprise map tiles.
 
 ## Regional & District Edge Infrastructure
 
-Relying entirely on external backhauls in rural zones creates unacceptable vulnerability. Heavy computational loads process continuously at the edge:
+Relying entirely on external backhauls in rural Zones creates unacceptable vulnerability. Heavy computational loads process continuously at the edge:
 
 - **Regional Superstation (RSS) [Level 3 - Territory Master]:** A localized cloud counterpart housed in a modified 40-foot High-Cube container. Features a 64-Core AMD Threadripper PRO cluster, 256GB ECC RAM, and a 50TB Enterprise NVMe array securing the master spatial database. Will support FHE (Fully Homomorphic Encryption) Kriging modeling at **1m spatial fidelity**.
 - **District Hubs (DHU) [Level 2 - Regional Mesh Manager]:** Edge coordinators mounted on 35-foot Class 4 timber poles. Line-of-sight 10km radius. Runs an OnLogic CL210 Industrial 8-Core ARM SOC. Capable of instant "Reflex Logic" responses bypassing cellular latency. Processes **20m and 10m spatial fidelity** grids.
@@ -16,7 +16,7 @@ Relying entirely on external backhauls in rural zones creates unacceptable vulne
 
 ## Field-Level Edge Hardware
 
-Sensors and actuators deployed below and above ground across field zones. Equipment strictly utilizes UV-shielded (fluoropolymer coated) Polycarbonate due to altitude degradation risks and requires Hybrid Pulse Capacitors (HPC) for extreme-cold \-30°F survivability.
+Sensors and actuators deployed below and above ground across field Zones. Equipment strictly utilizes UV-shielded (fluoropolymer coated) Polycarbonate due to altitude degradation risks and requires Hybrid Pulse Capacitors (HPC) for extreme-cold \-30°F survivability.
 
 - **Vertical Field Anchors (VFA) [Level 1 - Advanced Peer Node]:** The 48-inch deep-profile central ground-truth soil node. Downgraded from a routing hub to a highly efficient peer, it uses a flush 3-foot antenna to transmit 128-bit encrypted FHSS payload data directly to the elevated PMT.
 - **Lateral Root-Zone Scout (LRZ) [Level 1 - Spatial Mapper]:** Mass-produced "dumb nodes" deployed at a 1:15-acre density. Utilizes high-frequency Frequency-Hopping Spread Spectrum (FHSS) chirps, providing inherent Low Probability of Intercept/Detection (LPI/LPD) features natively desirable under DoD architectures. Enclosures feature 50mm non-contact capacitive telemetry fields.

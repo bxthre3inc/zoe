@@ -61,7 +61,7 @@ class FieldState:
 
 @dataclass
 class FocusCollapse:
-    """Active Focus Collapse geometry — hyper-computation zone around an event."""
+    """Active Focus Collapse geometry — hyper-computation Zone around an event."""
     epicenter_lat: float = 0.0
     epicenter_lon: float = 0.0
     radius_m: float = 200.0             # Initial collapse radius
@@ -171,7 +171,7 @@ class FishermansAttentionEngine:
             return AttentionMode.COLLAPSE
 
         # ── RIPPLE triggers ───────────────────────────────────────────────
-        # 2-sigma spike in moisture std dev signals an active anomaly zone
+        # 2-sigma spike in moisture std dev signals an active anomaly Zone
         if s.moisture_std > 0.04:
             return AttentionMode.RIPPLE
         if s.anomaly_node_id is not None:

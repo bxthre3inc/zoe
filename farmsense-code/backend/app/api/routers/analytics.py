@@ -177,8 +177,8 @@ def get_vri_bar_grid(
     """Returns the grid data at the Best Available Resolution (BAR) for the current context."""
     return VRICommandCenter.fetch_vri_grid(db, field_id)
 
-@router.post("/zone/analyze", tags=["Analytics"])
-def analyze_custom_zone(
+@router.post("/Zone/analyze", tags=["Analytics"])
+def analyze_custom_Zone(
     field_id: str,
     request: ZoneAnalysisRequest,
     db: Session = Depends(get_db)
@@ -186,7 +186,7 @@ def analyze_custom_zone(
     import json
     geojson_str = json.dumps(request.geometry)
     sql = """
-        WITH zone AS (
+        WITH Zone AS (
             SELECT ST_SetSRID(ST_GeomFromGeoJSON(:geojson), 4326) AS geom
         ),
         latest_grid AS (
@@ -197,24 +197,24 @@ def analyze_custom_zone(
         )
         SELECT 
             COUNT(*) as pt_count,
-            ST_Area(zone.geom::geography) as area_sqm,
+            ST_Area(Zone.geom::geography) as area_sqm,
             AVG(moisture_surface) as avg_moisture,
             AVG(temperature) as avg_temp,
             AVG(stress_index) as avg_stress,
             SUM(water_deficit_mm) as est_deficit
-        FROM latest_grid, zone
-        WHERE ST_Intersects(latest_grid.location, zone.geom)
+        FROM latest_grid, Zone
+        WHERE ST_Intersects(latest_grid.location, Zone.geom)
     """
     
     from sqlalchemy import text
     result = db.execute(text(sql), {"geojson": geojson_str, "field_id": field_id}).fetchone()
     
     if not result or result[0] == 0:
-        raise HTTPException(status_code=404, detail="No sensor data found within the requested zone.")
+        raise HTTPException(status_code=404, detail="No sensor data found within the requested Zone.")
         
     return ZoneAnalysisResponse(
         field_id=field_id,
-        zone_area_sqm=float(result[1]),
+        Zone_area_sqm=float(result[1]),
         avg_moisture=float(result[2] or 0.0),
         avg_temperature=float(result[3] or 0.0),
         avg_stress_index=float(result[4] or 0.0),
@@ -238,7 +238,7 @@ def get_field_analytics(
             avg_moisture=0.0,
             moisture_std=0.0,
             stress_area_pct=0.0,
-            irrigation_zones=[],
+            irrigation_Zones=[],
             current_mode="dormant",
             next_recalc=datetime.utcnow() + timedelta(hours=6)
         )
@@ -281,7 +281,7 @@ def get_field_analytics(
         avg_moisture=float(stats.avg_moist or 0.0),
         moisture_std=float(stats.std_moist or 0.0),
         stress_area_pct=round(stress_pct, 2),
-        irrigation_zones=[], # Requires zone grouping logic
+        irrigation_Zones=[], # Requires Zone grouping logic
         current_mode=mode,
         next_recalc=next_eval
     )

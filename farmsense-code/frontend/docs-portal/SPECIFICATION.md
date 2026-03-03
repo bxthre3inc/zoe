@@ -7,7 +7,7 @@ The Docs Portal is the central repository for all FarmSense technical documentat
 ## 1. Developer Guidelines
 
 * **API Reference:** Automatically generated (Swagger/OpenAPI) documentation detailing all available REST endpoints for sensor ingestion, grid querying, and compliance reporting.
-* **Architecture & Codebase Overview:** In-depth explanations of the decentralized cloud layer (Zo), District Hubs (DHU), and edge-processing mechanics.
+* **Architecture & Codebase Overview:** In-depth explanations of the decentralized cloud layer (CSE), District Hubs (DHU), and edge-processing mechanics.
 * **Deployment Manuals:** Step-by-step instructions for deploying the backend infrastructure (Docker Compose, Kubernetes) and flashing firmware to physical nodes.
 
 ## 2. Hardware Deployment & Calibration

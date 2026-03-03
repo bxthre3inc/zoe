@@ -12,7 +12,7 @@ import { ParameterDial } from './components/ParameterDial';
 import { MatrixDataStream } from './components/MatrixDataStream';
 import { FederatedExperimentConsole } from './components/FederatedExperimentConsole';
 import { SatelliteCovariateExplorer } from './components/SatelliteCovariateExplorer';
-import { ZoKrigingWorksheetInspector } from './components/ZoKrigingWorksheetInspector';
+import { CSEKrigingWorksheetInspector } from './components/CSEKrigingWorksheetInspector';
 import { FieldTrialDesignEngine } from './components/FieldTrialDesignEngine';
 import { SPACModelSandbox } from './components/SPACModelSandbox';
 import { OpenDataRepository } from './components/OpenDataRepository';
@@ -53,7 +53,7 @@ const NAV_ITEMS: NavItem[] = [
     { id: 'raw-feed', label: 'Raw Data Feed', icon: LayoutGrid, group: 'v1' },
     { id: 'federated', label: 'Federated Experiments', icon: FlaskConical, badge: 'NEW', group: 'v175' },
     { id: 'satellite', label: 'Satellite Suite', icon: Satellite, badge: 'NEW', group: 'v175' },
-    { id: 'kriging', label: 'Zo Worksheet Inspector', icon: GitBranch, badge: 'NEW', group: 'v175' },
+    { id: 'kriging', label: 'CSE Worksheet Inspector', icon: GitBranch, badge: 'NEW', group: 'v175' },
     { id: 'field-trial', label: 'Field Trial Engine', icon: TestTube2, badge: 'NEW', group: 'v175' },
     { id: 'spac', label: 'SPAC Model Sandbox', icon: Cpu, badge: 'NEW', group: 'v175' },
     { id: 'open-data', label: 'Open Data Repository', icon: BookOpen, badge: 'NEW', group: 'v175' },
@@ -256,7 +256,7 @@ function App() {
                         {/* V1.75 VIEWS */}
                         {activeView === 'federated' && <FederatedExperimentConsole />}
                         {activeView === 'satellite' && <SatelliteCovariateExplorer />}
-                        {activeView === 'kriging' && <ZoKrigingWorksheetInspector />}
+                        {activeView === 'kriging' && <CSEKrigingWorksheetInspector />}
                         {activeView === 'field-trial' && <FieldTrialDesignEngine />}
                         {activeView === 'spac' && <SPACModelSandbox />}
                         {activeView === 'open-data' && <OpenDataRepository />}

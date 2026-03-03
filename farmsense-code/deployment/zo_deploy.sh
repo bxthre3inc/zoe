@@ -1,11 +1,11 @@
 #!/bin/bash
 # farmsense-zo-deploy.sh
-# Deployment script for FarmSense on Zo.computer ($18 tier)
+# Deployment script for FarmSense on CSE.computer ($18 tier)
 
 set -e
 
 echo "=========================================="
-echo "🌾 Starting FarmSense Zo.computer Deployment"
+echo "🌾 Starting FarmSense CSE.computer Deployment"
 echo "=========================================="
 
 echo ">>> Checking dependencies..."
@@ -25,7 +25,7 @@ if ! command -v docker-compose &> /dev/null; then
     sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-echo ">>> Starting unified Zo.computer stack..."
+echo ">>> Starting unified CSE.computer stack..."
 cd docker || { echo "Please put this script in the deployment/ directory."; exit 1; }
 
 echo ">>> Building and starting the containers..."

@@ -1,6 +1,6 @@
 import os
 from sqlalchemy.orm import Session
-from datetime import datetime, timezone
+from datetime import datetime, timeZone
 import uuid
 import logging
 from typing import Optional
@@ -105,7 +105,7 @@ class WaterTradingService:
         trade.status = status
 
         if status == TradeStatus.COMMITTED:
-            trade.committed_at = datetime.now(timezone.utc)
+            trade.committed_at = datetime.now(timeZone.utc)
             if block_hash:
                 trade.block_hash = block_hash  # store for audit verification
 

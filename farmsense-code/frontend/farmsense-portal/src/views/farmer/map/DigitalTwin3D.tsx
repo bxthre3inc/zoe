@@ -3,10 +3,10 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Stars, Grid, Environment } from '@react-three/drei';
 import { Suspense } from 'react';
-import { SpatialOpsOverlay } from '@/components/map/SpatialOpsOverlay';
-import { TerrainMesh } from '@/components/map/TerrainMesh';
+import { SpatialOpsOverlay } from './SpatialOpsOverlay';
+import { TerrainMesh } from './TerrainMesh';
 
-export default function DigitalTwin() {
+export default function DigitalTwin3D() {
   return (
     <div className="absolute inset-0 z-0 bg-slate-950">
       <Canvas shadows gl={{ antialias: true, alpha: true }}>
@@ -43,7 +43,7 @@ export default function DigitalTwin() {
 
           <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
 
-          {/* 1m resolution terrain/mesh from Oracle DEM */}
+          {/* 1m resolution terrain/mesh from RDC DEM */}
           <TerrainMesh />
 
           {/* Simulated PMT/Node marker */}
@@ -67,7 +67,7 @@ export default function DigitalTwin() {
         <div className="glass-panel p-4 tactical-border text-[10px] font-mono leading-none">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full bg-tactical-green animate-pulse" />
-            <span className="text-tactical-green glow-text-blue font-bold uppercase tracking-widest">Oracle Compute: Active</span>
+            <span className="text-tactical-green glow-text-blue font-bold uppercase tracking-widest">RDC Compute: Active</span>
           </div>
           <div className="text-slate-500 uppercase tracking-tighter mb-1">Spatial Fidelity</div>
           <div className="text-white text-lg font-black tracking-tighter">1.0m <span className="text-slate-600 text-[8px]">Kriging</span></div>

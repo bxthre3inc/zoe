@@ -32,7 +32,7 @@ interface AgriMapProps {
     initialViewState?: {
         longitude: number;
         latitude: number;
-        zoom: number;
+        Zoom: number;
     };
     isEnterprise?: boolean;
 }
@@ -41,7 +41,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
     initialViewState = {
         longitude: -105.00, // Matching demo seed data
         latitude: 40.00,
-        zoom: 15,
+        Zoom: 15,
         pitch: 60,
         bearing: -20
     },
@@ -49,11 +49,11 @@ const AgriMap: React.FC<AgriMapProps> = ({
 }) => {
     const [gridData, setGridData] = useState<any>(null);
     const [loading, setLoading] = useState(false);
-    const [zoomLevel, setZoomLevel] = useState(initialViewState.zoom);
-    const [zoneStats, setZoneStats] = useState<any>(null);
+    const [ZoomLevel, setZoomLevel] = useState(initialViewState.Zoom);
+    const [ZoneStats, setZoneStats] = useState<any>(null);
     const [analyzingZone, setAnalyzingZone] = useState(false);
 
-    const showResolutionPop = zoomLevel >= 15.5 && !isEnterprise;
+    const showResolutionPop = ZoomLevel >= 15.5 && !isEnterprise;
 
     useEffect(() => {
         const fetchGrid = async () => {
@@ -120,7 +120,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                 initialViewState={initialViewState}
                 style={{ width: '100%', height: '100%' }}
                 mapStyle={style}
-                onMove={evt => setZoomLevel(evt.viewState.zoom)}
+                onMove={evt => setZoomLevel(evt.viewState.Zoom)}
                 pitchWithGestures={true}
                 dragRotate={true}
                 maxPitch={85}
@@ -131,7 +131,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                     type="raster-dem"
                     url="mapbox://mapbox.mapbox-terrain-dem-v1"
                     tileSize={512}
-                    maxzoom={14}
+                    maxZoom={14}
                 />
                 
                 {/* 3D Buildings Layer (mocked for SLV region) */}
@@ -141,7 +141,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                     source-layer="building"
                     filter={['==', 'extrude', 'true']}
                     type="fill-extrusion"
-                    minzoom={15}
+                    minZoom={15}
                     paint={{
                         'fill-extrusion-color': '#aaa',
                         'fill-extrusion-height': ['get', 'height'],
@@ -197,7 +197,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                         1M HIGH-RESOLUTION AERIAL AUDIT
                     </h2>
                     <p className="text-slate-300 font-medium mb-6 max-w-lg leading-relaxed drop-shadow-sm">
-                        Zo has detected a multispectral variance in this sector via the Aerial Fleet.
+                        CSE has detected a multispectral variance in this sector via the Aerial Fleet.
                         Upgrade to Enterprise to unlock <strong className="text-white">0.7cm/px M3M orthomosaics</strong> and verify the ground truth.
                     </p>
                     <button className="px-8 py-3 bg-emerald-600 hover:bg-emerald-500 font-bold tracking-widest uppercase rounded shadow-lg shadow-emerald-900/50 text-white transition-all active:scale-95 border border-emerald-400/50">
@@ -215,7 +215,7 @@ const AgriMap: React.FC<AgriMapProps> = ({
                 <p className="text-sm text-gray-600 mb-4 pb-4 border-b border-gray-100">Region: North Field (Demo)</p>
 
                 {loading && <p className="text-xs text-blue-500 animate-pulse font-medium">Synchronizing 20m virtual sensor grid...</p>}
-                {!loading && gridData && !zoneStats && (
+                {!loading && gridData && !ZoneStats && (
                     <div className="space-y-4">
                         <p className="text-sm font-medium text-gray-700 flex items-center justify-between">
                             <span>Active Sensors:</span>
@@ -248,17 +248,17 @@ const AgriMap: React.FC<AgriMapProps> = ({
                             </div>
 
                             <div className="mt-6 p-3 bg-blue-50/50 rounded-lg shrink-0 w-full border border-blue-100">
-                                <p className="text-xs text-blue-700 font-medium">Draw a custom polygon on the right to analyze specific zone conditions.</p>
+                                <p className="text-xs text-blue-700 font-medium">Draw a custom polygon on the right to analyze specific Zone conditions.</p>
                             </div>
                         </div>
                     </div>
                 )}
 
                 {analyzingZone && (
-                    <p className="text-xs text-blue-500 animate-pulse font-medium mt-4">Running spatial query on zone endpoints...</p>
+                    <p className="text-xs text-blue-500 animate-pulse font-medium mt-4">Running spatial query on Zone endpoints...</p>
                 )}
 
-                {zoneStats && !analyzingZone && (
+                {ZoneStats && !analyzingZone && (
                     <div className="mt-2 space-y-4 animate-in fade-in duration-300">
                         <div className="flex items-center gap-2 mb-1">
                             <Layers className="w-4 h-4 text-emerald-600" />
@@ -268,11 +268,11 @@ const AgriMap: React.FC<AgriMapProps> = ({
                         <div className="grid grid-cols-2 gap-3">
                             <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
                                 <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Area</p>
-                                <p className="font-bold text-gray-800">{(zoneStats.zone_area_sqm / 10000).toFixed(2)} ha</p>
+                                <p className="font-bold text-gray-800">{(ZoneStats.Zone_area_sqm / 10000).toFixed(2)} ha</p>
                             </div>
                             <div className="bg-gray-50 p-3 rounded-lg border border-gray-100">
                                 <p className="text-[10px] uppercase font-bold text-gray-400 mb-1">Sensors Included</p>
-                                <p className="font-bold text-gray-800">{zoneStats.intersecting_points_count}</p>
+                                <p className="font-bold text-gray-800">{ZoneStats.intersecting_points_count}</p>
                             </div>
                         </div>
 
@@ -280,18 +280,18 @@ const AgriMap: React.FC<AgriMapProps> = ({
                             <Droplets className="w-6 h-6 text-blue-500 mb-2" />
                             <p className="text-[10px] uppercase font-bold text-blue-400 mb-1 tracking-widest">Est. Water Deficit</p>
                             <p className="text-2xl font-black text-blue-700 tabular-nums leading-none">
-                                {zoneStats.estimated_water_deficit_mm.toFixed(1)} <span className="text-sm">mm</span>
+                                {ZoneStats.estimated_water_deficit_mm.toFixed(1)} <span className="text-sm">mm</span>
                             </p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-3 mt-2">
                             <div>
                                 <p className="text-[10px] uppercase font-bold text-gray-400 mb-0.5">Avg Moisture</p>
-                                <p className="font-medium text-gray-700">{(zoneStats.avg_moisture * 100).toFixed(1)}%</p>
+                                <p className="font-medium text-gray-700">{(ZoneStats.avg_moisture * 100).toFixed(1)}%</p>
                             </div>
                             <div>
                                 <p className="text-[10px] uppercase font-bold text-gray-400 mb-0.5">Avg Temp</p>
-                                <p className="font-medium text-gray-700">{zoneStats.avg_temperature.toFixed(1)}°C</p>
+                                <p className="font-medium text-gray-700">{ZoneStats.avg_temperature.toFixed(1)}°C</p>
                             </div>
                         </div>
                     </div>

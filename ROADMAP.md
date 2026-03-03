@@ -109,32 +109,34 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 
 ---
 
-## Phase 2: Regulatory Capture (Q3-Q4 2026)
+## Phase 2: Regulatory Capture & Spatial Scarcity (Q3-Q4 2026)
 
-### DWR Integration Objectives
+### Infrastructure & Compliance
 
-- [ ] State Engineer Portal UI
-- [ ] Automated compliance submittal API
-- [ ] "Presumed Compliant" well status workflow
-- [ ] Basin-wide depletion visualization
+- [ ] Deploy 20x 40ft Cedar Pole DHU nodes across Subdistrict 1.
+- [ ] Implement PBFT AllianceChain validator for Water Court evidence.
+- [ ] Set up localized Faraday shielding for the RSS core compute.
 
-### Cryptographic Audit Trail
+### SaaS & Monetization (Subsidized Hardware)
 
-- [ ] Secure Element (SE) chip integration in VFA
-- [ ] Hardware-level packet signing
-- [ ] Immutable ledger database schema
-- [ ] Chain-of-custody verification API
-
-### Resolution Pop Implementation
-
-- [ ] 50m Free Tier (government baseline)
-- [ ] 20m Basic Tier ($49/mo)
-- [ ] 10m Pro Tier ($199/mo)
-- [ ] 1m Enterprise Tier (custom)
+- [ ] Fully implement Tier 0-3 hierarchical spatial grids (50m, 20m, 10m, 1m).
+- [ ] Deploy ZVRI automated zone routing for Enterprise users.
+- [ ] Automate infrastructure loan subsidy tracking for SD1 farmers.
 
 ---
 
-## Phase 3: State Standard (2027)
+## Phase 3: Strategic Alignment & Dual-Use Expansion (2027)
+
+### DoD / JADC2 Integration (ESTCP)
+
+- [ ] Align FHSS encryption for LPI/LPD military requirements.
+- [ ] Pilot HALO-dropped "Kinetic Penetrator" sensor shells.
+- [ ] Deploy Federated Data Fabric adapters for JADC2 compliance.
+
+### Global Philanthropy (Gates Foundation)
+
+- [ ] Democratize LRZ architecture for smallholder farmer advisory ($50.80 target).
+- [ ] Pilot low-bandwidth satellite backhauls for trans-boundary water conflict areas.
 
 ### Colorado River Compact Compliance
 

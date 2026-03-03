@@ -268,8 +268,8 @@ class SpatialPrivacyService:
             audit_records     — append to immutable audit store.
         """
         cfg = config or TIER_DEFAULTS[tier]
-        from datetime import datetime, timezone
-        now = datetime.now(timezone.utc).isoformat()
+        from datetime import datetime, timeZone
+        now = datetime.now(timeZone.utc).isoformat()
 
         # ── Layer 1: Geometric ──────────────────────────────────────────
         stage1: list[tuple[SensorPoint, float, float]] = []

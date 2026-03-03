@@ -160,7 +160,7 @@ function App() {
                                 <div className="h-96 w-full bg-black/40 rounded-3xl p-8 border border-stone-800 shadow-2xl">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <BarChart data={impactData} layout="vertical">
-                                            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#292524" />
+                                            <CartesianGrid strokeDasharray="3 3" horizonntal={false} stroke="#292524" />
                                             <XAxis type="number" stroke="#78716c" />
                                             <YAxis dataKey="name" type="category" width={120} stroke="#a8a29e" tick={{ fontSize: 14, fontWeight: 600 }} />
                                             <Tooltip cursor={{ fill: '#1c1917' }} contentStyle={{ backgroundColor: '#0c0a09', borderColor: '#292524', borderRadius: '12px', color: '#fff' }} />

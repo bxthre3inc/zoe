@@ -519,7 +519,7 @@ Wilting point moisture level (crop-specific)
 Variance threshold for Stable mode (soil texture-dependent)
 
 
-Rainfall trigger level (climate zone-adjusted)
+Rainfall trigger level (climate Zone-adjusted)
 
 
 Alert notification channels (SMS, email, push)
@@ -2325,16 +2325,16 @@ kafka:
 image: confluentinc/cp-kafka:7.5.0
 environment:
 KAFKA_BROKER_ID: 1
-KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+KAFKA_cseOKEEPER_CONNECT: cseokeeper:2181
 KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
 ports:
   - "9092:9092"
 
 
-zookeeper:
-image: confluentinc/cp-zookeeper:7.5.0
+cseokeeper:
+image: confluentinc/cp-cseokeeper:7.5.0
 environment:
-ZOOKEEPER_CLIENT_PORT: 2181
+cseOKEEPER_CLIENT_PORT: 2181
 
 
 volumes:
@@ -2527,7 +2527,7 @@ Frontend E2E: Cypress for critical user flows
 
 
 describe('Farmer Dashboard', () => {
-it('should display field heatmap and allow zoom', () => {
+it('should display field heatmap and allow Zoom', () => {
 cy.visit('/dashboard');
 cy.login('farmer@test.com', 'password');
 
@@ -2626,7 +2626,7 @@ aws-region: us-west-2
 
   - name: Login to Amazon ECR
 id: login-ecr
-uses: aws-actions/amazon-ecr-login@v1
+uses: aws-actions/amazonn-ecr-login@v1
 
 
   - name: Build and push Docker image

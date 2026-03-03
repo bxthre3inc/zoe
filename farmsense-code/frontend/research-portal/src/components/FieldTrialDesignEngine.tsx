@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { TestTube2, Map, Zap, BarChart2, Image, CheckCircle2, AlertTriangle, Clock } from 'lucide-react';
 
 type TrialStatus = 'design' | 'running' | 'complete';
-type Tab = 'zones' | 'power' | 'live' | 'stats' | 'viz';
+type Tab = 'Zones' | 'power' | 'live' | 'stats' | 'viz';
 const TREATMENTS = ['Irrigation Protocol A (MAD-50%)', 'Irrigation Protocol B (MAD-65%)', 'Fertilizer Variant X', 'Cover Crop: Rye', 'Control (Standard)'];
 
 function mockTrialData(days: number) {
@@ -13,11 +13,11 @@ function mockTrialData(days: number) {
     }));
 }
 
-function BoxPlot({ item, max }: { item: { zone: string; q1: number; median: number; q3: number; min: number; max: number; color: string }; max: number }) {
+function BoxPlot({ item, max }: { item: { Zone: string; q1: number; median: number; q3: number; min: number; max: number; color: string }; max: number }) {
     const scale = (v: number) => `${((v - 0.5) / (max - 0.5)) * 100}%`;
     return (
         <div className="flex items-center gap-3">
-            <span className="text-xs text-slate-400 w-20 text-right">{item.zone}</span>
+            <span className="text-xs text-slate-400 w-20 text-right">{item.Zone}</span>
             <div className="flex-1 h-8 relative">
                 <div className="absolute inset-y-0 flex items-center" style={{ left: scale(item.min), right: `calc(100% - ${scale(item.max)})` }}>
                     <div className="w-full h-0.5 opacity-40" style={{ backgroundColor: item.color }} />
@@ -31,12 +31,12 @@ function BoxPlot({ item, max }: { item: { zone: string; q1: number; median: numb
 }
 
 const BOX_DATA = [
-    { zone: 'Control', q1: 0.61, median: 0.63, q3: 0.66, min: 0.58, max: 0.68, color: '#6b7280' },
-    { zone: 'Treatment', q1: 0.66, median: 0.70, q3: 0.73, min: 0.63, max: 0.77, color: '#10b981' },
+    { Zone: 'Control', q1: 0.61, median: 0.63, q3: 0.66, min: 0.58, max: 0.68, color: '#6b7280' },
+    { Zone: 'Treatment', q1: 0.66, median: 0.70, q3: 0.73, min: 0.63, max: 0.77, color: '#10b981' },
 ];
 
 export const FieldTrialDesignEngine: React.FC = () => {
-    const [tab, setTab] = useState<Tab>('zones');
+    const [tab, setTab] = useState<Tab>('Zones');
     const [trialStatus, setTrialStatus] = useState<TrialStatus>('design');
     const [treatmentA, setTreatmentA] = useState(TREATMENTS[0]);
     const [effectSize, setEffectSize] = useState(0.3);
@@ -61,7 +61,7 @@ export const FieldTrialDesignEngine: React.FC = () => {
             </div>
 
             <div className="flex border-b border-purple-900/20 bg-black/20 px-6 overflow-x-auto">
-                {([['zones', 'Zone Mapper', Map], ['power', 'Power Analysis', Zap], ['live', 'Live Dashboard', Clock], ['stats', 'Statistics', BarChart2], ['viz', 'Visualization', Image]] as [Tab, string, any][]).map(([id, label, Icon]) => (
+                {([['Zones', 'Zone Mapper', Map], ['power', 'Power Analysis', Zap], ['live', 'Live Dashboard', Clock], ['stats', 'Statistics', BarChart2], ['viz', 'Visualization', Image]] as [Tab, string, any][]).map(([id, label, Icon]) => (
                     <button key={id} onClick={() => setTab(id)}
                         className={`py-3 px-3 text-xs font-bold uppercase tracking-widest transition-colors border-b-2 flex items-center gap-1.5 shrink-0 ${tab === id ? 'border-amber-500 text-amber-300' : 'border-transparent text-slate-500 hover:text-slate-300'}`}>
                         <Icon className="w-3.5 h-3.5" />{label}
@@ -70,7 +70,7 @@ export const FieldTrialDesignEngine: React.FC = () => {
             </div>
 
             <div className="flex-1 overflow-y-auto p-6">
-                {tab === 'zones' && (
+                {tab === 'Zones' && (
                     <div className="space-y-5">
                         <div>
                             <label className="text-[10px] font-bold text-amber-400 uppercase tracking-widest block mb-2">Treatment Protocol</label>
@@ -87,7 +87,7 @@ export const FieldTrialDesignEngine: React.FC = () => {
                             })}
                         </div>
                         <div className="flex items-center gap-2 p-3 bg-purple-900/20 border border-purple-900/30 rounded-lg text-xs text-purple-300">
-                            <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" /> Zone configuration valid — ≥3 nodes per zone.
+                            <CheckCircle2 className="w-4 h-4 text-purple-400 shrink-0" /> Zone configuration valid — ≥3 nodes per Zone.
                         </div>
                         <button onClick={() => { setTrialStatus('running'); setTab('live'); }}
                             className="flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-colors">
@@ -183,7 +183,7 @@ export const FieldTrialDesignEngine: React.FC = () => {
                             <>
                                 <p className="text-xs font-bold text-amber-400 uppercase tracking-widest">NDVI Distribution by Zone</p>
                                 <div className="space-y-4">
-                                    {BOX_DATA.map(item => <BoxPlot key={item.zone} item={item} max={0.85} />)}
+                                    {BOX_DATA.map(item => <BoxPlot key={item.Zone} item={item} max={0.85} />)}
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 mt-4">
                                     {[{ label: 'Treatment', opacity: 8, color: 'rgba(16,185,129,' }, { label: 'Control', opacity: 4, color: 'rgba(107,114,128,' }].map(z => (

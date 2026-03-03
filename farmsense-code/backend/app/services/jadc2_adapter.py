@@ -1,6 +1,6 @@
 import logging
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timeZone
 from typing import Dict, Any, List
 import xml.etree.ElementTree as ET
 
@@ -19,8 +19,8 @@ class JADC2Adapter:
         CoT Type: a-f-G-E-O (Atom-Friendly-Ground-Equipment-Other/Environmental)
         """
         try:
-            now = datetime.now(timezone.utc)
-            stale = datetime.fromtimestamp(now.timestamp() + 3600, timezone.utc) # 1 hour validity
+            now = datetime.now(timeZone.utc)
+            stale = datetime.fromtimestamp(now.timestamp() + 3600, timeZone.utc) # 1 hour validity
 
             event_id = f"FS-{grid_point.get('field_id', 'unknown')}-{grid_point.get('grid_id', 'unknown')}"
             

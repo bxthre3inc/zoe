@@ -9,14 +9,14 @@
 
 | View / Component | Description |
 |---|---|
-| **Operations Command** | Hero dashboard with 4 KPI cards (savings, temperature, flow, PMT kinematics) |
-| **AgriMap Explorer** | Interactive map with Sentinel-2 overlay and 1m grid visualization |
-| **SILAS Mode (Simple)** | Large-button simplified UX for non-technical operators |
+| **Operations Command** | Hero dashboard with 5 KPI cards (**Equity Protection Status**, water savings, temperature, flow, PMT kinematics) |
+| **AgriMap Explorer** | Interactive map with Sentinel-2 overlay and 1m Kriging grid visualization |
+| **SILAS Mode (Simple)** | Large-button simplified UX featuring the **MAD Battery** metaphor |
 | **AR Field Vision** | Augmented reality field overlay component |
 | **Live Telemetry** | Real-time aggregated sensor stream panel |
 | **Forecast Widget** | Predictive AI weather and irrigation forecast |
 | **Weather HUD** | Floating atmospheric conditions overlay |
-| **Hardware Diagnostics** | Node health panel (battery, RSSI, last-seen) |
+| **Hardware Diagnostics** | Node health ($1,090 PMT, $603 PFA, $319 VFA, $50 LRZ) |
 | **Privacy & Data Settings** | Data-sharing toggles (auditors, investors, research pool) |
 | **Voice Decision Engine** | Mic-activated field decision assistant with rule provenance |
 
@@ -30,11 +30,11 @@ A full Variable Rate Irrigation (VRI) control interface driven by the 1m Kriging
 
 **Key elements:**
 
-- **Zone Actuator Grid** — The field is divided into zones derived from the 1m Kriging output. Each zone card displays: current Soil Matric Potential (SMP), Volumetric Water Content (SWC), recommended dwell time (minutes), and actuate/hold status toggle.
+- **Zone Actuator Grid** — The field is divided into Zones derived from the 1m Kriging output. Each Zone card displays: current Soil Matric Potential (SMP), Volumetric Water Content (SWC), recommended dwell time (minutes), and actuate/hold status toggle.
 - **Decision Countdown Timer** — Live countdown to the next scheduled adaptive recalculation cycle. Mode indicator (STABLE / ACTIVE / CRITICAL / OUT_OF_TURN) with color-coded urgency.
-- **Rule Provenance Trace** — "Show Me The Math" drawer for any zone: expands to show full deterministic decision chain — every sensor input, threshold comparison, and the specific rule string that produced the actuate/hold decision. All labelled with CSU SLV RC Thresholds v2026.1 source reference.
-- **Manual Override Console** — Override individual zone decisions with two-tap confirmation and a mandatory reason log (for audit trail). Override events emit a signed entry to the DHU cryptographic ledger.
-- **Irrigation History Timeline** — 30-day rolling chart of zone-level actuation events overlaid with precipitation and ET data. Highlights events that deviated from the model recommendation.
+- **Rule Provenance Trace** — "Show Me The Math" drawer for any Zone: expands to show full deterministic decision chain — every sensor input, threshold comparison, and the specific rule string that produced the actuate/hold decision. All labelled with CSU SLV RC Thresholds v2026.1 source reference.
+- **Manual Override Console** — Override individual Zone decisions with two-tap confirmation and a mandatory reason log (for audit trail). Override events emit a signed entry to the DHU cryptographic ledger.
+- **Irrigation History Timeline** — 30-day rolling chart of Zone-level actuation events overlaid with precipitation and ET data. Highlights events that deviated from the model recommendation.
 
 ---
 
@@ -60,7 +60,7 @@ Visual crop stress monitoring fusing satellite multispectral data with drone 0.7
 
 - **Dual-Source NDVI/NDWI Map** — Choropleth 1m grid layer combining Sentinel-2 spectral indices and drone multispectral mosaic data (Resolution Pop). Toggle between: Sentinel-only (20m), Kriging-interpolated (1m), and drone-fused (0.7cm where available).
 - **Time-Lapse Comparison Slider** — Side-by-side or blend-slider comparison of the current NDVI map vs. 14 days ago vs. same week last season. Highlights areas of significant decline (ΔNDVI > 0.1).
-- **Automated Stress Detection** — Background analysis flags 1m² zones with canopy decline. Each flagged zone is presented as a clickable alert: shows the zone coordinates, NDVI drop magnitude, linked VFA/LRZ sensor node readings for that zone, and a root-cause hypothesis (moisture stress, salinity, pest pressure, nutrient deficiency).
+- **Automated Stress Detection** — Background analysis flags 1m² Zones with canopy decline. Each flagged Zone is presented as a clickable alert: shows the Zone coordinates, NDVI drop magnitude, linked VFA/LRZ sensor node readings for that Zone, and a root-cause hypothesis (moisture stress, salinity, pest pressure, nutrient deficiency).
 - **Canopy Cover Trend Chart** — Field-level weekly NDVI trend over the growing season, overlaid with irrigation events and rainfall. Useful for demonstrating yield preservation impact to auditors or grant officers.
 
 ---
@@ -85,10 +85,10 @@ Full drone mission planning, dispatching, and post-flight analysis center.
 
 **Key elements:**
 
-- **Mission Planner** — Draw flight corridors directly on the field map. Define: target zones (drawn polygons), spectral payload (RGB, NIR, NDRE, thermal), flight altitude, and overlap percentage. System auto-calculates estimated flight time, battery requirements, and generated mosaic resolution.
+- **Mission Planner** — Draw flight corridors directly on the field map. Define: target Zones (drawn polygons), spectral payload (RGB, NIR, NDRE, thermal), flight altitude, and overlap percentage. System auto-calculates estimated flight time, battery requirements, and generated mosaic resolution.
 - **Live Drone Telemetry Feed** — During active missions: altitude, airspeed, battery %, GPS position tracked on map, ETA to completion, and real-time streaming thumbnail of nadir camera.
 - **Mission History Archive** — Completed missions listed with date, coverage area, and primary finding summary. View the full generated mosaic and Resolution Pop 1m grid output for each mission.
-- **Automated Dispatch Triggers** — Configurable rules that recommend drone dispatch: e.g., "NDVI drops >0.15 in any zone → suggest coverage scan." User confirms or dismisses the recommendation.
+- **Automated Dispatch Triggers** — Configurable rules that recommend drone dispatch: e.g., "NDVI drops >0.15 in any Zone → suggest coverage scan." User confirms or dismisses the recommendation.
 - **Pre/Post-Treatment Comparison** — For any irrigation or treatment event, overlay the NDVI mosaic from just before and just after. Quantify the improvement in canopy health directly attributable to the action.
 
 ---
@@ -115,7 +115,7 @@ Dedicated view for fields equipped with Corner-Swing Auditor hardware variants.
 
 - **Live Arc Geometry Visualizer** — The field boundary overlaid with the pivot circle and corner-swing arm geometry. Real-time position dot for both the Primary Span Tracker and the Swing-Arm Tracker nodes. Deviation from the programmed arc path shown in real-time (meters off-path).
 - **Arc Completion Progress** — Per-pass progress ring showing current arc completion percentage and estimated completion time. Historical pass log with start time, end time, and completion accuracy %.
-- **Water Application Heatmap** — 1m-resolution heatmap of water application rate across the corner swing zone for the most recent pass, derived from flow meter data and arc geometry. Identifies over- or under-application zones at the edge of the swing radius.
+- **Water Application Heatmap** — 1m-resolution heatmap of water application rate across the corner swing Zone for the most recent pass, derived from flow meter data and arc geometry. Identifies over- or under-application Zones at the edge of the swing radius.
 - **Mechanical Health Alerts** — Monitors for irregular swing-arm deceleration patterns that may indicate drive motor issues. Flags anomalies for the pump operations suite maintenance calendar.
 
 ---
@@ -153,4 +153,4 @@ A full visual and UX redesign of the simplified mode for non-technical farm oper
 
 - **Dual-Mode Architecture:** SILAS Mode V1.75 and Advanced Mode share the same backend data; the presentation layer is entirely separate. Switching modes is a single toggle in the sidebar.
 - **Offline Resilience:** All views degrade gracefully to local edge cache data when the DHU uplink is unavailable. A prominent banner indicates "Offline Mode — Edge Cache Active."
-- **Audit Trail:** Every actuator command (pump start/stop, zone override) writes a signed, immutable entry to the DHU ledger before the UI confirms the action.
+- **Audit Trail:** Every actuator command (pump start/stop, Zone override) writes a signed, immutable entry to the DHU ledger before the UI confirms the action.

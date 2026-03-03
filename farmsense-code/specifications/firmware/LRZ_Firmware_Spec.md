@@ -1,33 +1,56 @@
-# Lateral Root-Zone Scout (LRZ) Firmware Specification
+# Lateral Root-Zone Scout (LRZ) Hardware & Firmware Hyper-Specification
 
-## Overview
+## 1. Physical Architecture & Material Science
 
-The Lateral Root-Zone Scout (LRZ) is the ultimate **Level 1 Spatial Mapper**. It is the heavily mass-produced, expendable "dumb node" deployed at a 1:15-acre density across the crop canopy. Its sole firmware objective is executing micro-power telemetry chirps.
+The LRZ is a 24-inch kinetic penetrator designed for autonomous horizontal soil variability mapping.
 
-## 1. Hardware Initialization Routine
+### 1.1 Mechanical Design
 
-* **Processor:** nRF52840 (Ultra-low power ARM Cortex-M4F).
-* **Sensors:** Single-depth lateral soil tension and canopy ambient temperature sensors.
-* **Power:** Internal prolonged lithium core (Designed for 5-year multi-season survival without solar tracking).
-* **Enclosure Rating:** IP68/IP69K (Hermetically sealed polycarbonate).
+- **Housing:** IP68/IP69K Polycarbonate/PBT blend (UV-shielded with PVDF).
+- **Geometry:** 15-degree parabolic tapered tip for zero-air-gap soil coupling.
+- **Sealant:** Viton (FKM) dual-redundant O-rings for high-alkali soil resilience.
+- **Weight:** 750g (weighted tip for high-momentum insertion).
 
-## 2. The "Dumb Chirp" Execution
+### 1.2 Bill of Materials (Granular)
 
-The LRZ firmware represents absolute deterministic simplicity. It executes no spatial math, no decision masking, and no mesh coordination.
+| Part Class | Model/Manufacturer | Qty | Role |
+| :--- | :--- | :--- | :--- |
+| **Main MCU** | Nordic nRF52840 (QIAA-F0) | 1 | SoC / Bluetooth 5 / FHSS |
+| **Power Cell** | Saft LS14500 (Li-SOCl2) | 1 | 5-year Primary Energy Source |
+| **HPC** | Saft 1520 Hybrid Pulse Cap | 1 | Buffers 150mA RF Bursts |
+| **Antenna** | Custom 1/2 Wave Dipole | 1 | 3-foot internal wire element |
+| **Sensing** | 50mm Dielectric Ring | 1 | Non-contact Soil Tension |
 
-* **Micro-Payload:** Reads the singular soil tension value and ambient canopy data.
-* **Encryption:** Applies AES-128 encryption.
-* **FHSS Burst:** Pulses the payload via the integrated 3-foot antenna utilizing 2.4GHz mesh networking. The RF path is a direct vertical connection to the overhead PMT Field Hub umbrella.
+## 2. Firmware Implementation (v2.4.1)
 
-## 3. Defense Protocol Adherence
+### 2.1 Boot & Initialization
 
-Because the LRZs represent the highest density of RF emitters in the FarmSense physical architecture, their firmware is strictly regulated.
+1. **Cold Start:** 750ms wake-up from deep sleep via RTC interrupt.
+2. **BIST (Built-In Self Test):** Verifies capacitor charge and antenna VSWR.
+3. **Sensor Read:** 10-point mean of raw ADC soil tension + canopy ambient temp.
 
-* **LPI/LPD:** The firmware dictates exact pseudo-random frequency hopping sequences to ensure the massive array of LRZs across a District do not create a localized RF "bloom" detectable by adversarial ELINT (Electronic Intelligence), fulfilling DoD JADC2 and ESTCP dual-use requirements.
+### 2.2 The "Dumb Chirp" Protocol (LPI/LPD)
 
-## 4. The "Ripple" Receiver
+- **Modulation:** GFSK (Gaussian Frequency Shift Keying).
+- **Hopping:** 128-bit pseudo-random seed synced to PMT epoch.
+- **Packet Structure:**
+  - `[4B Preamble] | [8B NodeID] | [2B Tension] | [2B Temp] | [16B AES-MAC] | [4B CRC]`
+- **Encryption:** Hardware-accelerated AES-128 in CCM mode.
 
-Like the VFA, the LRZ idles at a 4-hour chirp baseline. The firmware contains a passive listening hook: if the PMT identifies an anomaly near the LRZ's geographic coordinate, the PMT commands the LRZ to "Ripple" (increase chirp frequency to 15m) to delineate the physical boundaries of the propagating statistical event.
+### 2.3 Power Managed Duty Cycle
+
+- **Sleep:** 0.8µA (RTC active).
+- **Ingest:** 4.5mA (50ms window).
+- **Chirp:** 14mA @ +8dBm (12ms window).
+- **Life Expectancy:** 36,400 cycles (approx 5.2 years at 4-hour intervals).
+
+### 2.4 "Ripple" Mode Logic
+
+The LRZ passively monitors for a "Sub-Beacon" from the PMT. If detected:
+
+- **Action:** Transition from 4-hour to 15-minute sampling.
+- **Duration:** 12 hours or until "Stable" beacon received.
+- **Objective:** Map propagating anomaly epicenters in real-time.
 
 ---
-*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*
+*Infrastructure Classification: Permanent Ground-Truth Asset*

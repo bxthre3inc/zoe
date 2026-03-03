@@ -40,7 +40,7 @@ class SatellitePixel:
     lst: float  # Land Surface Temperature
     elevation: float
     slope: float
-    management_zone: int = -1
+    management_Zone: int = -1
 
 
 class RegressionKriging:
@@ -430,8 +430,8 @@ class SatelliteProcessor:
         xs = satellite_data['x_coords']
         ys = satellite_data['y_coords']
         
-        # Apply k-means clustering to NDVI and NDWI to identify management zones
-        logger.info("Applying k-means clustering for management zones...")
+        # Apply k-means clustering to NDVI and NDWI to identify management Zones
+        logger.info("Applying k-means clustering for management Zones...")
         valid_mask = ~np.isnan(ndvi) & ~np.isnan(ndwi)
         features = np.column_stack([ndvi[valid_mask], ndwi[valid_mask]])
         
@@ -457,7 +457,7 @@ class SatelliteProcessor:
                         lst=satellite_data.get('lst', np.zeros_like(ndvi))[i, j] if 'lst' in satellite_data else 0.0,
                         elevation=satellite_data.get('elevation', np.zeros_like(ndvi))[i, j] if 'elevation' in satellite_data else 0.0,
                         slope=satellite_data.get('slope', np.zeros_like(ndvi))[i, j] if 'slope' in satellite_data else 0.0,
-                        management_zone=cluster_map[i, j]
+                        management_Zone=cluster_map[i, j]
                     ))
         
         return pixels

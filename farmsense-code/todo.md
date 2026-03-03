@@ -11,7 +11,7 @@
 ## Software-Driven Expansions
 
 - [x] [x] Implement Predictive Maintenance via Current Harmonic Analysis on the Pressure & Flow Anchor (PFA).
-- [x] [x] Integrate k-means Machine-Learning Kriging algorithms into the Zo Core Compute Engine.
+- [x] [x] Integrate k-means Machine-Learning Kriging algorithms into the CSE Core Compute Engine.
 - [x] [x] Implement PBFT Alliance-Chain Blockchain inside the DHU "Black Box" SSD for water rights trading. (`edge-compute/src/alliance_chain.go` — Go PBFT ledger complete)
 - [x] [x] **Bridge Alliance-Chain ↔ Backend**: `WaterTradingService.initiate_trade()` now calls the Go DHU HTTP server via `httpx`. Go `AllianceChainServer` added with `/trade`, `/ledger`, `/health` endpoints and backend callback on finalization. 5/5 unit tests passing.
 - [x] [x] Build DoD Federated Data Fabric Adapters. (`app/services/jadc2_adapter.py` — CoT v2.0 translation + LPI/LPD metadata complete)

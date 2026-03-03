@@ -32,17 +32,17 @@ class PlatformEnvironmentWrapper:
         """
         config_matrix = {
             "satellite": {
-                FarmSenseMode.DEVELOPMENT: {"provider": "MockSTAC", "reliability": 0.5},
+                FarmSenseMode.DEVELOPMENT: {"provider": "Sentinel-Public", "reliability": 0.3},
                 FarmSenseMode.PILOT: {"provider": "Sentinel-Public", "reliability": 0.8},
                 FarmSenseMode.PRODUCTION: {"provider": "Planet-HighRes", "reliability": 0.98}
             },
             "sensors": {
-                FarmSenseMode.DEVELOPMENT: {"stream": "Simulator", "audit": False},
+                FarmSenseMode.DEVELOPMENT: {"stream": "MeshRelay-Geofenced", "audit": False},
                 FarmSenseMode.PILOT: {"stream": "MeshRelay-Geofenced", "audit": True},
                 FarmSenseMode.PRODUCTION: {"stream": "FullMesh-Institutional", "audit": True}
             },
             "decision_engine": {
-                FarmSenseMode.DEVELOPMENT: {"explainability": "Detailed", "auto_execute": False},
+                FarmSenseMode.DEVELOPMENT: {"explainability": "Verified", "auto_execute": False},
                 FarmSenseMode.PILOT: {"explainability": "Verified", "auto_execute": False},
                 FarmSenseMode.PRODUCTION: {"explainability": "Signed", "auto_execute": True}
             }

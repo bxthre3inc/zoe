@@ -54,7 +54,7 @@ function moistureColor(v: number): string {
     return '#ef4444';
 }
 
-export const ZoKrigingWorksheetInspector: React.FC = () => {
+export const CSEKrigingWorksheetInspector: React.FC = () => {
     const [tab, setTab] = useState<Tab>('inputs');
     const [fieldId] = useState('FIELD-SLV-001');
     const [timestamp] = useState('2025-09-15T14:30:00Z');
@@ -66,7 +66,7 @@ export const ZoKrigingWorksheetInspector: React.FC = () => {
             <div className="flex items-center gap-3 px-6 py-4 border-b border-purple-900/30 bg-black/30">
                 <div className="bg-emerald-600/20 p-2 rounded-lg"><GitBranch className="w-5 h-5 text-emerald-400" /></div>
                 <div className="flex-1">
-                    <h2 className="font-bold text-white text-sm tracking-wide">Zo Kriging Worksheet Inspector</h2>
+                    <h2 className="font-bold text-white text-sm tracking-wide">CSE Kriging Worksheet Inspector</h2>
                     <p className="text-[10px] text-emerald-500 font-mono uppercase tracking-widest">Full transparency into every kriging computation</p>
                 </div>
                 <div className="text-right hidden sm:block">
@@ -228,7 +228,7 @@ export const ZoKrigingWorksheetInspector: React.FC = () => {
                             ))}
                         </div>
                         <div className="bg-black/40 border border-purple-900/30 rounded-xl p-4 text-[10px] font-mono text-slate-500 space-y-1">
-                            <p>Model version: <span className="text-purple-400">zo-rk-v2.4.1</span></p>
+                            <p>Model version: <span className="text-purple-400">cse-rk-v2.4.1</span></p>
                             <p>Input timestamp: <span className="text-slate-300">{timestamp}</span></p>
                             <p>Hash chain proof: <span className="text-emerald-400">sha256:8f3a…d901</span></p>
                         </div>
@@ -239,4 +239,4 @@ export const ZoKrigingWorksheetInspector: React.FC = () => {
     );
 };
 
-export default ZoKrigingWorksheetInspector;
+export default CSEKrigingWorksheetInspector;

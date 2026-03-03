@@ -1,6 +1,6 @@
 # 🌾 FarmSense: Precision Agriculture & Regulatory Integrity Platform
 
-[![Platform: Unified](https://img.shields.io/badge/Platform-Unified-blueviolet?style=for-the-badge)](https://zo.computer)
+[![Platform: Unified](https://img.shields.io/badge/Platform-Unified-blueviolet?style=for-the-badge)](https://farmsense.io)
 [![Compliance: GLOBALG.A.P. v6](https://img.shields.io/badge/Compliance-GLOBALG.A.P._v6-emerald?style=for-the-badge)](https://globalgap.org)
 [![Build: Success](https://img.shields.io/badge/Build-Success-success?style=for-the-badge)](https://github.com/farmsense/farmsense-portal)
 [![Stack: FastAPI + React](https://img.shields.io/badge/Stack-FastAPI_+_React-6366f1?style=for-the-badge)](https://github.com/farmsense/farmsense-portal)
@@ -130,10 +130,10 @@ python main.py
 
 FarmSense is compatible with the following specialized sensors (specifications found in `/specifications/firmware`):
 
-* **VFA**: Vertical Flow Array (multi-depth soil moisture).
-* **PMT**: Precision Metering Telemetry (pump flow volumes).
-* **PFA**: Pivot Flow Array (distribution uniformity).
-* **LRZ**: Low-Resolution Zone (atmospheric boundary sensors).
+* **VFA**: Vertical Field Anchor (multi-depth soil moisture).
+* **PMT**: Pivot Motion Tracker (pump flow volumes).
+* **PFA**: Pressure & Flow Anchor (distribution uniformity).
+* **LRZ**: Lateral Root-Zone Scout (atmospheric boundary sensors).
 * **CSA**: Corner-Swing Auditor (GPS alignment for non-standard pivot corners).
 
 ---

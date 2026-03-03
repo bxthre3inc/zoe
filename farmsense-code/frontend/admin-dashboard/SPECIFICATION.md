@@ -17,7 +17,7 @@ The Admin Dashboard is the centralized command and control interface for FarmSen
 
 ## 3. Global Edge Computation Monitoring
 
-* **Adaptive Recalculation Overhead:** Real-time metrics on the load of the Zo Core Compute Engine.
+* **Adaptive Recalculation Overhead:** Real-time metrics on the load of the CSE Core Compute Engine.
 * **"Fisherman's Attention" Network Status:** A high-level view showing which percentages of the global network are currently operating in *Dormant*, *Anticipatory*, *Ripple*, or *Collapse* modes, allowing for predictive scaling of cloud resources.
 
 ## 4. Architectural Integration

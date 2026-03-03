@@ -130,7 +130,7 @@ const SupportLetters: React.FC = () => {
 
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200">
+                    <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in Zoom-in duration-200">
                         <div className="p-6 border-b border-gray-100 flex items-center justify-between">
                             <h3 className="text-lg font-bold text-gray-800">Request Support Letter</h3>
                             <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600">

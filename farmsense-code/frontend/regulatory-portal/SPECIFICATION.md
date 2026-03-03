@@ -6,9 +6,9 @@ The Regulatory Portal is the immutable legal ledger of the FarmSense platform. I
 
 ## 1. Immutable Ledger
 
-* **Cryptographic "Black Box" Verification:** Displays the cryptographically signed (128-bit AES) flow data extracted directly from the District Hub's secure cache. This data represents the exact volumetric flow measured by the Pressure & Flow Anchor (PFA) and kinematic movement verified by the PMT.
+* **Cryptographic "Black Box" Verification:** Displays the cryptographically signed (128-bit AES) flow data extracted directly from the District Hub's secure cache. This data represents the exact volumetric flow measured by the Pressure & Flow Anchor (PFA) [NXP i.MX RT1060] and kinematic movement verified by the PMT [ATSAMD51].
 * **Audit Trail:** An unalterable history of every drop pumped, mapped against the specific water right allocated to the field or subdistrict.
-* **Tamper Alerts:** Automatic flagging of any hardware anomalies that suggest tampering (e.g., sudden loss of PFA telemetry, unapproved movement of the PMT, or abnormal vibration signatures).
+* **Tamper Alerts:** Automatic flagging of any hardware anomalies that suggest tampering (e.g., sudden loss of PFA telemetry, unapproved movement of the PMT, or abnormal vibration signatures from the Bosch BNO055 IMU).
 
 ## 2. Compliance Reporting Generation
 

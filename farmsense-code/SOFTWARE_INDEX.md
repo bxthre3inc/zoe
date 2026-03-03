@@ -13,7 +13,7 @@ The FarmSense platform utilizes a unified backend REST API and decentralized dat
 3. **[Admin Dashboard Specification](frontend/admin-dashboard/SPECIFICATION.md):** System-wide administrative controls, tenant management, billing, and global alert configurations.
 4. **[Investor Dashboard Specification](frontend/investor-dashboard/SPECIFICATION.md):** High-level aggregate metrics, Water-ROI (Return on Investment per acre-foot), and regional impact analytics.
 5. **[Grant Portal Specification](frontend/grant-portal/SPECIFICATION.md):** Dedicated data-extraction portal for academic and foundation partners (e.g., LOR Foundation) tracking the efficacy of grant-funded deployments.
-6. **[Research Portal Specification](frontend/research-portal/SPECIFICATION.md):** Deep-dive interface for agronomists and CSU SLV Research Center scientists. Provides access to raw variogram data, detrended residuals, and historical Kriging calibration sets.
+6. **[Research Portal Specification](frontend/research-portal/SPECIFICATION.md):** Deep-dive interface for agronomists and CSU SLV Research Center Zones. Provides access to raw variogram data, detrended residuals, and historical Kriging calibration sets.
 7. **[Docs Portal Specification](frontend/docs-portal/SPECIFICATION.md):** The static-site generator housing all public and internal engineering documentation, API references, and installation guides.
 8. **[Marketing Site Specification](frontend/marketing-site/SPECIFICATION.md):** The public-facing landing page outlining the FarmSense architecture, DoD dual-use case studies, and contact forms.
 
@@ -35,5 +35,5 @@ Unlike traditional static IoT networks, FarmSense pushes intense computational p
 
 The intelligence powering the frontends and edge-hardware relies on these deeply integrated cloud and multi-tier databases.
 
-* **[Core Engine (Zo) Specification](backend/ZO_ENGINE_SPECIFICATION.md):** The overarching logic detailing the execution of Bayesian priors, the 1m Regression Kriging algorithms using Sentinel-2/Landsat data, and the orchestration of the Adaptive Recalculation Engine.
+* **[Core Engine (CSE) Specification](backend/cse_ENGINE_SPECIFICATION.md):** The overarching logic detailing the execution of Bayesian priors, the 1m Regression Kriging algorithms using Sentinel-2/Landsat data, and the orchestration of the Adaptive Recalculation Engine.
 * **[Database Architecture (PostgreSQL + TimescaleDB)](backend/DATABASE_SPECIFICATION.md):** The schema mapping for the Master Legal Ledger, contextual obfuscation (Privacy layer), and continuous temporal aggregations.

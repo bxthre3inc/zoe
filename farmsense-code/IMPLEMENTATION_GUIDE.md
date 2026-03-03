@@ -4,14 +4,14 @@
 
 ### Phase 1: Foundation (Weeks 1-4)
 
-#### Week 1-2: Infrastructure Setup (Zo.computer Pivot)
+#### Week 1-2: Infrastructure Setup (CSE.computer Pivot)
 
-- [ ] Provision custom Zo.computer server ($18 paid tier)
-- [ ] Install Docker & Docker Compose on Zo.computer
-- [ ] Deploy unified `docker-compose.zo-unified.yml` (Postgres, Timescale, Redis, RabbitMQ)
+- [ ] Provision custom CSE.computer server ($18 paid tier)
+- [ ] Install Docker & Docker Compose on CSE.computer
+- [ ] Deploy unified `docker-compose.cse-unified.yml` (Postgres, Timescale, Redis, RabbitMQ)
 - [ ] Configure Nginx reverse proxy for the 7 frontend portals
-- [ ] Set up CI/CD pipeline deployment hooks for Zo.computer
-- [ ] Set up monitoring stack (Prometheus + Grafana) inside Zo
+- [ ] Set up CI/CD pipeline deployment hooks for CSE.computer
+- [ ] Set up monitoring stack (Prometheus + Grafana) inside CSE
 
 **Deliverables:**
 
@@ -197,13 +197,13 @@ psql -h your-rds-host -U farmsense_user -d farmsense
 ### 2. Backend Deployment
 
 ```bash
-# SSH into Zo.computer
-ssh ubuntu@your-zo-ip
+# SSH into CSE.computer
+ssh ubuntu@your-cse-ip
 
 # Run the deployment script
 cd /opt/farmsense/deployment
-chmod +x zo_deploy.sh
-./zo_deploy.sh
+chmod +x cse_deploy.sh
+./cse_deploy.sh
 ```
 
 ### 3. Edge Device Setup
@@ -231,20 +231,20 @@ sudo systemctl status farmsense-edge
 
 ### 4. Frontend Deployment
 
-Frontends are now automatically containerized and routed via Nginx within the Zo.computer unified stack. No manual AWS S3/CloudFront invalidations are required for Phase 1.
+Frontends are now automatically containerized and routed via Nginx within the CSE.computer unified stack. No manual AWS S3/CloudFront invalidations are required for Phase 1.
 
 ```bash
 # If developing locally, rebuild a specific portal:
-docker-compose -f deployment/docker/docker-compose.zo-unified.yml up -d --build farmer-dashboard
+docker-compose -f deployment/docker/docker-compose.cse-unified.yml up -d --build farmer-dashboard
 ```
 
 ### 5. Monitoring Setup
 
-Available out-of-the-box via the unified Zo stack. (Pending `docker-compose.zo-unified.yml` expansion to include prometheus/grafana containers).
+Available out-of-the-box via the unified CSE stack. (Pending `docker-compose.cse-unified.yml` expansion to include prometheus/grafana containers).
 
 ```bash
-# Access Grafana locally hosted on the Zo server
-http://your-zo-ip:3000
+# Access Grafana locally hosted on the CSE server
+http://your-cse-ip:3000
 ```
 
 ---
@@ -317,7 +317,7 @@ k6 run tests/load/api_load_test.js
 #### Database Connection Errors
 
 ```bash
-# Check PostgreSQL status inside Zo
+# Check PostgreSQL status inside CSE
 docker ps | grep postgres-core
 
 # View logs
@@ -351,7 +351,7 @@ docker logs -f cloud-processor
 docker stats
 
 # Scale up Celery workers (Increase concurrency flag in compose file)
-docker-compose -f deployment/docker/docker-compose.zo-unified.yml up -d --scale cloud-processor=4
+docker-compose -f deployment/docker/docker-compose.cse-unified.yml up -d --scale cloud-processor=4
 ```
 
 ---

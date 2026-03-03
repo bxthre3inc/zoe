@@ -42,7 +42,7 @@
 > Wide shot of an expansive American agricultural landscape at sunrise, hundreds of irrigation circles visible stretching to the horizon. Camera slowly rises, revealing the massive scale of irrigated farmland. Epic, cinematic, golden light. 16:9, highest quality.
 
 **Clip 2 - The Solution:**
-> Split the frame in post (shoot single field, mirror/flip): Left side shows a farmer looking at a tablet, right side shows their field with visible moisture variation (use color grading to differentiate wet/dry zones). Flow generates the farmer and field; add split effect in post. 16:9, highest quality.
+> Split the frame in post (shoot single field, mirror/flip): Left side shows a farmer looking at a tablet, right side shows their field with visible moisture variation (use color grading to differentiate wet/dry Zones). Flow generates the farmer and field; add split effect in post. 16:9, highest quality.
 
 **Clip 3 - Growth Trajectory:**
 > Single shot of one green irrigation circle, camera pulls back slowly and upward, revealing more circles fading in (plan for post-production layering). The shot emphasizes expansion and scale. Clean, modern, tech-forward aesthetic. 16:9, highest quality.

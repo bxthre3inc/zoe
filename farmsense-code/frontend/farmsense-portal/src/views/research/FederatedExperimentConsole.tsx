@@ -131,7 +131,7 @@ export const FederatedExperimentConsole: React.FC = () => {
                         </div>
                         <button onClick={handleSubmit} disabled={!hypothesis || selectedFeatures.length === 0}
                             className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 disabled:opacity-40 disabled:cursor-not-allowed text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-colors">
-                            <Play className="w-4 h-4" /> Submit to Zo Cluster <ChevronRight className="w-4 h-4" />
+                            <Play className="w-4 h-4" /> Submit to CSE Cluster <ChevronRight className="w-4 h-4" />
                         </button>
                     </div>
                 )}

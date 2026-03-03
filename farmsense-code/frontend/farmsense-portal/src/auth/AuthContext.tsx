@@ -51,7 +51,7 @@ const DEMO_USERS: Record<string, AuthUser> = {
 
     // ── RESEARCHER ───────────────────────────────────────────────────────────
     'researcher@farmsense.io':
-        { id: 'u10', name: 'Data Scientist', email: 'researcher@farmsense.io', org: 'FarmSense', org_type: 'internal', role: 'RESEARCHER', token: 'demo-r-int', expires_at: 9999999999 },
+        { id: 'u10', name: 'Data CSE', email: 'researcher@farmsense.io', org: 'FarmSense', org_type: 'internal', role: 'RESEARCHER', token: 'demo-r-int', expires_at: 9999999999 },
     'pi@colarado.edu':
         { id: 'u11', name: 'University PI', email: 'pi@colorado.edu', org: 'CU Boulder', org_type: 'external', role: 'RESEARCHER', token: 'demo-r-ext', expires_at: 9999999999 },
 

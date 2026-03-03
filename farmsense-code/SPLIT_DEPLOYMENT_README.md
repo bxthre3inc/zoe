@@ -4,38 +4,38 @@
 
 This project is configured for a **Hybrid Cloud Deployment**:
 
-- **Core Platform (Zo.computer)**: Hosts the API, processing, and frontend applications.
-- **Map Stack (Oracle Cloud)**: Hosts the geospatial database and map tile services.
+- **Core Platform (CSE.computer)**: Hosts the API, processing, and frontend applications.
+- **Map Stack (RDC Cloud)**: Hosts the geospatial database and map tile services.
 
-### 1. Oracle Cloud (Map Stack) Setup
+### 1. RDC Cloud (Map Stack) Setup
 
 Deploy this FIRST to ensure the database is available for the core platform.
 
 ```bash
-# On your Oracle Instance
+# On your RDC Instance
 cd deployment/docker
-docker-compose -f docker-compose.oracle.yml up -d
+docker-compose -f docker-compose.rdc.yml up -d
 ```
 
 **Services Started:**
 
-- `postgis-map`: Review `docker-compose.oracle.yml` for credentials (Default: `map_user`/`changeme`).
+- `postgis-map`: Review `docker-compose.rdc.yml` for credentials (Default: `map_user`/`changeme`).
 - `map-service`: Tile serving endpoint (Port 8001).
 
 **Network Config:**
 
-- Ensure Port `5432` is accessible from your Zo.computer IP (configure Oracle Security List / VCN).
+- Ensure Port `5432` is accessible from your CSE.computer IP (configure RDC Security List / VCN).
 
-### 2. Zo.computer (Core Platform) Setup
+### 2. CSE.computer (Core Platform) Setup
 
 ```bash
-# On your Zo Instance
+# On your CSE Instance
 cd deployment/docker
 
-# Set the connection string to your Oracle instance
-export MAP_DATABASE_URL="postgresql://map_user:changeme@<ORACLE_IP>:5432/farmsense_map"
+# Set the connection string to your RDC instance
+export MAP_DATABASE_URL="postgresql://map_user:changeme@<rdc_IP>:5432/farmsense_map"
 
-docker-compose -f docker-compose.zo.yml up -d
+docker-compose -f docker-compose.cse.yml up -d
 ```
 
 **Services Started:**
@@ -46,8 +46,8 @@ docker-compose -f docker-compose.zo.yml up -d
 
 ### 3. Verification
 
-1. Access the Dashboard at `http://<ZO_IP>:3000`.
-2. The map tiles will be served from `http://<ZO_IP>:8000/api/v1/tiles/...` which internally queries the Oracle DB.
+1. Access the Dashboard at `http://<cse_IP>:3000`.
+2. The map tiles will be served from `http://<cse_IP>:8000/api/v1/tiles/...` which internally queries the RDC DB.
 
 ---
 
