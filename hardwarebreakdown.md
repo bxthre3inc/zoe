@@ -514,22 +514,22 @@ This section provides a line-item breakdown for every circuit, sensor, and struc
 
 #### 14.1.1 Infrastructure & Civil
 
-| Component | Spec/Part # | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Shelter** | 40' HC Modified Container (R-21 Insulation) | 1 | $18,500 | $18,500 |
-| **HVAC** | Mitsubishi Hyper-Heat (36k BTU) | 1 | $4,200 | $4,200 |
-| **Power Dist.** | 200A Industrial Panel + Surge Suppression | 1 | $2,850 | $2,850 |
-| **Flooring** | Industrial Diamond Plate (Aluminum) | 320 sqft | $15/sqft | $4,800 |
+| Component | Spec/Part # | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Shelter** | 40' HC Modified Container (R-21 Insulation) | 1 | $18,500 | $18,500 | SeaBox-HC40 | 12 Weeks |
+| **HVAC** | Mitsubishi Hyper-Heat (36k BTU) | 1 | $4,200 | $4,200 | MUZ-FS36NA | 2 Weeks |
+| **Power Dist.** | 200A Industrial Panel + Surge Suppression | 1 | $2,850 | $2,850 | SquareD-QO | 1 Week |
+| **Flooring** | Industrial Diamond Plate (Aluminum) | 320 sqft | $15/sqft | $4,800 | AL-DP-3/16 | 2 Weeks |
 
 #### 14.1.2 Computational Infrastructure
 
-| Component | Spec/Part # | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Processor** | AMD Threadripper PRO 5995WX | 1 | $6,499 | $6,499 |
-| **GPU** | NVIDIA RTX A6000 (48GB) | 2 | $4,650 | $9,300 |
-| **Memory** | 512GB ECC DDR4-3200 (8x64GB) | 1 | $3,200 | $3,200 |
-| **Storage (NVMe)** | WD Gold 7.68TB Enterprise (RAID-10) | 8 | $1,150 | $9,200 |
-| **Motherboard** | ASUS Pro WS WRX80E-SAGE WIFI | 1 | $1,050 | $1,050 |
+| Component | Spec/Part # | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Processor** | AMD Threadripper PRO 5995WX | 1 | $6,499 | $6,499 | 100-100000444WOF | 4 Weeks |
+| **GPU** | NVIDIA RTX A6000 (48GB) | 2 | $4,650 | $9,300 | VCNRTXA6000-PB | 6 Weeks |
+| **Memory** | 512GB ECC DDR4-3200 (8x64GB) | 1 | $3,200 | $3,200 | Micron-MTA36ASF8G72PZ | 3 Weeks |
+| **Storage (NVMe)** | WD Gold 7.68TB Enterprise (RAID-10) | 8 | $1,150 | $9,200 | WDS768T1D0D | 2 Weeks |
+| **Motherboard** | ASUS Pro WS WRX80E-SAGE WIFI | 1 | $1,050 | $1,050 | WRX80E-SAGE | 4 Weeks |
 
 ---
 
@@ -590,15 +590,15 @@ The PMT differentiates motion through **Sensor Fusion**:
 
 #### 14.4.2 Line-Item BOM
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Logic Board** | ATSAMD51J20A Processor | 1 | $85.00 | $85.00 |
-| **GNSS Engine** | u-blox ZED-F9P | 1 | $185.00 | $185.00 |
-| **Flow Sensor** | Badger Meter TFX-5000 | 1 | $745.00 | $745.00 |
-| **Orientation** | Bosch BNO055 IMU | 1 | $18.00 | $18.00 |
-| **Power Set** | 20W Solar + 20Ah Battery | 1 | $145.00 | $145.00 |
-| **Housing** | Custom IP68 Aluminum | 1 | $120.00 | $120.00 |
-| **Gore-Vent** | Dual-Stage EQ Vents | 2 | $15.00 | $30.00 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Logic Board** | ATSAMD51J20A Processor | 1 | $85.00 | $85.00 | Microchip-SAMD51 | 10 Weeks |
+| **GNSS Engine** | u-blox ZED-F9P | 1 | $185.00 | $185.00 | ZED-F9P-02B | 8 Weeks |
+| **Flow Sensor** | Badger Meter TFX-5000 | 1 | $745.00 | $745.00 | TFX-5000-U | 14 Weeks |
+| **Orientation** | Bosch BNO055 IMU | 1 | $18.00 | $18.00 | 0273141114 | 4 Weeks |
+| **Power Set** | 20W Solar + 20Ah Battery | 1 | $145.00 | $145.00 | Renogy-20W-Kit | 2 Weeks |
+| **Housing** | Custom IP68 Aluminum | 1 | $120.00 | $120.00 | Hammond-1554WA | 6 Weeks |
+| **Gore-Vent** | Dual-Stage EQ Vents | 2 | $15.00 | $30.00 | PMF100444 | 2 Weeks |
 
 ---
 
@@ -615,13 +615,13 @@ The PFA monitors pump health by sampling the 480V/3-Phase incoming line via spli
 
 #### 14.5.2 Line-Item BOM
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Processor** | NXP i.MX RT1020 | 1 | $42.00 | $42.00 |
-| **Current Clamps** | Magnelab 600A (Split-Core) | 3 | $85.00 | $255.00 |
-| **Press Trans.** | TE Connectivity 250 PSI | 1 | $140.00 | $140.00 |
-| **Well Sounder** | Submersible Hydrostatic | 1 | $320.00 | $320.00 |
-| **Enclosure** | NEMA 4X Steel | 1 | $125.00 | $125.00 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Processor** | NXP i.MX RT1020 | 1 | $42.00 | $42.00 | MIMXRT1021DAG5A | 12 Weeks |
+| **Current Clamps** | Magnelab 600A (Split-Core) | 3 | $85.00 | $255.00 | SCT-1250-600 | 6 Weeks |
+| **Press Trans.** | TE Connectivity 250 PSI | 1 | $140.00 | $140.00 | M5200-000005-250PG | 8 Weeks |
+| **Well Sounder** | Submersible Hydrostatic | 1 | $320.00 | $320.00 | Dwyer-PBLTX | 5 Weeks |
+| **Enclosure** | NEMA 4X Steel | 1 | $125.00 | $125.00 | Saginaw-SCE-12106CHNF | 3 Weeks |
 
 ---
 
@@ -644,15 +644,15 @@ The LRZ is a cost-optimized variant of the VFA, designed for massive spatial den
 
 #### 14.6.2 Line-Item BOM
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **PCBA** | nRF52811 Embedded Sled | 1 | $12.50 | $12.50 |
-| **Logic Board** | Proprietary 18U PCBA | 1 | $8.00 | $8.00 |
-| **Battery** | LiFePO4 18650 (1.5Ah) Cell | 2 | $6.50 | $13.00 |
-| **HDPE Tube** | 2" x 18" Sch 40 UV-Stabilized | 1 | $8.00 | $8.00 |
-| **Driving Tip** | HDPE Injection-Molded (H6) | 1 | $4.50 | $4.50 |
-| **Seal Kit** | Nitrile O-Rings + Cap | 1 | $4.80 | $4.80 |
-| **Nitrogen Port** | Mini-Check Valve (316-SS) | 1 | $10.00 | $10.00 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **PCBA** | nRF52811 Embedded Sled | 1 | $12.50 | $12.50 | Nordic-FS-V1.0 | 8 Weeks |
+| **Logic Board** | Proprietary 18U PCBA | 1 | $8.00 | $8.00 | FS-LRZ-18U | 12 Weeks |
+| **Battery** | LiFePO4 18650 (1.5Ah) Cell | 2 | $6.50 | $13.00 | LFP-18650-1500 | 6 Weeks |
+| **HDPE Tube** | 2" x 18" Sch 40 UV-Stabilized | 1 | $8.00 | $8.00 | JM-602-18 | 2 Weeks |
+| **Driving Tip** | HDPE Injection-Molded (H6) | 1 | $4.50 | $4.50 | FS-TIP-H6 | 4 Weeks |
+| **Seal Kit** | Nitrile O-Rings + Cap | 1 | $4.80 | $4.80 | FS-SEAL-V0 | 3 Weeks |
+| **Nitrogen Port** | Mini-Check Valve (316-SS) | 1 | $10.00 | $10.00 | Swagelok-SS-CHK | 3 Weeks |
 
 ---
 
@@ -670,13 +670,13 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 
 #### 14.7.2 Line-Item BOM (Aggregated)
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Core Sled** | ATSAMD51 / BNO055 Stack | 2 | $105.00 | $210.00 |
-| **Positioning** | u-blox ZED-F9P | 2 | $185.00 | $370.00 |
-| **Corner Flow** | Ultrasonic Transducer Array | 2 | $680.00 | $1,360.00 |
-| **Housing** | Corner-Arm V-Mount Bracket | 2 | $42.00 | $84.00 |
-| **Power Set** | 20W Solar + 20Ah Battery | 2 | $100.00 | $200.00 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Core Sled** | ATSAMD51 / BNO055 Stack | 2 | $105.00 | $210.00 | FS-CSA-SLED | 10 Weeks |
+| **Positioning** | u-blox ZED-F9P | 2 | $185.00 | $370.00 | ZED-F9P-02B | 8 Weeks |
+| **Corner Flow** | Ultrasonic Transducer Array | 2 | $680.00 | $1,360.00 | Badger-TFX-Array | 14 Weeks |
+| **Housing** | Corner-Arm V-Mount Bracket | 2 | $42.00 | $84.00 | FS-BRACKET-V | 4 Weeks |
+| **Power Set** | 20W Solar + 20Ah Battery | 2 | $100.00 | $200.00 | Renogy-20W-Kit | 2 Weeks |
 
 ---
 
@@ -686,23 +686,23 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 
 **Total System Cost: $14,500.00**
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Platform** | EPP Foam Airframe + Servos | 1 | $2,800 | $2,800 |
-| **Sensor** | Duet M (RGB + Thermal/Multispec) | 1 | $8,200 | $8,200 |
-| **Avionics** | SenseFly Autopilot + RTK | 1 | $2,500 | $2,500 |
-| **Ground Sta.** | 2.4GHz High-Gain Link | 1 | $1,000 | $1,000 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Platform** | EPP Foam Airframe + Servos | 1 | $2,800 | $2,800 | senseFly-eBee-Ag | 4 Weeks |
+| **Sensor** | Duet M (RGB + Thermal/Multispec) | 1 | $8,200 | $8,200 | Duet-M-Sensor | 6 Weeks |
+| **Avionics** | SenseFly Autopilot + RTK | 1 | $2,500 | $2,500 | senseFly-Auto | 4 Weeks |
+| **Ground Sta.** | 2.4GHz High-Gain Link | 1 | $1,000 | $1,000 | eMotion-GS | 2 Weeks |
 
 #### 14.8.2 DJI Mavic 3M (Multi-Rotor)
 
 **Total System Cost: $4,999.00**
 
-| Component | Part Category | Qty | Unit Cost | Extended |
-| :--- | :--- | :--- | :--- | :--- |
-| **Platform** | Mavic 3 Enterprise RTK Airframe | 1 | $3,200 | $3,200 |
-| **Sensor** | Integrated 4-Band Multispectral | 1 | Included | Included |
-| **Accessories** | Intelligent Flight Battery Kit (x3) | 1 | $1,200 | $1,200 |
-| **Case** | GPC Rugged Hard Case | 1 | $599 | $599 |
+| Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Platform** | Mavic 3 Enterprise RTK Airframe | 1 | $3,200 | $3,200 | DJI-M3M | 2 Weeks |
+| **Sensor** | Integrated 4-Band Multispectral | 1 | Included | Included | DJI-4Band | Included |
+| **Accessories** | Intelligent Flight Battery Kit (x3) | 1 | $1,200 | $1,200 | DJI-WB37 | 2 Weeks |
+| **Case** | GPC Rugged Hard Case | 1 | $599 | $599 | GPC-DJI-M3M | 1 Week |
 
 ---
 
