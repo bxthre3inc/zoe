@@ -25,9 +25,12 @@ The PMT continuously executes Empirical Bayesian Kriging (Edge-EBK) to generate 
 
 ## 3. Telemetry & Routing (The "Field Hub")
 
-* **Payload Bundling:** The PMT bundles its own High-Fidelity kinematic data, the processed 50m Edge-EBK arrays, and the intercepted VFA/LRZ intelligence.
-* **PFA Aggregation:** Intercepts the 2.4GHz Current Harmonic Analysis payload from the wellhead PFA.
-* **LoRaWAN Backhaul:** Blasts the unified, heavily encrypted ~187-byte Field State Payload to the District Hub (DHU) via 900MHz LoRaWAN.
+* **Data Ingestion:** The PMT intercepts the 128-bit AES encrypted payload chirps from the 2 VFAs and 20 LRZs traversing its 2.4GHz RF Umbrella.
+* **Edge-EBK Payload Assembly:**
+  * Unpacks the VFA moisture profile.
+  * Checks standard validity parameters (timestamps, CRC).
+  * Repackages these raw nodes with the locally computed PMT Kinematics.
+* **Adaptive Backhaul:** Blasts the unified, heavily encrypted ~187-byte Field State Payload to the District Hub (DHU) via the best available architecture string determined by payload demand (e.g., 5GHz LTU).
 
 ## 4. Zero-Downtime VRI Failover Execution
 

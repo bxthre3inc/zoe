@@ -2,7 +2,8 @@
 
 ## CRITICAL INSTRUCTIONS FOR AI ASSISTANT
 
-### Before Creating ANYTHING:
+### Before Creating ANYTHING
+
 1. **CHECK EXISTING ROUTES FIRST**: Use `list_space_routes` to see all current pages and APIs
 2. **CHECK EXISTING FILES**: Use `grep_search` or `list_files` before creating new files
 3. **CHECK AGENTS.MD**: Read this file at the start of every conversation for context
@@ -13,6 +14,7 @@
 ## CURRENT PHASE: Pilot Validation (NOW - June 2026)
 
 ### Critical Deadlines
+
 | Deadline | Date | Deliverable |
 |----------|------|-------------|
 | DoD ESTCP Pre-Proposal | March 26, 2026 | Grant application submitted |
@@ -20,6 +22,7 @@
 | Water Court Evidence | June 2026 | Empirical hydrodynamic proof |
 
 ### Immediate Focus
+
 1. Backend & API deployment to Zo server
 2. Frontend portal deployment (farmer, regulatory, marketing)
 3. Hardware BOM finalization and ordering
@@ -28,12 +31,15 @@
 ---
 
 ## Architecture Principle: Anti-AI / Deterministic
+
 FarmSense uses **deterministic, judgment-based algorithms** - NOT ML/AI black boxes.
+
 - Water courts don't accept AI decisions
 - All logic must be explainable and auditable
 - See `file 'farmsenseOS/GENUINELY_NOVEL_IP.md'` for defensible moats
 
 **Future AI**: Post-beta, sandboxed Digital Twin simulations only.
+
 - See `file 'farmsenseOS/AI_INTEGRATION_ROADMAP.md'`
 - **DO NOT ACT** until user says "begin to integrate AI per our previous discussions"
 
@@ -44,13 +50,15 @@ FarmSense uses **deterministic, judgment-based algorithms** - NOT ML/AI black bo
 FarmSense as sovereign water infrastructure—legally recognized, cryptographically secure, scientifically absolute.
 
 ### Scaling Roadmap
+
 1. **Pilot** (Now - June 2026): CSU SLV 2-Field Pilot
 2. **Regional Master** (Q3-Q4 2026): 100% SLV Subdistrict 1
 3. **State Standard** (2027): Colorado DWR adoption
 4. **National Layer** (2028): USDA/USGS partnership
 5. **Sovereign Global** (2029+): International G2G treaties
 
-### Resolution Pop Revenue Model
+### Resolution Pop UI Transition
+
 | Tier | Resolution | Price | Target |
 |------|------------|-------|--------|
 | Free | 50m | $0 | Government baseline |
@@ -61,7 +69,9 @@ FarmSense as sovereign water infrastructure—legally recognized, cryptographica
 ---
 
 ## Dependency Reduction
+
 See `file 'farmsenseOS/DEPENDENCY_REDUCTION.md'` for full plan.
+
 - Phase 1 ✅: Removed numpy, pandas, scipy, scikit-learn, redis, celery, requests
 - Next: Phase 3 (clsx/tailwind-merge replacement)
 
@@ -70,17 +80,21 @@ See `file 'farmsenseOS/DEPENDENCY_REDUCTION.md'` for full plan.
 ## Project Overview
 
 **FarmSense** is a deterministic precision agriculture operating system designed for:
+
 - **Agronomic Output**: 20-30% reduction in irrigation water, 18-22% increase in ROI
 - **Economic Output**: Continuous Cost-Benefit Analysis preventing water deployment when costs exceed yield revenue
 - **Legal Output**: Cryptographically secure "Water Ledger" valid in State Water Courts
 
 ### Core Philosophy
+
 - **Deterministic, judgment-based algorithms** — NOT ML/AI black boxes
 - All logic must be explainable and auditable for water court admissibility
 - Future AI: Post-beta, sandboxed Digital Twin simulations only
 
 ### Current Deployment Target
+
 **2-Field Pilot at CSU San Luis Valley (SLV) Research Center, Center, Colorado**
+
 - Purpose: Generate empirical Gold Standard data for June 2026 Subdistrict 1 Water Court
 - Hardware: 2 PMTs, 2 PFAs, 2 VFAs, 16-20 LRZs
 - Grant deadline: DoD ESTCP pre-proposal (March 26, 2026)
@@ -140,6 +154,7 @@ See `file 'farmsenseOS/DEPENDENCY_REDUCTION.md'` for full plan.
 ## File Locations
 
 ### Backend (FastAPI)
+
 ```
 farmsense-code/backend/
 ├── app/
@@ -169,6 +184,7 @@ farmsense-code/backend/
 ```
 
 ### Frontend (React + TypeScript)
+
 ```
 farmsense-code/frontend/
 ├── farmer-dashboard/        # Farmer field interface
@@ -183,6 +199,7 @@ farmsense-code/frontend/
 ```
 
 ### Specifications
+
 ```
 specifications/
 ├── Master Specification: Lateral Root-Zone Scout (LRZ) V1.21.md
@@ -196,6 +213,7 @@ specifications/
 ```
 
 ### Reference Documents
+
 ```
 reference/
 ├── Due Diligence and Systems Architecture Audit_ FarmSense San Luis Valley Pilot.md
@@ -256,6 +274,7 @@ reference/
 | COLLAPSE | 1 min | Critical events |
 
 ### Decision Logic (Judgment-Based, NOT AI)
+
 1. **Critical events** → Immediate recalc (moisture drops >30% in 6h, pump failure)
 2. **Out-of-turn triggers** → Event-driven (sensor anomalies, rainfall >10mm/h)
 3. **Trend-based** → Scheduled (volatility score, moisture trends, irrigation status)
@@ -278,6 +297,7 @@ reference/
 ## Current Task Status
 
 ### Completed ✅
+
 - [x] Rectify DHU BOM for 900MHz LoRaWAN gateway
 - [x] Rectify VFA BOM for 2.4GHz/BLE module
 - [x] Validate Thermal Loss capacity for 5W Kapton heater
@@ -287,6 +307,7 @@ reference/
 - [x] Integrate k-means ML Kriging algorithms
 
 ### Pending 🔄
+
 - [ ] Implement PBFT Alliance-Chain Blockchain in DHU
 - [ ] Build DoD Federated Data Fabric Adapters
 - [ ] Implement Dual-Layer Spatial Privacy
@@ -325,6 +346,7 @@ reference/
 ## Hardware BOM Summary
 
 **Minimum Viable Hardware Stack (2-Field Pilot):**
+
 - 2x PMT (Pivot Motion Tracker)
 - 2x PFA (Pressure & Flow Anchor)
 - 2x VFA (Vertical Field Anchor)

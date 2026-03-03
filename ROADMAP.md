@@ -32,6 +32,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ### Immediate Engineering Tasks
 
 #### Week 1-2: Backend & API Hardening
+
 - [ ] Verify all API endpoints return valid responses
 - [ ] Test sensor data ingestion pipeline
 - [ ] Validate Adaptive Recalculation Engine logic
@@ -39,12 +40,14 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 - [ ] Deploy docker-compose.zo-unified.yml
 
 #### Week 3-4: Frontend Portal Deployment
+
 - [ ] Deploy farmer-dashboard to Zo server
 - [ ] Deploy regulatory-portal (compliance reporting)
 - [ ] Deploy marketing-site (public landing)
 - [ ] Configure Nginx routing for all portals
 
 #### Week 5-6: Hardware Integration
+
 - [ ] Finalize PMT firmware spec
 - [ ] Finalize VFA firmware spec
 - [ ] Finalize LRZ firmware spec
@@ -52,6 +55,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 - [ ] Order prototype components
 
 #### Week 7-8: Grant & Documentation
+
 - [ ] Draft DoD ESTCP pre-proposal
 - [ ] Create pilot hardware BOM with costs
 - [ ] Document Kriging validation methodology
@@ -108,18 +112,21 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Phase 2: Regulatory Capture (Q3-Q4 2026)
 
 ### DWR Integration Objectives
+
 - [ ] State Engineer Portal UI
 - [ ] Automated compliance submittal API
 - [ ] "Presumed Compliant" well status workflow
 - [ ] Basin-wide depletion visualization
 
 ### Cryptographic Audit Trail
+
 - [ ] Secure Element (SE) chip integration in VFA
 - [ ] Hardware-level packet signing
 - [ ] Immutable ledger database schema
 - [ ] Chain-of-custody verification API
 
 ### Resolution Pop Implementation
+
 - [ ] 50m Free Tier (government baseline)
 - [ ] 20m Basic Tier ($49/mo)
 - [ ] 10m Pro Tier ($199/mo)
@@ -130,6 +137,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Phase 3: State Standard (2027)
 
 ### Colorado River Compact Compliance
+
 - [ ] 15+ RSS deployments across Colorado
 - [ ] Front Range coverage
 - [ ] Western Slope coverage
@@ -137,6 +145,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 - [ ] Emergency drought reflex logic
 
 ### State Auditor Portal
+
 - [ ] Basin-wide aggregated depletion data
 - [ ] Producer privacy protections
 - [ ] Emergency pumping limit authority
@@ -147,6 +156,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Phase 4: National Layer (2028)
 
 ### USDA/USGS Partnership
+
 - [ ] High Plains Aquifer expansion
 - [ ] Federal Water Credits standard
 - [ ] Cloneable Command Center
@@ -157,6 +167,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Phase 5: Sovereign Global (2029+)
 
 ### International Deployment
+
 - [ ] Australia RSS nodes
 - [ ] Brazil RSS nodes
 - [ ] UN Water Security initiatives
@@ -167,23 +178,26 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Key Technical Decisions
 
 ### 1. Librarian/Scientist Split
+
 - **Oracle Vault** = Raw data storage (immutable)
 - **Zo Server** = Computation layer (worksheets)
 - Benefit: Governments audit science without compromising data vault
 
 ### 2. Worksheet Autonomy
+
 - Local "Reflex Logic" at edge (Hub/VFA level)
 - Functions during internet blackout
 - Hydraulic autonomy prevents aquifer damage
 
 ### 3. Decentralized Resilience
+
 - Each RSS is a peer node
 - P2P verification prevents single point of failure
 - Mesh continues processing if central node offline
 
 ---
 
-## Revenue Model: Resolution Pop
+## UI/UX Feature: Resolution Pop
 
 | Tier | Resolution | Price | Target User |
 |------|------------|-------|-------------|
@@ -193,6 +207,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 | Enterprise | 1m | Custom | ESG, enforcement, transfers |
 
 **Economic Logic:**
+
 - Free tier ensures 100% market participation (compliance hook)
 - Enterprise tier drives high-margin revenue
 - Subsidizes state baseline infrastructure
@@ -202,6 +217,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 ## Success Metrics
 
 ### Pilot Phase (June 2026)
+
 - [ ] 2 fields instrumented
 - [ ] 16-20 LRZs deployed
 - [ ] 2 PMTs operational
@@ -210,11 +226,13 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 - [ ] Kriging validation <5% error
 
 ### Regional Master (Q4 2026)
+
 - [ ] 100% Subdistrict 1 coverage
 - [ ] DWR "Rule-Compliant" status
 - [ ] Water Court evidence accepted
 
 ### State Standard (2027)
+
 - [ ] Colorado DWR primary tool
 - [ ] Colorado River Compact compliance
 - [ ] 15+ RSS nodes operational

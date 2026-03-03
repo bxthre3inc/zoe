@@ -17,7 +17,7 @@ The VFA was deliberately downgraded from an AES-routing hub to a highly efficien
 
 * **Data Aggregation:** The firmware reads 4 specific depths along the 48-inch profile (8", 16", 24", 36") to determine total matric potential and deep percolation loss.
 * **Encryption at the Edge:** The processor applies AES-128 bit encryption independently to its localized payload before it ever leaves the component.
-* **Transmission:** Actuates the flush 3-foot low-profile antenna to chirp the encrypted payload via 900MHz Frequency-Hopping Spread Spectrum (FHSS) directly to the overhead Pivot Motion Tracker (PMT) acting as the Field Hub.
+* **Transmission:** Actuates the flush 3-foot low-profile antenna to chirp the encrypted payload via 2.4GHz mesh networking directly to the overhead Pivot Motion Tracker (PMT) acting as the Field Hub.
 
 ## 3. Dynamic "Ripple" Responsiveness
 

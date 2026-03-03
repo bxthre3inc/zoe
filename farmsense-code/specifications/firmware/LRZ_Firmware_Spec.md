@@ -17,7 +17,7 @@ The LRZ firmware represents absolute deterministic simplicity. It executes no sp
 
 * **Micro-Payload:** Reads the singular soil tension value and ambient canopy data.
 * **Encryption:** Applies AES-128 encryption.
-* **FHSS Burst:** Pulses the payload via the integrated 3-foot antenna utilizing 900MHz FHSS. The RF path is a direct vertical connection to the overhead PMT Field Hub umbrella.
+* **FHSS Burst:** Pulses the payload via the integrated 3-foot antenna utilizing 2.4GHz mesh networking. The RF path is a direct vertical connection to the overhead PMT Field Hub umbrella.
 
 ## 3. Defense Protocol Adherence
 

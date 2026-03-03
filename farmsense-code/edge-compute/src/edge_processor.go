@@ -466,7 +466,7 @@ func (ep *EdgeProcessor) storeCloud(points []VirtualGridPoint) error {
 // PollPeers checks neighbor DHU capacity for workload offloading
 func (do *DHUOrchestrator) PollPeers() (string, error) {
 	for _, peer := range do.Peers {
-		// Mock peering request via 900MHz LoRaWAN mesh
+		// Mock peering request via best available DHU backhaul
 		log.Printf("[Mesh] Polling peer DHU at %s for capacity...", peer)
 		
 		// In production, this would be an HTTP/LoRa request

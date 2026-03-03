@@ -35,9 +35,7 @@ A Bloomberg-style real-time operational data terminal designed to make the platf
 
 ---
 
-### 2. Revenue Engine Deep-Dive
-
-Detailed breakdown of the Resolution Pop monetization funnel with full SaaS analytics.
+### 2. Spatial Analytics View: Detailed breakdown of the Resolution Pop engagement metrics with full spatial analytics
 
 **Key elements:**
 
