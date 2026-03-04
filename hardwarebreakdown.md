@@ -127,7 +127,7 @@ The Field Layer consists of specialized nodes designed for high-density spatial 
 
 The VFA utilizes a **Dual-Cylinder Isolation Strategy**.
 
-* **Outer Shell**: 2" Schedule 40 UV-Stabilized HDPE (48-inch length). Remains buried year-round to preserve the spatial baseline.
+* **Outer Shell**: 2\" Schedule 40 UV-Stabilized Rigid PVC (48-inch length). Remains buried year-round to preserve the spatial baseline.
 * **Internal Sled**: 50mm Alpha-Sled co-extrusion. Houses the 48U modular cartridge sequence.
 * **Sealing**: Viton (FKM) O-rings + Nitrogen (+5 psi) active defense.
 
@@ -146,7 +146,7 @@ The VFA uses a modular "Unit" (1U) system to define sensor depth and battery cap
 
 The VFA utilizes **Non-Contact Dielectric Sensing**.
 
-* **Mechanism**: High-frequency (~100MHz) electromagnetic fields are projected through the Sled wall and the HDPE shell.
+* **Mechanism**: High-frequency (~100MHz) electromagnetic fields are projected through the CPVC Sled wall and the PVC shell.
 * **Calibration**: Remotely calibrated by the RSS Oracle Compute using Bayesian priors. No manual field calibration is required.
 
 #### 4.1.4 Firmware Logic & Interrupt Handling
@@ -159,7 +159,7 @@ The VFA runs a Real-Time Operating System (RTOS) designed for high-availability 
 
 #### 4.1.5 Sub-Component Manufacturing Details
 
-* **HDPE Shell Extrusion**: Tolerance of ±0.005" to ensure precise dielectric gap consistency.
+* **PVC Shell Extrusion**: Tolerance of ±0.005\" to ensure precise dielectric gap consistency and extreme rigidity against compaction.
 * **Nitrogen Manifold**: Chemically-etched 316-SS ports with double Viton redundancy.
 * **Driving Tip Metallurgy**: Zinc-plated friction-formed alloy (A5-H8 Hardness) to prevent oxidation in high-alkali soil.
 
@@ -192,7 +192,7 @@ The LRZ uses a truncated Alpha-Sled designed for shallow root-zone monitoring:
 The LRZ utilizes a "Fringe Field" approach for non-contact measurement:
 
 * **Excitation Frequency**: 80MHz Oscillator.
-* **Dielectric Barrier**: HDPE 2" Shell + 2mm Nitrogen Gap.
+* **Dielectric Barrier**: PVC 2\" Shell + 2mm Nitrogen Gap.
 * **Calibration Matrix**: 5-point factory curve mapped against SLV Soil Series 101-B.
 
 ### 4.3 Pressure & Flow Anchor (PFA) V1.9
@@ -447,7 +447,7 @@ Used for high-precision timing of current sampling across the 3-phase motor lead
 
 ### 8.3 Chemical Resistance & Soil Integrity (SLV Series)
 
-The HDPE Shells and Polycarbonate Enclosures are rated for:
+The PVC Shells and Polycarbonate Enclosures are rated for:
 
 * **Sulfonated Alkali Resistance**: 1,000 hours exposure to SLV-native sulfate concentrations.
 * **UV Retention**: 92% structural integrity after 100,000 hours of high-altitude solar exposure.
@@ -560,7 +560,7 @@ The VFA "Multi-Depth" sequence uses a proprietary I2C bridge for the dielectric 
 | **PCBA** | nRF52840 Mainboard | 1 | $6.50 | $6.50 | Nordic-FS-V1.2 | 8 Weeks |
 | **Dielectric Unit** | Proprietary 5-Unit Stack | 5 | $10.00 | $50.00 | FS-DE-48U | 12 Weeks |
 | **Battery** | 21700 Li-ion Cartridge | 5 | $16.75 | $83.75 | 21700-LFP | 6 Weeks |
-| **HDPE Tube** | 2" x 48" Sch 40 UV-Stabilized | 1 | $4.00 | $4.00 | JM-602-UV | 2 Weeks |
+| **Rigid PVC Tube** | 2\" x 48\" Sch 40 UV-Stabilized | 1 | $2.50 | $2.50 | JM-602-UV | 2 Weeks |
 | **Driving Tip** | Friction-Formed Alloy | 1 | $4.25 | $4.25 | FS-TIP-H8 | 4 Weeks |
 | **Seal Kit** | Viton O-Rings + Nitrogen Port | 1 | $0.80 | $0.80 | FS-SEAL-V1 | 3 Weeks |
 
@@ -638,8 +638,8 @@ The LRZ is a cost-optimized variant of the VFA, designed for massive spatial den
 | **PCBA** | nRF52840 Embedded Sled | 1 | $12.50 | $12.50 | Nordic-FS-V1.0 | 8 Weeks |
 | **Logic Board** | Proprietary 18U PCBA | 1 | $8.00 | $8.00 | FS-LRZ-18U | 12 Weeks |
 | **Battery** | LiFePO4 18650 (1.5Ah) Cell | 2 | $6.50 | $13.00 | LFP-18650-1500 | 6 Weeks |
-| **HDPE Tube** | 2" x 18" Sch 40 UV-Stabilized | 1 | $8.00 | $8.00 | JM-602-18 | 2 Weeks |
-| **Driving Tip** | Friction-Formed HDPE Tip | 1 | $4.50 | $4.50 | FS-TIP-H6 | 4 Weeks |
+| **Rigid PVC Tube** | 2\" x 18\" Sch 40 UV-Stabilized | 1 | $1.20 | $1.20 | JM-602-18 | 2 Weeks |
+| **Driving Tip** | Friction-Molded PVC Tip | 1 | $3.50 | $3.50 | FS-TIP-PVC | 4 Weeks |
 | **Seal Kit** | Viton O-Rings + Cap | 1 | $4.80 | $4.80 | FS-SEAL-V0 | 3 Weeks |
 | **Nitrogen Port** | Mini-Check Valve (316-SS) | 1 | $10.00 | $10.00 | Swagelok-SS-CHK | 3 Weeks |
 
@@ -723,7 +723,7 @@ This section details the procurement logic and unit costs for a standard Subdist
 | **LoRa Transceiver** | Semtech SX1262 | Included | Included |
 | **Dielectric Sensors** | Proprietary Fab-Direct | $50.00 (x5) | $4.00 (x2) |
 | **Battery Stack** | 21700 Li-ion Cartridge | $83.75 (x5) | $33.50 (x2) |
-| **Enclosure (Shell)** | 2" UV-HDPE Shell | $4.00 | $1.50 |
+| **Enclosure (Shell)** | 2\" UV-PVC Shell | $2.50 | $1.20 |
 | **Mounting (Tip)** | Tapered Driving Tip | $4.25 | $4.25 |
 | **Antenna** | 3ft SS-304 Whip | $3.50 | $3.50 |
 | **TOTAL UNIT COST** | | **$159.65** | **$60.80** |
@@ -792,7 +792,7 @@ To achieve the $4.2M CAPEX target, FarmSense utilizes a tiered sourcing model:
 
 ### 15.2 Alkali Corrosion Defense
 
-* **HDPE Shells**: Selected for chemical resistance to alkaline soils (pH > 8.5).
+* **Rigid PVC Shells**: Selected for extreme rigidity against soil compaction and total electromagnetic transparency for capacitive sensors.
 * **SS-304/316 Hardware**: Mandatory for all external fasteners to prevent galvanic corrosion at the pump-house interface.
 
 ## 17. Power & Thermal Lifecycle Analysis
@@ -831,7 +831,7 @@ To prevent "Flood-Spoofing," the DHU performs PBFT consensus on all pump stops:
 
 ### 18.1 Sled Hospital Intake Checklist (SOP-09)
 
-* **Physical**: Inspect for Viton seal rolling or HDPE pitting.
+* **Physical**: Inspect for Viton seal rolling or PVC fracturing/bowing.
 * **Electronic**: Execute `fs-diag --full` to verify 32MHz TCXO drift is < 0.5ppm.
 * **Hydraulic**: Badger Meter TFX-5000 re-zeroing against calibrated RSS bypass loop.
 

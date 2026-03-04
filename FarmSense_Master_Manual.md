@@ -126,7 +126,7 @@ The primary engine for water rights verification is the PMT's hydraulic flow sta
 
 ### **4.3 Lateral Root-Zone (LRZ) and Vertical Field Anchors (VFA)**
 
-* **The "Invisible Presence" Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent UV-White High-Density Polyethylene (HDPE) outer shells remain buried flush with the soil surface year-round, while internal "Alpha-Sleds" containing the electronics are extracted pre-harvest.\[1, 1\]  
+* **The \"Invisible Presence\" Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent UV-Stabilized Rigid Polyvinyl Chloride (PVC) outer shells remain buried flush with the soil surface year-round, while internal \"Alpha-Sleds\" (constructed of high-temperature CPVC) containing the electronics are extracted pre-harvest.\\[1, 1\\]  
 * **The Proxy Method:** The sensors utilize an advanced non-contact capacitive method, shooting high-frequency dielectric fields through the 50mm sled wall and across a \+5 psi dry nitrogen gap directly into the soil.\[1, 1\]
 
 ## ---
@@ -211,7 +211,7 @@ A core operational risk is farmer trust and data sovereignty.1 Furthermore, the 
 To further position the FarmSense architecture for premier global infrastructure grants and defense funding, several advanced capabilities and zero-cost software frameworks should be introduced to the roadmap:
 
 * **LPI/LPD Positioning (FHSS):** The Lateral Root-Zone (LRZ) network's existing Frequency-Hopping Spread Spectrum (FHSS) architecture should be explicitly pitched as a "Low Probability of Intercept" (LPI) and "Low Probability of Detection" (LPD) asset. In tactical scenarios, rapidly switching frequencies makes the sensor grid highly resistant to adversarial jamming and interception.  
-* **Air-Deliverable Kinetic Penetrators:** To dramatically expand the DoD dual-use appeal, the LRZ physical housing concept can be adapted for high-altitude (HALO) or low-orbit kinetic deployment. By engineering the 18-inch HDPE shell to withstand high-G impacts and utilizing the existing 15-degree tapered driving tip, the sensors could act as kinetic penetrators that are air-dropped to autonomously bury themselves flush with the ground. This fulfills military requirements for covert, rapidly deployable unattended ground sensor (UGS) networks in contested environments.  
+* **Air-Deliverable Kinetic Penetrators:** To dramatically expand the DoD dual-use appeal, the LRZ physical housing concept can be adapted for high-altitude (HALO) or low-orbit kinetic deployment. By engineering the 18-inch PVC shell to withstand high-G impacts and utilizing the existing 15-degree friction molded tapered driving tip, the sensors could act as kinetic penetrators that are air-dropped to autonomously bury themselves flush with the ground. This fulfills military requirements for covert, rapidly deployable unattended ground sensor (UGS) networks in contested environments.  
 * **Fully Homomorphic Encryption (FHE):** Upgrade the Regional Superstation (RSS) from standard AES encryption to Fully Homomorphic Encryption (FHE). FHE is a groundbreaking cryptographic technology that allows the Zo engine's complex Kriging algorithms to be executed directly on encrypted data without ever decrypting it first. This ensures absolute data confidentiality during processing.  
 * **Automated GLOBALG.A.P. Compliance:** Develop a software module that translates the platform's certified flow and moisture data into automated GLOBALG.A.P. compliance reports. This allows farmers to effortlessly prove sustainable water management to international standards, unlocking premium supply chain markets globally.
 
@@ -1553,13 +1553,13 @@ While the Vertical Field Anchor (VFA) serves as the singular high-fidelity \"Tru
 
 The LRZ housing is engineered for an "Invisible Presence"—a ruggedized subterranean deployment capable of withstanding the extreme mechanical stresses of 4WD tractor passes and repetitive deep-soil compaction cycles common in potato-barley rotations.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" Schedule 40 UV-White HDPE. Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface.
-* **Material Science**: White HDPE was selected specifically for its high albedo (thermal reflection) to prevent internal components from baking during surface exposure. HDPE is also chemically inert to the sulfur-rich SLV alkali soils.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" Schedule 40 UV-Stabilized Rigid PVC. Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface and provides the extreme rigidity required to prevent bowing during deep-soil compaction.
+* **Material Science**: UV-Stabilized PVC was selected specifically for its high stiffness (flexural modulus), low cost, and total electromagnetic transparency for the capacitive sensors. It is also chemically inert to the sulfur-rich SLV alkali soils.
 * **Installation Efficiency**: By keeping the shell at exactly 18 inches, the hydraulic auger crews only need to drill a shallow pilot hole, exponentially speeding up installation.
-* **15-Degree Tapered Driving Tip (Compaction-Fit)**: The 18-inch outer shell is chemically fused to a Custom HDPE Driving Tip featuring a precise 15-degree taper, eliminating air gaps that corrupt moisture readings.
+* **15-Degree Friction Molded Driving Tip (Compaction-Fit)**: The 18-inch outer shell is sealed with a Custom PVC Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the PVC pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise 15-degree final tapered shape.
 * **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the LRZ an exact 3-foot profile above the soil, keeping it beneath the destructive sweep of the pivot span.
-* **The Removable Internal Sled**: The core internal structure is an 18-Inch 50mm Co-Extruded Alpha-Sled capped with Injection-Molded Circular End-Caps. This removable payload is swiftly inserted post-planting and extracted pre-harvest.
-* **The Seasonal Climate (+5 psi Defense)**: Upon insertion, Viton (FKM) 2" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen for active protection against micro-fractures.
+* **The Removable Internal Sled**: The core internal structure is an 18-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CPVC** (Chlorinated Polyvinyl Chloride) to prevent high-temperature warping in the back of installation trucks. This removable payload is swiftly inserted post-planting and extracted pre-harvest.
+* **The Seasonal Climate (+5 psi Defense)**: Upon insertion, Viton (FKM) 2\" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen for active protection against micro-fractures.
 
 ## 2. Edge Logic & The Secure "Chirp" Protocol
 
@@ -1572,7 +1572,7 @@ The LRZ is an exercise in extreme power efficiency. It lacks the eMMC storage an
 
 ## 3. The High-Density Sensor Array (18-Inch / 18U Sequence)
 
-Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing, shooting high-frequency dielectric fields directly through the 50mm sled wall, the nitrogen gap, and the permanent HDPE shell.
+Like the VFA, the LRZ employs the advanced \"Proxy Method\" of non-contact sensing, shooting high-frequency dielectric fields directly through the 50mm CPVC sled wall, the nitrogen gap, and the permanent PVC shell.
 
 **Locked 18U Physical Stack Sequence**:
 
@@ -1595,16 +1595,16 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 
 | Category | Component Detail | Supplier / Scale Method | Unit Cost | Ext. Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| Housing | 2" SCH 40 UV-HDPE (18-inch) | Direct Extruder | $1.50 | $1.50 |
-| Housing | Custom HDPE Tapered Tip | Proprietary Mold | $4.25 | $4.25 |
+| Housing | 2\" SCH 40 UV-Stabilized PVC (18-inch) | Direct Extruder | $1.20 | $1.20 |
+| Housing | Friction Molded PVC Tapered Tip | Rotational Friction Formed | $3.50 | $3.50 |
 | Antenna | 3ft SS-304 Whip + Spring | Industrial Pultrusion | $3.50 | $3.50 |
-| Adhesive | Structural HDPE Acrylic Epoxy | Automated Bulk | $4.50 | $4.50 |
-| Seals | Viton (FKM) 2" O-Rings (x2) | OEM Rubber Fab | $0.80 | $0.80 |
-| Computing | nRF52840 "Chirp" Logic Board | Tier-1 PCBA | $4.50 | $4.50 |
-| Climate | 1U Stamped Desiccant Matrix | Bulk Supply | $1.50 | $1.50 |
-| Structure | 18" AlphaSled Chassis | Continuous Extrusion | $1.25 | $1.25 |
-| Structure | Injection-Molded EndCaps | High-Cavity Mold | $0.60 | $0.60 |
-| Structure | Extruded HDPE Spacers (7U) | Recycled Bulk | $0.05 | $0.05 |
+| Adhesive | Industrial PVC Cement | Automated Bulk | $0.50 | $0.50 |
+| Board | Nordic nRF52840 Custom PCB | JLCPCB Assembled | $8.50 | $8.50 |
+| Sensor | Capacitive Dielectric Plate (FR4) | JLCPCB Integrated | $2.00 | $4.00 |
+| Hardware| Viton (FKM) 2\" O-Rings | Bulk Supplier | $1.20 | $4.80 |
+| Internal | Dry Nitrogen Gas Purge | Automated Assembly | $0.15 | $0.15 |
+| Energy | 21700 Lithium-Ion Cells (4000mAh)| Bulk Supplier | $3.00 | $18.00 |
+| Structure | Extruded Rigid CPVC Spacers (7U) | Recycled Bulk | $0.10 | $0.10 |
 | Power (x2) | 4U Battery Cartridges (21700x3) | Direct Cell Sourcing | $16.75/ea | $33.50 |
 | Basic Sensor (x2) | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | $2.00/ea | $4.00 |
 | **TOTAL** | **Per Unit Hardware Cost** | | | **$60.80** |
@@ -2119,11 +2119,11 @@ As the primary field-level high-fidelity subsurface data logger, the Vertical Fi
 
 The VFA housing has been radically re-engineered using a dual-cylinder architecture designed to completely isolate external structural loads from the delicate internal electronics.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" Schedule 40 UV-Stabilized HDPE (Inside Diameter: 2.067" / 52.5mm). By utilizing an exact 4-foot (48-inch) cut, the outer 2" pipe sits completely flush with the soil surface. This shell stays in the ground over the winter, resisting sub-zero frost-shatter.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" Schedule 40 UV-Stabilized Rigid PVC (Inside Diameter: 2.067\" / 52.5mm). By utilizing an exact 4-foot (48-inch) cut, the outer 2\" pipe sits completely flush with the soil surface. This rigid shell stays in the ground over the winter, resisting sub-zero frost-shatter and deep soil compaction warping.
 * **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the VFA an exact 3-foot profile above the soil, minimizing collision risk with tractor booms while remaining highly visible to the elevated PMT hub overhead.
-* **Monolithic Chemical Fix (HDPE-to-HDPE)**: The outer shell is paired with a Custom HDPE Tapered Driving Tip, chemically fused using low-surface-energy Structural HDPE Acrylic Epoxy.
-* **The Removable Internal Sled**: The core internal structure is a 48-Inch 50mm Co-Extruded Alpha-Sled capped with precision Injection-Molded Circular End-Caps. This sled acts as a robust internal spine, clamping the 48U sequence of modular cartridges.
-* **The Seasonal Climate (+5 psi Defense)**: Upon seasonal insertion, Viton (FKM) 2" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen, creating an inert, zero-humidity environment that acts as an active defense against micro-fractures and groundwater ingress.
+* **Friction Molded Tapered Drive Tip**: The outer shell is sealed with a Custom PVC Tapered Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the 48-inch PVC pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise final shape.
+* **The Removable Internal Sled**: The core internal structure is a 48-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CPVC** designed to prevent long-axis bowing. This sled acts as a robust internal spine, clamping the 48U sequence of modular cartridges.
+* **The Seasonal Climate (+5 psi Defense)**: Upon seasonal insertion, Viton (FKM) 2\" O-rings seal the CPVC sled against the PVC shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen, creating an inert, zero-humidity environment that acts as an active defense against micro-fractures and groundwater ingress.
 
 ## 2. Custom Relay Logic & Encryption (The Hub Pipeline)
 
@@ -2135,7 +2135,7 @@ By stripping the VFA down to pure routing and encryption functions, we have inte
 
 ## 3. The "Proxy Method" Sensor Array (48-Inch / 48U Sequence)
 
-The VFA employs advanced non-contact sensing, shooting high-frequency dielectric fields directly through the removable 50mm sled wall, across the nitrogen gap, and straight through the permanent HDPE shell.
+The VFA employs advanced non-contact sensing, shooting high-frequency dielectric fields directly through the removable 50mm CPVC sled wall, across the nitrogen gap, and straight through the electromagnetically transparent permanent PVC shell.
 
 **Locked 48U Physical Stack Sequence**:
 
@@ -2160,23 +2160,23 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 
 **The Post-Planting "Blitz" & Harvest Extraction**:
 
-1. **Post-Planting Insertion**: Sensor sleds are dropped into the pre-located permanent HDPE shells, locked, and pressurized in under 15 minutes.
+1. **Post-Planting Insertion**: Sensor sleds are dropped into the pre-located permanent PVC shells, locked, and pressurized in under 15 minutes.
 2. **Harvest Extraction**: Prior to harvest, crews pull the C&C caps, extract the sleds for warehouse charging, and cap the shells with blanking plugs.
 
 ## 5. Hyper-Granular OEM Scale BOM (1,280 Unit Tier)
 
 | Category | Component Detail | Supplier / Scale Method | Unit Cost | Ext. Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| Housing | 2" SCH 40 UV-HDPE (4ft) | Direct Extruder | $4.00 | $4.00 |
-| Housing | Custom HDPE Tapered Tip | Proprietary Mold | $4.25 | $4.25 |
+| Housing | 2\" SCH 40 UV-Stabilized PVC (4ft) | Direct Extruder | $2.50 | $2.50 |
+| Housing | Friction Molded PVC Tapered Tip | Rotational Friction Formed | $3.50 | $3.50 |
 | Antenna | 3ft SS-304 Whip + Spring | Industrial Pultrusion | $3.50 | $3.50 |
-| Adhesive | Structural HDPE Acrylic Epoxy | Automated Bulk | $4.50 | $4.50 |
-| Seals | Viton (FKM) 2" O-Rings (x2) | OEM Rubber Fab | $0.80 | $0.80 |
-| Computing | nRF52840 "Chirp" Logic Board | Tier-1 PCBA | $6.50 | $6.50 |
+| Adhesive | Industrial PVC Cement | Automated Bulk | $0.50 | $0.50 |
+| Board | Nordic nRF52840 Custom PCB | JLCPCB Assembled | $8.50 | $8.50 |
+| Hardware| Viton (FKM) 2\" O-Rings | Bulk Supplier | $1.20 | $4.80 |
+| Internal | Dry Nitrogen Gas Purge | Automated Assembly | $0.25 | $0.25 |
 | Climate | 1U Stamped Desiccant Matrix | Bulk Supply | $1.50 | $1.50 |
-| Structure | 48" AlphaSled Chassis | Continuous Extrusion | $3.25 | $3.25 |
-| Structure | Injection-Molded EndCaps | High-Cavity Mold | $0.60 | $0.60 |
-| Structure | Extruded HDPE Spacers (22U) | Recycled Bulk | $0.15 | $0.15 |
+| Structure | 48\" CPVC AlphaSled Chassis | Continuous Extrusion | $3.25 | $3.25 |
+| Structure | Extruded Rigid CPVC Spacers (22U) | Recycled Bulk | $0.35 | $0.35 |
 | Power (x5) | 4U Battery Cartridges (21700x3) | Direct Cell Sourcing | $16.75/ea | $83.75 |
 | Adv. Sensor (x3) | 1U Advanced Sensor (NPK/EC/pH) | Fab-Direct Assembly | $14.00/ea | $42.00 |
 | Basic Sensor (x2) | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | $2.00/ea | $4.00 |

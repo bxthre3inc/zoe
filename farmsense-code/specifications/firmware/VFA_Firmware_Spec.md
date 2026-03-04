@@ -6,7 +6,7 @@ The VFA is the permanent "Ground Truth" node, providing high-resolution soil-wat
 
 ### 1.1 Mechanical Implementation
 
-- **Shaft:** 48-inch UV-HDPE permanent co-extruded shell.
+- **Shaft:** 48-inch UV-Stabilized Rigid PVC permanent co-extruded shell.
 - **Internal Sled:** Modular alpha-sled for seasonal extraction and service ("The Sled Hospital").
 - **Antenna:** Internal 3-foot vertical spine for 2.4GHz FHSS.
 

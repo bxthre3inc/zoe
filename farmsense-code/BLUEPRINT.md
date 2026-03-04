@@ -157,7 +157,7 @@ The engine shifts monitoring intensity based on real-time risk:
 
 ### **5.4 LRZ: Lateral Root-Zone Scout (Mass Spatial Node)**
 
-- **Design:** "Invisible Presence" physical housing. Permanent HDPE shell;Seasonal Electronic Alpha-Sled.
+- **Design:** \"Invisible Presence\" physical housing. Permanent PVC shell;Seasonal Electronic Alpha-Sled.
 - **Protocol:** LR-FHSS (Frequency-Hopping Spread Spectrum) "Dumb Chirp".
 - **Unit Cost:** **$60.80** (Industrial Scale target).
 
@@ -204,7 +204,7 @@ The engine shifts monitoring intensity based on real-time risk:
 ### **8.1 Defense Alignment (DoD/DARPA)**
 
 - **LPI/LPD Positioning:** The FHSS radio stack provides "Low Probability of Intercept" for contested environments.
-- **Kinetic Penetrators:** The LRZ's HDPE housing is air-drop capable for rapid UGS (Unattended Ground Sensor) deployment.
+- **Kinetic Penetrators:** The LRZ's PVC housing is air-drop capable for rapid UGS (Unattended Ground Sensor) deployment.
 
 ### **8.2 Global Philanthropy (Gates Foundation)**
 
