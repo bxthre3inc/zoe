@@ -1541,11 +1541,11 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 # Master Specification: Lateral Root-Zone Scout (LRZ) V1.21
 
-**Role**: Lateral Variability "Scout," High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting to 1 VFA per Field)
+**Role**: Lateral Variability \"Scout,\" High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting directly to the PMT Field Hub)
 
-While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ) is the indispensable high-density spatial component of the FarmSense grid. Designed to be mass-deployed at a strict density of 1 unit per 15 acres, the LRZ operates as a hyper-efficient "dumb node."
+While the Vertical Field Anchor (VFA) serves as the singular high-fidelity \"Truth\" node for an entire field, the Lateral Root-Zone Scout (LRZ) is the indispensable high-density spatial component of the FarmSense grid. Designed to be mass-deployed at a strict density of 1 unit per 15 acres, the LRZ operates as a hyper-efficient \"dumb node.\"
 
-**Network Topology**: On a standard 125-160 acre center pivot, a fleet of approximately 8 to 10 LRZ units will form a local mesh. They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This "Pin Mapping" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific 15-acre zone, encrypt them, and "chirp" them back to the single VFA anchored in that field. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution "pops."
+**Network Topology**: On a standard 125-160 acre center pivot, a fleet of approximately 8 to 10 LRZ units will form a local mesh. They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are \"Pinned\" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This \"Pin Mapping\" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific 15-acre zone, encrypt them, and \"chirp\" them directly to the overhead PMT Field Hub. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution \"pops.\"
 
 **The Seasonal Deployment Model**: To protect the LRZ's internal electronics and guarantee a 10-year hardware lifecycle, FarmSense utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. The internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS Oracle Compute**'s Kriging algorithms.
 
@@ -1567,7 +1567,7 @@ The LRZ is an exercise in extreme power efficiency. It lacks the eMMC storage an
 
 * **Ultra-Low Power nRF Logic**: The compute board relies on a Nordic nRF52840 SoC. This chip stays in a deep micro-amp sleep state for 99% of its life, waking only to capture raw dielectric counts before immediately cutting power.
 * **Interference Mitigation (FHSS)**: The LRZ chirp utilizes a Frequency-Hopping Spread Spectrum (FHSS) approach, scattering micro-transmissions across 75 different frequencies to ensure zero packet collisions in high-density fields.
-* **128-Bit Edge Encryption**: Before the chirp leaves the antenna, the payload is signed and encrypted with a factory-burned 128-bit AES key. The field VFA intercepts and decrypts this packet for routing.
+* **128-Bit Edge Encryption**: Before the chirp leaves the antenna, the payload is signed and encrypted with a factory-burned 128-bit AES key. The PMT Field Hub intercepts and decrypts this packet for routing.
 * **Oracle Unified Compute Remote Calibration**: The LRZ requires zero manual calibration. Its baseline is established remotely by the **Oracle Unified Compute** using the high-fidelity Bayesian math from the field's VFA "Truth Node."
 
 ## 3. The High-Density Sensor Array (18-Inch / 18U Sequence)
@@ -2107,12 +2107,11 @@ By investing $212,000 in a centralized RSS, FarmSense dramatically lowers the pe
 
 # Master Specification: Vertical Field Anchor (VFA) V1.21
 
-**Role**: Field-Level Relay, "Truth" Node, & Routing Coordinator | **Network Density**: 1 VFA per Field (Aggregating LRZs deployed at 1 per 15 Acres)
+**Role**: Field-Level \"Truth\" Node | **Network Density**: 1 VFA per Field (Reporting directly to the PMT Field Hub)
 
-As the primary field-level relay and intelligence hub of the FarmSense SFD (single field deployment) architecture, the Vertical Field Anchor (VFA) operates as a high-fidelity subsurface data logger, a secure routing node, and the critical baseline calibration tool—the absolute "Truth" node—for the **Oracle Unified Compute**.
+As the primary field-level high-fidelity subsurface data logger, the Vertical Field Anchor (VFA) operates as a secure routing node and the critical baseline calibration tool—the absolute \"Truth\" node—for the **Oracle Unified Compute**.
 
-**Network Topology**: There is exactly one VFA deployed per field. The VFA is "Pinned" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. This single VFA is responsible for intercepting the 128-bit encrypted FHSS chirps from the surrounding high-density Lateral Root-Zone (LRZ) scouts, which are deployed at a strict density of 1 unit per 15 acres.
- Instead of treating each data point in isolation, the solitary VFA seamlessly aggregates this expansive lateral spatial data, combines it with its own 48-inch deep-profile vertical readings, and securely routes the highly compressed, unified payload to the central Farm Hub located at the pivot. By serving as the localized edge coordinator, the VFA ensures that absolutely no data is lost during cellular blackouts. More importantly, it establishes the rigorous empirical ground truth required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
+**Network Topology**: There is exactly one VFA deployed per field. The VFA is \"Pinned\" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. Like the surrounding high-density Lateral Root-Zone (LRZ) scouts, the single VFA is responsible for securely routing its highly compressed, unified payload directly to the central PMT Field Hub located above on the pivot. By serving as the localized ground truth, the VFA ensures that absolutely no deep-profile data is lost during cellular blackouts. More importantly, it establishes the rigorous empirical baseline required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
 
 **The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS Oracle Compute**'s Kriging algorithms.
 
@@ -2130,9 +2129,8 @@ The VFA housing has been radically re-engineered using a dual-cylinder architect
 
 By stripping the VFA down to pure routing and encryption functions, we have intentionally offloaded all heavy cellular backhaul requirements and complex computations to the central Farm Hub and the **Command & Control (C&C)** backend.
 
-* **Interference Mitigation & FHSS**: The VFA utilizes a highly sensitive onboard FHSS mesh receiver to intercept the transmit-only "dumb" chirps from its fleet of 15-acre LRZs.
-* **Edge Decryption & Aggregation**: As the VFA catches these asynchronous chirps, it performs localized Edge Decryption, aggregating the raw electrical counts from the 15-acre lateral nodes with its own high-fidelity deep-soil data.
-* **AES-256 Security Architecture**: The aggregated payload is immediately re-encrypted using military-grade AES-256 protocols before leaving the VFA.
+* **128-Bit Edge Encryption**: The VFA encrypts its own high-fidelity deep-soil data using military-grade AES-256 protocols before transmitting it.
+* **Direct PMT Routing**: Rather than acting as a mesh relay for the LRZs, the VFA sends its standalone 128-bit encrypted payload directly to the PMT Field Hub umbrella, mirroring the flattened architecture of the rest of the field sensors.
 * **Local 900MHz Uplink**: The VFA utilizes a high-gain 900MHz LoRa uplink to bounce the secure payload directly to the elevated PMT Field Hub.
 
 ## 3. The "Proxy Method" Sensor Array (48-Inch / 48U Sequence)
