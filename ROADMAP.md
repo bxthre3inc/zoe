@@ -246,6 +246,10 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 | Grant | Deadline | Status | Amount |
 |-------|----------|--------|--------|
 | DoD ESTCP | March 26, 2026 | 🔄 Drafting | $500K-$2M |
+| NSF SBIR Phase I | Q2 2026 | 📋 Planned | $275K |
+| CWCB Water Plan Grant | July 1, 2026 | 📋 Planned | $500K-$2M |
+| BoR WaterSMART | July 31, 2026 | 📋 Planned | $300K |
+| USDA NRCS CIG | Q3 2026 | 📋 Planned | $1M-$2M |
 | Bill & Melinda Gates | Q3 2026 | 📋 Planned | TBD |
 | World Food Prize | Q3 2026 | 📋 Planned | $250K |
 | Earthshot Prize | Q4 2026 | 📋 Planned | £1M |

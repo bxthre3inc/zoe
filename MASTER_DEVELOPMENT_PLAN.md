@@ -116,6 +116,10 @@ FarmSense is the definitive sovereign water infrastructure—legally recognized,
 | Deadline | Lead | Amount | Tier |
 |----------|------|--------|------|
 | **Mar 26, 2026** | DoD ESTCP | $500K-$2M | Defense Dual-Use |
+| **Q2 2026** | NSF SBIR Phase I | $275K | Innovation R&D |
+| **Jul 1, 2026**  | CWCB Water Plan Grant | $500K-$2M | CO Conservation |
+| **Jul 31, 2026** | BoR WaterSMART Applied Sci | $300K | Modeling/Sensors |
+| **Q3 2026** | USDA NRCS CIG | $1M-$2M | On-Farm Trials |
 | **Q3 2026** | Gates Foundation | TBD | Global Adaptation |
 | **Q3 2026** | World Food Prize | $250K | Empirical Metrics |
 | **Q4 2026** | Earthshot Prize | £1M | Innovation |

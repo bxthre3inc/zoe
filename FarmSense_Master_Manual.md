@@ -2,6 +2,13 @@
 
 <div style="page-break-after: always;"></div>
 
+# Table of Contents
+
+[TOC]
+
+<div style="page-break-after: always;"></div>
+
+
 # FarmSense Project Memory
 
 ## CRITICAL INSTRUCTIONS FOR AI ASSISTANT
@@ -9045,3 +9052,49 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 | | **(Absolute OEM Scale)** | | | |
 
 
+
+<div style="page-break-after: always;"></div>
+
+# Master Specification: Grant Funding & Financial Strategy V1.0
+
+**Role**: 100% Non-Dilutive Capital Sourcing | **Focus**: AgTech, Water Conservation, & Infrastructure
+
+To fund FarmSense hardware, deployment, and ongoing operations 100% through grants, the strategy stacks "Development & Innovation" grants with "Implementation & Conservation" grants.
+
+## 1. Federal Grants (The Heavy Lifters)
+
+### USDA NRCS: Conservation Innovation Grants (CIG)
+*   **Focus:** Development and adoption of innovative conservation approaches and technologies.
+*   **Relevance:** FarmSense aligns perfectly with CIG's focus on water management, irrigation efficiency, and aquifer recovery.
+*   **Funding Profile:** Up to $2M+ for National Classic; requires 1:1 match (often via in-kind contributions).
+
+### Bureau of Reclamation (BoR): WaterSMART Grants
+*   **Focus:** Securing and managing water supplies in the American West.
+*   **Programs of Interest:**
+    *   **Applied Science Grants:** (Up to $300K) Funds tools and modeling for water managers.
+    *   **Water and Energy Efficiency Grants:** Funds projects conserving water.
+
+### DoD ESTCP: Installation Energy and Water (IEW)
+*   **Focus:** Demonstrating innovative energy and water technologies on military installations.
+*   **Relevance:** Dual-use AES-256 / FHSS mesh network and LPI/LPD characteristics.
+*   **Funding Profile:** $500K to $1.5M+, no strict cost-share required for private industry.
+
+### National Science Foundation (NSF): SBIR/STTR (AgTech & Environment)
+*   **Focus:** Deep-tech startups conducting R&D with high commercial potential.
+*   **Funding Profile:** Phase I ($275K); Phase II ($1M+). Non-dilutive, taking $0 equity.
+
+## 2. State & Regional Grants (Colorado Specific)
+
+### Colorado Water Conservation Board (CWCB): Water Plan Grants
+*   **Focus:** Implementing the Colorado Water Plan.
+*   **Funding Profile:** ~$37.7M available. Targeting Agriculture, Conservation, and Engagement & Innovation categories.
+
+### Colorado Department of Agriculture (CDA): ACRE3 Program
+*   **Focus:** Advancing Renewable Energy and Energy Efficiency (ACRE3) in agriculture.
+*   **Relevance:** Reduces irrigation pumping energy through VFD monitoring and soft-stops.
+
+## 3. Private, Philanthropic & AgTech Innovation Grants
+
+*   **The Walton Family Foundation (Environment Program)**: Protecting water resources in the Colorado River Basin.
+*   **Foundation for Food & Agriculture Research (FFAR)**: Matching funds for research on water scarcity.
+*   **1% for the Planet / Corporate Sustainability Grants**: Supply chain sustainability for major crop buyers (e.g., Coors, Frito-Lay).
