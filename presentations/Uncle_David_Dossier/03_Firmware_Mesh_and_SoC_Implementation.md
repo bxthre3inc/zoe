@@ -46,6 +46,8 @@ The VFA explicitly uses the nRF52840 because it features the ARM TrustZone Crypt
 * **Key Injection (SOP-09)**: During the Winter Sled Hospital overhaul, a unique, device-specific ECC-256 private key is injected directly into the CC310's secure NVRAM via a physical JTAG debug lead.
 * **AES-128 Blind Payloads**: The CC310 handles the AES-CCM encryption entirely in hardware. The main Cortex-M4 CPU hands a raw moisture payload pointer to the CC310, and receives an encrypted, signed hash back. The CPU never possesses the private key in open RAM, preventing memory-scraping attacks.
 
-### 4.2 PBFT Mesh Consensus
+### 4.2 PBFT Mesh Consensus & The Virtual Mesh
 
-At the District Hub (DHU) level, we operate a Practical Byzantine Fault Tolerance (PBFT) consensus model. Before a Regional Superstation logs a 1,000,000-gallon water usage tick to the irreversible Digital Water Ledger, it requires a mathematical multi-signature. If 1 VFA out of 10 in a mesh cluster reports catastrophic flooding while the other 9 report dry soil, the Hub flags the outlier for physical inspection and temporarily nullifies its weight in the Kriging algorithm map, ensuring farm-wide sabotage is mathematically impossible.
+At the District Hub (DHU) level, we operate a Practical Byzantine Fault Tolerance (PBFT) consensus model. Before a Regional Superstation logs a 1,000,000-gallon water usage tick to the irreversible Digital Water Ledger, it requires a mathematical multi-signature.
+
+If 1 VFA out of 10 in a mesh cluster reports catastrophic flooding while the other 9 report dry soil, the Hub evaluates this "outlier" against the **static Soil Variability Map**. If the outlier sits in an isolated clay depression, the Kriging algorithm validates its heavy weighting and interpolates the localized flood into the **1m Virtual Sensor Network**. However, if the outlier sits in a highly-drainable sandy ridge (where flooding is physically impossible given the other 9 nodes), the Hub flags the outlier for physical inspection and temporarily nullifies its weight, ensuring that sensor malfunction (or hardware tampering) cannot mathematically corrupt the Digital Water Ledger.

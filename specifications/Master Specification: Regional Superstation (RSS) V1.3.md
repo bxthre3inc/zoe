@@ -43,7 +43,7 @@ The RSS provides the local muscle for FarmSense’s primary software engine, ens
 
 * **Processing Power**: 64-Core AMD Threadripper PRO 5995WX with 512GB of ECC RAM and dual NVIDIA RTX A6000 (48GB) data-processing GPUs.
 * **Mathematical Logic & CUDA Smoothing**: This cluster is responsible for the massive Bayesian math required to synchronize data from 15,600 LRZ sensors. The GPUs execute a parallel spatial pipeline: ingesting FHSS chirps, using CUDA kernels to trend-filter moisture noise from pivot "splash-zones," and calculating Variogram clouds.
-* **Function**: By processing these math "Worksheets" locally, the RSS renders the 1m Enterprise Kriging Tiles (Layer 12 PNGs) every 15 minutes. This local processing serves the FarmSense UI and **Command & Control (C&C)** field tools, streaming frustum-culled map data to fieldXR headsets for sub-meter "Pinning."
+* **Function**: By processing these math "Worksheets" locally against the high-resolution **Soil Variability Maps**, the RSS renders the 1m Enterprise Kriging Tiles (Layer 12 PNGs) every 15 minutes. This local processing serves the FarmSense UI and **Command & Control (C&C)** field tools, streaming frustum-culled map data to fieldXR headsets for sub-meter "Pinning."
 
 ### The Oracle Vault (The Master Librarian)
 

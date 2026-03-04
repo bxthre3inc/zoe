@@ -7,7 +7,9 @@ In regions like the San Luis Valley (Subdistrict 1), water is no longer just a f
 Historically, irrigation was tracked linearly via a single meter at the wellhead, assuming uniform spread across a 160-acre quarter section. This is mathematically false. Evaporation from high winds, broken pivot nozzles, and slope run-off create massive spatial discrepancies.
 
 **The FarmSense Solution**:
-FarmSense provides a "Single-Field Deployment" (SFD) architecture. By weaving together subsurface telemetry (VFA/LRZ nodes), surface pivot tracking (PMT nodes), and high-resolution aerial multispectral passes, we generate a continuous, 1-meter resolution **Digital Water Ledger**. This ledger provides empirical, cryptographically secure proof of exactly *where* and *how much* water was applied, saving farmers from punitive state action and protecting their multi-million dollar water rights portfolios.
+FarmSense provides a "Single-Field Deployment" (SFD) architecture. By weaving together subsurface telemetry (VFA/LRZ nodes), surface pivot tracking (PMT nodes), high-resolution aerial multispectral passes, and **baseline Soil Variability Maps**, we generate a continuous, 1-meter resolution **Digital Water Ledger**.
+
+The hardware mesh provides absolute "Deep Truth" at specific pins, while the Soil Variability Maps (which chart soil texture, sand/clay ratios, and electrical conductivity zones) provide the underlying "Spatial Prior." The Oracle engine uses these soil maps to mathematically stretch the physical sensor data across the field, allowing us to generate 15,600 *virtual* sensors per quarter-section. This ledger provides empirical, cryptographically secure proof of exactly *where* and *how much* water was applied, saving farmers from punitive state action and protecting their multi-million dollar water rights portfolios.
 
 ## 2. The Revenue Model: The "Resolution Pop" SaaS Funnel
 

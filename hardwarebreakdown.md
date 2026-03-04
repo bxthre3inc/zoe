@@ -67,8 +67,8 @@ The Oracle Compute cluster executes a multi-stage spatial pipeline:
 
 1. **Ingestion**: Normalizes FHSS chirps from 25 DHUs (up to 1.2M points/day).
 2. **Trend-Filtering**: Uses NVIDIA CUDA kernels to remove moisture noise from pivot "splash-zone" artifacts.
-3. **Variogram Cloud Analysis**: Calculates the spatial auto-correlation of soil moisture across the subdistrict.
-4. **Kriging Map Generation**: Renders the 1m-resolution Enterprise Tile (Layer 12 PNGs) every 15 minutes.
+3. **Variogram Cloud Analysis**: Calculates the spatial auto-correlation of soil moisture against the **baseline Soil Variability Maps**.
+4. **Kriging Map Generation**: Renders the 1m-resolution Enterprise Tile (Layer 12 PNGs) every 15 minutes, synthesizing the live physical telemetry with the underlying soil texture boundaries to generate the 15,600-pixel Virtual Sensor Map.
 5. **XR Pipeline**: Streams frustum-culled map data to fieldXR headsets for sub-meter "Pinning."
 
 ### 2.4 The "Sled Hospital" Refurbishment Logic
@@ -295,7 +295,7 @@ Kinematic auditing provides the spatial proof of application, verifying where wa
 #### 5.3.2 Data Fusion (The Agronomic Layer)
 
 * **Sensors**: Multispectral sensors capturing Red Edge and Near-Infrared bands.
-* **Spectral-to-Soil Correlation**: The RSS Oracle Compute use Aerial NDVI as a "Spatial Prior" to interpolate the moisture gradients between physical VFA/LRZ pins.
+* **Spectral-to-Soil Correlation**: The RSS Oracle Compute uses Aerial NDVI and **static Soil Variability Maps** (charting sand/clay ratios and EC zones) as "Spatial Priors." These priors allow the Kriging algorithm to mathematically stretch and interpolate the live moisture telemetry from the physical VFA/LRZ pins into the continuous 1m Virtual Sensor Network.
 
 #### 5.3.3 Multispectral Anchoring Logic
 

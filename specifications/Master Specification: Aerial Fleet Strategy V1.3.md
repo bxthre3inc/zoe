@@ -32,7 +32,7 @@ Scientist) observes a dip in NDVI (Normalized Difference Vegetation Index) that 
 
 specific dielectric shift at an LRZ node, it can then mathematically "anchor" that relationship
 
-across every 1-meter tile of the field. This fusion eliminates the "Kriging Guesswork" common in
+across every 1-meter tile of the field. This fusion of aerial data and **static Soil Variability Maps** eliminates the "Kriging Guesswork" common in
 
 lower-resolution platforms, providing the empirical foundation for Subdistrict 1’s Digital Water
 
@@ -86,7 +86,7 @@ multispectral sensor suite.
 
 Focus: Establishing the "Spectral-to-Soil" correlation baseline. This phase is founder
 
-led to minimize overhead while refining the Kriging algorithms that power the 1m
+led to minimize overhead while refining the Kriging algorithms and **Soil Variability Map** integrations that power the 1m Virtual Sensor Network and
 
 "Resolution Pop."
 

@@ -46,7 +46,7 @@ The hydraulic flow stack is the primary engine for water rights verification and
 
 ### Empirical Bayesian Kriging (Edge-EBK) & VRI Failover Operations
 
-The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ATSAMD51's 120MHz hardware Floating-Point Unit (FPU), the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, and the highly complex 1m grids to be processed downstream at the RSS or Cloud levels.
+The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ATSAMD51's 120MHz hardware Floating-Point Unit (FPU), the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, while the highly complex 1m **Virtual Sensor Networks** (which require fusing the telemetry with the heavy **Soil Variability Maps**) are processed downstream at the RSS or Cloud levels.
 
 **Dynamic Update Frequency (The "Fisherman's Attention" Scale)**:
 

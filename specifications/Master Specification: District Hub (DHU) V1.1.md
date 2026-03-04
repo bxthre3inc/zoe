@@ -27,7 +27,7 @@ The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul 
 
 * **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
 * **Operational Reliability & Mesh Consensus**: Enforces PBFT (Practical Byzantine Fault Tolerance) consensus by aggregating Schnorr multi-signatures from up to 1,280 VFA nodes. This ensures the "Digital Water Ledger" remains immutable against local tampering or spoofed sensor packets.
-* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS Oracle Compute** specifically for the 10-meter and 20-meter resolution tiers. By performing these multi-tenancy calculations for up to 100 fields at the edge, the DHU can make instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
+* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS Oracle Compute** specifically for the 10-meter and 20-meter resolution tiers. Using **static Soil Variability Maps** loaded into the edge cache, the DHU Kriging engine provides instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls in an area of porous sandy soil) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
 * **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
 * **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
 * **Atmospheric Management**: Includes dual passive Gore-Tex vents for pressure equalization. During rapid alpine storm fronts, the internal pressure must equalize to prevent the enclosure gaskets from "breathing" and sucking in the fine, abrasive alkali dust that can degrade the cooling fins.
@@ -36,7 +36,7 @@ The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul 
 
 The DHU maintains a mission-critical, containerized environment to support localized intelligence and regional coordination.
 
-* **Base Layer**: NVIDIA JetPack 4.6.1 with specialized Maxwell GPU drivers for FP16-accelerated Kriging.
+* **Base Layer**: NVIDIA JetPack 4.6.1 with specialized Maxwell GPU drivers for FP16-accelerated Kriging against the cached Soil Variability Maps.
 * **Service Architecture**: Containerized via **Docker**, allowing individual upgrades to the Kriging engine or radio drivers without compromising the core OS.
 * **Firmware Reliability**: Implements a dual-partition (A/B) boot strategy. If an Over-the-Air (OTA) update fails or a kernel-panic is detected, the hub automatically rolls back to the previous stable state within 45 seconds.
 * **Watchdog Sentry**: A physical hardware watchdog monitors the `fs-mesh-coordinator` health. If the internal mesh heartbeats stall, the system executes a full power-cycle of the Jetson module.
