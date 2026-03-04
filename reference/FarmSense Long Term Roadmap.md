@@ -1,4 +1,3 @@
-2/16/26, 4:13 PM Google Gemini
 
 # Long-Term Roadmap: FarmSense as Sovereign Water Infrastructure
 

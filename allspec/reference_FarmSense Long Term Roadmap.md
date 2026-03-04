@@ -1,4 +1,3 @@
-2/16/26, 4:13 PM Google Gemini
 
 # Long-Term Roadmap: FarmSense as Sovereign Water Infrastructure
 
@@ -95,7 +94,6 @@ Hardware Signing: Every data packet from a Vertical Field Anchor (VFA) or Pump S
 https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&… 1/3
 
 
-2/16/26, 4:13 PM Google Gemini
 
 
 This ensures that the data is untampered from the moment it leaves the sensor, effectively
@@ -215,7 +213,6 @@ Treaties
 https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&… 2/3
 
 
-2/16/26, 4:13 PM Google Gemini
 
 
 The Librarian/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national

@@ -226,7 +226,7 @@ The FarmSense platform represents a highly sophisticated synthesis of edge compu
 3. **Target the DoD ESTCP Deadline:** Leverage the system's dual-use LPI/LPD architecture to submit the final proposal for the DoD's Environmental Security Technology Certification Program (ESTCP) "Water Resilience on DoD Installations" grant.  
 4. **Implement Software-Driven Feature Expansions:** Activate Current Harmonic Analysis on the PFA edge processors for predictive maintenance, and enforce the Dual-Layer Spatial Privacy architecture for absolute ledger protection.  
 5. **Validate Thermodynamic Hardware:** Utilize the published thermal loss metrics confirming the 40Ah LiFePO4 battery securely runs the 5W Kapton heater through \-30°F events. The PMT's LiSOCl2 battery, integrated with an HPC, ensures relentless GNSS "Warm Starts."  
-6. **Secure Non-Dilutive Philanthropic Funding:** Maximize the empirical data generated from the 2-field pilot to finalize the Bureau of Reclamation WaterSMART grants and secure nominations for the Earthshot and World Food Prizes.
+6. **Non-Dilutive Philanthropic Funding Integration:** The continuous empirical data generated from the 2-field pilot directly powers the finalized Bureau of Reclamation WaterSMART grants and anchors the current architecture's nominations for the Earthshot and World Food Prizes.
 
 #### **Works cited**
 
@@ -239,7 +239,6 @@ The FarmSense platform represents a highly sophisticated synthesis of edge compu
 
 <div style="page-break-after: always;"></div>
 
-2/16/26, 4:13 PM Google Gemini
 
 # Long-Term Roadmap: FarmSense as Sovereign Water Infrastructure
 
@@ -305,7 +304,6 @@ Hardware Signing: Every data packet from a Vertical Field Anchor (VFA) or Pump S
 
 <https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&…> 1/3
 
-2/16/26, 4:13 PM Google Gemini
 
 This ensures that the data is untampered from the moment it leaves the sensor, effectively
 
@@ -388,7 +386,6 @@ Treaties
 
 <https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&…> 2/3
 
-2/16/26, 4:13 PM Google Gemini
 
 The Librarian/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national
 
@@ -442,7 +439,6 @@ A th i d f l t t t i i l t ti
 
 <div style="page-break-after: always;"></div>
 
-2/22/26, 6:05 AM Google Gemini
 
 # FarmSense: Technical Project Overview & Research Validation Guide
 
@@ -506,7 +502,6 @@ A. Backend Intelligence (Cloud Layer)
 
 <https://gemini.google.com/app/9fe738dfc0a70bee> 1/5
 
-2/22/26, 6:05 AM Google Gemini
 
 Map Servers (Distributed Data Library): These serve as the system’s "Long-Term
 
@@ -582,7 +577,6 @@ to "wake up" sensors, collect their data, and hop the signal back to the Distric
 
 <https://gemini.google.com/app/9fe738dfc0a70bee> 2/5
 
-2/22/26, 6:05 AM Google Gemini
 
 multi-hop architecture allows the system to cover massive circular fields (120+ acres)
 
@@ -654,7 +648,6 @@ A. Data Sources
 
 <https://gemini.google.com/app/9fe738dfc0a70bee> 3/5
 
-2/22/26, 6:05 AM Google Gemini
 
 Satellite APIs: Automated pipelines for Sentinel-2 and Landsat imagery, providing 10m to
 
@@ -724,7 +717,6 @@ This hardware procurement directly drives the transition from a digital design t
 
 <https://gemini.google.com/app/9fe738dfc0a70bee> 4/5
 
-2/22/26, 6:05 AM Google Gemini
 
 Commercial Model: Data-as-a-Service (DaaS):
 
@@ -953,7 +945,6 @@ Pop" converts the fear of missing out (FOMO) into an Enterprise-tier subscriptio
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/5
 
-2/22/26, 6:11 AM Google Gemini
 
 The fleet scales in three distinct phases designed to align with Subdistrict 1's adoption curve,
 
@@ -1025,7 +1016,6 @@ AGL.
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/5
 
-2/22/26, 6:11 AM Google Gemini
 
 Logic: These units fly the entire subdistrict every 30 days to establish the "Seasonal
 
@@ -1091,7 +1081,6 @@ Technical Labor 3 FTE (Lead Pilot + 2 Field Technicians) $280,000 (Annual)
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/5
 
-2/22/26, 6:11 AM Google Gemini
 
 Maintenance Hull Insurance + Component Overhauls $67,000 (Annual)
 
@@ -1151,7 +1140,6 @@ asset for the district.
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/5
 
-2/22/26, 6:11 AM Google Gemini
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 5/5
 
@@ -1223,7 +1211,6 @@ caused by mud or terrain slope in the corners.
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/4
 
-2/21/26, 1:19 AM Google Gemini
 
 Corner spans often utilize high-pressure "End-Guns" that pulse on and off via solenoids as the
 
@@ -1297,7 +1284,6 @@ proves to the farmer that they are wasting water in the corners or missing criti
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/4
 
-2/21/26, 1:19 AM Google Gemini
 
 due to end-gun malfunctions, providing a high-conversion incentive to upgrade to the
 
@@ -1373,7 +1359,6 @@ $2,200.00
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/4
 
-2/21/26, 1:19 AM Google Gemini
 
 Total CSA Project Financials (Per Corner Pivot):
 
@@ -1670,7 +1655,6 @@ By deploying the PMT at this scale, FarmSense moves the needle from "estimated w
 
 <div style="page-break-after: always;"></div>
 
-2/21/26, 12:49 AM Google Gemini
 
 # Master Specification: Pressure & Flow Anchor (PFA) V1.9
 
@@ -1742,7 +1726,6 @@ PFA enclosure is internally treated with a specialized conductive coating to cre
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/5
 
-2/21/26, 12:49 AM Google Gemini
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
 
@@ -1816,7 +1799,6 @@ analog pressure gauge port. This allows the farmer to maintain their visual gaug
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/5
 
-2/21/26, 12:49 AM Google Gemini
 
 providing FarmSense with high-fidelity digital data.
 
@@ -1888,7 +1870,6 @@ industrial wholesale pricing and certified professional installation labor.
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/5
 
-2/21/26, 12:49 AM Google Gemini
 
 Category Component Description Supplier / Detail Unit
 Cost
@@ -1948,7 +1929,6 @@ Generation" in modern water-saving programs.
 
 <https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/5
 
-2/21/26, 12:49 AM Google Gemini
 
 Conservation Funding: The PFA's accuracy and tamper-proof mounting are vital for
 
@@ -7953,5 +7933,4 @@ To update the live site, use the Zo Space tools or edit directly in the Zo dashb
 
 <div style="page-break-after: always;"></div>
 
-2/22/26, 6:11 AM Google Gemini
 
