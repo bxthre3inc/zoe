@@ -2,7 +2,7 @@
 
 **Role: Layer 2 Edge Coordinator & District Hub | Network Density: 1 per 5,000 Acres | **Radius**: 5km (Overlapping Redundancy)
 
-The District Hub (DHU) operates as the primary "Director" and traffic coordinator of the FarmSense network. Positioned atop high-elevation structures across Subdistrict 1, the DHU provides the high-bandwidth backhaul connectivity, localized edge processing, and multi-node mesh coordination required to keep the "Digital Water Ledger" synchronized across thousands of acres. While the VFA acts as the field-level truth, the DHU is the central nervous system node that bridges the gap between raw field data and the high-performance computing clusters at the Regional Superstation (RSS). By utilizing an **NVIDIA Jetson Nano** at the edge, the DHU provides the localized GPU-accelerated compute required for mid-tier spatial probability grids (10m and 20m) across the entire district mesh.
+The District Hub (DHU) operates as the primary "Director" and traffic coordinator of the FarmSense network. Positioned atop high-elevation structures across Subdistrict 1, the DHU provides the high-bandwidth backhaul connectivity, localized edge processing, and multi-node mesh coordination required to keep the "Digital Water Ledger" synchronized across thousands of acres. While the VFA acts as the field-level truth, the DHU is the central nervous system node that bridges the gap between raw field data and the high-performance computing clusters at the Regional Superstation (RSS). By utilizing an **NVIDIA Jetson Orin Nano (8GB)** at the edge, the DHU provides the high-performance GPU-accelerated compute required for precision spatial probability grids (1m and 10m) across the entire district mesh.
 
 **Network Topology & High-Availability Backhaul**: Each DHU covers a **5km radius zone**, strategically overlapped with adjacent hubs to provide **high-availability redundancy**. This topology ensures that if one hub fails, at least 80% of its managed VFAs can failover to a neighboring hub's sector radios. To ensure 99.9% data availability, the DHU employs a "Fiber-First" Backhaul Mandate: in any location where fiber internet can be installed within a cost-effective trenching or aerial distance, it must be utilized as the primary uplink. For sites beyond the fiber footprint, or as a critical failover for fiber-connected sites, the DHU utilizes a Pay-As-You-Go IoT Cellular (LTE-M/NB-IoT) or Satellite (Starlink) array. This ensures that even during regional fiber cuts or severe weather events, the critical water accounting data remains synchronized.
 
@@ -25,9 +25,9 @@ The DHU is engineered for a 40-year structural lifespan, utilizing utility-grade
 
 The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul costs while maintaining a high-fidelity local record for legal auditing.
 
-* **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
+* **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Orin Nano (8GB)** featuring a 1024-core Ampere GPU and 6-core ARM v8.2 CPU. This represents a massive leap in TFLOPS compared to the V1.1 Nano specification, enabling true 1m resolution support at the edge.
 * **Operational Reliability & Mesh Consensus**: Enforces PBFT (Practical Byzantine Fault Tolerance) consensus by aggregating Schnorr multi-signatures from up to 1,280 VFA nodes. This ensures the "Digital Water Ledger" remains immutable against local tampering or spoofed sensor packets.
-* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS RDC Compute** specifically for the 10-meter and 20-meter resolution tiers. Powering this local intelligence is the **NVIDIA Jetson Nano**—a significant upgrade over the originally proposed STM32/ARM SoC variants. With its integrated Maxwell-architecture GPU, the DHU executes the complex Zo "Worksheets" locally, allowing for instantaneous "Reflex Logic" decisions (e.g., executing an emergency pump shutdown) without suffering from cellular latency. Using **static Soil Variability Maps** loaded into the edge cache, the DHU Kriging engine provides instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls in an area of porous sandy soil) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
+* **Localized Kriging (1m, 10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS RDC Compute** for all resolution tiers. Powering this local intelligence is the **NVIDIA Jetson Orin Nano (8GB)**—a significant upgrade over the originally proposed Nano variants. With its integrated Ampere-architecture GPU, the DHU executes the complex Zo "Worksheets" locally, allowing for instantaneous "Reflex Logic" decisions (e.g., executing an emergency pump shutdown) without suffering from cellular latency. Using **static Soil Variability Maps** loaded into the edge cache, the DHU Kriging engine provides instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls in an area of porous sandy soil) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
 * **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
 * **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
 * **Atmospheric Management**: Includes dual passive Gore-Tex vents for pressure equalization. During rapid alpine storm fronts, the internal pressure must equalize to prevent the enclosure gaskets from "breathing" and sucking in the fine, abrasive alkali dust that can degrade the cooling fins.
@@ -36,7 +36,7 @@ The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul 
 
 The DHU maintains a mission-critical, containerized environment to support localized intelligence and regional coordination.
 
-* **Base Layer**: NVIDIA JetPack 4.6.1 with specialized Maxwell GPU drivers for FP16-accelerated Kriging against the cached Soil Variability Maps.
+* **Base Layer**: NVIDIA JetPack 5.x/6.x with specialized Ampere GPU drivers for FP16-accelerated Kriging against the cached Soil Variability Maps.
 * **Service Architecture**: Containerized via **Docker**, allowing individual upgrades to the Kriging engine or radio drivers without compromising the core OS.
 * **Firmware Reliability**: Implements a dual-partition (A/B) boot strategy. If an Over-the-Air (OTA) update fails or a kernel-panic is detected, the hub automatically rolls back to the previous stable state within 45 seconds.
 * **Watchdog Sentry**: A physical hardware watchdog monitors the `fs-mesh-coordinator` health. If the internal mesh heartbeats stall, the system executes a full power-cycle of the Jetson module.
@@ -65,26 +65,26 @@ This ledger reflects the civil engineering and hardware costs for the 25-hub "Um
 
 | Category | Component Description | MPN / Supplier | Lead Time | Unit Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| **Compute Module** | NVIDIA Jetson Nano (4GB) | 945-13450-0000-000 | 4 Weeks | $149.00 |
-| **Logic Board** | Proprietary 35U Carrier | FS-DHU-C35U | 12 Weeks | $65.00 |
+| **Compute Module** | NVIDIA Jetson Orin Nano (8GB) | 945-13766-0000-000 | 4 Weeks | $499.00 |
+| **Logic Board** | Proprietary 35U Carrier (Orin) | FS-DHU-C35U-V2 | 12 Weeks | $85.00 |
 | **Storage** | 128GB Swissbit Industrial pSLC | SFS-128G-I35 | 4 Weeks | $82.50 |
 | **Comms Hub** | Ubiquiti LTU Sector (5GHz) | LTU-Rocket | 2 Weeks | $399.00 |
-| **Sensor Sink** | nRF52840 (900MHz FHSS) | RF-900-Gateway | 6 Weeks | $15.50 |
+| **Sensor Sink** | ESP32-S3 (LoRa Mesh Gateway) | FS-ESP-LORA-G1 | 6 Weeks | $18.50 |
 | **Cabinet** | NEMA 4X Polycarbonate | Polycase ML-47F | 1 Week | $42.00 |
-| **Sub-Total** | **Approx. Per-Unit Hardware Cost** | | | **$753.00** |
+| **Sub-Total** | **Approx. Per-Unit Hardware Cost** | | | **$1,126.00** |
 | **Power** | 200W High-Tilt Rigid Mono-Solar Array | Renogy-200W | 2 Weeks | $340.00 |
 | **Power** | 200Ah Heated LiFePO4 Bank | BattleBorn-200Ah | 6 Weeks | $850.00 |
 | **Tower** | 35ft Class 4 Timber Pole | Local Utility | 3 Weeks | $1,500.00 |
 | **Protection**| Lightning Arrestor/Surge | L-com-GDT | 2 Weeks | $125.00 |
-| **TOTAL** | **Per Unit Hardware Cost** | | | **$4,644.00** |
+| **TOTAL** | **Per Unit Hardware Cost** | | | **$5,041.00** |
 
 **Subdistrict 1 Infrastructure Totals (25 Hubs)**:
 
-* Hardware Subtotal: $116,100
+* Hardware Subtotal: $126,025
 * Fiber Trenching/Drop Allowance: $25,000
 * Site Foundation & Concrete: $12,500
-* Labor (Vertical Blitz): $18,375
-* **DHU PROJECT TOTAL: $171,975**
+* Labor (Vertical Blitz): $42,475
+* **DHU PROJECT TOTAL: $206,000**
 
 ## 6. Strategic Value & "Resolution Pop" Support
 
@@ -107,8 +107,8 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 ### Edge Compute
 
-* **SoC:** NVIDIA Jetson Nano Developer Kit (4GB).
-* **Local Kriging:** 10m and 20m spatial grids for up to 100 fields — no cloud round-trip for district-level decisions.
+* **SoC:** NVIDIA Jetson Orin Nano (8GB).
+* **Local Kriging:** 1m, 10m and 20m spatial grids for up to 100 fields — no cloud round-trip for district-level decisions.
 * **Black Box Ledger:** 128GB Swissbit PSLC SSD; 30-day write-endurance for legal audit preservation during internet outages.
 * **Reflex Logic:** Instant pump stop commands via PFA relay, bypassing cloud latency.
 
@@ -125,7 +125,7 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 | Component | Detail | Unit Cost |
 |---|---|---|
-| **Computing** | NVIDIA Jetson Nano (4GB) | $149.00 |
+| **Computing** | NVIDIA Jetson Orin Nano (8GB) | $499.00 |
 | **Storage** | 128GB PSLC SSD | $185.00 |
 | **Radio Array** | 120° Sector Array (×3) | $850.00 |
 | **Backhaul** | Fiber ONT + LTE-M Backup | $465.00 |
@@ -133,6 +133,6 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 | **Power** | 200W Array + 200Ah Heated LFP | $1,190.00 |
 | **Structure** | 40ft Class 1 Cedar Pole (Installed) | $2,250.00 |
 | **Labor** | Vertical Blitz Crew (Site Prep) | $450.00 |
-| **TOTAL** | **DHU Infrastructure Cost** | **$5,719.00** |
+| **TOTAL** | **DHU Infrastructure Cost** | **$6,069.00** |
 
 *Infrastructure Classification: Permanent Mesh Director*

@@ -69,7 +69,7 @@ The cloud architecture is designed for heavy spatial analytics and operates loca
 Relying purely on external cloud connectivity in rural agricultural environments is a critical point of failure. FarmSense mitigates this by pushing heavy computational loads to the edge and utilizing the Regional Superstation as its own localized cloud.
 
 * **Regional Superstation (RSS):** Located in Monte Vista, this Level 3 node serves as the territory master and equal cloud counterpart to the backend intelligence. Operating as a decentralized monolithic grid, it ensures that heavy spatial analytics and the "Digital Water Ledger" remain intact and legally irrefutable even during total regional internet or cellular blackouts. Housed in a modified 40-foot High-Cube container, it contains a 64-Core AMD Threadripper PRO cluster with 256GB of ECC RAM and stores the master spatial database on a 50TB Enterprise NVme array.\[1, 1\]  
-* **District Hubs (DHU):** Acting as Level 2 Regional Mesh Managers, DHUs are true edge coordinators mounted on 35-foot Class 4 timber poles, covering a 10km line-of-sight radius.1 Powered by an OnLogic CL210 Industrial 8-Core ARM SOC, the DHU executes the Zo "Worksheets" locally, allowing for instantaneous "Reflex Logic" decisions (e.g., executing an emergency pump shutdown) without suffering from cellular latency.1
+* **District Hubs (DHU):** Acting as Level 2 Regional Mesh Managers, DHUs are true edge coordinators mounted on 35-foot Class 4 timber poles, covering a 5km radius with extreme overlapping redundancy. Powered by an **NVIDIA Jetson Orin Nano (8GB)**, the DHU executes the Zo "Worksheets" locally, allowing for instantaneous "Reflex Logic" decisions (e.g., executing an emergency pump shutdown) without suffering from cellular latency. Using high-gain MIMO sector antennas, the DHU Mesh provides the district-wide backbone for the "Digital Water Ledger."
 
 ### **2.3 The "Black Box" Ledger and Legal Defensibility**
 
@@ -1350,7 +1350,7 @@ i th 1 E t i i th d fi iti "G d T th "
 
 **Role**: District Director & Edge Coordinator | **Tier**: Layer 2 (Regional Mesh Manager) | **Radius**: 5km (Overlapping Redundancy)
 
-The District Hub (DHU) operates as the primary "Director" and traffic coordinator of the FarmSense network. Positioned atop high-elevation structures across Subdistrict 1, the DHU provides the high-bandwidth backhaul connectivity, localized edge processing, and multi-node mesh coordination required to keep the "Digital Water Ledger" synchronized across thousands of acres. While the VFA acts as the field-level truth, the DHU is the central nervous system node that bridges the gap between raw field data and the high-performance computing clusters at the Regional Superstation (RSS). By utilizing an **NVIDIA Jetson Nano** at the edge, the DHU provides the localized GPU-accelerated compute required for mid-tier spatial probability grids (10m and 20m) across the entire district mesh.
+The District Hub (DHU) operates as the primary "Director" and traffic coordinator of the FarmSense network. Positioned atop high-elevation structures across Subdistrict 1, the DHU provides the high-bandwidth backhaul connectivity, localized edge processing, and multi-node mesh coordination required to keep the "Digital Water Ledger" synchronized across thousands of acres. While the VFA acts as the field-level truth, the DHU is the central nervous system node that bridges the gap between raw field data and the high-performance computing clusters at the Regional Superstation (RSS). By utilizing an **NVIDIA Jetson Orin Nano (8GB)** at the edge, the DHU provides the high-performance GPU-accelerated compute required for precision spatial probability grids (1m and 10m) across the entire district mesh.
 
 **Network Topology & High-Availability Backhaul**: Each DHU covers a **5km radius zone**, strategically overlapped with adjacent hubs to provide **high-availability redundancy**. This topology ensures that if one hub fails, at least 80% of its managed VFAs can failover to a neighboring hub's sector radios. To ensure 99.9% data availability, the DHU employs a "Fiber-First" Backhaul Mandate: in any location where fiber internet can be installed within a cost-effective trenching or aerial distance, it must be utilized as the primary uplink. For sites beyond the fiber footprint, or as a critical failover for fiber-connected sites, the DHU utilizes a Pay-As-You-Go IoT Cellular (LTE-M/NB-IoT) or Satellite (Starlink) array. This ensures that even during regional fiber cuts or severe weather events, the critical water accounting data remains synchronized.
 
@@ -1373,7 +1373,7 @@ The DHU is engineered for a 40-year structural lifespan, utilizing utility-grade
 
 The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul costs while maintaining a high-fidelity local record for legal auditing.
 
-* **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
+* **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Orin Nano (8GB)** featuring a 1024-core Ampere GPU and 6-core ARM v8.2 CPU. This represents a massive leap in TFLOPS compared to the original Nano specification, enabling true 1m resolution support at the edge.
 * **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS RDC Compute** specifically for the 10-meter and 20-meter resolution tiers. By performing these multi-tenancy calculations for up to 100 fields at the edge, the DHU can make instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
 * **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
 * **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
@@ -1411,7 +1411,7 @@ This ledger reflects the civil engineering and hardware costs for the 25-hub "Um
 
 | Category | Component Description | Supplier / Part # | Unit Cost |
 | :--- | :--- | :--- | :--- |
-| Computing | NVIDIA Jetson Nano Dev Kit | NVIDIA | $99.00 |
+| Computing | NVIDIA Jetson Orin Nano (8GB) | NVIDIA | $499.00 |
 | Storage | 128GB PSLC SSD | Swissbit X-75 | $185.00 |
 | Radio | 120° 5GHz Sector (x3) | Ubiquiti UISP | $850.00 |
 | Backhaul A | Fiber ONT (Primary) | Local ISP | $350.00 |
@@ -1550,12 +1550,12 @@ The hydraulic flow stack is the primary engine for water rights verification and
 
 ## 4. Edge Processing & Winter Hibernation Logic
 
-* **Cortex-M4 Processing Sled**: Features an ATSAMD51 processing sled (sourced via Digi-Key). It buffers 1-second interval flow data and GNSS coordinates, applying a localized Kalman Filter to the IMU data to smooth out the intense vibration noise of the pivot spans.
+* **ESP32-S3 Unified Compute Platform**: Features a dual-core Xtensa® 32-bit LX7 microprocessor with integrated AI acceleration. It replaces the separate processing sled and radio, acting as a unified core for both positioning math and field mesh aggregation.
 * **Comms (The Field Hub)**: Features a dual-radio stack. Transmits and receives via a High-Gain 900MHz FHSS antenna to act as the primary \"listening post\" for the field's LRZ & VFA mesh. It then intercepts this data, bundles it with its own 2.4GHz/BLE hydraulic payload received from the PFA, and blasts the entire field's encrypted payload via a 900MHz LoRaWAN transceiver to the District Hub (DHU).
 
 ### Empirical Bayesian Kriging (Edge-EBK) & VRI Failover Operations
 
-The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ATSAMD51's 120MHz hardware Floating-Point Unit (FPU), the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, and the highly complex 1m grids to be processed downstream at the RSS or Cloud levels.
+The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ESP32-S3's dual-core computational overhead, the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, while the highly complex 1m **Virtual Sensor Networks** (which require fusing the telemetry with the heavy **Soil Variability Maps**) are processed downstream at the RSS or Cloud levels.
 
 **Dynamic Update Frequency (The "Fisherman's Attention" Scale)**:
 
@@ -1577,7 +1577,7 @@ This ledger deconstructs the hardware costs for the initial 1,280-unit rollout.
 | Housing | IP67 UV-Polycarbonate Puck | Polycase WP-21F | $45.00 | $45.00 |
 | Mounting | 304-SS Band-It Straps (x2) | McMaster 5530K34 | $12.50 | $12.50 |
 | Mounting | Neoprene Friction Pad | McMaster 8637K32 | $5.50 | $5.50 |
-| Computing | Cortex-M4 Processing Sled | Digi-Key ATSAMD51 | $65.00 | $65.00 |
+| Computing | Unified ESP32-S3 Hub PCBA | FS-PMT-S3-V2 | $18.50 | $18.50 |
 | Position | u-blox ZED-F9P RTK GNSS | SparkFun GPS-15136 | $140.00 | $140.00 |
 | Position | 9-Axis IMU (Vibration/Tilt) | Bosch BNO055 | $32.00 | $32.00 |
 | Hydraulic | Ultrasonic Transit-Time Pair | Badger Meter TFX-5000 | $648.00 | $648.00 |
@@ -2089,7 +2089,7 @@ FarmSense is the definitive sovereign water infrastructure—legally recognized,
 ### 2.1. Hierarchical Processing Stack
 
 1. **Level 1 (Field):** **LRZ/VFA** (FHSS chirps) -> **PMT Hub** (50m Grid, EBK baseline).
-2. **Level 2 (District):** **DHUs** (NVIDIA Jetson Nano) -> 20m/10m Grid (Go-based IDW).
+2. **Level 2 (District):** **DHUs** (NVIDIA Jetson Orin Nano) -> 1m/10m/20m Grid (Go-based Kriging).
 3. **Level 3 (Regional):** **RSS** (64-Core Threadripper) -> 1m Grid (Python-based Regression Kriging + FHE).
 4. **Level 4 (Global):** **Zo.computer Cloud** -> Multi-field analytics, Federated Learning.
 
@@ -2404,7 +2404,7 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 
 * Each RSS is a peer node
 * P2P verification prevents single point of failure
-* **Edge Computing:** NVIDIA Jetson Nano optimization for 10m/20m IDW/Kriging interpolation with offline SQLite resilience.
+* **Edge Computing:** NVIDIA Jetson Orin Nano optimization for 1m/10m/20m Bayesian Kriging interpolation with offline SQLite resilience.
 * **Cloud Analytics:** NumPy/SciPy Regression Kriging incorporating Sentinel-2/Landsat-9 imagery on Zo Cloud.
 
 ---
@@ -2563,7 +2563,7 @@ The FarmSense infrastructure is an uncompromising, decentralized monolithic grid
 Relying entirely on external backhauls in rural zones creates unacceptable vulnerability. Heavy computational loads process continuously at the edge:
 
 * **Regional Superstation (RSS) [Level 3 - Territory Master]:** A localized cloud counterpart housed in a modified 40-foot High-Cube container. Features a 64-Core AMD Threadripper PRO cluster, 256GB ECC RAM, and a 50TB Enterprise NVMe array securing the master spatial database. Will support FHE (Fully Homomorphic Encryption) Kriging modeling at **1m spatial fidelity**.
-* **District Hubs (DHU) [Level 2 - Regional Mesh Manager]:** Edge coordinators mounted on 35-foot Class 4 timber poles. Line-of-sight 10km radius. Runs an NVIDIA Jetson Nano edge processor. Capable of instant "Reflex Logic" responses bypassing cellular latency. Processes **20m and 10m spatial fidelity** grids.
+* **District Hubs (DHU) [Level 2 - Regional Mesh Manager]:** Edge coordinators mounted on 35-foot Class 4 timber poles. Line-of-sight 5km radius with extreme overlapping redundancy. Runs an NVIDIA Jetson Orin Nano (8GB) edge processor. Supports precision **1m, 10m, and 20m spatial fidelity** grids with Ampere-accelerated localized Kriging.
   * **Audit Node Addendum**: Houses a cryptographically signed (128-bit AES) "Black Box" cache.
 
 ## Field-Level Edge Hardware
@@ -2576,7 +2576,7 @@ Sensors and actuators deployed below and above ground across field zones. Equipm
 * **Pivot Motion Trackers (PMT) [Level 1.5 - Field Hub & Edge-EBK Engine]:** The command center and Nervous System of the field, mounted 10-15 feet high on the pivot span.
   * **RF Umbrella:** Receives 900MHz FHSS chirps from the VFA/LRZs and 2.4GHz payloads from the PFA, bundling the entire field state into a single ~187-byte AES-256 payload and blasting it to the DHU via 900MHz LoRaWAN.
   * **Sensors:** Generates +/- 1% flow accuracy non-invasively using Badger Meter ultrasonic transit-time components. Contains u-blox ZED-F9P RTK GNSS modules for sub-2.5m horizontal spatial resolution and Bosch BNO055 9-Axis IMUs for vibration harmonics.
-  * **Edge IQ:** Constant Edge-EBK processing utilizing an onboard ATSAMD51 Cortex-M4 FPU to continuously calculate a **50m spatial fidelity** EBK spatial probability grid using "Fisherman's Attention" and Ripple/Collapse logic. This constant baseline enables hierarchical processing upstream (20m/10m grids at DHU, 1m at RSS/Cloud). It inherently serves as zero-downtime VRI failover guidance if the DHU uplink drops.
+  * **Edge IQ:** Constant Edge-EBK processing utilizing an onboard ESP32-S3 dual-core processor to continuously calculate a **50m spatial fidelity** EBK spatial probability grid using "Fisherman's Attention" and Ripple/Collapse logic. This constant baseline enables hierarchical processing upstream (1m/10m/20m grids at the Orin-powered DHU). It inherently serves as zero-downtime VRI failover guidance if the DHU uplink drops.
   * **Corner-Swing Auditor (CSA)** variants utilize dual-node configurations (Primary Span Tracker and Swing-Arm Tracker) to resolve swing-arm irrigation mechanics mathematically.
 
 ## Dual-Layer Spatial Privacy Architecture
@@ -3617,7 +3617,7 @@ This comprehensive implementation package contains **everything needed** to buil
   * Threshold customization
   * Alert definitions
 
-**Lines of Code**: ~600 (Optimized for Raspberry Pi 4/Jetson Nano)
+**Lines of Code**: ~1,200 (Optimized for Orin Nano / Ampere GPU)
 
 ---
 
@@ -4065,7 +4065,7 @@ visibility even if the cloud connection is severed.
 
 |Component|Specification|Purpose|
 |---|---|---|
-|Compute<br>Module|Raspberry Pi 4 (4GB) or NVIDIA<br>Jetson Nano|Main processing unit for local grid<br>computation|
+|Compute<br>Module|NVIDIA Jetson<br>Orin Nano (8GB)|Main processing unit for high-resolution edge<br>computation|
 |Storage|64GB Industrial microSD + 128GB<br>SSD|OS, application, 30-day data buffer|
 |Connectivity|4G LTE modem + Ethernet backup|Cloud synchronization and remote<br>monitoring|
 |Sensor<br>Interface|LoRaWAN Gateway (8-channel) +<br>MQTT broker|Collect data from feld sensors|
@@ -7719,7 +7719,7 @@ The Pivot Motion Tracker (PMT) operates as the **Level 1.5 Field Hub**. It is th
 
 ## 1. Hardware Initialization Routine
 
-* **Processor:** ATSAMD51 (Cortex-M4, 120MHz FPU).
+* **Processor:** ESP32-S3 (Dual-Core LX7, 240MHz).
 * **Sensors:** Badger Meter Ultrasonic Transit-Time, u-blox ZED-F9P RTK GNSS, Bosch BNO055 9-Axis IMU.
 * **Power:** 10W Solar Lid + LiFePO4 Buffer.
 * **Hibernation Logic:** The primary Saft LS14500 LiSOCl2 cell maintains ONLY the GNSS Real-Time Clock through the 120-day SLV winter dormancy.

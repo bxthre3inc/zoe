@@ -38,19 +38,19 @@ The hydraulic flow stack is the primary engine for water rights verification and
 
 ## 4. Edge Processing & Winter Hibernation Logic
 
-* **Cortex-M4 Processing Sled**: Features an ATSAMD51 processing sled (sourced via Digi-Key). It buffers 1-second interval flow data and GNSS coordinates, applying a localized Kalman Filter to the IMU data to smooth out the intense vibration noise of the pivot spans.
-* **Comms (The Field Hub)**: Features a triple-radio stack. Transmits and receives via a High-Gain **900MHz FHSS** antenna to act as the primary "listening post" for the field's **LRZ, VFA, & PFA** mesh. This 900MHz link is mandated for 100% penetration through potato/corn canopies. The PMT then bundles the entire field's encrypted state into a single ~187-byte **AES-256** payload and blasts it via the best available- **Field-to-Edge Link**: 2.4GHz / 5GHz Wireless Bridge (Ubiquiti/WiFi Type) to District Hub (DHU).
+* **ESP32-S3 Unified Compute Platform**: Features a dual-core Xtensa® 32-bit LX7 microprocessor (up to 240MHz) with integrated AI acceleration and a dedicated low-power coprocessor. It replaces the separate processing sled and BLE radio, acting as a unified core for both positioning math and field mesh aggregation.
+* **Comms (The Field Hub)**: Features a unified radio stack. Transmits and receives via a High-Gain **LoRa Mesh** antenna (SX1262) to act as the primary "listening post" for the field's **LRZ, VFA, & PFA** mesh. This LoRa link is mandated for 100% penetration through potato/corn canopies. The PMT then bundles the entire field's encrypted state into a single ~187-byte **AES-256** payload and blasts it via its integrated **2.4GHz WiFi/Direct** link (or optional LTE-M bridge) to the District Hub (DHU).
 
-- **Encryption**: AES-256 for aggregated field-state payloads.
+* **Encryption**: AES-256 (via ESP32-S3 Hardware Encryption Engine) for aggregated field-state payloads.
 ecs (ATSAMD51 Interface)
 
-* **Memory Architecture**: 1MB Dual-Bank Flash allows for seamless OTA (Over-The-Air) firmware updates via the DHU mesh without risking a bricked state during the 512KB partition swap.
+* **Memory Architecture**: 8MB Flash + 2MB PSRAM allows for seamless OTA (Over-The-Air) firmware updates via the DHU mesh without risking a bricked state.
 * **IMU Logic (BNO055)**: Sits on the I2C bus (Address 0x28), actively calculating quaternions (3D orientation) to detect "crabbing" stalls before visible structural bowing occurs.
 * **GNSS States (ZED-F9P)**: Communicates via UART. Defaults to a 1Hz NMEA stream, scaling to 10Hz "Blitz Mode" updates when the PMT detects rapid hydraulic surges.
 
 ### Empirical Bayesian Kriging (Edge-EBK) & VRI Failover Operations
 
-The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ATSAMD51's 120MHz hardware Floating-Point Unit (FPU), the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, while the highly complex 1m **Virtual Sensor Networks** (which require fusing the telemetry with the heavy **Soil Variability Maps**) are processed downstream at the RSS or Cloud levels.
+The PMT acts as an **Autonomous Compute Engine** continuously. Utilizing the ESP32-S3's dual-core computational overhead, the PMT intercepts the mesh data points and calculates a 50m-resolution spatial probability grid (a 16x16 matrix across the 160-acre quarter section) regardless of DHU connectivity. This native processing enables the 20m and 10m grids to be processed at the DHU, while the highly complex 1m **Virtual Sensor Networks** (which require fusing the telemetry with the heavy **Soil Variability Maps**) are processed downstream at the RSS or Cloud levels.
 
 **Dynamic Update Frequency (The "Fisherman's Attention" Scale)**:
 
@@ -72,23 +72,22 @@ This ledger deconstructs the hardware costs for the initial 1,280-unit rollout.
 | **Housing** | IP67 UV-Polycarbonate Puck | Hammond-1554WA | 6 Weeks | $45.00 |
 | **Mounting** | 304-SS Band-It Straps (x2) | McMaster 5530K34 | 1 Week | $12.50 |
 | **Mounting** | Neoprene Friction Pad | McMaster 8637K32 | 1 Week | $5.50 |
-| **Computing** | Cortex-M4 Processing Sled | Microchip-SAMD51 | 10 Weeks | $65.00 |
+| **Computing** | Unified ESP32-S3 Hub PCBA | FS-PMT-S3-V2 | 10 Weeks | $18.50 |
 | **Position** | u-blox ZED-F9P RTK GNSS | ZED-F9P-02B | 8 Weeks | $140.00 |
 | **Position** | 9-Axis IMU (Vibration/Tilt) | Bosch-0273141114 | 4 Weeks | $32.00 |
 | **Hydraulic** | Ultrasonic Transit-Time Pair | TFX-5000-U | 14 Weeks | $648.00 |
 | **Power** | 10W Solar Lid + LiFePO4 | Renogy-10W-Kit | 2 Weeks | $95.00 |
 | **Power** | LiSOCl2 5yr Hibernation Pack | Saft-LS14500 | 4 Weeks | $25.00 |
 | **Fasteners** | SS M4 Security Screws (x4) | McMaster Sec-M4 | 1 Week | $2.00 |
-| **Radio** | High-Gain BLE Whip Antenna | Linx-ANT-BLE | 3 Weeks | $30.00 |
-| **Radio** | 900MHz LoRaWAN Transceiver | Semtech-SX1262 | 6 Weeks | $12.00 |
-| **TOTAL** | **Per Unit Hardware Cost** | | | **$1,112.00** |
+| **Radio** | SX1262 LoRa Transceiver Sub-module | FS-LORA-CHIP | 6 Weeks | $12.00 |
+| **TOTAL** | **Per Unit Hardware Cost** | | | **$1,035.50** |
 
 **Total Subdistrict 1 Project Financials (1,280 Units)**:
 
-* Hardware Subtotal: $1,423,360
+* Hardware Subtotal: $1,325,440
 * Calibration & Field Audit: $57,440
 * Labor (Installation): $100,000
-* **TOTAL PROJECT COST: $1,580,800**
+* **TOTAL PROJECT COST: $1,482,880**
 
 ## 6. Strategic Value & Legal Defensibility
 
@@ -104,7 +103,7 @@ By deploying the PMT at this scale, FarmSense moves the needle from "estimated w
 
 ### 6.1 Edge-EBK Engine (Empirical Bayesian Kriging)
 
-The ATSAMD51J20A executes a simplified EBK model locally at the field hub level:
+The ESP32-S3 executes a simplified EBK model locally at the field hub level:
 
 * **Baseline Windowing:** 4-hour rolling baseline for steady-state computation.
 * **Focus Collapse (Pivot Active):** If IMU/GNSS detects pivot movement, sampling collapses to a 5-second "Ripple" window for real-time application mapping.
@@ -121,14 +120,14 @@ The ATSAMD51J20A executes a simplified EBK model locally at the field hub level:
 ### 6.3 Core BOM Summary
 
 | Part Class | Model/Manufacturer | Role |
-|---|---|---|
-| **Main SoC** | Microchip ATSAMD51J20A | Core logic / EBK |
+| :--- | :--- | :--- |
+| **Main SoC** | ESP32-S3-WROOM-1 | Core logic / EBK / WiFi |
 | **GNSS SoC** | u-blox ZED-F9P | RTK positioning (±2cm) |
 | **IMU** | Bosch BNO055 | Kinematics / strut fatigue |
-| **Mesh Radio** | Nordic nRF52840 | Sensor aggregator sink |
-| **Backhaul** | LTE-M Bridge | Failover cellular link |
-| **Storage** | 16MB QSPI Flash | 72-hr telemetry black box |
-| **Unit Cost** | **$1,112.00** | — |
+| **LoRa Radio** | Semtech SX1262 | LoRa Mesh aggregator sink |
+| **Backhaul** | Telit ME910G1 (Optional) | Failover cellular link |
+| **Storage** | 8MB Flash + 2MB PSRAM | 72-hr telemetry black box |
+| **Unit Cost** | **$1,035.50** | — |
 
 ---
 

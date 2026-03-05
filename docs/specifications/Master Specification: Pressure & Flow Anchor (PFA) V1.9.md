@@ -64,7 +64,7 @@ electrical "noise" that can easily corrupt sensitive analog-to-digital (ADC) con
 
 PFA enclosure is internally treated with a specialized conductive coating to create a
 
-"Faraday Cage" effect. This protects the NXP processing sled's delicate circuitry, ensuring
+"Faraday Cage" effect. This protects the **ESP32-S3** processing sled's delicate circuitry, ensuring
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
 
@@ -160,19 +160,13 @@ the root zone, potentially causing massive soil erosion or nutrient leaching.
 
 ## 3. Edge Computing & The "Blackout Buffer"
 
-The PFA logic is designed for extreme resilience, ensuring that data integrity is maintained even
+The PFA logic is designed for extreme resilience, ensuring that data integrity is maintained even during total grid failures.
 
-during total grid failures or utility-mandated Public Safety Power Shutoffs (PSPS).
+**Processing Sled**: Features an **ESP32-S3-WROOM-1** (Dual-Core 240MHz with AI acceleration). This MCU handles rapid, synchronous sampling of analog inputs and 1,024-point FFTs for motor health diagnostics. The ESP32-S3's hardware encryption and FPU ensure that the PFA acts as a high-performance "Source Sentry."
 
-Processing Sled: Features an NXP i.MX RT1020 (Cortex-M7 @ 500MHz) high-speed processing sled. This MCU is chosen for its ability to handle rapid, synchronous sampling of analog inputs, which is critical for capturing the milliseconds of transients that occur during motor start-up or hydraulic water hammer events.
+### 3.1 Deep Technical Specs (ESP32-S3 Interface)
 
-### 3.1 Deep Technical Specs (i.MX RT1020 Interface)
-
-* **Real-Time FFT**: The 500MHz core executes split-second Fast Fourier Transforms on the 480V 3-phase incoming line, isolating the 3rd and 5th harmonics to calculate True Power Factor and detect micro-cavitation.
-* **ADC Calibration**: Hardware-triggered internal ADC self-calibration against a precision 1.2V bandgap reference ensures CT clamp readings remain ±1% accurate across the entire -30°F to 120°F pump-house temperature swing.
-* **FlexPWM Logic**: Direct register access (`PWM_SM0CTRL2` and `PWM_SM0VAL1`) controls the 30A Omron "Soft-Stop" relay, allowing the PFA to physically override the VFD drive state with microsecond precision.
-
-Networking & Mesh Protocol: Utilizes a **900MHz FHSS Link** to communicate directly with the **Layer 1.5 PMT** elevated hub. 900MHz is mandated over 2.4GHz to ensure signal penetration through dense, water-rich crop canopies. It is programmed with "Critical Packet Priority"—if the line pressure drops or a "Soft-Stop" is triggered, the PFA suppresses all non-essential diagnostic pings to ensure the emergency command has a clear, prioritized path to the hub.
+Networking & Mesh Protocol: Utilizes an integrated **LoRa Mesh Link** (SX1262) to communicate directly with the **Layer 1.5 PMT** elevated hub. This ensures signal penetration through dense, water-rich crop canopies. It is programmed with "Critical Packet Priority"—if line pressure drops or a "Soft-Stop" is triggered, the emergency command is prioritized across the mesh.
 
 The Blackout Buffer (7-Day Sentry): Powered primarily via an AC Step-Down
 
@@ -195,7 +189,7 @@ hydrological data point for regional water management and legal defensibility.
 | Category | Component Detail | MPN / Supplier | Lead Time | Unit Cost |
 | :--- | :--- | :--- | :--- | :--- |
 | **Housing** | NEMA 4X EMI-Shielded Enclosure | Saginaw-SCE-12106CHNF | 3 Weeks | $125.00 |
-| **Computing** | NXP i.MX RT1020 (Cortex-M7) Sled | MIMXRT1021DAG5A | 12 Weeks | $42.00 |
+| **Computing** | ESP32-S3 Unified PCBA Sled | FS-PFA-S3-V2 | 12 Weeks | $18.50 |
 | **Diagnosis** | 400A Split-Core CT Clamps (x3) | Magnelab SCT-1250-600 | 6 Weeks | $85.00/ea |
 | **Hydrology** | Submersible Depth Sounder (SS) | Dwyer-PBLTX (Vented) | 5 Weeks | $320.00 |
 | **Pressure** | 200 PSI SS Line Transducer | M5200-000005-250PG | 8 Weeks | $140.00 |
@@ -243,11 +237,9 @@ Water Court Integrity: In the event of a water rights dispute, the PFA's unbroke
 
 > *Source: consolidated from `codebase_docs/.../specifications/firmware/PFA_Firmware_Spec.md` — 2026-03-05*
 
-### Reflex Logic (Firmware v3.x)
+### Reflex Logic (Firmware v4.x)
 
-The NXP i.MX RT1020 (500MHz Cortex-M7) executes safety-critical "Soft-Stop" actuation.
-
-> *Note: The firmware supplement spec references `i.MX RT1060`; the main BOM above uses `i.MX RT1020` (500MHz). Both are Cortex-M7 variants. RT1060 is the higher-performance drop-in replacement — production units may use either depending on availability. The 1,024-point FFT and FlexPWM reflex logic runs on both.*
+The **ESP32-S3** (Dual-Core 240MHz) executes safety-critical "Soft-Stop" actuation.
 
 | Trigger Condition | Reflex Action |
 |---|---|
@@ -258,7 +250,7 @@ The NXP i.MX RT1020 (500MHz Cortex-M7) executes safety-critical "Soft-Stop" actu
 ### FFT Motor Health Engine
 
 * **CT Clamps:** 3x 400A Split-Core (Magnelab SCT-1250) on Phase-A/B/C.
-* **1,024-point FFT:** Executed locally on i.MX RT1060 — no cloud latency for motor health.
+* **1,024-point FFT:** Executed locally on ESP32-S3 dual-core — no cloud latency for motor health.
 * **Failure Detection:** Cavitation sidebands, torque ripple (bearing wear), hydraulic hammer events.
 * **Prediction Horizon:** Issues flagged 7–14 days before catastrophic motor failure.
 
@@ -270,8 +262,8 @@ The NXP i.MX RT1020 (500MHz Cortex-M7) executes safety-critical "Soft-Stop" actu
 
 ### BOM Cost Reference
 
-| PFA Hardware (OEM Scale, per unit) | **$985.00** |
-| PFA Project Cost (Installed per wellhead, Sub 1) | **$1,210.00** |
+| PFA Hardware (OEM Scale, per unit) | **$961.50** |
+| PFA Project Cost (Installed per wellhead, Sub 1) | **$1,186.50** |
 
 > *Note: Project cost includes NEC-standard conduit, grounding, and journeyman electrician labor (@ $100/hr).*
 

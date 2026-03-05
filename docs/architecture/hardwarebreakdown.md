@@ -89,10 +89,10 @@ The DHU provides the "Umbrella" of connectivity, positioned on 35-foot timber po
 
 ### 3.1 DHU Core Specs
 
-* **Processing Engine**: NVIDIA Jetson Nano Developer Kit (4GB LPDDR4).
-* **GPU Specs**: 128-core Maxwell GPU for localized 20m grid math.
+* **Processing Engine**: NVIDIA Jetson Orin Nano (8GB LPDDR5).
+* **GPU Specs**: 1024-core NVIDIA Ampere GPU with 32 Tensor Cores.
 * **Storage**: 128GB Swissbit PSLC Industrial SSD (Pseudo-Single Level Cell).
-* **OS/Stack**: JetPack 4.6.1 + Docker (Containerized Ingestion, Kriging, and Radio drivers).
+* **OS/Stack**: JetPack 5.x/6.x + Docker (Containerized Ingestion, Kriging, and Radio drivers).
 
 ### 3.2 Radio Spine
 
@@ -170,9 +170,9 @@ The VFA runs a Real-Time Operating System (RTOS) designed for high-availability 
 
 #### 4.2.1 Edge Logic & Chirp Protocol
 
-* **Core SoC**: Nordic nRF52840 (Ultra-low power ARM Cortex-M4).
-* **Encryption**: Factory-burned 128-bit AES keys.
-* **Protocol**: Frequency-Hopping Spread Spectrum (FHSS) across 75 frequencies to prevent packet collisions in dense field deployments.
+* **Core SoC**: ESP32-C6 (RISC-V 160MHz).
+* **Encryption**: AES-256 (Hardware-accelerated).
+* **Protocol**: 900MHz LoRa Mesh (SX1262).
 * **State Machine**:
   * **Deep Sleep (1.5µA)**: 99.9% of duty cycle.
   * **Sample Mode (3.5mA)**: 40ms dielectric ping + temp read.
@@ -221,7 +221,7 @@ The AKP-LRZ is a specialized tactical and emergency-deployment variant of the st
 
 #### 4.3.3 Edge Compute
 
-* **Processor**: NXP i.MX RT1020 (Cortex-M7). Selected for high-speed synchronous sampling of motor transients.
+* **Processor**: ESP32-S3 (Dual-Core 240MHz). Selected for high-speed sampling and motor health FFTs via AI acceleration.
 * **Buffer**: 40,000mAh LiFePO4 battery array (7-day blackout resilience).
 
 #### 4.3.4 Motor Signature Analysis (The "Zo" Engine Integration)
@@ -264,7 +264,7 @@ Kinematic auditing provides the spatial proof of application, verifying where wa
 
 #### 5.1.3 Autonomous Compute (Edge-EBK)
 
-* **CPU**: ATSAMD51 (120MHz with hardware FPU).
+* **CPU**: ESP32-S3 Dual-Core (240MHz with AI acceleration).
 * **Grid Math**: Calculates a 50m-resolution spatial probability grid (16x16 matrix) natively for failover VRI operations if the DHU link drops.
 
 #### 5.1.4 Kinematic State Machine (u-blox ZED-F9P)
@@ -338,7 +338,7 @@ This section provides the "Circuit-to-Code" mapping for the primary field and hu
 
 ### 7.1 VFA/LRZ "AlphaSled" Internal PCBA
 
-**Main SoC**: Nordic Semiconductor nRF52840 (WLCSP package for size minimization).
+**Main SoC**: ESP32-C6 (RISC-V) with integrated LoRa Mesh (SX1262).
 
 #### 7.1.1 GPIO Pinout Map
 
@@ -376,24 +376,24 @@ The AlphaSled utilizes a **32MHz TCXO** with ±0.5ppm stability to ensure the Lo
 
 ### 7.2 PMT "Hydraulic Auditor" Processing Sled
 
-**Main CPU**: Microchip ATSAMD51J20A-AU.
+**Main CPU**: ESP32-S3-WROOM-1.
 
 #### 7.2.1 Peripheral Registry & Bus Mapping
 
-* **SERCOM 0 (I2C)**: Bosch BNO055 9-Axis IMU.
+* **I2C Bus**: Bosch BNO055 9-Axis IMU.
   * *Address*: 0x28 (Default).
   * *Frequency*: 400kHz (Fast Mode).
-* **SERCOM 1 (SPI)**: u-blox ZED-F9P Multi-Band GNSS.
-  * *Baud Rate*: 1.0 Mbps.
-* **SERCOM 2 (UART)**: Badger Meter TFX-5000 Interface.
+* **UART 1**: u-blox ZED-F9P Multi-Band GNSS.
+  * *Baud Rate*: 921600 bps.
+* **UART 2**: Badger Meter TFX-5000 Interface.
   * *Baud/Parity*: 9600-8-N-1.
-* **SERCOM 3 (LoRa)**: Semtech SX1262 Radio Sled.
+* **SPI Bus**: Semtech SX1262 LoRa Radio.
 
-#### 7.2.3 ATSAMD51 Memory Architecture
+#### 7.2.3 ESP32-S3 Memory Architecture
 
-* **Flash (1MB)**: Dual-banked for OTA (Over-The-Air) updates.
-* **SRAM (256KB)**: Partitioned for Fast FFT operations on ultrasonic flow data.
-* **DMA Channels**: 32 channels used for zero-latency moving average GNSS position updates.
+* **Internal SRAM**: 512KB.
+* **External PSRAM**: 2MB (Octal SPIRAM) for buffering high-frequency IMU/GNSS.
+* **Flash (8MB)**: Dual-banked for OTA (Over-The-Air) updates.
 
 #### 7.2.4 Bosch BNO055 Register Depth
 
@@ -408,7 +408,7 @@ The AlphaSled utilizes a **32MHz TCXO** with ±0.5ppm stability to ensure the Lo
 #### 7.2.2 ZED-F9P RTK-GNSS Pinout
 
 * **V_BACKUP**: Connected to Saft LS14500 LiSOCl2 5yr Hibernation Pack (maintains RTC and ephemeris during winter).
-* **TX_READY**: Pin 5. Signal to ATSAMD51 to wake from sleep for NMEA parsing.
+* **TX_READY**: Pin 5. Signal to ESP32-S3 to wake from sleep for NMEA parsing.
 
 ### 7.3 PFA "Well Sentry" Sled
 
@@ -535,12 +535,12 @@ This section provides a line-item breakdown for every circuit, sensor, and struc
 
 #### Total System Cost (Estimate): $4,594.00
 
-| Component | Spec/Part # | Qty | Unit Cost | Extended | Lead Time |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Edge Compute** | NVIDIA Jetson Nano Dev Kit (4GB) | 1 | $99 | $99 | 4 Weeks |
+| Category | Component Description | MPN / Supplier | Lead Time | Unit Cost |
+| :--- | :--- | :--- | :--- | :--- |
+| **Edge Compute** | NVIDIA Jetson Orin Nano (8GB) | 945-13766-0000-000 | 4 Weeks | $499 |
 | **Storage** | 128GB Swissbit X-75 | 1 | $185 | $185 | 2 Weeks |
 | **Radio Array** | 120° Sector Array | 3 | $283 | $850 | 4 Weeks |
-| **LoRa Gateway** | RAK7249 Enterprise LoRaWAN | 1 | $650 | $650 | 6 Weeks |
+| **LoRa Gateway** | RAK7289V2 Enterprise LoRaWAN | 1 | $650 | $650 | 6 Weeks |
 | **LTE Modem** | Telit ME910G1 + SIM | 1 | $110 | $110 | 4 Weeks |
 | **Solar Panel** | 100W Mono-Crystalline | 2 | $125 | $250 | 2 Weeks |
 | **Battery** | Battle Born 200Ah LiFePO4 (Heated) | 1 | $850 | $850 | 6 Weeks |
@@ -576,7 +576,7 @@ The VFA "Multi-Depth" sequence uses a proprietary I2C bridge for the dielectric 
 
 ### 11.4 Pivot Motion Tracker (PMT) V1.6 - Detailed Specs
 
-#### Total Unit Cost: $1,112.00
+#### Total Unit Cost: $985.50
 
 #### 11.4.1 How it Works: Adaptive Kinematics
 
@@ -590,19 +590,19 @@ The PMT differentiates motion through **Sensor Fusion**:
 
 | Component | Part Category | Qty | Unit Cost | Extended | MPN / Supplier | Lead Time |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Logic Board** | ATSAMD51 Processor | 1 | $65.00 | $65.00 | Microchip-SAMD51 | 10 Weeks |
+| **Logic Board** | ESP32-S3 Processor Sled | 1 | $18.50 | $18.50 | FS-PMT-S3-V2 | 10 Weeks |
 | **GNSS Engine** | u-blox ZED-F9P | 1 | $140.00 | $140.00 | ZED-F9P-02B | 8 Weeks |
 | **Flow Sensor** | Badger Meter TFX-5000 | 1 | $648.00 | $648.00 | TFX-5000-U | 14 Weeks |
 | **Orientation** | Bosch BNO055 IMU | 1 | $32.00 | $32.00 | 0273141114 | 4 Weeks |
 | **Power Set** | 10W Solar + Saft LS14500 | 1 | $120.00 | $120.00 | Renogy-10W-Kit | 2 Weeks |
 | **Housing** | Polycase IP67 UV-Polycarbonate | 1 | $45.00 | $45.00 | Polycase-WP-21F | 6 Weeks |
-| **Gore-Vent** | Dual-Stage EQ Vents | 2 | $15.00 | $30.00 | PMF100444 | 2 Weeks |
+| **Radio Hub** | SX1262 LoRa Module | 1 | $12.00 | $12.00 | FS-LORA-CHIP | 6 Weeks |
 
 ---
 
 ### 11.5 Pressure & Flow Anchor (PFA) V1.9 - Deep Dive
 
-#### Total Unit Cost: $750.00
+#### Total Unit Cost: $961.50
 
 #### 11.5.1 The "Electrical Blueprint"
 
@@ -709,13 +709,13 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 | :--- | :--- | :--- | :--- |
 | **RSS (Superstation)** | 1 | $212,000 | $212,000 |
 | **DHU (Hubs)** | 25 | $4,594 | $114,850 |
-| **VFA (Anchors)** | 1,280 | $158.20 | $202,496 |
-| **LRZ (Scouts)** | 10,240 | $59.30 | $607,232 |
-| **PMT (Pivot Trackers)** | 1,280 | $1,112 | $1,423,360 |
-| **PFA (Pump Anchors)** | 1,280 | $750 | $960,000 |
-| **CSA (Corner Auditors)** | 320 | $2,224 | $711,680 |
+| **VFA (Anchors)** | 1,280 | $159.65 | $204,352 |
+| **LRZ (Scouts)** | 10,240 | $61.30 | $627,712 |
+| **PMT (Pivot Trackers)** | 1,280 | $985.50 | $1,261,440 |
+| **PFA (Pump Anchors)** | 1,280 | $961.50 | $1,230,720 |
+| **CSA (Corner Auditors)** | 320 | $1,850 | $592,000 |
 | **Drones (Mixed Fleet)** | 2 | $19,499 | $19,499 |
-| **TOTAL HARDWARE CAPEX** | | | **$4,251,117.00** |
+| **TOTAL HARDWARE CAPEX** | | | **$4,262,573.00** |
 
 ### [END OF HYPER-EXPANDED SPECIFICATION]
 
