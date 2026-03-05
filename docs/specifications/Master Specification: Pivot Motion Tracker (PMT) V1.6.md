@@ -39,9 +39,10 @@ The hydraulic flow stack is the primary engine for water rights verification and
 ## 4. Edge Processing & Winter Hibernation Logic
 
 * **Cortex-M4 Processing Sled**: Features an ATSAMD51 processing sled (sourced via Digi-Key). It buffers 1-second interval flow data and GNSS coordinates, applying a localized Kalman Filter to the IMU data to smooth out the intense vibration noise of the pivot spans.
-* **Comms (The Field Hub)**: Features a triple-radio stack. Transmits and receives via a High-Gain **900MHz FHSS** antenna to act as the primary "listening post" for the field's **LRZ, VFA, & PFA** mesh. This 900MHz link is mandated for 100% penetration through potato/corn canopies. The PMT then bundles the entire field's encrypted state into a single ~187-byte **AES-256** payload and blasts it via the best available backhaul (e.g., **5GHz LTU sector**, LoRaWAN, or LTE-M) to the **District Hub (DHU)**.
+* **Comms (The Field Hub)**: Features a triple-radio stack. Transmits and receives via a High-Gain **900MHz FHSS** antenna to act as the primary "listening post" for the field's **LRZ, VFA, & PFA** mesh. This 900MHz link is mandated for 100% penetration through potato/corn canopies. The PMT then bundles the entire field's encrypted state into a single ~187-byte **AES-256** payload and blasts it via the best available- **Field-to-Edge Link**: 2.4GHz / 5GHz Wireless Bridge (Ubiquiti/WiFi Type) to District Hub (DHU).
 
-### 4.1 Deep Technical Specs (ATSAMD51 Interface)
+- **Encryption**: AES-256 for aggregated field-state payloads.
+ecs (ATSAMD51 Interface)
 
 * **Memory Architecture**: 1MB Dual-Bank Flash allows for seamless OTA (Over-The-Air) firmware updates via the DHU mesh without risking a bricked state during the 512KB partition swap.
 * **IMU Logic (BNO055)**: Sits on the I2C bus (Address 0x28), actively calculating quaternions (3D orientation) to detect "crabbing" stalls before visible structural bowing occurs.

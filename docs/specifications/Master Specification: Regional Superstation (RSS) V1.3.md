@@ -1,6 +1,6 @@
 # Master Specification: Regional Superstation (RSS) V1.3
 
-**Role**: Regional Cortex & Master DIL | **Tier**: Layer 3 (Territory Master) | **Location**: Monte Vista Hub, SLV
+**Role**: Layer 3 Territory Cortex & Master DIL | **Location**: Monte Vista Hub, SLV
 
 The Regional Superstation (RSS) is the absolute "Cortex" of the FarmSense network for Subdistrict 1. It serves as the physical high-performance computing anchor, the master data repository, and the primary logistics staging ground for the regional Digital Water Ledger. Unlike the field-level VFA or the district-level DHU, the RSS is designed for heavy-lift spatial analytics and long-term legal data vaulting. It houses the **Oracle Multi-Core Compute Layer** and the RDC, providing the computational horsepower required to turn hundreds of millions of raw sensor "chirps" into hyper-accurate 1m-resolution Enterprise maps, while managing the heavy Fully Homomorphic Encryption (FHE) overhead for long-term secure vaulting.
 

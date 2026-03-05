@@ -1,6 +1,6 @@
 # Master Specification: Corner-Swing Auditor (CSA) V1.0
 
-Role: Dual-Node Kinematic & Hydraulic Auditor for Swing-Arm Pivots | Network Density: 2 PMT
+Role: Layer 1 Dual-Node Kinematic & Hydraulic Auditor for Swing-Arm Pivots | Network Density: 2 per Corner Pivot
 
 Units per Corner Pivot (Subdistrict 1)
 
@@ -14,7 +14,7 @@ circular application area. However, a swinging pivot introduces a non-linear "el
 
 extends the irrigation reach into the corners of square fields. To maintain the Enterprise (1m)
 
-Resolution required for the Digital Water Ledger, the CSA utilizes two synchronized PMT units—
+Resolution required for the Digital Water Ledger, the CSA utilizes two synchronized Layer 1 nodes—
 
 a Primary Span Tracker (PST) and a Swing-Arm Tracker (SAT)—to mathematically resolve
 
@@ -54,15 +54,13 @@ Kinematic Synchronization: Both units utilize a sub-second BLE handshake. The SA
 
 feeds its angular displacement data to the PST, which then packages a unified "Double
 
-Kinematic" payload for the VFA. This allows the Zo Engine to calculate the "Crabbing"
+Kinematic" payload for the Layer 1.5 PMT hub. This allows the Zo Engine to calculate the "Crabbing"
 
 effect of the swing-arm tires independently of the main span, identifying structural stress
 
 caused by mud or terrain slope in the corners.
 
 ## 2. Advanced Hydraulic Auditing (End-Gun & Solenoid Pulse)
-
-
 
 Corner spans often utilize high-pressure "End-Guns" that pulse on and off via solenoids as the
 
@@ -137,8 +135,6 @@ Enterprise Hook: The UI showcases the real-time angular movement of the swing ar
 
 proves to the farmer that they are wasting water in the corners or missing critical zones
 
-
-
 due to end-gun malfunctions, providing a high-conversion incentive to upgrade to the
 
 Enterprise tier to unlock the full hydraulic audit.
@@ -200,15 +196,15 @@ Integration: The Zo Server uses the dual-node data to update the field's "Swing 
 
 The PST executes a real-time Law of Cosines resolver to determine swing-arm angle (θ):
 
-- **C1 (PST):** Absolute RTK coordinate of the main outer span.
-- **C2 (SAT):** Absolute RTK coordinate of the articulating swing-arm.
-- **R1:** Fixed pivot-center coordinate.
-- **Formula:** `θ = arccos((d1²+d2²-d3²) / (2·d1·d2))` where d3 = variable chord length between trackers.
+* **C1 (PST):** Absolute RTK coordinate of the main outer span.
+* **C2 (SAT):** Absolute RTK coordinate of the articulating swing-arm.
+* **R1:** Fixed pivot-center coordinate.
+* **Formula:** `θ = arccos((d1²+d2²-d3²) / (2·d1·d2))` where d3 = variable chord length between trackers.
 
 ### "Wiper Effect" Resolution Compensation
 
-- **Linear Velocity Scaling:** As the arm extends, arc-length per degree increases. CSA applies a dynamic scale factor to PFA flow readings to calculate Gallons/Acre applied at the 1m field edge.
-- **End-gun Pulse:** SAT BNO055 tap-detection verifies "Water-On" state — audits extraction vs. application spatially.
+* **Linear Velocity Scaling:** As the arm extends, arc-length per degree increases. CSA applies a dynamic scale factor to PFA flow readings to calculate Gallons/Acre applied at the 1m field edge.
+* **End-gun Pulse:** SAT BNO055 tap-detection verifies "Water-On" state — audits extraction vs. application spatially.
 
 ### SAT-to-PST Communication
 
@@ -222,7 +218,7 @@ The PST executes a real-time Law of Cosines resolver to determine swing-arm angl
 ### ZVRI Decision Loop
 
 If swing-arm θ > 120° (fully extended):
-- Speed-map worksheet automatically boosts pivot transit speed by `X.YZ%` to normalize volumetric application across the increased spatial radius.
+* Speed-map worksheet automatically boosts pivot transit speed by `X.YZ%` to normalize volumetric application across the increased spatial radius.
 
 ### BOM Cost Reference
 
