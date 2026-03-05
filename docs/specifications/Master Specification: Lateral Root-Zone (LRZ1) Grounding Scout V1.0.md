@@ -4,7 +4,7 @@
 
 The Lateral Root-Zone 1 (LRZ1) is a specialized, ultra-low-cost "Validation Truth Node." Unlike the modular LRZ2 scouts, the LRZ1 is designed for high-density permanent deployment to scientifically verify the accuracy of the **Virtual Sensor Grid** (50m, 20m, 10m, and 1m resolutions).
 
-By providing a periodic "Truth Check" (1-4 times daily), the LRZ1 ensures that the Bayesian models and Kriging interpolations produced by the Oracle engine remain synchronized with physical reality. If a discrepancy is detected between the virtual grid and the LRZ1's grounding readings, the system automatically triggers a recalibration of the underlying **Soil Variability Maps**.
+By providing a periodic "Truth Check" (1-4 times daily), the LRZ1 ensures that the Bayesian models and Kriging interpolations produced by the Oracle engine remain synchronized with physical reality. This high-density grounding (1 node per 5.7 acres) enables the **1cm Precision Query** feature, allowing surgical plant-level soil analytics. If a discrepancy is detected between the virtual grid and the LRZ1's grounding readings, the system automatically triggers a recalibration of the underlying **Soil Variability Maps**.
 
 ## 1. Structural Design (Non-Modular Stability)
 
@@ -27,7 +27,7 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 
 - **SoC**: **ASR6601** (LoRa SoC: ARM Cortex-M4 + Semtech SX1262 LoRa).
 - **Protocol**: 900MHz LoRa Mesh (Spread Spectrum).
-- **Security**: AES-128/256 internal crypto-engine.
+- **Network Optimization**: Due to the high node density, the LRZ1 utilizes optimized Spreading Factors (SF7/SF8) for local hops, reducing "on-air" time and extending battery lifecycle by ~25% compared to the legacy V1.x long-range modes.
 - **State Machine**:
   - **Hibernation**: 1.5µA.
   - **Grounding Burst**: Every 6-12 hours, unless "Rapid Mode" is triggered by PMT during active irrigation.

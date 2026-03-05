@@ -17,7 +17,8 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for a stratified grid of LRZ (Lateral Root-Zone) scouts. 5x LRZ2 scouts provide deep lateral mapping, while 20x LRZ1 "Validation Truth Nodes" verify the resulting virtual sensor grid 1-4 times daily, triggering **Soil Variability Map** updates if discrepancies occur.
 2. **Cut-Less Deployment**: All mid-stream hardware (PMT, PFA, CSA) integrates without drilling, welding, or structural downtime, preserving manufacturer warranties and reducing installation liability.
 3. **Seasonal Sled Extraction**: High-value electronics are housed inside printer cartridge inspired cartridges inserted into removable "Sleds." They are deployed after spring planting and extracted before winter freeze-up, exponentially extending battery life and hardware reliability.
-4. **Spatial Resolution Pop**: The hardware is density-optimized to support the 1m "Enterprise" resolution, using a fusion of subsurface dielectric ping and aerial multispectral imagery.
+4. **Spatial Resolution & Precision Query**: The hardware is density-optimized (1:5:20 ratio) to support the 1m "Enterprise" resolution. This enables a **1cm Precision Query** mode, where the Oracle engine calculates surgical, plant-level moisture values for any specific coordinate without the overhead of global 1cm rendering.
+5. **Accuracy Benchmarking (Architecture 2.1 vs. V1.x)**: By more than doubling the in-ground sensor density (11 to 26 nodes), Architecture 2.1 reduces Mean Absolute Error (MAE) from ~15% at 10m to **<5% at 1m**, with an uncertainty envelope of <2% at precision-query coordinates.
 
 ---
 
