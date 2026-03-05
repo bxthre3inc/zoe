@@ -15,7 +15,7 @@ This runway covers three strictly budgeted pillars:
 2. **The 6-Month Operations (OpEx & Reserves):** Funding the cellular/satellite data required to stream the sensors from May to October, alongside a structured financial cushion (reserves) to guarantee the solo founder can execute full-time without external employment distractions.
 3. **The Intellectual Property (Legal):** Establishing dual-corporate shielding and filing 6 global patents prior to public deployment to secure the technology's valuation.
 
-The explicit strategy of offering 1% equity for the initial $25k Seed round (via a Y-Combinator SAFE) mathematically anchors the company at a $2.5M valuation. Because FarmSense integrates DoD-grade communications and spatial encryption (Kriging interpolation), it acts as a dual-use Trojan Horse. By deploying on just 1% of global agricultural pivots, the physical sensors allow our algorithmic engine to map the remaining 99% of global underground aquifer reserves. To scale this strategic intelligence asset, the company must secure multi-million dollar Phase 2 Federal & VC grants next year. Grant boards automatically disqualify startups where the founder has surrendered excessive early equity (e.g., >10-15%).
+The explicit strategy of offering 1% equity for the initial $25k Seed round (via a Y-Combinator SAFE) mathematically anchors the company at a $2.5M valuation. Because FarmSense integrates DoD-grade communications and spatial encryption (Kriging interpolation), it acts as a dual-use Trojan Horse. By deploying on just 1% of global agricultural pivots, the physical sensors allow our algorithmic engine to map the remaining 99% of global underground aquifer reserves. We have secured **35 novel Intellectual Property assets** to defend this valuation. To scale this strategic intelligence asset, the company must secure multi-million dollar Phase 2 Federal & VC grants next year. Grant boards automatically disqualify startups where the founder has surrendered excessive early equity (e.g., >10-15%).
 
 This 1% SAFE structure protects the founder's control, while granting the Founding Advisor an exclusive option to purchase up to 5% total for $100,000. This mathematically guarantees the earliest investor buys into a legally viable, highly fundable Deep-Tech entity.
 
@@ -27,7 +27,7 @@ This 1% SAFE structure protects the founder's control, while granting the Foundi
 
 | Procurement Category | Cost Allocated | Component Examples |
 | :--- | :--- | :--- |
-| **Edge Compute & RF Logic** | $1,755.00 | NVIDIA Jetson Nano cores, SAMD51 logic boards, 900MHz LoRaWAN Gateways, 2.4GHz BLE PMT modules. |
+| **Edge Compute & RF Logic** | $1,755.00 | NVIDIA Jetson Nano core, **Architecture 2.1 "Stereo Standard"** pilot pack (2 VFA, 4 LRZ2, 12 LRZ1). |
 | **Power Systems** | $575.00 | 25W Monocrystalline solar panels, LiSOCl2 extreme-weather battery cells, Hybrid Pulse Capacitors (HPC). |
 | **Mechanical & Civil** | $426.00 | 4" Schedule 40 PVC, NEMA-rated weather enclosures, Friction-Formed HDPE driving tips. |
 | **Workshop Procurement** | $525.00 | Consumables (wire, solder, marine silicone) and fabrication tools (Hakko irons, heat guns, ratchet cutters). |
@@ -46,7 +46,7 @@ This 1% SAFE structure protects the founder's control, while granting the Foundi
 | **Agronomic Core Testing** | $1,000.00 | Paying a local SLV lab to physically test soil cores to validate our water-measuring algorithms to CSU scientists. |
 | **Cloud & Cellular IoT** | $690.00 | Hologram Global SIM data for edge-pushing, plus PostgresDB snapshots, active mapping data, and hosting fees. |
 | **Physical Maintenance** | $950.00 | Fuel for weekly "truck rolls" covering the Monte Vista to Center route, plus a 10% cash buffer for broken PVC/parts across the season. |
-| **Operational & Founder Reserves**| $8,619.00 | A critical financial cushion providing a required lean living stipend, guaranteeing the solo founder can dedicate 100% full-time focus to ensuring pilot success without defaulting to secondary employment. |
+| **Operational & Founder Reserves** | $8,619.00 | A critical financial cushion providing a required lean living stipend, guaranteeing the solo founder can dedicate 100% full-time focus to ensuring pilot success without defaulting to secondary employment. |
 | **Total OpEx Required** | **$12,459.00** | *Guarantees the pilot survives mathematically and physically through October.* |
 
 ---
@@ -60,8 +60,8 @@ This 1% SAFE structure protects the founder's control, while granting the Foundi
 | **Holding Co. Incorporation** | $500.00 | Stripe Atlas setup forming "Bxthre3 Inc." (Delaware C-Corp) to hold the master IP and founder shares. |
 | **Operating Subsidiary Formation** | $500.00 | Stripe Atlas setup forming "FarmSense, Inc." (Delaware C-Corp), ensuring hardware liabilities are walled off from the parent company. |
 | **Colorado Foreign Qual.** | $150.00 | State fees to register the Delaware subsidiary to legally operate the shop space and conduct business in the San Luis Valley. |
-| **Filing 6 Global Patents** | $5,760.00 | Paying the USPTO Micro-Entity fees and the Patent Agent formatting fees to legally secure 12-months of global "Patent Pending" status. |
-| **Total Legal Required** | **$6,910.00** | *Provides total dual-corporate liability shielding and secures the 6 multi-million dollar technical patents.* |
+| **Filing 35 Provisional Patents**| $5,760.00 | Paying the USPTO Micro-Entity fees to legally secure 12-months of global "Patent Pending" status for the full 35-asset portfolio. |
+ | **Total Legal Required** | **$6,910.00** | *Provides total dual-corporate liability shielding and secures the 35 multi-million dollar technical patents.* |
 
 ---
 

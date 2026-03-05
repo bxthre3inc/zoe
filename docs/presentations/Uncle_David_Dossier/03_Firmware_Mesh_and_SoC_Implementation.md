@@ -12,11 +12,7 @@ The nRF52840 interfaces with the Semtech SX1262 LoRa transceiver via the SPI3 pe
 
 * The `SPIM3->EVENTS_END` register triggers an interrupt that shifts the SoC from an active transmission state back into a `__WFE()` (Wait For Event) low-power sleep state within micro-seconds of the SPI buffer clearing, ensuring the 800Ah LiFePO4 battery is not needlessly drained.
 
-### 1.2 i.MX RT1020 (PFA) ADC Calibration
-
-The Pressure & Flow Anchor acts as the safety shut-off valve for a 1,500 GPM wellhead. The NXP i.MX RT1020 must read rapid pressure differentials.
-
-* **Bandgap Reference Offset**: We do not rely on standard 3.3V rail estimations for the ADC. The firmware utilizes the internal 1.2V bandgap reference. The register `ADC_CAL` command is triggered every 10,000 read cycles to dynamically re-calculate the `ADC_OFS` (Offset) register. This ensures that the 4-20mA pressure transducers remain perfectly linear across a grueling -20°C to +55°C seasonal temperature swing.
+* **Bandgap Reference Offset**: We do not rely on standard 3.3V rail estimations for the ADC. The firmware utilizes the internal 1.2V bandgap reference. The register `ADC_CAL` command is triggered every 10,000 read cycles. This ensures that the pressure transducers remain perfectly linear across a grueling -40°C to +55°C seasonal temperature swing.
 
 ## 2. Real-Time OS & Interrupt Topology
 
@@ -24,16 +20,16 @@ FarmSense nodes utilize FreeRTOS to manage tasks, but the critical physical logi
 
 ### The Priority Matrix
 
-* **Priority 0 (Absolute Safety Override):** Reserved exclusively for mechanical runaway states. On the PFA, if the hardware watchdog (`WDT->CR`) detects that the 1,500 GPM pump has lost flow but the electrical contactor is still active (a cavitation event that will melt the pump), Priority 0 immediately bypasses all software state-machines and aggressively fires a hardware GPIO pin to sever the 480V pump relay.
-* **Priority 1 (Kinematic Lock):** Reserved for the u-blox ZED-F9P RTK Timepulse (PPS) on the PMT. This nanosecond-accurate pulse triggers the start of the DMA transfer for the ultrasonic flow meters, ensuring that the volume of water is perfectly timestamped to the pivot's exact geometric location.
-* **Priority 2 & 3 (Network Layer):** Handle BLE mesh synchronization events and incoming LoRaWAN MAC commands.
+* **Priority 0 (Absolute Safety Override):** Reserved exclusively for mechanical runaway states (PFA cavitation or PMT structural stall).
+* **Priority 1 (Kinematic Lock):** Reserved for the u-blox ZED-F9P RTK Timepulse (PPS) on the PMT, triggering vector-accelerated flow math on the **ESP32-S3**.
+* **Priority 2 & 3 (Network Layer):** Handle LoRa mesh synchronization and FHSS epoch shifts.
 
 ## 3. "Fringe Field" Capacitance Physiscs (LRZ)
 
 The Lateral Root-Zone scout utilizes a custom time-of-flight analog circuit. It does not measure raw resistance; it measures the dielectric permittivity ($E_r$) of the soil.
 
-* **The CHIRP State Machine**: The nRF52811 uses its internal 32MHz oscillator to fire an 80MHz 'CHIRP' via a custom LC tank circuit embedded in the LRZ's PCB traces.
-* **Charge/Discharge Timing**: The soil acts as the dielectric medium between the traces. The firmware utilizes the nRF's internal Comparator (`COMP`) and hardware Timer (`TIMER2`). It measures the exact nanosecond delay required for the RC circuit to cross a 1.65V threshold. Water has an $E_r$ of ~80, while dry soil is ~4. This massive dielectric shift slows the capacitor's charge rate, providing a hyper-accurate, sub-millimeter measurement of the moisture envelope moving through the soil horizon.
+* **The CHIRP State Machine**: The **ASR6601** (LRZ) or nRF52840 (VFA) uses internal logic to fire an 80-100MHz 'CHIRP' via a custom LC tank circuit.
+* **Charge/Discharge Timing**: Measures the dielectric permittivity ($E_r$) shift. Water ($E_r \approx 80$) vs dry soil ($E_r \approx 4$) provides a hyper-accurate, sub-millimeter moisture envelope measurement.
 
 ## 4. Hardware Security Module (HSM) & Encryption
 
@@ -43,8 +39,7 @@ Agricultural data at this scale is heavily targeted. To prevent "Water Hackers" 
 
 The VFA explicitly uses the nRF52840 because it features the ARM TrustZone CryptoCell-310 hardware security subsystem.
 
-* **Key Injection (SOP-09)**: During the Winter Sled Hospital overhaul, a unique, device-specific ECC-256 private key is injected directly into the CC310's secure NVRAM via a physical JTAG debug lead.
-* **AES-128 Blind Payloads**: The CC310 handles the AES-CCM encryption entirely in hardware. The main Cortex-M4 CPU hands a raw moisture payload pointer to the CC310, and receives an encrypted, signed hash back. The CPU never possesses the private key in open RAM, preventing memory-scraping attacks.
+* **AES-128/256 Blind Payloads**: The CC310 handles the encryption entirely in hardware. The main CPU hands a raw moisture payload pointer to the CC310, ensuring the private key never exists in open RAM.
 
 ### 4.2 PBFT Mesh Consensus & The Virtual Mesh
 

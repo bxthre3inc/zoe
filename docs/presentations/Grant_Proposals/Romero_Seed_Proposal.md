@@ -11,7 +11,7 @@ Thanks again for listening to my pitch yesterday. Your open offer to potentially
 
 I spent last night assessing the deployment specs and priced out the exact cost to execute this properly. To buy the raw hardware, pay the cellular/satellite bills for the 6-month CSU pilot, legally patent the technology globally, and provide a 6-month Operational Reserve cushion so I can execute on this 100% full-time, the actual required seed runway is **$25,000.00**.
 
-I also pulled the corporate structuring requirements for deep-tech Department of Defense (DoD) grants, and realized I made a mistake agreeing to 25%. I am building DoD-grade intelligence technology. FarmSense isn't just a farm tool; it is a Trojan Horse deployment. By putting our Kriging algorithms on just 1% of the world's irrigated cropland, we can mathematically map the remaining 99% of global underground water supplies for US strategic intelligence. To scale this radar next year, I must secure multi-million dollar Phase 2 DoD grants. If a solo founder gives away 25% on day one, the government considers the company "unfundable" and automatically disqualifies them.
+I also pulled the corporate structuring requirements for deep-tech Department of Defense (DoD) grants, and realized I made a mistake agreeing to 25%. I am building DoD-grade intelligence technology protected by **35 novel patent assets**. FarmSense isn't just a farm tool; it is a Trojan Horse deployment. By putting our Kriging algorithms on just 1% of the world's irrigated cropland, we can mathematically map the remaining 99% of global underground water supplies for US strategic intelligence. To scale this radar next year, I must secure multi-million dollar Phase 2 DoD grants. If a solo founder gives away 25% on day one, the government considers the company "unfundable" and automatically disqualifies them.
 
 I don't want to accidentally ruin the company's future before we even launch.
 
@@ -22,4 +22,4 @@ Furthermore, because you are the first money in, I want to give you the exclusiv
 
 This structure gives me the exact cash I need to survive the 6-month pilot, legally protects the invention I've spent so much time building, and keeps the corporate structure completely clean so we qualify for the massive DoD grants next year.
 
-Let’s grab a beer or coffee soon. If you want to see the nuts and bolts, I can share the actual Technical Seed Dossier containing the line-by-line budgets and global patent strategy.
+Let’s grab a beer or coffee soon. If you want to see the nuts and bolts, I can share the actual Technical Seed Dossier containing the line-by-line budgets and the **Architecture 2.1 high-density deployment map**.
