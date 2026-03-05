@@ -1444,7 +1444,9 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 **Role**: Lateral Variability \"Scout,\" High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting directly to the PMT Field Hub)
 
-While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ) fleet provides high-density spatial truth. The fleet is subdivided into **LRZ2 (Modular Scouts)** for deep spatial mapping and **LRZ1 (Validation Truth Nodes)** for high-density grid verification.
+While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ) fleet provides high-density spatial truth. The fleet is subdivided into **LRZ2 (Modular Scouts)** for deep spatial mapping and **LRZ1 (Validation Truth Nodes)** for high-density grid verification. LRZ1 is also available in a **Monolithic Disposable Marker** variant ($16.50) designed for permanent "Set-and-Forget" deployment with a 5-7 year life.
+
+**Application Infrastructure**: Accuracy in sensing mandates accuracy in application. The **"Grid-Flow" Custom Pivot** and accompanying **Conversion Kits** provide a tiered migration path from legacy sector-based irrigation to 1m grid-based prescriptions using **Smart Section Nodes (SSN)** and **Integrated Smart Nozzles (ISN)**.
 
 **Network Topology**: On a standard 125-160 acre center pivot, a fleet of 26 units (1 VFA + 5 LRZ2 + 20 LRZ1) forms a high-density mesh. They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the 10m "Pro" resolution to the **1m "Enterprise"** resolution and the **1cm "Precision Query"** for plant-level intelligence.
 

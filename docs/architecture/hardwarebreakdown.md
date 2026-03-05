@@ -14,11 +14,12 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 
 ### Key Philosophical Pillars
 
-1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for a stratified grid of LRZ (Lateral Root-Zone) scouts. 5x LRZ2 scouts provide deep lateral mapping, while 20x LRZ1 "Validation Truth Nodes" verify the resulting virtual sensor grid 1-4 times daily, triggering **Soil Variability Map** updates if discrepancies occur.
-2. **Cut-Less Deployment**: All mid-stream hardware (PMT, PFA, CSA) integrates without drilling, welding, or structural downtime, preserving manufacturer warranties and reducing installation liability.
-3. **Seasonal Sled Extraction**: High-value electronics are housed inside printer cartridge inspired cartridges inserted into removable "Sleds." They are deployed after spring planting and extracted before winter freeze-up, exponentially extending battery life and hardware reliability.
-4. **Spatial Resolution & Precision Query**: The hardware is density-optimized (1:5:20 ratio) to support the 1m "Enterprise" resolution. This enables a **1cm Precision Query** mode, where the Oracle engine calculates surgical, plant-level moisture values for any specific coordinate without the overhead of global 1cm rendering.
-5. **Accuracy Benchmarking (Architecture 2.1 vs. V1.x)**: By more than doubling the in-ground sensor density (11 to 26 nodes), Architecture 2.1 reduces Mean Absolute Error (MAE) from ~15% at 10m to **<5% at 1m**, with an uncertainty envelope of <2% at precision-query coordinates.
+1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for a stratified grid of LRZ (Lateral Root-Zone) scouts. 5x LRZ2 scouts provide deep lateral mapping, while 20x LRZ1 "Validation Truth Nodes" (available in monolithic "Disposable Marker" variant at $16.50) verify the resulting virtual sensor grid 1-4 times daily.
+2. **The Control Tiers (VRI)**: Irrigation application is tiered logically. From **Tier 1 (Speed-VRI)** using the PMT, to **Tier 2 (Section-VRI)** using Smart Section Nodes (SSN), to the ultimate **Tier 3 (Grid-VRI)** using Integrated Smart Nozzles (ISN) for 1m-pixel precision.
+3. **Cut-Less & Conversion Kits**: While the **"Grid-Flow" Custom Pivot** offers factory-integrated VRI, our modular **Conversion Kits** allow existing hardware to be retrofitted with SSN and ISN layers in under 4 hours per pivot.
+4. **Seasonal Sled Extraction**: (Standard nodes only) High-value electronics are extracted post-season. ISNs and SSNs are designed for year-round persistence (IP69K/NEMA 4X) but support modular component swaps.
+5. **Spatial Resolution & Precision Query**: The hardware is density-optimized (1:5:20 ratio) to support the 1m "Enterprise" resolution. This enables a **1cm Precision Query** mode, where the Oracle engine calculates surgical, plant-level moisture values for any specific coordinate without the overhead of global 1cm rendering.
+6. **Accuracy Benchmarking (Architecture 2.1 vs. V1.x)**: By more than doubling the in-ground sensor density (11 to 26 nodes), Architecture 2.1 reduces Mean Absolute Error (MAE) from ~15% at 10m to **<5% at 1m**, with an uncertainty envelope of <2% at precision-query coordinates.
 
 ---
 

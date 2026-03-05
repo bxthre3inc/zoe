@@ -30,13 +30,13 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 - **Network Optimization**: Due to the high node density, the LRZ1 utilizes optimized Spreading Factors (SF7/SF8) for local hops, reducing "on-air" time and extending battery lifecycle by ~25% compared to the legacy V1.x long-range modes.
 - **State Machine**:
   - **Hibernation**: 1.5µA.
-  - **Grounding Burst**: Every 6-12 hours, unless "Rapid Mode" is triggered by PMT during active irrigation.
+  - **Grounding Burst**: 4x less often than the LRZ2's unless "Rapid Mode" is triggered by PMT during active irrigation.
 
 ## 4. Line-Item BOM (Absolute OEM Scale)
 
 | Category | Component Detail | Unit Cost |
 | :--- | :--- | :--- |
-| **Housing** | 2" PVC Shell (18") + Friction Tip | $4.70 |
+| **Housing** | 2" PVC Shell (10") + Friction Tip | $3.70 |
 | **PCBA** | ASR6601 High-Integration LoRa PCBA | $4.00 |
 | **Sensing** | 1U Basic Dielectric Ring (10") | $4.00 |
 | **Power** | Swappable 21700 Cell (LFP) | $8.50 |
