@@ -1,4 +1,3 @@
-2/22/26, 6:05 AM Google Gemini
 
 # FarmSense: Technical Project Overview & Research Validation Guide
 
@@ -88,10 +87,8 @@ pilot is intended to serve as a blueprint for the entire Rio Grande Basin.
 A. Backend Intelligence (Cloud Layer)
 
 
-https://gemini.google.com/app/9fe738dfc0a70bee 1/5
 
 
-2/22/26, 6:05 AM Google Gemini
 
 
 Map Servers (Distributed Data Library): These serve as the system’s "Long-Term
@@ -200,10 +197,8 @@ Field Relays: Signal aggregators that utilize low-power, long-range (LoRa) radio
 to "wake up" sensors, collect their data, and hop the signal back to the District Hub. This
 
 
-https://gemini.google.com/app/9fe738dfc0a70bee 2/5
 
 
-2/22/26, 6:05 AM Google Gemini
 
 
 multi-hop architecture allows the system to cover massive circular fields (120+ acres)
@@ -306,10 +301,8 @@ maximizing water efficiency.
 A. Data Sources
 
 
-https://gemini.google.com/app/9fe738dfc0a70bee 3/5
 
 
-2/22/26, 6:05 AM Google Gemini
 
 
 Satellite APIs: Automated pipelines for Sentinel-2 and Landsat imagery, providing 10m to
@@ -413,10 +406,8 @@ This hardware procurement is the critical bottleneck preventing the transition f
 framework to a physical, ground-truth validation system.
 
 
-https://gemini.google.com/app/9fe738dfc0a70bee 4/5
 
 
-2/22/26, 6:05 AM Google Gemini
 
 
 Commercial Model: Data-as-a-Service (DaaS):
@@ -488,6 +479,5 @@ level) across the entirety of Subdistrict 1 (166,000 acres) will require a massi
 
 parallel processing within the Core Compute Server. Researchers must evaluate the trade
 
-https://gemini.google.com/app/9fe738dfc0a70bee 5/5
 
 

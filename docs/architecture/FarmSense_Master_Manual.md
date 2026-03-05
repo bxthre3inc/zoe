@@ -302,7 +302,6 @@ Hardware Signing: Every data packet from a Vertical Field Anchor (VFA) or Pump S
 
 (PFA) is cryptographically signed at the hardware level using Secure Element (SE) chips.
 
-<https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&…> 1/3
 
 
 This ensures that the data is untampered from the moment it leaves the sensor, effectively
@@ -384,7 +383,6 @@ Treaties
 
 1. Technical Architecture for Sovereignty
 
-<https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&…> 2/3
 
 
 The Librarian/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national
@@ -435,7 +433,6 @@ grown within sustainable water envelopes.
 
 A th i d f l t t t i i l t ti
 
-<https://gemini.google.com/app/625852be44d61d17?is_sa=1&is_sa=1&android-min-version=301356232&ios-min-version=322.0&campaign_id=bkws&…> 3/3
 
 <div style="page-break-after: always;"></div>
 
@@ -500,7 +497,6 @@ pilot is intended to serve as a blueprint for the entire Rio Grande Basin.
 
 A. Backend Intelligence (Cloud Layer)
 
-<https://gemini.google.com/app/9fe738dfc0a70bee> 1/5
 
 
 Map Servers (Distributed Data Library): These serve as the system’s "Long-Term
@@ -575,7 +571,6 @@ Field Relays: Signal aggregators that utilize low-power, long-range (LoRa) radio
 
 to "wake up" sensors, collect their data, and hop the signal back to the District Hub. This
 
-<https://gemini.google.com/app/9fe738dfc0a70bee> 2/5
 
 
 multi-hop architecture allows the system to cover massive circular fields (120+ acres)
@@ -646,7 +641,6 @@ maximizing water efficiency.
 
 A. Data Sources
 
-<https://gemini.google.com/app/9fe738dfc0a70bee> 3/5
 
 
 Satellite APIs: Automated pipelines for Sentinel-2 and Landsat imagery, providing 10m to
@@ -715,7 +709,6 @@ construction, assembly, and deployment of the sensor hardware for the 2-field CS
 
 This hardware procurement directly drives the transition from a digital design to an operational, revenue-generating pilot.
 
-<https://gemini.google.com/app/9fe738dfc0a70bee> 4/5
 
 
 Commercial Model: Data-as-a-Service (DaaS):
@@ -943,7 +936,6 @@ Pop" converts the fear of missing out (FOMO) into an Enterprise-tier subscriptio
 
 ## 1. Phased Mobilization & Hardware Selection
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/5
 
 
 The fleet scales in three distinct phases designed to align with Subdistrict 1's adoption curve,
@@ -1014,7 +1006,6 @@ Capability: 90-minute endurance allows for mapping 1,200+ acres per flight at 40
 
 AGL.
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/5
 
 
 Logic: These units fly the entire subdistrict every 30 days to establish the "Seasonal
@@ -1079,7 +1070,6 @@ Support CAPEX RTK Ground Stations + Field Vehicles $26,500
 
 Technical Labor 3 FTE (Lead Pilot + 2 Field Technicians) $280,000 (Annual)
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/5
 
 
 Maintenance Hull Insurance + Component Overhauls $67,000 (Annual)
@@ -1138,10 +1128,8 @@ multispectral insights, while ensuring the "Digital Water Ledger" remains a secu
 
 asset for the district.
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/5
 
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 5/5
 
 <div style="page-break-after: always;"></div>
 
@@ -1209,7 +1197,6 @@ caused by mud or terrain slope in the corners.
 
 ## 2. Advanced Hydraulic Auditing (End-Gun & Solenoid Pulse)
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/4
 
 
 Corner spans often utilize high-pressure "End-Guns" that pulse on and off via solenoids as the
@@ -1282,7 +1269,6 @@ Enterprise Hook: The UI showcases the real-time angular movement of the swing ar
 
 proves to the farmer that they are wasting water in the corners or missing critical zones
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/4
 
 
 due to end-gun malfunctions, providing a high-conversion incentive to upgrade to the
@@ -1357,7 +1343,6 @@ $2.00 $4.00
 
 $2,200.00
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/4
 
 
 Total CSA Project Financials (Per Corner Pivot):
@@ -1394,7 +1379,6 @@ the Zo Scientist, who then adjusts the virtual sensor grid values for the corner
 
 i th 1 E t i i th d fi iti "G d T th "
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/4
 
 <div style="page-break-after: always;"></div>
 
@@ -1724,7 +1708,6 @@ PFA enclosure is internally treated with a specialized conductive coating to cre
 
 "Faraday Cage" effect. This protects the NXP processing sled's delicate circuitry, ensuring
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/5
 
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
@@ -1797,7 +1780,6 @@ Cut-Less Integration: Installs via a simple stainless-steel T-splitter onto the 
 
 analog pressure gauge port. This allows the farmer to maintain their visual gauge while
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/5
 
 
 providing FarmSense with high-fidelity digital data.
@@ -1868,7 +1850,6 @@ This ledger reflects the actual procurement costs for the 1,280-unit Subdistrict
 
 industrial wholesale pricing and certified professional installation labor.
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 3/5
 
 
 Category Component Description Supplier / Detail Unit
@@ -1927,7 +1908,6 @@ By deploying the PFA at this scale, FarmSense establishes the primary interface 
 
 Generation" in modern water-saving programs.
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/5
 
 
 Conservation Funding: The PFA's accuracy and tamper-proof mounting are vital for
@@ -1950,7 +1930,6 @@ of peak efficiency or when extraction exceeds the crop's calculated Evapotranspi
 
 Water Court Integrity: In the event of an water rights dispute, the PFA's unbroken data log
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 5/5
 
 <div style="page-break-after: always;"></div>
 

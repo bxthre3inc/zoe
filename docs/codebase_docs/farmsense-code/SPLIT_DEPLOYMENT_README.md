@@ -2,6 +2,8 @@
 
 ## 📦 Split Deployment Guide
 
+> ⚠️ **Naming Note:** This document references **`CSE.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). Steps remain valid; substitute `Zo.computer` for `CSE.computer`. See [`Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current routing config.
+
 This project is configured for a **Hybrid Cloud Deployment**:
 
 - **Core Platform (CSE.computer)**: Hosts the API, processing, and frontend applications.

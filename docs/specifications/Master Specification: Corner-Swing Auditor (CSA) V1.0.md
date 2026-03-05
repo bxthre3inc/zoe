@@ -62,9 +62,7 @@ caused by mud or terrain slope in the corners.
 
 ## 2. Advanced Hydraulic Auditing (End-Gun & Solenoid Pulse)
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/4
 
-2/21/26, 1:19 AM Google Gemini
 
 Corner spans often utilize high-pressure "End-Guns" that pulse on and off via solenoids as the
 
@@ -139,9 +137,7 @@ Enterprise Hook: The UI showcases the real-time angular movement of the swing ar
 
 proves to the farmer that they are wasting water in the corners or missing critical zones
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/4
 
-2/21/26, 1:19 AM Google Gemini
 
 due to end-gun malfunctions, providing a high-conversion incentive to upgrade to the
 

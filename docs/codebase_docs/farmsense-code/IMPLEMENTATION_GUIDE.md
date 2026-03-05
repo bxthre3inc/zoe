@@ -1,5 +1,7 @@
 # FarmSense Implementation Guide
 
+> ⚠️ **Naming Note:** This document references **`CSE.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). All steps remain valid; substitute `Zo.computer` wherever you see `CSE.computer`. See [`docs/reference/Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current deployment config.
+
 ## 📋 Implementation Phases (20 Weeks)
 
 ### Phase 1: Foundation (Weeks 1-4)

@@ -66,9 +66,7 @@ PFA enclosure is internally treated with a specialized conductive coating to cre
 
 "Faraday Cage" effect. This protects the NXP processing sled's delicate circuitry, ensuring
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 1/5
 
-2/21/26, 12:49 AM Google Gemini
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
 
@@ -140,9 +138,7 @@ Cut-Less Integration: Installs via a simple stainless-steel T-splitter onto the 
 
 analog pressure gauge port. This allows the farmer to maintain their visual gauge while
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 2/5
 
-2/21/26, 12:49 AM Google Gemini
 
 providing FarmSense with high-fidelity digital data.
 
@@ -233,9 +229,7 @@ By deploying the PFA at this scale, FarmSense establishes the primary interface 
 
 Generation" in modern water-saving programs.
 
-<https://gemini.google.com/app/7d9f7fc3aa518d8b> 4/5
 
-2/21/26, 12:49 AM Google Gemini
 
 Conservation Funding: The PFA's accuracy and tamper-proof mounting are vital for
 
