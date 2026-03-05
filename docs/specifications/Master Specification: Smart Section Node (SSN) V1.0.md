@@ -2,7 +2,7 @@
 
 **Role**: Span-Level Pressure & Volume Regulator | **Network Density**: 1 per Pivot Span (approx. 8-12 per Pivot)
 
-The Smart Section Node (SSN) provides the "Coarse Tuning" of the irrigation prescription. By controlling the inlet flow to an entire pivot span, it balances the hydraulic pressure needed for downstream **Integrated Smart Nozzles (ISNs)**.
+The Smart Section Node (SSN) provides the "Coarse Tuning" of the irrigation prescription. It operates in two primary modes: as a standalone **Section-Level Grid Controller** (coarse resolution) or as a **Hydraulic Stabilizer** in tandem with Integrated Smart Nozzles (ISNs) for 1m precision.
 
 ## 1. Technical Architecture
 
@@ -11,12 +11,19 @@ The Smart Section Node (SSN) provides the "Coarse Tuning" of the irrigation pres
 - **Sensors**: Integrated **Ultrasonic Flow Meter** (Span-Level) + Pressure Transducer.
 - **Power**: 24VAC Standard Pivot Power.
 
-## 2. Tiered VRI Logic
+## 2. Operational Modes & Siphoning Logic
 
-The SSN acts as a "Local Conductor" for the span:
+### 2.1 Standalone Mode (Section-Grid VRI)
 
-- **Bulk Regulation**: Opens/Closes to set the span's baseline application rate (e.g., 80% span flow).
-- **ISN Synchronization**: Communicates with the 12-15 ISNs on its span to ensure total hydraulic load does not exceed pipe ratings.
+In standalone mode, the SSN enables grid-based prescription watering at the span-level. While less granular than the 1m ISN grid, it allows for high-efficiency dynamic application across large soil management zones.
+
+### 2.2 Hybrid Mode (Nozzle-Precision VRI)
+
+When paired with ISNs, the SSN manages the span's bulk pressure and volume, preventing the "Water Hammer" effect during micro-dithering and ensuring that the ISN fleet always has optimal head-pressure for 1m-pixel precision.
+
+### 2.3 Proportional Siphoning (Bypass Logic)
+
+The SSN valve assembly is engineered as a **Siphoning Manifold**. It is designed to let full system pressure pass through the span's main bypass line for downstream sections while precisely "siphoning off" only the allotted volume required for its specific span nozzles. This prevents span-level throttling from starving the end-gun or outer sections.
 
 ## 3. Cost Breakdown (Target: $115.00)
 
