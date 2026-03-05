@@ -709,11 +709,11 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 
 | Component | Tier 1: Speed VRI | Tier 2: Section VRI (sVRI) | Tier 3: Nozzle VRI (nVRI) |
 | :--- | :--- | :--- | :--- |
-| **Field Sensors (18)** | $697.30 | $697.30 | $697.30 |
+| **Field Sensors (18)** | $846.75 | $846.75 | $846.75 |
 | **Field Hubs (PMT/PFA)** | $1,947.00 | $1,947.00 | $1,947.00 |
 | **VRI Hardware** | $0.00 | $1,150.00 (SSN) | $3,400.00 (SSN+ISN) |
-| **Per-Field Hardware** | **$2,644.30** | **$3,794.30** | **$6,044.30** |
-| **Subdistrict 1 (Total)** | **$4,323,053** | **$5,795,053** | **$8,675,053** |
+| **Per-Field Hardware** | **$2,793.75** | **$3,943.75** | **$6,193.75** |
+| **Subdistrict 1 (Total)** | **$4,514,649** | **$5,986,649** | **$8,866,649** |
 
 ### [END OF HYPER-EXPANDED SPECIFICATION]
 
