@@ -26,4 +26,4 @@ The Docs Portal is the central repository for all FarmSense technical documentat
 * **CI/CD Pipeline:** Fully automated deployment linked directly to the `farmsense-code` repository. Any changes to markdown specifications (like this file) instantly trigger a rebuild and redeployment of the Docs Portal.
 
 ---
-*Return to [Master Software Index](../SOFTWARE_INDEX.md)*
+*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*

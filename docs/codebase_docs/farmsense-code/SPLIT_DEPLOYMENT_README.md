@@ -2,11 +2,11 @@
 
 ## 📦 Split Deployment Guide
 
-> ⚠️ **Naming Note:** This document references **`CSE.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). Steps remain valid; substitute `Zo.computer` for `CSE.computer`. See [`Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current routing config.
+> ⚠️ **Naming Note:** This document references **`Zo.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). Steps remain valid; substitute `Zo.computer` for `Zo.computer`. See [`Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current routing config.
 
 This project is configured for a **Hybrid Cloud Deployment**:
 
-- **Core Platform (CSE.computer)**: Hosts the API, processing, and frontend applications.
+- **Core Platform (CSE Stack)**: Hosts the API, processing, and frontend applications.
 - **Map Stack (RDC Cloud)**: Hosts the geospatial database and map tile services.
 
 ### 1. RDC Cloud (Map Stack) Setup
@@ -26,9 +26,9 @@ docker-compose -f docker-compose.rdc.yml up -d
 
 **Network Config:**
 
-- Ensure Port `5432` is accessible from your CSE.computer IP (configure RDC Security List / VCN).
+- Ensure Port `5432` is accessible from your Zo.computer IP (configure RDC Security List / VCN).
 
-### 2. CSE.computer (Core Platform) Setup
+### 2. Zo.computer (Core Platform) Setup
 
 ```bash
 # On your CSE Instance

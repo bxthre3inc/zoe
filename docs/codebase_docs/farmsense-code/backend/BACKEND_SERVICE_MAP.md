@@ -3,7 +3,7 @@
 > **Canonical reference** for all backend service modules in `farmsense-code/backend/app/services/`.
 > Each service is a discrete Python module consumed by the FastAPI router layer.
 >
-> Related: [`SOFTWARE_INDEX.md`](../../SOFTWARE_INDEX.md) | [`ARCHITECTURE.md`](../../ARCHITECTURE.md)
+> Related: [`SOFTWARE_INDEX.md`](../SOFTWARE_INDEX.md) | [`ARCHITECTURE.md`](../ARCHITECTURE.md)
 
 *Last updated: 2026-03-05*
 

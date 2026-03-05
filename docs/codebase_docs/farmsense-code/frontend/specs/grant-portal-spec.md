@@ -25,4 +25,4 @@ The Grant Portal is a highly specialized, read-only data extraction interface. I
 * **Security:** Strict Role-Based Access Control (RBAC) ensuring funding bodies cannot access data outside their specific grant purview, adhering to the FarmSense Spatial Privacy Policy.
 
 ---
-*Return to [Master Software Index](../SOFTWARE_INDEX.md)*
+*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*

@@ -25,12 +25,12 @@ The DHU is engineered for a 40-year structural lifespan, utilizing utility-grade
 
 The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul costs while maintaining a high-fidelity local record for legal auditing.
 
-* **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
-* **Operational Reliability & Mesh Consensus**: Enforces PBFT (Practical Byzantine Fault Tolerance) consensus by aggregating Schnorr multi-signatures from up to 1,280 VFA nodes. This ensures the "Digital Water Ledger" remains immutable against local tampering or spoofed sensor packets.
-* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS Oracle Compute** specifically for the 10-meter and 20-meter resolution tiers. Using **static Soil Variability Maps** loaded into the edge cache, the DHU Kriging engine provides instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls in an area of porous sandy soil) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
-* **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
-* **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
-* **Atmospheric Management**: Includes dual passive Gore-Tex vents for pressure equalization. During rapid alpine storm fronts, the internal pressure must equalize to prevent the enclosure gaskets from "breathing" and sucking in the fine, abrasive alkali dust that can degrade the cooling fins.
+*   **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
+*   **Operational Reliability & Mesh Consensus**: Enforces PBFT (Practical Byzantine Fault Tolerance) consensus by aggregating Schnorr multi-signatures from up to 1,280 VFA nodes. This ensures the "Digital Water Ledger" remains immutable against local tampering or spoofed sensor packets.
+*   **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS RDC Compute** specifically for the 10-meter and 20-meter resolution tiers. Powering this local intelligence is the **NVIDIA Jetson Nano**—a significant upgrade over the originally proposed STM32/ARM SoC variants. With its integrated Maxwell-architecture GPU, the DHU executes the complex Zo "Worksheets" locally, allowing for instantaneous "Reflex Logic" decisions (e.g., executing an emergency pump shutdown) without suffering from cellular latency. Using **static Soil Variability Maps** loaded into the edge cache, the DHU Kriging engine provides instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls in an area of porous sandy soil) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
+*   **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
+*   **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
+*   **Atmospheric Management**: Includes dual passive Gore-Tex vents for pressure equalization. During rapid alpine storm fronts, the internal pressure must equalize to prevent the enclosure gaskets from "breathing" and sucking in the fine, abrasive alkali dust that can degrade the cooling fins.
 
 ## 3. Edge OS & Software Stack
 
@@ -65,13 +65,14 @@ This ledger reflects the civil engineering and hardware costs for the 25-hub "Um
 
 | Category | Component Description | MPN / Supplier | Lead Time | Unit Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| **Computing** | NVIDIA Jetson Nano Dev Kit | NVIDIA-Nano-4GB | 4 Weeks | $149.00 |
-| **Storage** | 128GB PSLC SSD | Swissbit-X-75 | 2 Weeks | $185.00 |
-| **Radio** | 120° 5GHz Sector (x3) | Ubiquiti-UISP | 4 Weeks | $850.00 |
-| **Backhaul A** | Fiber ONT (Primary) | Local ISP | 6 Weeks | $350.00 |
-| **Backhaul B** | IoT LTE-M/NB-IoT (Backup) | Telit-ME910G1 | 4 Weeks | $115.00 |
-| **Housing** | NEMA 4X Polycarbonate Box | Polycase-ML | 3 Weeks | $180.00 |
-| **Power** | 200W Mono-Solar Array | Renogy-200W | 2 Weeks | $340.00 |
+| **Compute Module** | NVIDIA Jetson Nano (4GB) | 945-13450-0000-000 | 4 Weeks | $149.00 |
+| **Logic Board** | Proprietary 35U Carrier | FS-DHU-C35U | 12 Weeks | $65.00 |
+| **Storage** | 128GB Swissbit Industrial pSLC | SFS-128G-I35 | 4 Weeks | $82.50 |
+| **Comms Hub** | Ubiquiti LTU Sector (5GHz) | LTU-Rocket | 2 Weeks | $399.00 |
+| **Sensor Sink** | nRF52840 (900MHz FHSS) | RF-900-Gateway | 6 Weeks | $15.50 |
+| **Cabinet** | NEMA 4X Polycarbonate | Polycase ML-47F | 1 Week | $42.00 |
+| **Sub-Total** | **Approx. Per-Unit Hardware Cost** | | | **$753.00** |
+| **Power** | 200W High-Tilt Rigid Mono-Solar Array | Renogy-200W | 2 Weeks | $340.00 |
 | **Power** | 200Ah Heated LiFePO4 Bank | BattleBorn-200Ah | 6 Weeks | $850.00 |
 | **Tower** | 35ft Class 4 Timber Pole | Local Utility | 3 Weeks | $1,500.00 |
 | **Protection**| Lightning Arrestor/Surge | L-com-GDT | 2 Weeks | $125.00 |
@@ -100,31 +101,31 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 ### Infrastructure & Siting
 
-- **Mount:** 40ft Class 1 Cedar Poles or existing grain silos (30–40ft AGL).
-- **Fresnel Zone:** Clears 60% Fresnel over 10km span; timber poles rated for 40-year lifespan.
-- **Enclosure:** NEMA 4X Polycarbonate (24×20×10in), passive air-gap thermal buffer for 200Ah battery bank. Dual Gore-Tex vents for alkali dust exclusion.
+* **Mount:** 40ft Class 1 Cedar Poles or existing grain silos (30–40ft AGL).
+* **Fresnel Zone:** Clears 60% Fresnel over 10km span; timber poles rated for 40-year lifespan.
+* **Enclosure:** NEMA 4X Polycarbonate (24×20×10in), passive air-gap thermal buffer for 200Ah battery bank. Dual Gore-Tex vents for alkali dust exclusion.
 
 ### Edge Compute
 
-- **SoC:** OnLogic CL210 8-Core ARM (formerly NVIDIA Jetson Nano variant).
-- **Local Kriging:** 10m and 20m spatial grids for up to 100 fields — no cloud round-trip for district-level decisions.
-- **Black Box Ledger:** 128GB Swissbit PSLC SSD; 30-day write-endurance for legal audit preservation during internet outages.
-- **Reflex Logic:** Instant pump stop commands via PFA relay, bypassing cloud latency.
+* **SoC:** NVIDIA Jetson Nano Developer Kit (4GB).
+* **Local Kriging:** 10m and 20m spatial grids for up to 100 fields — no cloud round-trip for district-level decisions.
+* **Black Box Ledger:** 128GB Swissbit PSLC SSD; 30-day write-endurance for legal audit preservation during internet outages.
+* **Reflex Logic:** Instant pump stop commands via PFA relay, bypassing cloud latency.
 
 ### Radio Spine & Power
 
-- **Sector Antennas:** 3× Ubiquiti LTU Sector (120° coverage each = 360° total).
-- **LoRaWAN Gateway:** Enterprise-grade 900MHz for SFD mesh sink.
-- **Backhaul:** Fiber ONT (primary) + Telit ME910G1 LTE-M (backup).
-- **Solar:** 200W High-Tilt Rigid Array.
-- **Storage:** Battle Born 200Ah Heated LiFePO4 Bank.
-- **Lightning Protection:** L-com GDT Arrestors on all Sector lines.
+* **Sector Antennas:** 3× Ubiquiti LTU Sector (120° coverage each = 360° total).
+* **LoRaWAN Gateway:** Enterprise-grade 900MHz for SFD mesh sink.
+* **Backhaul:** Fiber ONT (primary) + Telit ME910G1 LTE-M (backup).
+* **Solar:** 200W High-Tilt Rigid Array.
+* **Storage:** Battle Born 200Ah Heated LiFePO4 Bank.
+* **Lightning Protection:** L-com GDT Arrestors on all Sector lines.
 
 ### Hyper-Granular BOM (Subdistrict 1 Batch)
 
 | Component | Detail | Unit Cost |
 |---|---|---|
-| **Computing** | OnLogic CL210 ARM Cluster | $299.00 |
+| **Computing** | NVIDIA Jetson Nano (4GB) | $149.00 |
 | **Storage** | 128GB PSLC SSD | $185.00 |
 | **Radio Array** | 120° Sector Array (×3) | $850.00 |
 | **Backhaul** | Fiber ONT + LTE-M Backup | $465.00 |
@@ -132,6 +133,6 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 | **Power** | 200W Array + 200Ah Heated LFP | $1,190.00 |
 | **Structure** | 40ft Class 1 Cedar Pole (Installed) | $2,250.00 |
 | **Labor** | Vertical Blitz Crew (Site Prep) | $450.00 |
-| **TOTAL** | **DHU Infrastructure Cost** | **$5,869.00** |
+| **TOTAL** | **DHU Infrastructure Cost** | **$5,719.00** |
 
 *Infrastructure Classification: Permanent Mesh Director*

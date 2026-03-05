@@ -46,8 +46,8 @@ To execute the MAD framework across 166,000 acres, FarmSense deploys a sophistic
 
 The cloud architecture is designed for heavy spatial analytics and operates locally to ensure rural resilience:
 
-* **Map Servers (Oracle Vault):** The master data library housing spatial, satellite (Sentinel-2, Landsat), and historical edaphic datasets.\[1, 1\]  
-* **Spatial Query Engine (Map Manager):** The "librarian" that extracts specific values (elevation, slope, aspect, NDVI) at precise latitude and longitude coordinates, converting them into lightweight JSON arrays.1  
+* **Map Servers (RDC):** The master data library housing spatial, satellite (Sentinel-2, Landsat), and historical edaphic datasets.\[1, 1\]  
+* **Spatial Query Engine (Map Manager):** The "DIL" that extracts specific values (elevation, slope, aspect, NDVI) at precise latitude and longitude coordinates, converting them into lightweight JSON arrays.1  
 * **Core Compute Server (Zo):** The "scientist" engine executing Bayesian priors and Localized Kriging algorithms (geostatistical interpolation) to process hundreds of thousands of data points into predictive "Worksheets".1
 
 ### **2.2 Regional and District Edge Infrastructure**

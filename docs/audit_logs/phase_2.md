@@ -6,7 +6,7 @@ Phase 2 focused on the core architectural definitions, deployment strategies, an
 
 ## Architectural & Deployment Findings
 
-- **Split Deployment**: The platform explicitly separates the geospatial map tile engine (intended for Oracle Cloud) from the core intelligence backend (intended for Zo.computer deployment).
+- **Split Deployment**: The platform explicitly separates the geospatial map tile engine (intended for RDC) from the core intelligence backend (intended for Zo.computer deployment).
 - **Scale and Delivery**: The `PACKAGE_SUMMARY.md` indicates a "production-ready" 20-week implementation plan with ~3,800 lines of proprietary code delivered as a cohesive V1 execution package.
 - **Dual-Use Compliance**: The system demonstrates significant alignment with Federal Federal ESG objectives. `todo.md` tracks active integration of Federated Data Fabric Adapters (CoT v2.0 translation) and Low Probability of Intercept/Detection (LPI/LPD) features for the Lateral Root-Zone Scouts (LRZs).
 

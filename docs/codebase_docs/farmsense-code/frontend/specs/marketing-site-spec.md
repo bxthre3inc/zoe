@@ -25,4 +25,4 @@ The Marketing Site is the primary public-facing portal for FarmSense. It acts as
 * **Lead Generation Engine:** Integration with in-Admin portal CRM (open sourced) to capture interest from prospect farmers and government entities.
 
 ---
-*Return to [Master Software Index](../SOFTWARE_INDEX.md)*
+*Return to [Master Software Index](../../SOFTWARE_INDEX.md)*

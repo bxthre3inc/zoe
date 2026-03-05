@@ -23,7 +23,7 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 
 ## 2. Tier 3: The Regional Superstation (RSS)
 
-**Role**: Regional Cortex, Master Librarian, and "Sled Hospital."
+**Role**: Regional Cortex, Master DIL, and "Sled Hospital."
 **Infrastructure Tier**: Territory Master (Layer 3).
 
 The RSS is the primary command-and-control node for the subdistrict. It is housed in a modified 40-foot High-Cube (HC) shipping container, engineered for survival in the SLV’s alpine desert environment.
@@ -51,7 +51,7 @@ The interior is divided into three zones to facilitate the "Rapid Deployment" de
 * **Air Scrubbing**: Dual-stage HEPA filtration to mitigate the effects of alkaline dust.
 * **Vibration Control**: Server racks are mounted on spring-dampened baseplates to isolate spinning media from UTV movement in Zone A.
 
-### 2.2 Computational Architecture (Oracle Compute)
+### 2.2 Computational Architecture (RDC Compute)
 
 * **GPU Array**: Dual NVIDIA RTX A6000 (48GB VRAM each) for FP16-accelerated spatial statistical worksheets.
 * **Storage (The Master Vault)**: 50TB WD Gold Enterprise NVMe array in RAID-10.
@@ -63,7 +63,7 @@ The interior is divided into three zones to facilitate the "Rapid Deployment" de
 
 ### 2.3 Parallel Processing Workflow (Localized Kriging)
 
-The Oracle Compute cluster executes a multi-stage spatial pipeline:
+The RDC Compute cluster executes a multi-stage spatial pipeline:
 
 1. **Ingestion**: Normalizes FHSS chirps from 25 DHUs (up to 1.2M points/day).
 2. **Trend-Filtering**: Uses NVIDIA CUDA kernels to remove moisture noise from pivot "splash-zone" artifacts.
@@ -147,7 +147,7 @@ The VFA uses a modular "Unit" (1U) system to define sensor depth and battery cap
 The VFA utilizes **Non-Contact Dielectric Sensing**.
 
 * **Mechanism**: High-frequency (~100MHz) electromagnetic fields are projected through the CPVC Sled wall and the PVC shell.
-* **Calibration**: Remotely calibrated by the RSS Oracle Compute using Bayesian priors. No manual field calibration is required.
+* **Calibration**: Remotely calibrated by the RSS RDC Compute using Bayesian priors. No manual field calibration is required.
 
 #### 4.1.4 Firmware Logic & Interrupt Handling
 
@@ -303,7 +303,7 @@ Kinematic auditing provides the spatial proof of application, verifying where wa
 #### 5.3.2 Data Fusion (The Agronomic Layer)
 
 * **Sensors**: Multispectral sensors capturing Red Edge and Near-Infrared bands.
-* **Spectral-to-Soil Correlation**: The RSS Oracle Compute uses Aerial NDVI and **static Soil Variability Maps** (charting sand/clay ratios and EC zones) as "Spatial Priors." These priors allow the Kriging algorithm to mathematically stretch and interpolate the live moisture telemetry from the physical VFA/LRZ pins into the continuous 1m Virtual Sensor Network.
+* **Spectral-to-Soil Correlation**: The RSS RDC Compute uses Aerial NDVI and **static Soil Variability Maps** (charting sand/clay ratios and EC zones) as "Spatial Priors." These priors allow the Kriging algorithm to mathematically stretch and interpolate the live moisture telemetry from the physical VFA/LRZ pins into the continuous 1m Virtual Sensor Network.
 
 #### 5.3.3 Multispectral Anchoring Logic
 
@@ -773,9 +773,9 @@ The DHU and RSS utilizes **Passive Thermal Buffering**.
 
 All hardware is traceable via the **AllianceChain Immutable Ledger**.
 
-* **WORM Storage**: Compliance logs are stored on Write-Once-Read-Many media in the Oracle Vault.
+* **WORM Storage**: Compliance logs are stored on Write-Once-Read-Many media in the RDC.
 * **Legal Defensibility**: Every gallon of water is logged with a ±1.0% accuracy certificate from the transit-time flow meters, providing absolute seniority protection in Water Court.
-* **WORM Storage**: Compliance logs are stored on Write-Once-Read-Many media in the Oracle Vault.
+* **WORM Storage**: Compliance logs are stored on Write-Once-Read-Many media in the RDC.
 * **Legal Defensibility**: Every gallon of water is logged with a ±1.0% accuracy certificate from the transit-time flow meters, providing absolute seniority protection in Water Court.
 
 ### 11.10 Manufacturing & Sourcing Strategy (Subdistrict 1 Expansion)

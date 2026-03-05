@@ -1,6 +1,6 @@
 # Master Specification: Pivot Motion Tracker (PMT) V1.6
 
-**Role**: Field Hub (DHU Uplink) & Hydraulic Auditor | **Network Density**: 1 per Pivot (Subdistrict 1 Deployment)
+**Role**: Layer 1.5 Field Hub (DHU Uplink) & Hydraulic Auditor | **Network Density**: 1 per Pivot
 
 The Pivot Motion Tracker (PMT) serves as the high-fidelity "Nervous System" and the primary "Hydraulic Auditor" of the FarmSense SFD (Single Field Deployment) architecture. Positioned externally on the main span of a center-pivot irrigation machine, it provides the essential kinematic and hydraulic flow data required to verify exactly where, when, and how much water is applied to the land. While the LRZ (Lateral Root-Zone) scouts monitor the soil's response to water, the PMT provides the certified proof of application, completing the data loop for the **Oracle Unified Compute** and establishing the legal foundation for the "Digital Water Ledger."
 
@@ -20,7 +20,8 @@ Because the PMT is an above-ground asset mounted directly to massive moving stee
 
 The PMT moves beyond simple GPS tracking to professional-grade kinematic auditing, differentiating mathematically between "Walking" (motion without water) and "Pumping."
 
-* **The 1m "Resolution Pop"**: This precision data is the empirical backbone of the FarmSense UI. By correlating the PMT's RTK-grade location with subsurface VFA/LRZ proximity chirps, the **Oracle Compute Layer** "Pins" the static nodes to a sub-meter coordinate grid without requiring on-board GNSS for every sensor. If a Basic Tier (20m) user attempts to zoom in, the PMT's underlying high-fidelity data triggers the "Resolution Pop," initiating a pricing funnel for the Enterprise upgrade.
+* **The 1m "Resolution Pop"**: This precision data is the empirical backbone of the FarmSense UI. By correlating the PMT's RTK-grade location with subsurface **Layer 1** VFA/LRZ proximity chirps, the **RDC Compute Layer** "Pins" the static nodes to a sub-meter coordinate grid without requiring on-board GNSS for every sensor.
+If a Basic Tier (20m) user attempts to zoom in, the PMT's underlying high-fidelity data triggers the "Resolution Pop," initiating a pricing funnel for the Enterprise upgrade.
 * **9-Axis IMU (The "Crabbing" & Structural Sentry)**: A Bosch BNO055 Inertial Measurement Unit continuously monitors vibration harmonics and 3D orientation.
 * **Diagnostic Intelligence**: It detects "Crabbing"—a dangerous condition where a tower's drive motor slips or stalls in deep mud, causing the massive steel span to bow and drift out of alignment. If crabbing or abnormal vibration is detected, the PMT alerts the Hub, which can immediately command the PFA (Pressure & Flow Anchor) to execute a "Soft-Stop" of the well pump, preventing catastrophic, $80,000+ structural collapses.
 
@@ -30,13 +31,15 @@ The hydraulic flow stack is the primary engine for water rights verification and
 
 * **Ultrasonic Transit-Time Transducers**: Utilizes a Badger Meter TFX-5000 clamp-on transducer pair.
 * **Adaptive Kinematics & Ultrasonic Physics**: The sensors apply a dynamic Reynolds Number compensation algorithm to account for laminar-to-turbulent flow transitions within the 8" pipe. By measuring the nanosecond "Transit-Time delta" between upstream and downstream ultrasonic pulses, the system calculates precise flow velocity without physical interruption.
+* **Ultrasonic Transit-Time Transducers**: Utilizes a Badger Meter TFX-5000 clamp-on transducer pair.
+* **Adaptive Kinematics & Ultrasonic Physics**: The sensors apply a dynamic Reynolds Number compensation algorithm to account for laminar-to-turbulent flow transitions within the 8" pipe. By measuring the nanosecond "Transit-Time delta" between upstream and downstream ultrasonic pulses, the system calculates precise flow velocity without physical interruption.
 * **The "Cut-Less" Advantage**: Because these clamp to the outside of the 8" main pipe, they require zero pipe cutting or downtime. Most importantly, they ensure zero pressure drop in the hydraulic system. Unlike invasive paddle-wheel meters that create drag, this non-invasive approach preserves the energy efficiency of the well pump, saving the farmer thousands in seasonal energy costs.
 * **Legal Certification**: The system provides ±1.0% flow accuracy, meeting the "Gold Standard" required for verified water use reporting to the State Engineer and securing long-term water rights through empirical proof.
 
 ## 4. Edge Processing & Winter Hibernation Logic
 
 * **Cortex-M4 Processing Sled**: Features an ATSAMD51 processing sled (sourced via Digi-Key). It buffers 1-second interval flow data and GNSS coordinates, applying a localized Kalman Filter to the IMU data to smooth out the intense vibration noise of the pivot spans.
-* **Comms (The Field Hub)**: Features a dual-radio stack. Transmits and receives via a High-Gain 900MHz FHSS antenna to act as the primary "listening post" for the field's LRZ & VFA mesh. It then intercepts this data, bundles it with its own 2.4GHz/BLE hydraulic payload, and blasts the entire field's encrypted payload via a 900MHz LoRaWAN transceiver to the District Hub (DHU).
+* **Comms (The Field Hub)**: Features a triple-radio stack. Transmits and receives via a High-Gain **900MHz FHSS** antenna to act as the primary "listening post" for the field's **LRZ, VFA, & PFA** mesh. This 900MHz link is mandated for 100% penetration through potato/corn canopies. The PMT then bundles the entire field's encrypted state into a single ~187-byte **AES-256** payload and blasts it via the best available backhaul (e.g., **5GHz LTU sector**, LoRaWAN, or LTE-M) to the **District Hub (DHU)**.
 
 ### 4.1 Deep Technical Specs (ATSAMD51 Interface)
 
@@ -90,7 +93,7 @@ This ledger deconstructs the hardware costs for the initial 1,280-unit rollout.
 
 By deploying the PMT at this scale, FarmSense moves the needle from "estimated water use" to "audited water reality."
 
-* **Water Court Integrity**: In the event of an aquifer depletion dispute, the PMT's unbroken, ±1.0% accurate log serves as the absolute "Gold Standard" of evidence, proving that every gallon was applied exactly where the **Oracle Compute Layer** calculated it was needed.
+* **Water Court Integrity**: In the event of an aquifer depletion dispute, the PMT's unbroken, ±1.0% accurate log serves as the absolute "Gold Standard" of evidence, proving that every gallon was applied exactly where the **RDC Compute Layer** calculated it was needed.
 
 ---
 
@@ -110,9 +113,9 @@ The ATSAMD51J20A executes a simplified EBK model locally at the field hub level:
 
 | Mode | Radio | Payload | Failover |
 |------|-------|---------|---------|
-| **Primary backhaul** | 5GHz LTU → DHU | 187-byte AES-256 field state vector | — |
-| **Secondary backhaul** | LTE-M / NB-IoT | Same payload | Auto-failover |
-| **Sensor sink** | nRF52840 (2.4GHz) | Aggregated LRZ/VFA/PFA chirps | — |
+| **Primary backhaul** | 5GHz LTU → DHU / LoRaWAN | 187-byte AES-256 field state vector | — |
+| **Secondary backhaul** | Telit ME910G1 LTE-M | Same payload | Auto-failover |
+| **Sensor sink** | nRF52840 (900MHz FHSS) | Aggregated LRZ/VFA/PFA chirps | — |
 
 ### 6.3 Core BOM Summary
 

@@ -1,18 +1,18 @@
 # FarmSense Implementation Guide
 
-> ⚠️ **Naming Note:** This document references **`CSE.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). All steps remain valid; substitute `Zo.computer` wherever you see `CSE.computer`. See [`docs/reference/Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current deployment config.
+> ⚠️ **Naming Note:** This document references **`Zo.computer`** — the legacy server name. The server is now **`Zo.computer`** (`brodiblanco.zo.computer`). All steps remain valid; substitute `Zo.computer` wherever you see `Zo.computer`. See [`docs/reference/Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current deployment config.
 
 ## 📋 Implementation Phases (20 Weeks)
 
 ### Phase 1: Foundation (Weeks 1-4)
 
-#### Week 1-2: Infrastructure Setup (CSE.computer Pivot)
+#### Week 1-2: Infrastructure Setup (Zo.computer Pivot)
 
-- [ ] Provision custom CSE.computer server ($18 paid tier)
-- [ ] Install Docker & Docker Compose on CSE.computer
+- [ ] Provision custom Zo.computer server ($18 paid tier)
+- [ ] Install Docker & Docker Compose on Zo.computer
 - [ ] Deploy unified `docker-compose.cse-unified.yml` (Postgres, Timescale, Redis, RabbitMQ)
 - [ ] Configure Nginx reverse proxy for the 7 frontend portals
-- [ ] Set up CI/CD pipeline deployment hooks for CSE.computer
+- [ ] Set up CI/CD pipeline deployment hooks for the unified CSE stack
 - [ ] Set up monitoring stack (Prometheus + Grafana) inside CSE
 
 **Deliverables:**
@@ -199,7 +199,7 @@ psql -h your-rds-host -U farmsense_user -d farmsense
 ### 2. Backend Deployment
 
 ```bash
-# SSH into CSE.computer
+# SSH into the unified CSE server
 ssh ubuntu@your-cse-ip
 
 # Run the deployment script
@@ -233,7 +233,7 @@ sudo systemctl status farmsense-edge
 
 ### 4. Frontend Deployment
 
-Frontends are now automatically containerized and routed via Nginx within the CSE.computer unified stack. No manual AWS S3/CloudFront invalidations are required for Phase 1.
+Frontends are now automatically containerized and routed via Nginx within the unified CSE stack. No manual AWS S3/CloudFront invalidations are required for Phase 1.
 
 ```bash
 # If developing locally, rebuild a specific portal:

@@ -188,7 +188,7 @@ delivered only within the permitted swing-arm boundaries and was not "overspraye
 
 non-irrigated land.
 
-Integration: The Zo Server uses the dual-node data to update the field's "Swing Worksheet." If the SAT detects that the swing arm is not extending fully, it informs the Zo Scientist, who then adjusts the virtual sensor grid values for the corner tiles, maintaining the 1m Enterprise definition "Gold Truth."
+Integration: The Zo Server uses the dual-node data to update the field's "Swing Worksheet." If the SAT detects that the swing arm is not extending fully, it informs the CSE, who then adjusts the virtual sensor grid values for the corner tiles, maintaining the 1m Enterprise definition "Gold Truth."
 
 ---
 

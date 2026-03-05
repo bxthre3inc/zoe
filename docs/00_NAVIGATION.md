@@ -1,8 +1,8 @@
 # FarmSense Documentation Navigator
 
-> **Start here.** This file routes every reader to exactly what they need. The FarmSense repo has 72+ documentation files. Do not browse blindly — use this map.
+#### Start here. This file routes every reader to exactly what they need. The FarmSense repo has **68 documentation files**. Do not browse blindly — use this map
 
-*Last updated: 2026-03-05*
+#### Last updated: 2026-03-05
 
 ---
 
@@ -26,10 +26,10 @@
 ### 🏗️ Hardware / Firmware Engineer
 
 | Step | Document | Why |
-|------|----------|-----|
+| :--- | :--- | :--- |
 | 1 | [`docs/specifications/`](specifications/) | Master Specs for your device (versioned, authoritative) |
 | 2 | [`docs/architecture/hardwarebreakdown.md`](architecture/hardwarebreakdown.md) | Circuit-level detail: GPIO pinouts, register maps, firmware state machines, BOM |
-| 3 | [`docs/codebase_docs/farmsense-code/specifications/firmware/`](codebase_docs/farmsense-code/specifications/firmware/) | Per-device firmware supplements (packet structures, duty cycles) |
+| 3 | [`docs/specifications/`](specifications/) | Master Specs with §6 Firmware Details (protocol, packet structures) |
 
 **Master Spec files:**
 
@@ -86,9 +86,8 @@
 
 | Document | Why |
 |----------|-----|
-| [`docs/management/AGENTS.md`](management/AGENTS.md) | Current phase, deadlines, immediate focus |
+| [`docs/management/AGENTS.md`](management/AGENTS.md) | Project memory, current phase, critical deadlines, task status |
 | [`docs/management/ROADMAP.md`](management/ROADMAP.md) | Full Phase 1–5 roadmap + grant schedule |
-| [`docs/management/SPRINT.md`](management/SPRINT.md) | Current sprint ⚠️ *Check if still current* |
 | [`docs/management/FUNDING_PIPELINE.md`](management/FUNDING_PIPELINE.md) | All grants: status, deadlines, amounts |
 
 ---
@@ -142,7 +141,7 @@ All 9 files are ✅ Current and versioned. These are the canonical source of tru
 | `SOFTWARE_INDEX.md` | ✅ Current | Master index of software specs (portals + firmware links) |
 | `todo.md` | ✅ Current | **Canonical task board** |
 | `IMPLEMENTATION_GUIDE.md` | ⚠️ Partial | Good troubleshooting, but weekly plan assumes old scale |
-| `SPLIT_DEPLOYMENT_README.md` | ⚠️ Partial | Uses old CSE.computer/RDC naming |
+| `SPLIT_DEPLOYMENT_README.md` | ⚠️ Partial | Uses old Zo.computer/RDC naming |
 | `marketing-video-prompts.md` | ✅ Current | Video scripts |
 
 #### `docs/codebase_docs/farmsense-code/backend/`

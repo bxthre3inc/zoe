@@ -45,7 +45,7 @@ across an entire valley and issue "Reflex" pumping limits to the entire mesh dur
 
 emergency drought conditions.
 
-Defensible Science: Formalizing the Zo Scientist Kriging models as the legal standard for
+Defensible Science: Formalizing the CSE Kriging models as the legal standard for
 
 Consumptive Use (CU) calculations. By replacing traditional, static formulas (like Blaney
 
@@ -64,7 +64,7 @@ Hardware Signing: Every data packet from a Vertical Field Anchor (VFA) or Pump S
 
 This ensures that the data is untampered from the moment it leaves the sensor, effectively "fingerprinting" every gallon of water measured.
 
-Immutable Ledger: Creates an unbreakable chain of custody from the well-head to the Oracle Vault. In Water Court, this data is "Self-Authenticating," removing the need for manual inspections or witness testimony. This "Forensic Record" allows for historical replay, where a state can audit the exact hydrological state of a field from years prior to resolve property or water right disputes with absolute certainty.
+Immutable Ledger: Creates an unbreakable chain of custody from the well-head to the RDC. In Water Court, this data is "Self-Authenticating," removing the need for manual inspections or witness testimony. This "Forensic Record" allows for historical replay, where a state can audit the exact hydrological state of a field from years prior to resolve property or water right disputes with absolute certainty.
 
 C. The "Resolution Pop" UI Transition
 
@@ -99,7 +99,7 @@ Partnership International G2G Treaties
 
 1. Technical Architecture for Sovereignty
 
-The Librarian/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national governments can audit the science without compromising the security of the data vault. If the state updates its legal definition of "Consumptive Use," they simply update the Zo Worksheet, and the entire historical record is re-calculated instantly without altering the raw evidence.
+The DIL/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national governments can audit the science without compromising the security of the data vault. If the state updates its legal definition of "Consumptive Use," they simply update the Zo Worksheet, and the entire historical record is re-calculated instantly without altering the raw evidence.
 
 Worksheet Autonomy & The Reflex Logic: The Worksheet Reflex ensures that even during a national cyber-event or total internet blackout, the local "Reflex" logic—governing pump actuation and depletion limits—continues to function at the edge (Hub/VFA level). This "Hydraulic Autonomy" prevents catastrophic aquifer damage during periods of civil or digital instability.
 

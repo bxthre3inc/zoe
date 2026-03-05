@@ -33,5 +33,5 @@ Please familiarize yourself with the FarmSense project documentation in the foll
 
 ## Important Operational & Policy Context
 
-- **Federal Funding and ARPA-E**: We are tailoring architectures to qualify for the Federal Environmental Security Technology Certification Program (Federal ESG) (Deadline: March 26, 2026). Ensure any Edge communication protocol changes (e.g. 5GHz/900MHz backhaul adjustments) maintain secure 128-bit encryption constraints.
+- **Federal Funding and ARPA-E**: We are tailoring architectures to qualify for the Federal Environmental Security Technology Certification Program (Federal ESG) (Deadline: March 26, 2026). Ensure any Edge communication protocol changes (e.g. **standardizing on 900MHz FHSS**) maintain secure 128-bit encryption constraints.
 - **Privacy Policy**: Our Spatial Privacy Framework requires all individual geographic point parameters sent to the Global Cloud to be contextually obfuscated. Do not bypass the Differential Privacy protocols applied downstream of the District Hub "Black Box".

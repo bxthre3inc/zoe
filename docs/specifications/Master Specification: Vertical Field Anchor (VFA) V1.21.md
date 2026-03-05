@@ -1,13 +1,13 @@
 # Master Specification: Vertical Field Anchor (VFA) V1.21
 
-**Role**: Field-Level Relay, "Truth" Node, & Routing Coordinator | **Network Density**: 1 VFA per Field (Aggregating LRZs deployed at 1 per 15 Acres)
+**Role**: Layer 1 "Truth" Node & Sensor Aggregator | **Network Density**: 1 VFA per Field (Aggregating LRZs)
 
 As the primary field-level relay and intelligence hub of the FarmSense SFD (single field deployment) architecture, the Vertical Field Anchor (VFA) operates as a high-fidelity subsurface data logger, a secure routing node, and the critical baseline calibration tool—the absolute "Truth" node—for the **Oracle Unified Compute**.
 
 **Network Topology**: There is exactly one VFA deployed per field. The VFA is "Pinned" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. This single VFA is responsible for intercepting the 128-bit encrypted FHSS chirps from the surrounding high-density Lateral Root-Zone (LRZ) scouts, which are deployed at a strict density of 1 unit per 15 acres.
  Instead of treating each data point in isolation, the solitary VFA seamlessly aggregates this expansive lateral spatial data, combines it with its own 48-inch deep-profile vertical readings, and securely routes the highly compressed, unified payload to the central Farm Hub located at the pivot. By serving as the localized edge coordinator, the VFA ensures that absolutely no data is lost during cellular blackouts. More importantly, it establishes the rigorous empirical ground truth required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
 
-**The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact physical/spatial baseline required by the **RSS Oracle Compute**. By maintaining this permanent sub-surface coordinate, the Oracle engine can flawlessly integrate the seasonal VFA telemetry with the static **Soil Variability Maps** during the 1m Kriging generation.
+**The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact physical/spatial baseline required by the **RSS RDC Compute**. By maintaining this permanent sub-surface coordinate, the Oracle engine can flawlessly integrate the seasonal VFA telemetry with the static **Soil Variability Maps** during the 1m Kriging generation.
 
 ## 1. Structural Housing & Climate Control (The Seasonal Docking Station)
 
@@ -27,15 +27,14 @@ By stripping the VFA down to pure routing and encryption functions, we have inte
 * **Firmware Logic & Interrupts**: Operates an RTOS prioritizing pressure transients (Priority 0) over mesh coordination (Priority 1) and ADC dielectric sampling (Priority 2).
 * **Edge Decryption & Aggregation**: As the VFA catches these asynchronous chirps, it performs localized Edge Decryption, aggregating the raw electrical counts from the 15-acre lateral nodes with its own high-fidelity deep-soil data.
 * **Hardware Security & Root of Trust (RoT)**: A 256-bit Private Key is generated within the nRF52840's CryptoCell-310 HSM. It is injected at the RSS and never leaves the silicon.
-* **Local 900MHz Uplink & 2.4GHz Transceiver**: The VFA utilizes a high-gain 900MHz LoRa uplink to bounce the secure payload directly to the District Farm Hub. It also incorporates a 2.4GHz/BLE Transceiver module to communicate with field safety nodes.
+* **Local 900MHz Uplink & 2.4GHz Transceiver**: The VFA utilizes a high-gain 900MHz LoRa uplink to bounce the secure payload directly to the District Farm Hub. It also incorporates a **2.4GHz/BLE Transceiver** module to communicate with the Pressure & Flow Anchor (PFA) safety nodes and field-level sensors.
+  * **Radio**: nRF52811 with **900MHz FHSS Firmware**. Output Power: +4dBm. Sensitivity: -96dBm. Modulated for 100% penetration through potato/corn canopies.
+  * **Antenna**: Flush-mount 3-foot flexible 900MHz whip (Internalized).
 
 ### 2.1 Deep Technical Specs (nRF52840 Interface)
 
-* **Precision Timing**: Driven by a 32MHz TCXO with ±0.5ppm stability to prevent LoRa synchronization drift during extreme SLV winter/summer transitions (-40°C to +50°C).
-* **GPIO Map**:
-  * **P0.02**: AIN0 (Dielectric Sensor 1 ADC).
-  * **P0.28-31**: SPI Bus (LoRa Radio SCK/MOSI/MISO/CS).
-  * **P1.02**: PWM (Kapton Heat FET for Frost Defense).
+* **P0.28-31**: SPI Bus (LoRa Radio SCK/MOSI/MISO/CS).
+* **P1.02**: PWM (Auxiliary Actuator Port - Formerly Heater).
 
 ## 3. The "Proxy Method" Sensor Array (48-Inch / 48U Sequence)
 
@@ -44,7 +43,7 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 **Locked 48U Physical Stack Sequence**:
 
 * **Slot 1**: 1U Bulk Stamped Desiccant Pack (Apex moisture trap)
-* **Slots 2-5**: 4U Battery #1 (3x 21700 lithium-ion cells for frost defense heating)
+* **Slots 2-5**: 4U Battery #1 (3x 21700 lithium-ion cells - High capacity for seasonal cycling)
 * **Slots 6-9**: 4U Extruded Spacer
 * **Slot 10**: 1U Advanced Sensor (10" Depth: Active root zone proxy)
 * **Slots 11-14**: 4U Battery #2
@@ -80,8 +79,8 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 | **Climate** | 1U Stamped Desiccant Matrix | Bulk Supply | 1 Week | $1.50 |
 | **Structure** | 48" AlphaSled Chassis | Continuous Extrusion | 3 Weeks | $3.25 |
 | **Structure** | Injection-Molded EndCaps | High-Cavity Mold | 4 Weeks | $0.60 |
-| **Structure** | Extruded HDPE Spacers (22U) | Recycled Bulk | 2 Weeks | $0.15 |
-| **Power (x5)** | 4U Battery Cartridges (21700x3 Li-ion) | GP-32700-LFP | 6 Weeks | $83.75 |
+| **Structure** | Schedule 80 UV-PVC Spacers (22U) | FS-Custom-48U | 2 Weeks | $0.45 |
+| **Power (x5)** | 4U Battery Cartridges (21700x3 Li-ion) | Samsung 50E | 6 Weeks | $83.75 |
 | **Adv. Sensor** | Proprietary 10-Unit Stack (NPK/EC/pH) | FS-DE-48U | 12 Weeks | $120.00 |
 | **Basic Sensor** | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | 4 Weeks | $4.00 |
 | **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$159.65** |
@@ -98,7 +97,7 @@ The firmware calculates Management Allowable Depletion (MAD) status locally on t
 
 * **Logic:** Aggregates Soil Matric Potential (SMP) across all 3 depths to determine the "Remaining Charge" in the soil water battery profile.
 * **Primary Telemetry:** MAD percentage transmitted as the highest-priority field in every chirp.
-* **Upstream Use:** The PMT EBK engine uses the aggregated MAD value as the ground-truth anchor for 50m grid interpolation.
+* **Upstream Use**: The Layer 1.5 PMT hub uses the aggregated MAD value as the ground-truth anchor for 50m grid interpolation.
 
 ### 6.2 Seasonal Dormancy (Winter Sleep)
 

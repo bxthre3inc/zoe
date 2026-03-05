@@ -180,9 +180,9 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 
 ## Key Technical Decisions
 
-### 1. Librarian/Scientist Split
+### 1. DIL/Scientist Split
 
-- **Oracle Vault** = Raw data storage (immutable)
+- **RDC** = Raw data storage (immutable)
 - **Zo Server** = Computation layer (worksheets)
 - Benefit: Governments audit science without compromising data vault
 

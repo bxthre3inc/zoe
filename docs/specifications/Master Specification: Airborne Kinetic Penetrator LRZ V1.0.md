@@ -4,7 +4,7 @@
 
 The Airborne Ballistic-grade Penetrator Lateral Root-Zone Scout (AKP-LRZ) represents a dual-use (agricultural/tactical) evolution of the standard LRZ architecture. It is designed to be deployed from low to medium altitude via Unmanned Aerial Vehicles (UAVs) or manned agricultural aircraft. The AKP-LRZ utilizes an aerodynamic sabot and a hardened penetrator tip to self-install into the soil profile upon impact, eliminating the need for manual ground operations.
 
-Once embedded, the AKP-LRZ functions identically to a standard LRZ, utilizing 50mm non-contact capacitive telemetry fields to gather soil moisture and temperature data, and transmitting this data via Low Probability of Intercept/Detection (LPI/LPD) Frequency-Hopping Spread Spectrum (FHSS) chirps to a local DHU or PMT.
+Once embedded, the AKP-LRZ functions identically to a standard LRZ, utilizing 50mm non-contact capacitive telemetry fields to gather soil moisture and temperature data, and transmitting this data via Low Probability of Intercept/Detection (LPI/LPD) **900MHz** Frequency-Hopping Spread Spectrum (FHSS) chirps to a local DHU or PMT.
 
 ## 2. Aerodynamic & Mechanical Design
 

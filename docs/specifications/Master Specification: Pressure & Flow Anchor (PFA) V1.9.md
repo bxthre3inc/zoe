@@ -1,6 +1,6 @@
 # Master Specification: Pressure & Flow Anchor (PFA) V1.9
 
-Role: Source/Well Monitor & Safety Actuator | Network Density: 1 per Well Station (Subdistrict 1
+Role: Layer 1 Source/Well Monitor & Safety Actuator | Network Density: 1 per Well Station
 
 Deployment)
 
@@ -65,8 +65,6 @@ electrical "noise" that can easily corrupt sensitive analog-to-digital (ADC) con
 PFA enclosure is internally treated with a specialized conductive coating to create a
 
 "Faraday Cage" effect. This protects the NXP processing sled's delicate circuitry, ensuring
-
-
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
 
@@ -138,8 +136,6 @@ Cut-Less Integration: Installs via a simple stainless-steel T-splitter onto the 
 
 analog pressure gauge port. This allows the farmer to maintain their visual gauge while
 
-
-
 providing FarmSense with high-fidelity digital data.
 
 Safety Logic: Acts as the heartbeat monitor for the pipe network, instantly detecting
@@ -176,19 +172,11 @@ Processing Sled: Features an NXP i.MX RT1020 (Cortex-M7 @ 500MHz) high-speed pro
 * **ADC Calibration**: Hardware-triggered internal ADC self-calibration against a precision 1.2V bandgap reference ensures CT clamp readings remain ±1% accurate across the entire -30°F to 120°F pump-house temperature swing.
 * **FlexPWM Logic**: Direct register access (`PWM_SM0CTRL2` and `PWM_SM0VAL1`) controls the 30A Omron "Soft-Stop" relay, allowing the PFA to physically override the VFD drive state with microsecond precision.
 
-Networking & Mesh Protocol: Utilizes a 2.4GHz High-Gain Link to communicate directly
-
-with the field's VFA anchor. It is programmed with "Critical Packet Priority"—if the line
-
-pressure drops or a "Soft-Stop" is triggered, the PFA suppresses all non-essential
-
-diagnostic pings to ensure the emergency command has a clear, prioritized path to the
-
-coordinator.
+Networking & Mesh Protocol: Utilizes a **900MHz FHSS Link** to communicate directly with the **Layer 1.5 PMT** elevated hub. 900MHz is mandated over 2.4GHz to ensure signal penetration through dense, water-rich crop canopies. It is programmed with "Critical Packet Priority"—if the line pressure drops or a "Soft-Stop" is triggered, the PFA suppresses all non-essential diagnostic pings to ensure the emergency command has a clear, prioritized path to the hub.
 
 The Blackout Buffer (7-Day Sentry): Powered primarily via an AC Step-Down
 
-transformer, but backed by a massive 40,000mAh Dual-Pack LiFePO4 battery system.
+transformer, but backed by a massive **40Ah** Heated LiFePO4 battery system.
 
 Thermal Defense: Protected by a 5W Kapton heater and 8mm PE closed-cell foam
 
@@ -212,7 +200,7 @@ hydrological data point for regional water management and legal defensibility.
 | **Hydrology** | Submersible Depth Sounder (SS) | Dwyer-PBLTX (Vented) | 5 Weeks | $320.00 |
 | **Pressure** | 200 PSI SS Line Transducer | M5200-000005-250PG | 8 Weeks | $140.00 |
 | **Actuation** | 30A Industrial Control Relay | Omron (Dry Contact) | 2 Weeks | $45.00 |
-| **Power** | AC Step-Down + 40Ah LiFePO4 Buffer | Custom-MeanWell Pkg | 6 Weeks | $115.00 |
+| **Power** | AC Step-Down + 40Ah Heated LFP | Battle Born / GP | 6 Weeks | $115.00 |
 | **Wiring** | 12AWG Shielded Control Wire | Belden (Shielded Spool) | 1 Week | $30.00 |
 | **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$985.00** |
 
@@ -229,8 +217,6 @@ By deploying the PFA at this scale, FarmSense establishes the primary interface 
 
 Generation" in modern water-saving programs.
 
-
-
 Conservation Funding: The PFA's accuracy and tamper-proof mounting are vital for
 
 farmers participating in voluntary fallowing or pumping reduction programs. Because it
@@ -241,7 +227,7 @@ Water Plan (CWCB) and Federal (NRCS) Conservation Innovation grants.
 
 Zo-Oracle Coordination: The Zo Server (the Scientist) crunches the PFA's extraction
 
-data against the Oracle (the Librarian) spatial maps to update the field's irrigation
+data against the Oracle (the DIL) spatial maps to update the field's irrigation
 
 "Worksheet." This allows the system to identify exactly when the pump is operating outside
 
@@ -259,7 +245,7 @@ Water Court Integrity: In the event of a water rights dispute, the PFA's unbroke
 
 ### Reflex Logic (Firmware v3.x)
 
-The NXP i.MX RT1060 (600MHz Cortex-M7) executes safety-critical "Soft-Stop" actuation.
+The NXP i.MX RT1020 (500MHz Cortex-M7) executes safety-critical "Soft-Stop" actuation.
 
 > *Note: The firmware supplement spec references `i.MX RT1060`; the main BOM above uses `i.MX RT1020` (500MHz). Both are Cortex-M7 variants. RT1060 is the higher-performance drop-in replacement — production units may use either depending on availability. The 1,024-point FFT and FlexPWM reflex logic runs on both.*
 
@@ -284,11 +270,9 @@ The NXP i.MX RT1060 (600MHz Cortex-M7) executes safety-critical "Soft-Stop" actu
 
 ### BOM Cost Reference
 
-| Item | Cost |
-|------|------|
-| PFA Hardware (OEM, per unit) | **$985.00** |
-| PFA Infrastructure (installed, per wellhead, with labor) | **$895.00** |
+| PFA Hardware (OEM Scale, per unit) | **$985.00** |
+| PFA Project Cost (Installed per wellhead, Sub 1) | **$1,210.00** |
 
-> *Note: $895 = installed version per the firmware supplement; $985 = full hardware-only BOM at scale per the master BOM table above. Both are correct for different contexts (installed vs. hardware-cost only).*
+> *Note: Project cost includes NEC-standard conduit, grounding, and journeyman electrician labor (@ $100/hr).*
 
 *Infrastructure Classification: Permanent Forensic Water Asset*

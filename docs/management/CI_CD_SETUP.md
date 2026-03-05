@@ -24,7 +24,7 @@ Go to your GitHub Repository -> **Settings** -> **Secrets and variables** -> **A
 
 Add the following secrets:
 
-### 🌍 Oracle Cloud (Map Stack)
+### 🌍 RDC (Map Stack)
 
 | Secret Name | Value Description |
 | ------------- | ------------------- |

@@ -60,8 +60,8 @@ To execute the MAD framework across 166,000 acres, FarmSense deploys a sophistic
 
 The cloud architecture is designed for heavy spatial analytics and operates locally to ensure rural resilience:
 
-* **Map Servers (Oracle Vault):** The master data library housing spatial, satellite (Sentinel-2, Landsat), and historical edaphic datasets.\[1, 1\]  
-* **Spatial Query Engine (Map Manager):** The "librarian" that extracts specific values (elevation, slope, aspect, NDVI) at precise latitude and longitude coordinates, converting them into lightweight JSON arrays.1  
+* **Map Servers (RDC):** The master data library housing spatial, satellite (Sentinel-2, Landsat), and historical edaphic datasets.\[1, 1\]  
+* **Spatial Query Engine (Map Manager):** The "DIL" that extracts specific values (elevation, slope, aspect, NDVI) at precise latitude and longitude coordinates, converting them into lightweight JSON arrays.1  
 * **Core Compute Server (Zo):** The "scientist" engine executing Bayesian priors and Localized Kriging algorithms (geostatistical interpolation) to process hundreds of thousands of data points into predictive "Worksheets".1
 
 ### **2.2 Regional and District Edge Infrastructure**
@@ -126,7 +126,7 @@ The primary engine for water rights verification is the PMT's hydraulic flow sta
 
 ### **4.3 Lateral Root-Zone (LRZ) and Vertical Field Anchors (VFA)**
 
-* **The \"Invisible Presence\" Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent UV-Stabilized Rigid Polyvinyl Chloride (PVC) outer shells remain buried flush with the soil surface year-round, while internal \"Alpha-Sleds\" (constructed of high-temperature CPVC) containing the electronics are extracted pre-harvest.\\[1, 1\\]  
+* **The \"Invisible Presence\" Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent **Schedule 80 Impact-Modified PVC** outer shells remain buried flush with the soil surface year-round, while internal \"Alpha-Sleds\" containing the electronics are extracted pre-harvest.
 * **The Proxy Method:** The sensors utilize an advanced non-contact capacitive method, shooting high-frequency dielectric fields through the 50mm sled wall and across a \+5 psi dry nitrogen gap directly into the soil.\[1, 1\]
 
 ## ---
@@ -239,7 +239,6 @@ The FarmSense platform represents a highly sophisticated synthesis of edge compu
 
 <div style="page-break-after: always;"></div>
 
-
 # Long-Term Roadmap: FarmSense as Sovereign Water Infrastructure
 
 Vision: To establish FarmSense as the definitive "Global Water Ledger"—the legally recognized,
@@ -286,7 +285,7 @@ across an entire valley and issue "Reflex" pumping limits to the entire mesh dur
 
 emergency drought conditions.
 
-Defensible Science: Formalizing the Zo Scientist Kriging models as the legal standard for
+Defensible Science: Formalizing the CSE Kriging models as the legal standard for
 
 Consumptive Use (CU) calculations. By replacing traditional, static formulas (like Blaney
 
@@ -302,15 +301,13 @@ Hardware Signing: Every data packet from a Vertical Field Anchor (VFA) or Pump S
 
 (PFA) is cryptographically signed at the hardware level using Secure Element (SE) chips.
 
-
-
 This ensures that the data is untampered from the moment it leaves the sensor, effectively
 
 "fingerprinting" every gallon of water measured.
 
 Immutable Ledger: Creates an unbreakable chain of custody from the well-head to the
 
-Oracle Vault. In Water Court, this data is "Self-Authenticating," removing the need for
+RDC. In Water Court, this data is "Self-Authenticating," removing the need for
 
 manual inspections or witness testimony. This "Forensic Record" allows for historical re
 
@@ -383,9 +380,7 @@ Treaties
 
 1. Technical Architecture for Sovereignty
 
-
-
-The Librarian/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national
+The DIL/Scientist Split: By keeping storage (Oracle) and math (Zo) separate, national
 
 governments can audit the science without compromising the security of the data vault. If
 
@@ -433,9 +428,7 @@ grown within sustainable water envelopes.
 
 A th i d f l t t t i i l t ti
 
-
 <div style="page-break-after: always;"></div>
-
 
 # FarmSense: Technical Project Overview & Research Validation Guide
 
@@ -497,8 +490,6 @@ pilot is intended to serve as a blueprint for the entire Rio Grande Basin.
 
 A. Backend Intelligence (Cloud Layer)
 
-
-
 Map Servers (Distributed Data Library): These serve as the system’s "Long-Term
 
 Memory." They consist of distributed databases storing multi-temporal, multi-spectral
@@ -511,7 +502,7 @@ handles the continuous ingestion of massive spatial datasets from sources like S
 
 cloud masking and atmospheric correction.
 
-Spatial Query Engine (SQE): Acting as the "Librarian," this specialized middleware
+Spatial Query Engine (SQE): Acting as the "DIL," this specialized middleware
 
 performs high-speed lookups across tiered spatial datasets. When a specific field or Local
 
@@ -570,8 +561,6 @@ connection is re-established.
 Field Relays: Signal aggregators that utilize low-power, long-range (LoRa) radio protocols
 
 to "wake up" sensors, collect their data, and hop the signal back to the District Hub. This
-
-
 
 multi-hop architecture allows the system to cover massive circular fields (120+ acres)
 
@@ -641,8 +630,6 @@ maximizing water efficiency.
 
 A. Data Sources
 
-
-
 Satellite APIs: Automated pipelines for Sentinel-2 and Landsat imagery, providing 10m to
 
 80m resolution multi-spectral data for biomass monitoring.
@@ -708,8 +695,6 @@ Immediate Capital Need: The project is currently seeking funding specifically fo
 construction, assembly, and deployment of the sensor hardware for the 2-field CSU pilot.
 
 This hardware procurement directly drives the transition from a digital design to an operational, revenue-generating pilot.
-
-
 
 Commercial Model: Data-as-a-Service (DaaS):
 
@@ -884,7 +869,7 @@ required to interpolate the vast, unmonitored acreage between those pins. By cap
 
 altitude multispectral data—specifically targeting the Red Edge and Near-Infrared bands—the
 
-fleet provides the Zo Scientist Engine with the high-frequency spatial gradients needed to
+fleet provides the CSE Engine with the high-frequency spatial gradients needed to
 
 transform discrete sensor pings into a continuous, hyper-accurate 1m-resolution "Digital Twin"
 
@@ -935,8 +920,6 @@ the existence of an "unknown problem" via the 1m aerial ground-truth, the "Resol
 Pop" converts the fear of missing out (FOMO) into an Enterprise-tier subscription upgrade.
 
 ## 1. Phased Mobilization & Hardware Selection
-
-
 
 The fleet scales in three distinct phases designed to align with Subdistrict 1's adoption curve,
 
@@ -1006,8 +989,6 @@ Capability: 90-minute endurance allows for mapping 1,200+ acres per flight at 40
 
 AGL.
 
-
-
 Logic: These units fly the entire subdistrict every 30 days to establish the "Seasonal
 
 Baseline." They detect regional "Anomalies"—such as a subdistrict-wide dip in NDRE
@@ -1040,7 +1021,7 @@ The true value of the Aerial Fleet is not in the images themselves, but in their
 
 the Regional Superstation (RSS) architecture.
 
-Oracle (The Spatial Librarian): Oracle ingests drone-captured orthomosaics and stacks
+Oracle (The Spatial DIL): Oracle ingests drone-captured orthomosaics and stacks
 
 them into a "Multilayered Data Cake." It aligns spectral indices (NDVI/NDRE) directly on top
 
@@ -1069,8 +1050,6 @@ Hardware CAPEX 4x eBee Ag + 7x Mavic 3M + Spares $110,000
 Support CAPEX RTK Ground Stations + Field Vehicles $26,500
 
 Technical Labor 3 FTE (Lead Pilot + 2 Field Technicians) $280,000 (Annual)
-
-
 
 Maintenance Hull Insurance + Component Overhauls $67,000 (Annual)
 
@@ -1127,9 +1106,6 @@ Map Manager, ensuring that only paid subscribers have access to their specific
 multispectral insights, while ensuring the "Digital Water Ledger" remains a secure, private
 
 asset for the district.
-
-
-
 
 <div style="page-break-after: always;"></div>
 
@@ -1196,8 +1172,6 @@ effect of the swing-arm tires independently of the main span, identifying struct
 caused by mud or terrain slope in the corners.
 
 ## 2. Advanced Hydraulic Auditing (End-Gun & Solenoid Pulse)
-
-
 
 Corner spans often utilize high-pressure "End-Guns" that pulse on and off via solenoids as the
 
@@ -1268,8 +1242,6 @@ Enterprise Hook: The UI showcases the real-time angular movement of the swing ar
 (audited by the SAT) and offers a preview of the 1m-resolution "Application Map." This
 
 proves to the farmer that they are wasting water in the corners or missing critical zones
-
-
 
 due to end-gun malfunctions, providing a high-conversion incentive to upgrade to the
 
@@ -1343,8 +1315,6 @@ $2.00 $4.00
 
 $2,200.00
 
-
-
 Total CSA Project Financials (Per Corner Pivot):
 
 Hardware Total: $2,200.00
@@ -1375,10 +1345,9 @@ Worksheet Integration: The Zo Server uses the dual-node data to update the field
 
 "Swing Worksheet." If the SAT detects that the swing arm is not extending fully, it informs
 
-the Zo Scientist, who then adjusts the virtual sensor grid values for the corner tiles,
+the CSE, who then adjusts the virtual sensor grid values for the corner tiles,
 
 i th 1 E t i i th d fi iti "G d T th "
-
 
 <div style="page-break-after: always;"></div>
 
@@ -1410,7 +1379,7 @@ The DHU is engineered for a 40-year structural lifespan, utilizing utility-grade
 The DHU performs heavy "Data Decimation" at the edge to reduce monthly backhaul costs while maintaining a high-fidelity local record for legal auditing.
 
 * **Edge Processing Engine**: Utilizes an **NVIDIA Jetson Nano Developer Kit** (or custom carrier equivalent) featuring a 128-core Maxwell GPU and Quad-core ARM A57 CPU.
-* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS Oracle Compute** specifically for the 10-meter and 20-meter resolution tiers. By performing these multi-tenancy calculations for up to 100 fields at the edge, the DHU can make instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
+* **Localized Kriging (10m & 20m)**: The DHU executes localized Bayesian math worksheets provided by the **RSS RDC Compute** specifically for the 10-meter and 20-meter resolution tiers. By performing these multi-tenancy calculations for up to 100 fields at the edge, the DHU can make instantaneous "Reflex Logic" decisions (e.g., stopping a pump if a pivot stalls) without waiting for a cloud round-trip, which is vital during cellular latency spikes.
 * **The 30-Day "Black Box" Cache**: Equipped with a 128GB Swissbit PSLC Industrial SSD. Unlike consumer-grade storage, the Swissbit PSLC (Pseudo-Single Level Cell) drive is selected for extreme write-endurance and data retention in sub-zero temperatures.
 * **Data Integrity**: It maintains a localized master ledger of all regional water transactions. If both the fiber and cellular backhauls fail, the DHU continues to record every "Audit Packet," ensuring that the farmer's water conservation credits are never lost or questioned in Water Court.
 * **Atmospheric Management**: Includes dual passive Gore-Tex vents for pressure equalization. During rapid alpine storm fronts, the internal pressure must equalize to prevent the enclosure gaskets from "breathing" and sucking in the fine, abrasive alkali dust that can degrade the cooling fins.
@@ -1484,7 +1453,7 @@ While the Vertical Field Anchor (VFA) serves as the singular high-fidelity \"Tru
 
 **Network Topology**: On a standard 125-160 acre center pivot, a fleet of approximately 8 to 10 LRZ units will form a local mesh. They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are \"Pinned\" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This \"Pin Mapping\" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific 15-acre zone, encrypt them, and \"chirp\" them directly to the overhead PMT Field Hub. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution \"pops.\"
 
-**The Seasonal Deployment Model**: To protect the LRZ's internal electronics and guarantee a 10-year hardware lifecycle, FarmSense utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. The internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS Oracle Compute**'s Kriging algorithms.
+**The Seasonal Deployment Model**: To protect the LRZ's internal electronics and guarantee a 10-year hardware lifecycle, FarmSense utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. The internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS RDC Compute**'s Kriging algorithms.
 
 ## 1. Structural Housing ("Invisible Presence" Architecture & Seasonal Docking)
 
@@ -1571,7 +1540,7 @@ Because the PMT is an above-ground asset mounted directly to massive moving stee
 
 The PMT moves beyond simple GPS tracking to professional-grade kinematic auditing, differentiating mathematically between "Walking" (motion without water) and "Pumping."
 
-* **The 1m "Resolution Pop"**: This precision data is the empirical backbone of the FarmSense UI. By correlating the PMT's RTK-grade location with subsurface VFA/LRZ proximity chirps, the **Oracle Compute Layer** "Pins" the static nodes to a sub-meter coordinate grid without requiring on-board GNSS for every sensor. If a Basic Tier (20m) user attempts to zoom in, the PMT's underlying high-fidelity data triggers the "Resolution Pop," initiating a pricing funnel for the Enterprise upgrade.
+* **The 1m "Resolution Pop"**: This precision data is the empirical backbone of the FarmSense UI. By correlating the PMT's RTK-grade location with subsurface VFA/LRZ proximity chirps, the **RDC Compute Layer** "Pins" the static nodes to a sub-meter coordinate grid without requiring on-board GNSS for every sensor. If a Basic Tier (20m) user attempts to zoom in, the PMT's underlying high-fidelity data triggers the "Resolution Pop," initiating a pricing funnel for the Enterprise upgrade.
 * **9-Axis IMU (The "Crabbing" & Structural Sentry)**: A Bosch BNO055 Inertial Measurement Unit continuously monitors vibration harmonics and 3D orientation.
 * **Diagnostic Intelligence**: It detects "Crabbing"—a dangerous condition where a tower's drive motor slips or stalls in deep mud, causing the massive steel span to bow and drift out of alignment. If crabbing or abnormal vibration is detected, the PMT alerts the Hub, which can immediately command the PFA (Pressure & Flow Anchor) to execute a "Soft-Stop" of the well pump, preventing catastrophic, $80,000+ structural collapses.
 
@@ -1635,10 +1604,9 @@ This ledger deconstructs the hardware costs for the initial 1,280-unit rollout.
 
 By deploying the PMT at this scale, FarmSense moves the needle from "estimated water use" to "audited water reality."
 
-* **Water Court Integrity**: In the event of an aquifer depletion dispute, the PMT's unbroken, ±1.0% accurate log serves as the absolute "Gold Standard" of evidence, proving that every gallon was applied exactly where the **Oracle Compute Layer** calculated it was needed.
+* **Water Court Integrity**: In the event of an aquifer depletion dispute, the PMT's unbroken, ±1.0% accurate log serves as the absolute "Gold Standard" of evidence, proving that every gallon was applied exactly where the **RDC Compute Layer** calculated it was needed.
 
 <div style="page-break-after: always;"></div>
-
 
 # Master Specification: Pressure & Flow Anchor (PFA) V1.9
 
@@ -1707,8 +1675,6 @@ electrical "noise" that can easily corrupt sensitive analog-to-digital (ADC) con
 PFA enclosure is internally treated with a specialized conductive coating to create a
 
 "Faraday Cage" effect. This protects the NXP processing sled's delicate circuitry, ensuring
-
-
 
 that aquifer recovery levels and line pressure data remain pristine and statistically
 
@@ -1780,8 +1746,6 @@ Cut-Less Integration: Installs via a simple stainless-steel T-splitter onto the 
 
 analog pressure gauge port. This allows the farmer to maintain their visual gauge while
 
-
-
 providing FarmSense with high-fidelity digital data.
 
 Safety Logic: Acts as the heartbeat monitor for the pipe network, instantly detecting
@@ -1850,8 +1814,6 @@ This ledger reflects the actual procurement costs for the 1,280-unit Subdistrict
 
 industrial wholesale pricing and certified professional installation labor.
 
-
-
 Category Component Description Supplier / Detail Unit
 Cost
 
@@ -1908,8 +1870,6 @@ By deploying the PFA at this scale, FarmSense establishes the primary interface 
 
 Generation" in modern water-saving programs.
 
-
-
 Conservation Funding: The PFA's accuracy and tamper-proof mounting are vital for
 
 farmers participating in voluntary fallowing or pumping reduction programs. Because it
@@ -1920,7 +1880,7 @@ Water Plan (CWCB) and Federal (NRCS) Conservation Innovation grants.
 
 Zo-Oracle Coordination: The Zo Server (the Scientist) crunches the PFA's extraction
 
-data against the Oracle (the Librarian) spatial maps to update the field's irrigation
+data against the Oracle (the DIL) spatial maps to update the field's irrigation
 
 "Worksheet." This allows the system to identify exactly when the pump is operating outside
 
@@ -1930,14 +1890,13 @@ of peak efficiency or when extraction exceeds the crop's calculated Evapotranspi
 
 Water Court Integrity: In the event of an water rights dispute, the PFA's unbroken data log
 
-
 <div style="page-break-after: always;"></div>
 
 # Master Specification: Regional Superstation (RSS) V1.3
 
-**Role**: Regional Cortex & Master Librarian | **Tier**: Layer 3 (Territory Master) | **Location**: Monte Vista Hub, SLV
+**Role**: Regional Cortex & Master DIL | **Tier**: Layer 3 (Territory Master) | **Location**: Monte Vista Hub, SLV
 
-The Regional Superstation (RSS) is the absolute "Cortex" of the FarmSense network for Subdistrict 1. It serves as the physical high-performance computing anchor, the master data repository, and the primary logistics staging ground for the regional Digital Water Ledger. Unlike the field-level VFA or the district-level DHU, the RSS is designed for heavy-lift spatial analytics and long-term legal data vaulting. It houses the **Oracle Multi-Core Compute Layer** and the Oracle Vault, providing the computational horsepower required to turn hundreds of millions of raw sensor "chirps" into hyper-accurate 1m-resolution Enterprise maps, while managing the heavy Fully Homomorphic Encryption (FHE) overhead for long-term secure vaulting.
+The Regional Superstation (RSS) is the absolute "Cortex" of the FarmSense network for Subdistrict 1. It serves as the physical high-performance computing anchor, the master data repository, and the primary logistics staging ground for the regional Digital Water Ledger. Unlike the field-level VFA or the district-level DHU, the RSS is designed for heavy-lift spatial analytics and long-term legal data vaulting. It houses the **Oracle Multi-Core Compute Layer** and the RDC, providing the computational horsepower required to turn hundreds of millions of raw sensor "chirps" into hyper-accurate 1m-resolution Enterprise maps, while managing the heavy Fully Homomorphic Encryption (FHE) overhead for long-term secure vaulting.
 
 **Operational Philosophy**: The RSS is the bridge between field-level IoT hardware and cloud-scale scientific modeling. It serves as the physical backbone for the **Command & Control (C&C)** portal, providing the internal workforce with a unified interface for subdistrict-wide monitoring and fleet deployment, including XR workforce role support. It is engineered to ensure that even during total regional internet failures or cellular blackouts, the subdistrict's water accounting data remains intact, auditable, and legally irrefutable. Furthermore, the RSS acts as the "Sled Hospital" for the seasonal extraction program, ensuring the 10-year hardware lifecycle is maintained through precision maintenance, trickle-charging, and nitrogen re-pressurization. By centralizing the intelligence and maintenance of the subdistrict, the RSS reduces the marginal cost of data management while maximizing the legal "Seniority" of the members' water rights.
 
@@ -1968,7 +1927,7 @@ The most protected, hermetically sealed section at the far end of the container,
 
 * **Oracle Cortex & Vault Storage**: Houses the multi-core compute clusters and the high-density storage arrays. The server racks are mounted on specialized vibration-dampening feet to protect the spinning storage media from the rumble of passing heavy farm equipment.
 * **Precision HVAC & Thermal Dynamics**: Utilizes a Mitsubishi Hyper-Heat Mini-Split with an integrated low-ambient kit. In a room only 77 sq. ft in size, the HVAC system can cycle the entire air volume every 90 seconds. This creates a hyper-stable thermal environment, maintaining exactly 68°F ± 1° even when external SLV ambient temperatures plunge to a "Polar Vortex" low of −40°F.
-* **Air Scrubbing**: A dual-stage HEPA filtration system runs 24/7. This is non-negotiable in the San Luis Valley, where the fine alkali dust can be highly conductive and corrosive; even a microscopic layer on a high-speed NVMe contact can lead to data corruption in the Oracle Vault.
+* **Air Scrubbing**: A dual-stage HEPA filtration system runs 24/7. This is non-negotiable in the San Luis Valley, where the fine alkali dust can be highly conductive and corrosive; even a microscopic layer on a high-speed NVMe contact can lead to data corruption in the RDC.
 
 ## 2. Computational Infrastructure: Oracle Unified Compute
 
@@ -1980,7 +1939,7 @@ The RSS provides the local muscle for FarmSense’s primary software engine, ens
 * **Mathematical Logic**: This cluster is responsible for the massive Bayesian math required to synchronize data from 15,600 LRZ sensors. Oracle executes Localized Kriging, an advanced geostatistical interpolation method that "fills in the gaps" between physical sensors.
 * **Function**: By processing these math "Worksheets" locally, the RSS can generate hyper-granular 1m grid "pops" for Enterprise Tier users and host the regional Map Tile server. This local processing allows the FarmSense UI and **Command & Control (C&C)** field tools to be snappy and responsive, serving high-resolution map tiles and XR deployment overlays without the multi-second latency of cloud round-trips.
 
-### The Oracle Vault (The Master Librarian)
+### The RDC (The Master DIL)
 
 * **Storage Hardware**: 50TB WD Gold Enterprise NVMe Array in a RAID-10 configuration for maximum read/write performance and 100% data redundancy.
 * **Spatial Query Engine**: Oracle manages the master spatial database. It combines raw moisture chirps with localized context—NDVI maps from Satellite, the Aerial Fleet, 1m DEM (Digital Elevation Models), and historical soil texture maps. To support the **Command & Control (C&C) XR Toolkit**, Oracle implements **Frustum-Aware Streaming**, dynamically culling regional map tiles to serve only the high-resolution 1m data required for the technician's immediate visual field. This reduces XR device bandwidth by >90% during regional rapid deployments.
@@ -1992,7 +1951,7 @@ Following the "Fiber-First" mandate, the RSS acts as the primary backhaul hub fo
 
 ### The Networking Spine
 
-* **Primary (Fiber ONT)**: Wherever possible, a dedicated fiber-to-the-premise (FTTP) line is trenched to the RSS to provide symmetrical gigabit speeds. This is the primary pipeline for syncing the Oracle Vault with the FarmSense Cloud Backup.
+* **Primary (Fiber ONT)**: Wherever possible, a dedicated fiber-to-the-premise (FTTP) line is trenched to the RSS to provide symmetrical gigabit speeds. This is the primary pipeline for syncing the RDC with the FarmSense Cloud Backup.
 * **Secondary (Starlink Business)**: A high-performance Starlink dish is mounted on a 100ft regional distribution tower. It provides a low-latency satellite backhaul if the regional fiber is cut or during large-scale utility failures.
 * **Tertiary (900MHz Mesh Peering)**: The RSS maintains a high-power 900MHz peer-to-peer radio link with neighboring District Hubs (DHUs). This ensures that critical "Soft Stop" commands (e.g., stopping a pump because a pivot has stalled) can move across the basin even during a total internet and cellular blackout.
 
@@ -2027,8 +1986,8 @@ This ledger reflects the absolute cost for a fully operational 40' HC RSS hub, e
 By investing $212,000 in a centralized RSS, FarmSense dramatically lowers the per-acre cost of high-precision irrigation management across 150,000 acres.
 
 * **Maintenance ROI (The Sled Hospital Effect)**: The centralized refurbishment model allows the district to treat sensors as long-term assets rather than disposables. A failed $167 VFA sled can be brought to the Sled Hospital and repaired for less than $15 in parts (new O-rings and a fresh cell), allowing the district to recycle hardware indefinitely and preserving the initial capital investment.
-* **The "Digital Twin" Revenue Multiplier**: The RSS is what makes the 1m Enterprise resolution possible. By hosting the Oracle compute layer locally, the RSS facilitates the "Resolution Pop" feature in the farmer's app. This high-conversion UI feature is the primary driver for SaaS upgrades, effectively paying for the RSS infrastructure through increased subscription revenue within the first 24 months.
-* **Legal Defensibility & Aquifer Security**: In the high-stakes environment of Subdistrict 1, data is a weapon. The RSS provides the "Empirical Fortress" required to win Water Court disputes. By storing signed, encrypted data locally in the Oracle Vault, the district can prove its water stewardship regardless of global cloud outages or geopolitical instability, securing the seniority of its members' water rights for the next generation of farmers.
+* **The "Digital Twin" Revenue Multiplier**: The RSS is what makes the 1m Enterprise resolution possible. By hosting the RDC Compute layer locally, the RSS facilitates the "Resolution Pop" feature in the farmer's app. This high-conversion UI feature is the primary driver for SaaS upgrades, effectively paying for the RSS infrastructure through increased subscription revenue within the first 24 months.
+* **Legal Defensibility & Aquifer Security**: In the high-stakes environment of Subdistrict 1, data is a weapon. The RSS provides the "Empirical Fortress" required to win Water Court disputes. By storing signed, encrypted data locally in the RDC, the district can prove its water stewardship regardless of global cloud outages or geopolitical instability, securing the seniority of its members' water rights for the next generation of farmers.
 
 <div style="page-break-after: always;"></div>
 
@@ -2040,7 +1999,7 @@ As the primary field-level high-fidelity subsurface data logger, the Vertical Fi
 
 **Network Topology**: There is exactly one VFA deployed per field. The VFA is \"Pinned\" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. Like the surrounding high-density Lateral Root-Zone (LRZ) scouts, the single VFA is responsible for securely routing its highly compressed, unified payload directly to the central PMT Field Hub located above on the pivot. By serving as the localized ground truth, the VFA ensures that absolutely no deep-profile data is lost during cellular blackouts. More importantly, it establishes the rigorous empirical baseline required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
 
-**The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS Oracle Compute**'s Kriging algorithms.
+**The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact spatial baseline required by the **RSS RDC Compute**'s Kriging algorithms.
 
 ## 1. Structural Housing & Climate Control (The Seasonal Docking Station)
 
@@ -2434,9 +2393,9 @@ FarmSense as the definitive sovereign water infrastructure—legally recognized,
 
 ## Key Technical Decisions
 
-### 1. Librarian/Scientist Split
+### 1. DIL/Scientist Split
 
-* **Oracle Vault** = Raw data storage (immutable)
+* **RDC** = Raw data storage (immutable)
 * **Zo Server** = Computation layer (worksheets)
 * Benefit: Governments audit science without compromising data vault
 
@@ -2602,7 +2561,7 @@ The FarmSense infrastructure is an uncompromising, decentralized monolithic grid
 
 ## Backend Intelligence (Decentralized Cloud Layer)
 
-* **RSS Oracle Vault (Master Database & Compute):** The central nervous system of FarmSense. It houses the master spatial library, historical datasets, and the consolidated **Zo Compute Layer**. It is responsible for executing Bayesian priors, generating deterministic "Worksheets," and pre-rendering the 1m-resolution Enterprise map tiles.
+* **RSS RDC (Master Database & Compute):** The central nervous system of FarmSense. It houses the master spatial library, historical datasets, and the consolidated **Zo Compute Layer**. It is responsible for executing Bayesian priors, generating deterministic "Worksheets," and pre-rendering the 1m-resolution Enterprise map tiles.
 
 ## Regional & District Edge Infrastructure
 
@@ -3517,7 +3476,7 @@ Go to your GitHub Repository -> **Settings** -> **Secrets and variables** -> **A
 
 Add the following secrets:
 
-### 🌍 Oracle Cloud (Map Stack)
+### 🌍 RDC (Map Stack)
 
 | Secret Name | Value Description |
 | ------------- | ------------------- |
@@ -3769,7 +3728,7 @@ Sensors → API → TimescaleDB → Edge (20m IDW) → Cloud (1m Kriging) → Da
 ### Computational Layers
 
 1. **Edge Layer**: Raspberry Pi 4 @ field (20m grid, offline-capable)
-2. **Regional Superstation (RSS)**: Oracle Compute Node (1m grid, satellite integration, Analytics)
+2. **Regional Superstation (RSS)**: RDC Compute Node (1m grid, satellite integration, Analytics)
 3. **Analytics Layer**: Real-time predictions, irrigation recommendations
 4. **Compliance Layer**: SLV 2026 reporting, immutable audit logs
 
@@ -6123,9 +6082,9 @@ The intelligence powering the frontends and edge-hardware relies on these deeply
 This project is configured for a **Hybrid Cloud Deployment**:
 
 * **Core Platform (Zo.computer)**: Hosts the API, processing, and frontend applications.
-* **Map Stack (Oracle Cloud)**: Hosts the geospatial database and map tile services.
+* **Map Stack (RDC)**: Hosts the geospatial database and map tile services.
 
-### 1. Oracle Cloud (Map Stack) Setup
+### 1. RDC (Map Stack) Setup
 
 Deploy this FIRST to ensure the database is available for the core platform.
 

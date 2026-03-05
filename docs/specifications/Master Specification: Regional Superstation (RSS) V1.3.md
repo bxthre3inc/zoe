@@ -1,8 +1,8 @@
 # Master Specification: Regional Superstation (RSS) V1.3
 
-**Role**: Regional Cortex & Master Librarian | **Tier**: Layer 3 (Territory Master) | **Location**: Monte Vista Hub, SLV
+**Role**: Regional Cortex & Master DIL | **Tier**: Layer 3 (Territory Master) | **Location**: Monte Vista Hub, SLV
 
-The Regional Superstation (RSS) is the absolute "Cortex" of the FarmSense network for Subdistrict 1. It serves as the physical high-performance computing anchor, the master data repository, and the primary logistics staging ground for the regional Digital Water Ledger. Unlike the field-level VFA or the district-level DHU, the RSS is designed for heavy-lift spatial analytics and long-term legal data vaulting. It houses the **Oracle Multi-Core Compute Layer** and the Oracle Vault, providing the computational horsepower required to turn hundreds of millions of raw sensor "chirps" into hyper-accurate 1m-resolution Enterprise maps, while managing the heavy Fully Homomorphic Encryption (FHE) overhead for long-term secure vaulting.
+The Regional Superstation (RSS) is the absolute "Cortex" of the FarmSense network for Subdistrict 1. It serves as the physical high-performance computing anchor, the master data repository, and the primary logistics staging ground for the regional Digital Water Ledger. Unlike the field-level VFA or the district-level DHU, the RSS is designed for heavy-lift spatial analytics and long-term legal data vaulting. It houses the **Oracle Multi-Core Compute Layer** and the RDC, providing the computational horsepower required to turn hundreds of millions of raw sensor "chirps" into hyper-accurate 1m-resolution Enterprise maps, while managing the heavy Fully Homomorphic Encryption (FHE) overhead for long-term secure vaulting.
 
 **Operational Philosophy**: The RSS is the bridge between field-level IoT hardware and cloud-scale scientific modeling. It serves as the physical backbone for the **Command & Control (C&C)** portal, providing the internal workforce with a unified interface for subdistrict-wide monitoring and fleet deployment, including XR workforce role support. It is engineered to ensure that even during total regional internet failures or cellular blackouts, the subdistrict's water accounting data remains intact, auditable, and legally irrefutable. Furthermore, the RSS acts as the "Sled Hospital" for the seasonal extraction program, ensuring the 10-year hardware lifecycle is maintained through precision maintenance, trickle-charging, and nitrogen re-pressurization. By centralizing the intelligence and maintenance of the subdistrict, the RSS reduces the marginal cost of data management while maximizing the legal "Seniority" of the members' water rights.
 
@@ -33,7 +33,7 @@ The most protected, hermetically sealed section at the far end of the container,
 
 * **Oracle Cortex & Vault Storage**: Houses the multi-core compute clusters and the high-density storage arrays. The server racks are mounted on specialized vibration-dampening feet to protect the spinning storage media from the rumble of passing heavy farm equipment.
 * **Precision HVAC & Thermal Dynamics**: Utilizes a Mitsubishi Hyper-Heat Mini-Split with an integrated low-ambient kit. In a room only 77 sq. ft in size, the HVAC system can cycle the entire air volume every 90 seconds. This creates a hyper-stable thermal environment, maintaining exactly 68°F ± 1° even when external SLV ambient temperatures plunge to a "Polar Vortex" low of −40°F.
-* **Air Scrubbing**: A dual-stage HEPA filtration system runs 24/7. This is non-negotiable in the San Luis Valley, where the fine alkali dust can be highly conductive and corrosive; even a microscopic layer on a high-speed NVMe contact can lead to data corruption in the Oracle Vault.
+* **Air Scrubbing**: A dual-stage HEPA filtration system runs 24/7. This is non-negotiable in the San Luis Valley, where the fine alkali dust can be highly conductive and corrosive; even a microscopic layer on a high-speed NVMe contact can lead to data corruption in the RDC.
 
 ## 2. Computational Infrastructure: Oracle Unified Compute
 
@@ -45,7 +45,7 @@ The RSS provides the local muscle for FarmSense’s primary software engine, ens
 * **Mathematical Logic & CUDA Smoothing**: This cluster is responsible for the massive Bayesian math required to synchronize data from 15,600 LRZ sensors. The GPUs execute a parallel spatial pipeline: ingesting FHSS chirps, using CUDA kernels to trend-filter moisture noise from pivot "splash-zones," and calculating Variogram clouds.
 * **Function**: By processing these math "Worksheets" locally against the high-resolution **Soil Variability Maps**, the RSS renders the 1m Enterprise Kriging Tiles (Layer 12 PNGs) every 15 minutes. This local processing serves the FarmSense UI and **Command & Control (C&C)** field tools, streaming frustum-culled map data to fieldXR headsets for sub-meter "Pinning."
 
-### The Oracle Vault (The Master Librarian)
+### The RDC (The Master DIL)
 
 * **Storage Hardware**: 50TB WD Gold Enterprise NVMe Array in a RAID-10 configuration for maximum read/write performance and 100% data redundancy.
 * **Spatial Query Engine**: Oracle manages the master spatial database. It combines raw moisture chirps with localized context—NDVI maps from Satellite, the Aerial Fleet, 1m DEM (Digital Elevation Models), and historical soil texture maps. To support the **Command & Control (C&C) XR Toolkit**, Oracle implements **Frustum-Aware Streaming**, dynamically culling regional map tiles to serve only the high-resolution 1m data required for the technician's immediate visual field. This reduces XR device bandwidth by >90% during regional blitz deployments.
@@ -57,7 +57,7 @@ Following the "Fiber-First" mandate, the RSS acts as the primary backhaul hub fo
 
 ### The Networking Spine
 
-* **Primary (Fiber ONT)**: Wherever possible, a dedicated fiber-to-the-premise (FTTP) line is trenched to the RSS to provide symmetrical gigabit speeds. This is the primary pipeline for syncing the Oracle Vault with the FarmSense Cloud Backup.
+* **Primary (Fiber ONT)**: Wherever possible, a dedicated fiber-to-the-premise (FTTP) line is trenched to the RSS to provide symmetrical gigabit speeds. This is the primary pipeline for syncing the RDC with the FarmSense Cloud Backup.
 * **Secondary (Starlink Business)**: A high-performance Starlink dish is mounted on a 100ft regional distribution tower. It provides a low-latency satellite backhaul if the regional fiber is cut or during large-scale utility failures.
 * **Tertiary (900MHz Mesh Peering)**: The RSS maintains a high-power 900MHz peer-to-peer radio link with neighboring District Hubs (DHUs). This ensures that critical "Soft Stop" commands (e.g., stopping a pump because a pivot has stalled) can move across the basin even during a total internet and cellular blackout.
 
@@ -92,8 +92,8 @@ This ledger reflects the absolute cost for a fully operational 40' HC RSS hub, e
 By investing $212,000 in a centralized RSS, FarmSense dramatically lowers the per-acre cost of high-precision irrigation management across 150,000 acres.
 
 * **Maintenance ROI (The Sled Hospital Effect)**: The centralized refurbishment model allows the district to treat sensors as long-term assets rather than disposables. A failed $167 VFA sled can be brought to the Sled Hospital and repaired for less than $15 in parts (new O-rings and a fresh cell), allowing the district to recycle hardware indefinitely and preserving the initial capital investment.
-* **The "Digital Twin" Revenue Multiplier**: The RSS is what makes the 1m Enterprise resolution possible. By hosting the Oracle compute layer locally, the RSS facilitates the "Resolution Pop" feature in the farmer's app. This high-conversion UI feature is the primary driver for SaaS upgrades, effectively paying for the RSS infrastructure through increased subscription revenue within the first 24 months.
-* **Legal Defensibility & Aquifer Security**: In the high-stakes environment of Subdistrict 1, data is a weapon. The RSS provides the "Empirical Fortress" required to win Water Court disputes. By storing signed, encrypted data locally in the Oracle Vault, the district can prove its water stewardship regardless of global cloud outages or geopolitical instability, securing the seniority of its members' water rights for the next generation of farmers.
+* **The "Digital Twin" Revenue Multiplier**: The RSS is what makes the 1m Enterprise resolution possible. By hosting the RDC Compute layer locally, the RSS facilitates the "Resolution Pop" feature in the farmer's app. This high-conversion UI feature is the primary driver for SaaS upgrades, effectively paying for the RSS infrastructure through increased subscription revenue within the first 24 months.
+* **Legal Defensibility & Aquifer Security**: In the high-stakes environment of Subdistrict 1, data is a weapon. The RSS provides the "Empirical Fortress" required to win Water Court disputes. By storing signed, encrypted data locally in the RDC, the district can prove its water stewardship regardless of global cloud outages or geopolitical instability, securing the seniority of its members' water rights for the next generation of farmers.
 
 ---
 
@@ -116,11 +116,11 @@ The RSS is housed in a 40ft modified High-Cube container for rural resilience �
 
 ### Computational Infrastructure (Oracle Engine)
 
-- **Hardware:** 96-Core AMD Threadripper Pro + 512GB ECC RAM.
-- **Primary Function:** Bayesian Localized Regression Kriging (1m grid).
-- **FHE:** Fully Homomorphic Encryption overhead management for secure long-term vaulting.
-- **Storage:** 50TB Enterprise NVMe array (RAID-10).
-- **XR Streaming:** Frustum-Aware Tile Streaming for Command & Control portal.
+* **Hardware:** 96-Core AMD Threadripper Pro + 512GB ECC RAM.
+* **Primary Function:** Bayesian Localized Regression Kriging (1m grid).
+* **FHE:** Fully Homomorphic Encryption overhead management for secure long-term vaulting.
+* **Storage:** 50TB Enterprise NVMe array (RAID-10).
+* **XR Streaming:** Frustum-Aware Tile Streaming for Command & Control portal.
 
 ### Resilient Networking & Power
 
@@ -137,14 +137,9 @@ The RSS is housed in a 40ft modified High-Cube container for rural resilience �
 
 | Category | Component | Cost |
 |---|---|---|
-| **Structure** | 40' HC Container + HVAC + HEPA | $22,500 |
-| **Compute** | 96-Core Threadripper Cluster | $22,000 |
-| **Storage** | 50TB Enterprise NVMe RAID | $12,500 |
-| **Power** | 1.2kW Array + 800Ah LFP | $14,000 |
-| **Backup** | 5kW Gen + Auto-Start | $5,500 |
-| **Fleet** | Polaris Ranger-HD + Auger Lab | $43,500 |
-| **Networking** | Fiber + Starlink + 900MHz Mesh | $6,500 |
 | **Security** | AI Perimeter + Verkada Fence | $15,000 |
-| **TOTAL** | **RSS Facility Total** | **$142,000** |
+| **O&M** | Y1 Ops Contingency | $20,500 |
+| **Software** | Oracle Unified Compute License | $50,000 |
+| **TOTAL** | **RSS Facility Total** | **$187,699** |
 
 *Infrastructure Classification: Permanent Territory Cortex*

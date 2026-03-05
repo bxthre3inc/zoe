@@ -18,14 +18,14 @@ This document serves as the master index for the FarmSense deterministic operati
 
 ### Legacy Role Requirements (Use as feature input for unified portal)
 
-1. **[Farmer Dashboard](frontend/farmer-dashboard/SPECIFICATION.md)** — Real-time MapLibre, irrigation scheduling, crop stress alerts.
-2. **[Regulatory Portal](frontend/regulatory-portal/SPECIFICATION.md)** — Immutable audit ledger, State Engineer reporting, SLV Subdistrict compliance.
-3. **[Admin Dashboard](frontend/admin-dashboard/SPECIFICATION.md)** — System-wide controls, tenant management, billing, alert configurations.
-4. **[Investor Dashboard](frontend/investor-dashboard/SPECIFICATION.md)** — Aggregate metrics, Water-ROI per acre-foot, regional impact analytics.
-5. **[Grant Portal](frontend/grant-portal/SPECIFICATION.md)** — Data-extraction for LOR Foundation and academic partners.
-6. **[Research Portal](frontend/research-portal/SPECIFICATION.md)** — Raw variogram data, detrended residuals, historical Kriging calibration sets.
-7. **[Docs Portal](frontend/docs-portal/SPECIFICATION.md)** — Static-site engineering docs, API references, installation guides.
-8. **[Marketing Site](frontend/marketing-site/SPECIFICATION.md)** — Public landing page, dual-use case studies, contact forms.
+1. **[Farmer Dashboard](frontend/specs/farmer-dashboard-spec.md)** — Real-time MapLibre, irrigation scheduling, crop stress alerts.
+2. **[Regulatory Portal](frontend/specs/regulatory-portal-spec.md)** — Immutable audit ledger, State Engineer reporting, SLV Subdistrict compliance.
+3. **[Admin Dashboard](frontend/specs/admin-dashboard-spec.md)** — System-wide controls, tenant management, billing, alert configurations.
+4. **[Investor Dashboard](frontend/specs/investor-dashboard-spec.md)** — Aggregate metrics, Water-ROI per acre-foot, regional impact analytics.
+5. **[Grant Portal](frontend/specs/grant-portal-spec.md)** — Data-extraction for LOR Foundation and academic partners.
+6. **[Research Portal](frontend/specs/research-portal-spec.md)** — Raw variogram data, detrended residuals, historical Kriging calibration sets.
+7. **[Docs Portal](frontend/specs/docs-portal-spec.md)** — Static-site engineering docs, API references, installation guides.
+8. **[Marketing Site](frontend/specs/marketing-site-spec.md)** — Public landing page, dual-use case studies, contact forms.
 
 ---
 
@@ -34,7 +34,7 @@ This document serves as the master index for the FarmSense deterministic operati
 > **Note (2026-03-05):** Firmware supplement files have been merged into their canonical Master Specifications in `docs/specifications/`. The links below point to the appropriate section of each Master Spec.
 
 | Hardware Node | Master Specification | Firmware Section |
-|---|---|---|
+| :- | :- | :- |
 | Pivot Motion Tracker (PMT) | [PMT V1.6](../../../../specifications/Master%20Specification:%20Pivot%20Motion%20Tracker%20(PMT)%20V1.6.md) | §7 Firmware Details |
 | Vertical Field Anchor (VFA) | [VFA V1.21](../../../../specifications/Master%20Specification:%20Vertical%20Field%20Anchor%20(VFA)%20V1.21.md) | §6 Firmware Details |
 | Lateral Root-Zone Scout (LRZ) | [LRZ V1.21](../../../../specifications/Master%20Specification:%20Lateral%20Root-Zone%20Scout%20(LRZ)%20V1.21.md) | §6 Firmware Details |
@@ -45,12 +45,11 @@ This document serves as the master index for the FarmSense deterministic operati
 
 ---
 
-## 🧠 Backend Engine Specifications
+## 🧠 Backend Ecosystem Specifications
 
-- **[Core Engine (CSE) Specification](backend/cse_ENGINE_SPECIFICATION.md)** — Bayesian priors, 1m Regression Kriging with Sentinel-2/Landsat, Adaptive Recalculation Engine.
-- **[Database Architecture](backend/DATABASE_SPECIFICATION.md)** — PostgreSQL + TimescaleDB schema, Master Legal Ledger, spatial privacy obfuscation layer.
+- **[Backend Service Map](backend/BACKEND_SERVICE_MAP.md)** — Canonical reference for all 15 Python services including Adaptive Recalculation, 1m Kriging, and Compliance logic.
+- **[Codebase Architecture](ARCHITECTURE.md)** — Systems data flow, database positioning (PostgreSQL/TimescaleDB), and core infrastructure layout.
 
 ---
 
-*Last updated: 2026-03-05*
-
+#### Last updated: 2026-03-05

@@ -8,7 +8,7 @@ Phase 1 reviewed the core directives and structural artifacts of the FarmSense p
 
 - **Narrative Consistency**: Excellent. Across `AGENTS.md`, `ROADMAP.md`, `SPRINT.md`, and business specs (`Subdistrict_1_Market_Intelligence.md`, `reference/` audits), the financial strategy and hardware definitions are perfectly aligned. All highlight the shift from a massive "Blitz" to a targeted 2-field pilot with CSU SLV Research Center.
 - **Hardware Architecture**: Clearly defined tiered architecture (LRZ -> VFA -> PMT -> DHU -> RSS/Cloud).
-- **Deployment Strategy**: A "Split Deployment" is highlighted in `CI_CD_SETUP.md` utilizing Oracle Cloud (Master DB) and Zo.computer (Compute and portals).
+- **Deployment Strategy**: A "Split Deployment" is highlighted in `CI_CD_SETUP.md` utilizing RDC (Master DB) and Zo.computer (Compute and portals).
 
 ## Architectural Gaps & Contradictions Identified
 

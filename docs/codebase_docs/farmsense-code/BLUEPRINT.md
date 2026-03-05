@@ -26,9 +26,9 @@ FarmSense is a "Deterministic Farming Operating System" engineered to replace st
 
 All metaphorical naming is deprecated in favor of standardized engineering equivalents:
 
-- **Regional Data Center (RDC):** (formerly Oracle Vault).
-- **Core Simulation Engine (CSE):** (formerly Zo Scientist).
-- **Data Ingestion Layer (DIL):** (formerly Librarian).
+- **Regional Data Center (RDC):** (formerly RDC).
+- **Core Simulation Engine (CSE):** (formerly CSE).
+- **Data Ingestion Layer (DIL):** (formerly DIL).
 - **Field State Mesh:** The network of VFA, LRZ, and PFA nodes.
 
 ---
@@ -159,7 +159,7 @@ The engine shifts monitoring intensity based on real-time risk:
 
 - **Design:** \"Invisible Presence\" physical housing. Permanent PVC shell;Seasonal Electronic Alpha-Sled.
 - **Protocol:** LR-FHSS (Frequency-Hopping Spread Spectrum) "Dumb Chirp".
-- **Unit Cost:** **$60.80** (Industrial Scale target).
+- **Unit Cost:** **$67.80** (Industrial Scale target).
 
 ---
 

@@ -14,7 +14,7 @@ required to interpolate the vast, unmonitored acreage between those pins. By cap
 
 altitude multispectral data—specifically targeting the Red Edge and Near-Infrared bands—the
 
-fleet provides the Zo Scientist Engine with the high-frequency spatial gradients needed to
+fleet provides the CSE Engine with the high-frequency spatial gradients needed to
 
 transform discrete sensor pings into a continuous, hyper-accurate 1m-resolution "Digital Twin"
 
@@ -166,7 +166,7 @@ The true value of the Aerial Fleet is not in the images themselves, but in their
 
 the Regional Superstation (RSS) architecture.
 
-Oracle (The Spatial Librarian): Oracle ingests drone-captured orthomosaics and stacks
+Oracle (The Spatial DIL): Oracle ingests drone-captured orthomosaics and stacks
 
 them into a "Multilayered Data Cake." It aligns spectral indices (NDVI/NDRE) directly on top
 

@@ -76,7 +76,7 @@ handles the continuous ingestion of massive spatial datasets from sources like S
 
 cloud masking and atmospheric correction.
 
-Spatial Query Engine (SQE): Acting as the "Librarian," this specialized middleware
+Spatial Query Engine (SQE): Acting as the "DIL," this specialized middleware
 
 performs high-speed lookups across tiered spatial datasets. When a specific field or Local
 
