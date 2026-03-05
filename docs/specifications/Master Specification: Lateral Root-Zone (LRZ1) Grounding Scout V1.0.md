@@ -23,7 +23,7 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 
 - **Depth**: Fixed at **10 inches (250mm)**.
 - **Sensor Type**: Single-depth Dielectric Capacitance (High-Frequency).
-- **Update Frequency**: 1-4 chirps per day (Grounding). In **Low Power Mode**: 4-8 per day.
+- **Update Frequency**: **Low Power Mode**: 1-4 chirps/day (battery-only). **Solar-Enhanced Mode**: 4-8 chirps/day (Wide-Brim Cap charging).
 - **Lifespan**: **10+ Years**. The ultra-low duty cycle (4x lower than LRZ2) enables a "Decade Deployment" model.
 
 ## 3. Communication & Intelligence

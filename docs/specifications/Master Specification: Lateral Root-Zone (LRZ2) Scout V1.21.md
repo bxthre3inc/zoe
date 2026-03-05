@@ -1,6 +1,6 @@
 # Master Specification: Lateral Root-Zone (LRZ2) Modular Scout V1.21
 
-**Role**: Level 1 "Scout" Node | **Network Density**: 5 units per 150-acre Field (Pentagon Formation)
+**Role**: Level 1 "Scout" Node | **Network Density**: 4 units per 140-160 acre Field (2:4:12 Stereo Standard)
 
 While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ2) serves as the high-density "Spatial Mapper" of the FarmSense network. Deployed at a density of 5 units per 150-acre field, these mass-produced "Scout" nodes provide the granular moisture and temperature counts required to translate field-wide trends into sub-meter soil variability maps.
  They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This "Pin Mapping" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific zone, encrypt them, and "chirp" them back to the **PMT Field Aggregator** anchored on the pivot. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution "pops."
@@ -15,7 +15,7 @@ The LRZ housing is engineered for an "Invisible Presence"—a ruggedized subterr
 * **Material Science**: White HDPE was selected specifically for its high albedo (thermal reflection) to prevent internal components from baking during surface exposure. HDPE is also chemically inert to the sulfur-rich SLV alkali soils.
 * **Installation Efficiency**: By keeping the shell at exactly 18 inches, the hydraulic auger crews only need to drill a shallow pilot hole, exponentially speeding up installation.
 * **15-Degree Tapered Driving Tip (Compaction-Fit)**: The 18-inch outer shell is chemically fused to a Custom HDPE Driving Tip featuring a precise 15-degree taper, eliminating air gaps that corrupt moisture readings.
-* **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the LRZ an exact 3-foot profile above the soil, keeping it beneath the destructive sweep of the pivot span.
+* **Low-Profile Antenna Mount**: The removable **Wide-Brim Solar Cap** (4"-5" diameter) replaces the standard C&C Cap, integrating a flexible solar panel to enable **Solar-Enhanced Mode** (4-8 chirps/day). Mounts a 3-foot SS-304 stainless steel whip antenna. Below-span height maintained.
 * **The Removable Internal Sled**: The core internal structure is an 18-Inch 50mm Co-Extruded Alpha-Sled capped with Injection-Molded Circular End-Caps. This removable payload is swiftly inserted post-planting and extracted pre-harvest.
 * **The Seasonal Climate (+5 psi Defense)**: Upon insertion, Viton (FKM) 2" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen for active protection against micro-fractures.
 
@@ -63,6 +63,7 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 | **Housing** | 2" SCH 40 UV-HDPE (18-inch) | JM-602-18 | 2 Weeks | $1.50 |
 | **Housing** | HDPE Injection-Molded (H6) Tip | FS-TIP-H6 | 4 Weeks | $4.50 |
 | **Antenna** | 3ft SS-304 Whip + Spring | Industrial Pultrusion | 2 Weeks | $3.50 |
+| **Solar Cap** | Wide-Brim Flexible Solar Panel (4"-5" dia) | FS-SOL-WB-1 | 4 Weeks | $2.80 |
 | **Adhesive** | Structural HDPE Acrylic Epoxy | Automated Bulk | 1 Week | $4.50 |
 | **Seals** | Nitrile O-Rings + Cap | FS-SEAL-V0 | 3 Weeks | $4.80 |
 | **Nitrogen Port** | Mini-Check Valve (316-SS) | Swagelok-SS-CHK | 3 Weeks | $10.00 |
@@ -71,7 +72,7 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 | **Climate** | 1U Stamped Desiccant Matrix | Bulk Supply | 1 Week | $1.50 |
 | **Structure** | Schedule 80 UV-PVC Shell | FS-Custom-18U | 2 Weeks | $4.25 |
 | **Basic Sensor** | 1U Basic Sensor (VWC/Temp) (x2) | Fab-Direct Assembly | 4 Weeks | $8.00 |
-| **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$51.50** |
+| **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$54.30** |
 
 ---
 
