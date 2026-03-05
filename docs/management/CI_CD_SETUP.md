@@ -1,5 +1,7 @@
 # 🚀 FarmSense CI/CD Setup Guide
 
+> ⚠️ **Naming Note:** This document references **`Oracle`** as the map stack. The unified deployment architecture now centralizes all services onto **`Zo.computer`**. See [`docs/reference/Zo_Computer_Deployment_Architecture.md`](../../reference/Zo_Computer_Deployment_Architecture.md) for current routing.
+
 This guide explains how to connect your GitHub repository to your **Oracle** and **Zo.computer** instances for automated deployment.
 
 ## 1. Prepare Your Servers
@@ -11,7 +13,7 @@ On **BOTH** servers (Oracle and Zo), perform these one-time setup steps:
 
     ```bash
     cd ~
-    git clone https://github.com/bxthre3/farmsense-implementation-package.git farmsense-code
+    git clone https://github.com/bxthre3inc/farmsenseOS.git farmsense-code
     ```
 
     *(Note: Ensure the directory name matches `farmsense-code` as used in the workflow)*

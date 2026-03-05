@@ -115,7 +115,6 @@
 | `ROADMAP.md` | ✅ Current | Phase 1–5 roadmap + grant schedule |
 | `FUNDING_PIPELINE.md` | ✅ Current | Grant pipeline tracking |
 | `RECONCILIATION_CHECKLIST.md` | ⚠️ Partial | Code ↔ docs alignment (some items stale) |
-| `SPRINT.md` | ❌ Stale | Sprint ended Feb 2026 — archive or replace |
 | `CI_CD_SETUP.md` | ⚠️ Partial | Correct steps, some naming conventions old (Oracle/CSE) |
 
 ### `docs/specifications/` — **Authoritative hardware specs**
@@ -143,11 +142,8 @@ All 9 files are ✅ Current and versioned. These are the canonical source of tru
 | `SOFTWARE_INDEX.md` | ✅ Current | Master index of software specs (portals + firmware links) |
 | `todo.md` | ✅ Current | **Canonical task board** |
 | `IMPLEMENTATION_GUIDE.md` | ⚠️ Partial | Good troubleshooting, but weekly plan assumes old scale |
-| `PACKAGE_SUMMARY.md` | ⚠️ Partial | V1.0 delivery framing (AWS, 11 services) — partially stale |
-| `PROJECT_OVERVIEW.md` | ⚠️ Partial | 20-week national rollout framing — stale scale assumption |
 | `SPLIT_DEPLOYMENT_README.md` | ⚠️ Partial | Uses old CSE.computer/RDC naming |
 | `marketing-video-prompts.md` | ✅ Current | Video scripts |
-| `Project FarmSense Precision Agriculture Technical Architecture.md` | ❌ Stale | Redundant with Master Manual + BLUEPRINT |
 
 #### `docs/codebase_docs/farmsense-code/backend/`
 

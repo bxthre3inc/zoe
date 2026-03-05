@@ -8,14 +8,16 @@
 ## 🔴 MISSING FROM CODE (Manual documents, code doesn't exist)
 
 ### Backend Routers
-- [ ] `tiles.py` — Map tiles router (`/api/v1/tiles`)
+
+- [ ] `tiles.py` — Map tiles router (`/api/v1/tiles`) *(Superseded by `grid_renderer.py`)*
 
 ### Backend Services
-- [ ] `decision_engine.py` — Deterministic logic service (listed in AGENTS.md file structure)
+
+- All backend services documented in manual now exist in code.
 
 ### Frontend Portals
+
 - [ ] `regulatory-portal/` — SLV 2026 compliance (NEEDED BY JUNE 2026)
-- [ ] `grant-portal/` — Grant reviewer portal (NEEDED BY MARCH 26, 2026)
 - [ ] `admin-dashboard/` — System admin
 - [ ] `investor-dashboard/` — Investment portal
 - [ ] `docs-portal/` — Documentation
@@ -26,6 +28,7 @@
 ## 🟡 MISSING FROM MANUAL (Code exists, manual doesn't document)
 
 ### ✅ RESOLVED (Added to AGENTS.md 2026-03-03)
+
 | File | What It Is | Status |
 |------|------------|--------|
 | `trading.py` | Water market router | ✅ Documented |
@@ -58,6 +61,8 @@
 | `database.py` core | Documented | Exists | ✅ |
 | `websocket.py` core | Documented | Exists | ✅ |
 | `research-portal/` | Documented | Exists | ✅ |
+| `decision_engine.py` | Documented | Exists | ✅ |
+| `grant-portal/` | Documented | Exists | ✅ |
 
 ---
 
@@ -78,9 +83,9 @@
 
 | Component | Decision Needed | Deadline | Action |
 |-----------|-----------------|----------|--------|
-| `tiles.py` | Build or remove? | TBD | Pending |
-| `decision_engine.py` | Build or remove? | TBD | Pending |
-| `grant-portal` | Build | March 26, 2026 | **BUILD NOW** |
+| `tiles.py` | Build or remove? | TBD | Superseded by `grid_renderer` |
+| `decision_engine.py` | Build or remove? | TBD | ✅ Done |
+| `grant-portal` | Build | March 26, 2026 | ✅ Done |
 | `regulatory-portal` | Build | June 2026 | Build Q2 |
 | Other portals | Build | Post-pilot | Backlog |
 
@@ -89,6 +94,7 @@
 ## ⚠️ MANUAL PDF SYNC NEEDED
 
 The `FarmSense_Master_Manual.pdf` is outdated and contains:
+
 - ❌ Old `nexus.py` references (removed from AGENTS.md)
 - ❌ Missing `trading.py`, `federated.py`, `vri_command_center.py` documentation
 - ❌ Missing Water Markets section
@@ -104,9 +110,9 @@ The `FarmSense_Master_Manual.pdf` is outdated and contains:
 1. [x] Answer open questions above
 2. [x] Update AGENTS.md with undocumented features (Phase 1)
 3. [ ] Regenerate Master Manual PDF
-4. [ ] Build `grant-portal` (Deadline: March 26, 2026)
+4. [x] Build `grant-portal` (Deadline: March 26, 2026)
 5. [ ] Build `regulatory-portal` (Deadline: June 2026)
-6. [ ] Make build/remove decisions for `tiles.py`, `decision_engine.py`
+6. [x] Make build/remove decisions for `tiles.py`, `decision_engine.py`
 7. [ ] Re-run this audit quarterly
 
 ---
