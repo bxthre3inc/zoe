@@ -1,8 +1,8 @@
 # Master Specification: Pivot Motion Tracker (PMT) V1.6
 
-**Role**: Layer 1.5 Field Hub (DHU Uplink) & Hydraulic Auditor | **Network Density**: 1 per Pivot
+**Role**: Layer 1.5 Field Hub & **Primary System Aggregator** | **Network Density**: 1 per Pivot
 
-The Pivot Motion Tracker (PMT) serves as the high-fidelity "Nervous System" and the primary "Hydraulic Auditor" of the FarmSense SFD (Single Field Deployment) architecture. Positioned externally on the main span of a center-pivot irrigation machine, it provides the essential kinematic and hydraulic flow data required to verify exactly where, when, and how much water is applied to the land. While the LRZ (Lateral Root-Zone) scouts monitor the soil's response to water, the PMT provides the certified proof of application, completing the data loop for the **Oracle Unified Compute** and establishing the legal foundation for the "Digital Water Ledger."
+The Pivot Motion Tracker (PMT) serves as the high-fidelity "Nervous System" and the **Primary Field Aggregator** of the FarmSense SFD (Single Field Deployment) architecture. Positioned externally on the main span of a center-pivot irrigation machine, it acts as the central listening post for the field's LoRa Mesh (VFA, LRZ1, LRZ2, PFA). While the subsurface scouts monitor the soil's response to water, the PMT aggregates this data with its own kinematic and hydraulic flow logs, completing the data loop for the **Oracle Unified Compute** and establishing the legal foundation for the "Digital Water Ledger."
 
 **Subdistrict 1 Economics & Strategic Procurement**: This version of the specification reflects the optimized procurement strategy for the 1,280-unit deployment in Subdistrict 1. At this scale, FarmSense leverages high-volume industrial discounts from established, reliable suppliers (such as Polycase, SparkFun, and Badger Meter) rather than attempting full custom silicon integration at this stage. This ensures immediate field reliability, insurance-backed liability protection, and professional-grade accuracy for Water Court auditing.
 

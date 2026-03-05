@@ -94,9 +94,9 @@ The Vertical Field Anchor (VFA) serves as the primary data aggregation point for
 
 The Pressure & Flow Anchor (PFA) is the critical safety actuator mounted at the wellhead. The Vertical Field Anchor (VFA) and its surrounding LRZs are buried in the soil. Initially, there were concerns about how these disparate ground-level devices would communicate through a dense, wet corn canopy.
 
-* **The PMT Solution:** The system solves this by elevating the Pivot Motion Tracker (PMT) 10-15 feet above the ground on the pivot span, acting as an \"umbrella\" receiver.
-* **Routing:** The VFA, LRZs, and the PFA all report upward directly to the PMT. The PMT then acts as the central \"Field Hub\", packaging the data and sending it down the line to the nearest active District Hub (DHU).
-* **Resolution:** This elevated topology entirely physically circumvents the dense water canopy that attenuates ground-level signals, ensuring a constant line of sight between the field sensors and the PMT field hub.
+* **The PMT Solution:** The system solves this by elevating the Pivot Motion Tracker (PMT) 10-15 feet above the ground on the pivot span, acting as the **Primary Field Aggregator**.
+* **Routing:** The VFA, LRZs, and the PFA all report upward directly to the PMT over the 900MHz LoRa Mesh. The PMT then acts as the central \"Field Hub\", packaging the data and sending it to the nearest active District Hub (DHU).
+* **Resolution:** This elevated topology entirely physically circumvents the dense water canopy that attenuates ground-level signals, ensuring a constant line of sight between the field mesh and the PMT field hub.
 
 ### **3.3 The LRZ Sub-Node Architecture: The FHSS Advantage**
 
@@ -126,8 +126,8 @@ The primary engine for water rights verification is the PMT's hydraulic flow sta
 
 ### **4.3 Lateral Root-Zone (LRZ) and Vertical Field Anchors (VFA)**
 
-* **The \"Invisible Presence\" Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent **HDPE SDR9** outer shells remain buried flush with the soil surface year-round, while internal \"Alpha-Sleds\" containing the electronics are extracted pre-harvest.
-* **The Proxy Method:** The sensors utilize an advanced non-contact capacitive method, shooting high-frequency dielectric fields through the 50mm sled wall and across a \+5 psi dry nitrogen gap directly into the soil. Aggregated Layer 1 data (LRZ/VFA) is "chirped" via **900MHz FHSS AES-128** to the elevated PMT hub for 100% canopy penetration.
+* **The Invisible Presence Architecture:** Both units utilize a two-phase seasonal deployment model. Permanent **HDPE SDR9** outer shells remain buried flush with the soil surface year-round, while internal \"Alpha-Sleds\" containing the electronics are extracted pre-harvest.
+* **The Proxy Method:** The sensors utilize an advanced non-contact capacitive method, shooting high-frequency dielectric fields through the 50mm sled wall and across a \+5 psi dry nitrogen gap directly into the soil. Aggregated data is "chirped" via **900MHz LoRa Mesh** upward to the elevated **PMT aggregator** for 100% canopy penetration.
 
 ## ---
 
@@ -777,7 +777,7 @@ Using the conservative pivot estimate of **1,270 pivots** (midpoint of 1,250–1
 
 ### Per-Pivot Hardware Deployment (1x Standard PMT SFD)
 
-`1,270 × ( $1,112 PMT + $750 PFA + $158.20 VFA + ~$593 LRZ×10 ) = ~$3.32M one-time hardware market`
+`1,270 × ( $985.50 PMT + $961.50 PFA + $159.65 VFA + $257.50 LRZ2 + $520 LRZ1 ) = ~$3.66M one-time hardware market`
 
 ### Annual Water Fee Savings Unlocked (20% reduction @ $500/AF)
 
@@ -1444,7 +1444,7 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 **Role**: Lateral Variability \"Scout,\" High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting directly to the PMT Field Hub)
 
-While the Vertical Field Anchor (VFA) serves as the singular high-fidelity \"Truth\" node for an entire field, the Lateral Root-Zone Scout (LRZ) is the indispensable high-density spatial component of the FarmSense grid. Designed to be mass-deployed at a strict density of 1 unit per 15 acres, the LRZ operates as a hyper-efficient \"dumb node.\"
+While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ) fleet provides high-density spatial truth. The fleet is subdivided into **LRZ2 (Modular Scouts)** for deep spatial mapping and **LRZ1 (Validation Truth Nodes)** for high-density grid verification.
 
 **Network Topology**: On a standard 125-160 acre center pivot, a fleet of approximately 8 to 10 LRZ units will form a local mesh. They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are \"Pinned\" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This \"Pin Mapping\" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific 15-acre zone, encrypt them, and \"chirp\" them directly to the overhead PMT Field Hub. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution \"pops.\"
 
@@ -1469,7 +1469,7 @@ The LRZ is an exercise in extreme power efficiency. It lacks the eMMC storage an
 * **Ultra-Low Power nRF Logic**: The compute board relies on a Nordic nRF52840 SoC. This chip stays in a deep micro-amp sleep state for 99% of its life, waking only to capture raw dielectric counts before immediately cutting power.
 * **Interference Mitigation (FHSS)**: The LRZ chirp utilizes a Frequency-Hopping Spread Spectrum (FHSS) approach, scattering micro-transmissions across 75 different frequencies to ensure zero packet collisions in high-density fields.
 * **128-Bit Edge Encryption**: Before the chirp leaves the antenna, the payload is signed and encrypted with a factory-burned 128-bit AES key. The PMT Field Hub intercepts and decrypts this packet for routing.
-* **Oracle Unified Compute Remote Calibration**: The LRZ requires zero manual calibration. Its baseline is established remotely by the **Oracle Unified Compute** using the high-fidelity Bayesian math from the field's VFA "Truth Node."
+* **Oracle Unified Compute Feedback Loop**: The LRZ system utilizes a closed-loop verification strategy. While LRZ2 nodes provide the spatial data for the **Virtual Sensor Grid** (1m-50m resolution), the LRZ1 truth nodes wake 1-4 times daily to compare their physical readings against the virtual grid. If a discrepancy exists, the system automatically recalibrates the underlying **Soil Variability Maps** to maintain absolute geostatistical integrity.
 
 ## 3. The High-Density Sensor Array (18-Inch / 18U Sequence)
 
@@ -1481,7 +1481,7 @@ Like the VFA, the LRZ employs the advanced \"Proxy Method\" of non-contact sensi
 * **Slots 2-5**: 4U Battery #1 (3x 21700 lithium-ion cells for frost defense heating)
 * **Slots 6-9**: 4U Extruded Spacer
 * **Slot 10**: 1U Basic Sensor (10" Depth: Seedbed & Evapotranspiration Monitoring)
-* **Slots 11-14**: 4U Battery #2 (Redundant energy overhead for thermal defense)
+* **Slots 11-14**: 4U Battery #2 (Redundant energy overhead for high-frequency seasonal sampling)
 * **Slots 15-17**: 3U Extruded Spacer
 * **Slot 18**: 1U Basic Sensor (18" Depth: Root Anchor Monitoring)
 
@@ -1550,7 +1550,7 @@ The hydraulic flow stack is the primary engine for water rights verification and
 
 ## 4. Edge Processing & Winter Hibernation Logic
 
-* **ESP32-S3 Unified Compute Platform**: Features a dual-core Xtensa® 32-bit LX7 microprocessor with integrated AI acceleration. It replaces the separate processing sled and radio, acting as a unified core for both positioning math and field mesh aggregation.
+* **ESP32-S3 Unified Compute Platform**: Features a dual-core Xtensa® 32-bit LX7 microprocessor with integrated hardware vector acceleration. It replaces the separate processing sled and radio, acting as a unified core for both positioning math and field mesh aggregation.
 * **Comms (The Field Hub)**: Features a dual-radio stack. Transmits and receives via a High-Gain 900MHz FHSS antenna to act as the primary \"listening post\" for the field's LRZ & VFA mesh. It then intercepts this data, bundles it with its own 2.4GHz/BLE hydraulic payload received from the PFA, and blasts the entire field's encrypted payload via a 900MHz LoRaWAN transceiver to the District Hub (DHU).
 
 ### Empirical Bayesian Kriging (Edge-EBK) & VRI Failover Operations
@@ -1967,7 +1967,7 @@ This ledger reflects the absolute cost for a fully operational 40' HC RSS hub, e
 | Compute | 64-Core Threadripper | Puget Systems | $22,000 |
 | Storage | 50TB NVMe Array | WD Gold | $12,500 |
 | Network | Fiber + Starlink | Local / SpaceX | $6,500 |
-| Security | AI Perimeter + Fence | Verkada | $15,000 |
+| Security | Analytics Perimeter + Fence | Verkada | $15,000 |
 | Power | 1.2kW Array + LFP | Renogy | $14,000 |
 | Backup | 5kW Gen (Auto-Start) | Honda | $5,500 |
 | Fleet | 4WD Heavy Duty UTV | Polaris | $28,500 |
@@ -6745,7 +6745,7 @@ Internal queue and workflow manager for all regulatory submissions across all te
 | **SILAS Mode (Simple)** | Large-button simplified UX for non-technical operators |
 | **AR Field Vision** | Augmented reality field overlay component |
 | **Live Telemetry** | Real-time aggregated sensor stream panel |
-| **Forecast Widget** | Predictive AI weather and irrigation forecast |
+| **Forecast Widget** | Deterministic weather and irrigation forecast |
 | **Weather HUD** | Floating atmospheric conditions overlay |
 | **Hardware Diagnostics** | Node health panel (battery, RSSI, last-seen) |
 | **Privacy & Data Settings** | Data-sharing toggles (auditors, investors, research pool) |
@@ -7104,7 +7104,7 @@ A guided, multi-step wizard that takes a detected violation or anomaly and produ
 
 1. **Case Setup** — Select field(s), date range, and violation type (unmetered extraction, permit ceiling breach, illegal diversion, data tampering attempt). Assign case reference number.
 2. **Evidence Auto-Population** — System automatically pulls: cryptographic ledger data (hash chain), Zo Kriging CU calculations for the period, anomaly detection records with confidence scores, satellite corroboration imagery, and pump flow telemetry. All linked to the specific date range.
-3. **Narrative Builder** — Officer adds a plain-language case summary (pre-filled with AI-drafted language from the telemetry). Flags which evidence items are being cited in the submission.
+3. **Narrative Builder** — Officer adds a plain-language case summary (pre-filled with auto-generated language from the telemetry). Flags which evidence items are being cited in the submission.
 4. **Legal Package Preview** — Full preview of the court-ready PDF: cover page, case summary, evidence index, sensor data appendix, and hash chain appendix. Officer can annotate specific pages before finalizing.
 5. **Officer Signature & Submission** — Sign with hardware-backed credentials. If dual-officer filing is required by the court, second officer receives a countersignature request. System tracks submission status: Drafted → Signed → Filed → Docketed → Adjudicated.
 6. **Status Tracker** — All active cases listed with court status, next hearing date, and required follow-on filings dashboard.

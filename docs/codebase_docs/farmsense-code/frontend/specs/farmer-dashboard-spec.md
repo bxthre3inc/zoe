@@ -14,7 +14,7 @@
 | **SILAS Mode (Simple)** | Large-button simplified UX featuring the **MAD Battery** metaphor |
 | **AR Field Vision** | Augmented reality field overlay component |
 | **Live Telemetry** | Real-time aggregated sensor stream panel |
-| **Forecast Widget** | Predictive AI weather and irrigation forecast |
+| **Forecast Widget** | Deterministic weather and irrigation forecast |
 | **Weather HUD** | Floating atmospheric conditions overlay |
 | **Hardware Diagnostics** | Node health ($1,090 PMT, $603 PFA, $319 VFA, $50 LRZ) |
 | **Privacy & Data Settings** | Data-sharing toggles (auditors, investors, research pool) |

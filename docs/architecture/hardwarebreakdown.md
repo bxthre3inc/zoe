@@ -14,9 +14,9 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 
 ### Key Philosophical Pillars
 
-1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for thousand of "Dumb" LRZ (Lateral Root-Zone) scouts.
+1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for a stratified grid of LRZ (Lateral Root-Zone) scouts. 5x LRZ2 scouts provide deep lateral mapping, while 20x LRZ1 "Validation Truth Nodes" verify the resulting virtual sensor grid 1-4 times daily, triggering **Soil Variability Map** updates if discrepancies occur.
 2. **Cut-Less Deployment**: All mid-stream hardware (PMT, PFA, CSA) integrates without drilling, welding, or structural downtime, preserving manufacturer warranties and reducing installation liability.
-3. **Seasonal Sled Extraction**: High-value electronics are housed in removable "Sleds." They are deployed after spring planting and extracted before winter freeze-up, exponentially extending battery life and hardware reliability.
+3. **Seasonal Sled Extraction**: High-value electronics are housed inside printer cartridge inspired cartridges inserted into removable "Sleds." They are deployed after spring planting and extracted before winter freeze-up, exponentially extending battery life and hardware reliability.
 4. **Spatial Resolution Pop**: The hardware is density-optimized to support the 1m "Enterprise" resolution, using a fusion of subsurface dielectric ping and aerial multispectral imagery.
 
 ---
@@ -42,7 +42,7 @@ The interior is divided into three zones to facilitate the "Rapid Deployment" de
 
 #### Zone B: Inventory & Ready-Rack
 
-* **Storage**: Heavy-duty industrial racking capable of holding 500 "Pivot Kits" (1 VFA + 8-10 LRZs).
+* **Storage**: Heavy-duty industrial racking capable of holding 500 "Pivot Kits" (1 VFA + 5 LRZ2 + 20 LRZ1).
 * **RF Buffer**: The zone acts as a burn-in bench where every GNSS module (u-blox ZED-F9P) is verified for sub-meter RTK lock before field departure.
 
 #### Zone C: The Server Vault (The Oracle Cortex)
@@ -121,7 +121,7 @@ The Field Layer consists of specialized nodes designed for high-density spatial 
 ### 4.1 Vertical Field Anchor (VFA) V1.21
 
 **Role**: The solitary "Truth" node per field.
-**Network Structure**: 1 VFA aggregates 8-10 LRZ "chirps."
+**Network Structure**: Reported to the **PMT Primary Aggregator**.
 
 #### 4.1.1 Structural Architecture
 
@@ -165,14 +165,14 @@ The VFA runs a Real-Time Operating System (RTOS) designed for high-availability 
 
 ### 4.2 Lateral Root-Zone Scout (LRZ) V1.21
 
-**Role**: High-density "Dumb" node for spatial variability.
-**Density**: 1 unit per 15 acres.
+**Role**: High-density "Scout" node for spatial variability.
+**Density**: 5 units per 150-acre field (Pentagon Formation) plus 20 units per 150-acre field (Grounding Ring).
 
 #### 4.2.1 Edge Logic & Chirp Protocol
 
-* **Core SoC**: Nordic nRF52811 (Cortex-M4 @ 64MHz).
-* **Encryption**: AES-256 (Hardware-accelerated).
-* **Protocol**: 900MHz LoRa Mesh (SX1262).
+* **Core SoC**: ASR6601 LoRa SoC (Cortex-M4 + SX1262).
+* **Encryption**: AES-128/256 internal crypto-engine.
+* **Protocol**: 900MHz LoRa Mesh (Spread Spectrum).
 * **State Machine**:
   * **Deep Sleep (1.5µA)**: 99.9% of duty cycle.
   * **Sample Mode (3.5mA)**: 40ms dielectric ping + temp read.
@@ -221,7 +221,7 @@ The AKP-LRZ is a specialized tactical and emergency-deployment variant of the st
 
 #### 4.3.3 Edge Compute
 
-* **Processor**: ESP32-S3 (Dual-Core 240MHz). Selected for high-speed sampling and motor health FFTs via AI acceleration.
+* **Processor**: ESP32-S3 (Dual-Core 240MHz). Selected for high-speed sampling and motor health FFTs.
 * **Buffer**: 40Ah LiFePO4 battery array (7-day blackout resilience).
 
 #### 4.3.4 Motor Signature Analysis (The "Zo" Engine Integration)
@@ -264,7 +264,7 @@ Kinematic auditing provides the spatial proof of application, verifying where wa
 
 #### 5.1.3 Autonomous Compute (Edge-EBK)
 
-* **CPU**: ESP32-S3 Dual-Core (240MHz with AI acceleration).
+* **CPU**: ESP32-S3 Dual-Core (240MHz with vector acceleration).
 * **Grid Math**: Calculates a 50m-resolution spatial probability grid (16x16 matrix) natively for failover VRI operations if the DHU link drops.
 
 #### 5.1.4 Kinematic State Machine (u-blox ZED-F9P)
@@ -351,7 +351,7 @@ This section provides the "Circuit-to-Code" mapping for the primary field and hu
 | **P0.30** | SPI_MISO | LoRa Data Out | High-Speed SPI |
 | **P0.31** | LoRa_CS | Radio Chip Select | Active Low |
 | **P1.01** | BMS_INT | Battery Management Interrupt | Fault Detection |
-| **P1.02** | HEAT_EN | Frost-Defense Heating FET | PWM Control |
+| **P1.02** | AUX_EN | Auxiliary Actuator Port (Unassigned) | PWM Control |
 
 #### 7.1.2 LoRa Radio Sub-Module (SX1262)
 
@@ -470,7 +470,7 @@ The PVC Shells and Polycarbonate Enclosures are rated for:
 Every node (VFA/LRZ/DHU) implements a thermal safety loop:
 
 1. **Check T_Amb**: If internal enclosure temperature < 0°C.
-2. **Solar Priority**: If PV current is detected, divert first 5W to Kapton Heating FET.
+2. **Solar Priority**: N/A (Solar decoupled for seasonal VFA/LRZ nodes).
 3. **Charge Lock**: Charge current to LiFePO4 cells is prohibited until T_Cell > 5°C.
 4. **Hibernation**: If SoC < 15%, drop to 1µA "Deep Freeze" sleep, preserving 5yr clock battery.
 
@@ -626,13 +626,13 @@ The PFA monitors pump health by sampling the 480V/3-Phase incoming line via spli
 
 ### 11.6 Lateral Root-Zone Scout (LRZ) V1.21 - Technical Pulse
 
-#### Total Unit Cost: $59.30
+#### Total Unit Cost: $51.50
 
 #### 11.6.1 Circuit & Pin Logic
 
 The LRZ is a cost-optimized variant of the VFA, designed for massive spatial density.
 
-* **MCU**: Nordic nRF52840 (Cortex-M4 @ 64MHz).
+* **MCU**: ASR6601 LoRa SoC (Cortex-M4 + SX1262).
 * **Dielectric Interface**: Direct analog measurement using P0.02 (AIN0) and P0.03 (AIN1).
 * **State Machine**:
   * *Sleep*: 1.5µA (System ON).
@@ -710,12 +710,13 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 | **RSS (Superstation)** | 1 | $212,000 | $212,000 |
 | **DHU (Hubs)** | 25 | $4,594 | $114,850 |
 | **VFA (Anchors)** | 1,280 | $159.65 | $204,352 |
-| **LRZ (Scouts)** | 10,240 | $61.30 | $627,712 |
+| **LRZ1 (Grounding)** | 25,600 | $26.00 | $665,600 |
+| **LRZ2 (Scouts)** | 6,400 | $51.50 | $329,600 |
 | **PMT (Pivot Trackers)** | 1,280 | $985.50 | $1,261,440 |
 | **PFA (Pump Anchors)** | 1,280 | $961.50 | $1,230,720 |
 | **CSA (Corner Auditors)** | 320 | $1,850 | $592,000 |
 | **Drones (Mixed Fleet)** | 2 | $19,499 | $19,499 |
-| **TOTAL HARDWARE CAPEX** | | | **$4,262,573.00** |
+| **TOTAL HARDWARE CAPEX** | | | **$4,628,061.00** |
 
 ### [END OF HYPER-EXPANDED SPECIFICATION]
 

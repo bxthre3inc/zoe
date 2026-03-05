@@ -1,10 +1,9 @@
-# Master Specification: Lateral Root-Zone Scout (LRZ) V1.21
+# Master Specification: Lateral Root-Zone (LRZ2) Modular Scout V1.21
 
-**Role**: Layer 1 Spatial Mapper & High-Density "dumb node" | **Network Density**: 1 LRZ per 15 Acres
+**Role**: Level 1 "Scout" Node | **Network Density**: 5 units per 150-acre Field (Pentagon Formation)
 
-While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, tThe Lateral Root-Zone Scout (LRZ) serves as the high-density "Spatial Mapper" of the FarmSense network. Deployed at a density of roughly 1 per 15 acres, these mass-produced "dumb nodes" provide the granular moisture and temperature counts required to translate field-wide trends into sub-meter- **Subsurface Housing**: HDPE (High-Density Polyethylene) SDR9 or 11. Selected for zero-degradation in high-alkali San Luis Valley mineral profiles and superior impact strength at -30°F.
-oils of the San Luis Valley.
- They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This "Pin Mapping" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific 15-acre zone, encrypt them, and "chirp" them back to the single VFA anchored in that field. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution "pops."
+While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ2) serves as the high-density "Spatial Mapper" of the FarmSense network. Deployed at a density of 5 units per 150-acre field, these mass-produced "Scout" nodes provide the granular moisture and temperature counts required to translate field-wide trends into sub-meter soil variability maps.
+ They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This "Pin Mapping" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific zone, encrypt them, and "chirp" them back to the **PMT Field Aggregator** anchored on the pivot. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution "pops."
 
 **The Seasonal Deployment Model**: To protect the LRZ's internal electronics and guarantee a 10-year hardware lifecycle, FarmSense utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. The internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact physical/spatial baseline required by the **RSS RDC Compute**. By maintaining this permanent sub-surface coordinate, the Oracle engine can flawlessly integrate the seasonal LRZ telemetry with the static **Soil Variability Maps** during the 1m Kriging generation.
 
@@ -24,16 +23,17 @@ The LRZ housing is engineered for an "Invisible Presence"—a ruggedized subterr
 
 The LRZ is an exercise in extreme power efficiency. It lacks the eMMC storage and heavy compute processors found in edge coordinators. It is a "Set and Forget" asset that awakens, acts, and sleeps.
 
-* **Ultra-Low Power nRF Logic**: The compute board relies on a Nordic nRF52811 SoC (Cortex-M4 @ 64MHz). This chip stays in a deep 1.5µA sleep state for 99% of its life.
+* **Ultra-Low Power ASR6601 Logic**: The compute board relies on the ASR6601 LoRa SoC (Cortex-M4 + Semtech SX1262 LoRa). This chip stays in a deep 1.5µA sleep state for 99% of its life.
 * **Fringe Field Physics**: Wakens to sample the dielectric interface using a direct analog measurement via P0.02 (AIN0) and P0.03 (AIN1), pulling 5mA for 1.0ms.
 * **900MHz FHSS Implementation:** The LRZ units execute 128- **Protocol**: 900MHz FHSS (Frequency-Hopping Spread Spectrum)
 
-- **Encryption**: AES-128 CCM (Authenticated Encryption)
+* **Encryption**: AES-128 CCM (Authenticated Encryption)
+
 * **Networking Ability**: Synchronized 1:1 with VFA/PFA for uniform field-layer data reporting.
 d. By scattering micro-transmissions across 75 different frequencies, the system ensures superior penetration through dense crop canopies and mitigates co-channel interference, completely eliminating the probability of packet collisions within the confines of a single high-density farm field.
 
-* **128-Bit Edge Encryption**: Before the chirp leaves the antenna, the payload is signed and encrypted with a factory-burned 128-bit AES key. The field VFA intercepts and decrypts this packet for routing. (Transmit draws 120mA for 50ms).
-* **Oracle Unified Compute Remote Calibration**: The LRZ requires zero manual calibration. Its baseline is established remotely by the **Oracle Unified Compute** using the high-fidelity Bayesian math from the field's VFA "Truth Node."
+* **128-Bit Edge Encryption**: Before the chirp leaves the antenna, the payload is signed and encrypted with a factory-burned 128-bit AES key. The **PMT aggregator** intercepts and decrypts this packet for routing. (Transmit draws 55mA for 50ms).
+* **Oracle Unified Compute Remote Calibration**: The LRZ2 requires zero manual calibration. Its baseline is established remotely by the **Oracle Unified Compute** using the high-fidelity Bayesian math from the field's VFA "Truth Node."
 
 ## 3. The High-Density Sensor Array (18-Inch / 18U Sequence)
 
@@ -66,12 +66,12 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 | **Adhesive** | Structural HDPE Acrylic Epoxy | Automated Bulk | 1 Week | $4.50 |
 | **Seals** | Nitrile O-Rings + Cap | FS-SEAL-V0 | 3 Weeks | $4.80 |
 | **Nitrogen Port** | Mini-Check Valve (316-SS) | Swagelok-SS-CHK | 3 Weeks | $10.00 |
-| **Computing** | nRF52811 Embedded Sled | Nordic-FS-V1.0 | 8 Weeks | $12.50 |
-| **Logic Board** | Proprietary 18U PCBA | FS-LRZ-18U | 12 Weeks | $8.00 |
+| **Computing** | **ASR6601 LoRa SoC (Integrated)** | FS-ASR-V1.0 | 8 Weeks | $4.00 |
+| **PCBA** | Optimized 18U PCBA (Fixed-Function) | FS-LRZ2-18U | 12 Weeks | $4.95 |
 | **Climate** | 1U Stamped Desiccant Matrix | Bulk Supply | 1 Week | $1.50 |
 | **Structure** | Schedule 80 UV-PVC Shell | FS-Custom-18U | 2 Weeks | $4.25 |
-| **Basic Sensor** | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | 4 Weeks | $4.00 |
-| **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$67.80** |
+| **Basic Sensor** | 1U Basic Sensor (VWC/Temp) (x2) | Fab-Direct Assembly | 4 Weeks | $8.00 |
+| **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$51.50** |
 
 ---
 
@@ -96,7 +96,7 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 ### 6.3 Power-Managed Duty Cycle
 
 | State | Current | Duration |
-|-------|---------|---------|
+| :--- | :--- | :--- |
 | Deep sleep (RTC active) | 0.8µA | Continuous baseline |
 | Sensor ingest | 4.5mA | 50ms window |
 | RF chirp (+8dBm) | 14mA | 12ms window |

@@ -1,12 +1,12 @@
 # Master Specification: Vertical Field Anchor (VFA) V1.21
 
-**Role**: Layer 1 "Truth" Node & Sensor Aggregator | **Network Density**: 1 VFA per Field (Aggregating LRZs)
+**Role**: Layer 1 "Truth" Node | **Network Density**: 1 VFA per Field (Reporting to PMT Hub)
 
 As the primary field-level relay and intelligence hub of the FarmSense SFD (single field deployment) architecture, the Vertical Field Anchor (VFA) operates as a high-fidelity subsurface data logger, a secure routing node, and the critical baseline calibration tool—the absolute "Truth" node—for the **Oracle Unified Compute**.
 
-**Network Topology**: There is exactly one VFA deployed per field. The VFA is "Pinned" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. This single VFA is responsible for intercepting the 128-bit encrypted FHSS chirps from the surrounding high-density Lateral Root-Zone (LRZ) scouts, which are deployed at a strict density of 1 unit per 15 acres.
+**Network Topology**: There is exactly one VFA deployed per field. The VFA is "Pinned" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. This single VFA is responsible for capturing high-fidelity vertical profiles and reporting its 128-bit encrypted data **upward to the elevated PMT Field Hub**.
 **Subsurface Housing**: HDPE (High-Density Polyethylene) SDR9 or 11. Selected for zero-degradation in high-alkali San Luis Valley mineral profiles and superior impact strength at -30°F.
- Instead of treating each data point in isolation, the solitary VFA seamlessly aggregates this expansive lateral spatial data, combines it with its own 48-inch deep-profile vertical readings, and securely routes the highly compressed, unified payload to the central Farm Hub located at the pivot. By serving as the localized edge coordinator, the VFA ensures that absolutely no data is lost during cellular blackouts. More importantly, it establishes the rigorous empirical ground truth required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
+Instead of acting as the field aggregator, the solitary VFA focuses on its 48-inch deep-profile vertical readings and securely routes the encrypted payload to the central **PMT Field Hub** located on the pivot. By reporting to the elevated PMT, the VFA ensures that absolutely no data is lost during cellular blackouts or canopy attenuation events. More importantly, it establishes the rigorous empirical ground truth required for ultra-precision irrigation, yield optimization, and the strict legal water-use auditing demanded by local water authorities.
 
 **The Seasonal Deployment Model**: To maximize the lifespan of the high-value electronics, the VFA utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. This internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact physical/spatial baseline required by the **RSS RDC Compute**. By maintaining this permanent sub-surface coordinate, the Oracle engine can flawlessly integrate the seasonal VFA telemetry with the static **Soil Variability Maps** during the 1m Kriging generation.
 
@@ -24,14 +24,13 @@ The VFA housing has been radically re-engineered using a dual-cylinder architect
 
 By stripping the VFA down to pure routing and encryption functions, we have intentionally offloaded all heavy cellular backhaul requirements and complex computations to the central Farm Hub and the **Command & Control (C&C)** backend.
 
-* **Interference Mitigation & FHSS**: The VFA utilizes a highly sensitive onboard FHSS mesh receiver to intercept the transmit-only "dumb" chirps from its fleet of 15-acre LRZs.
-* **Firmware Logic & Interrupts**: Operates an RTOS prioritizing pressure transients (Priority 0) over mesh coordination (Priority 1) and ADC dielectric sampling (Priority 2).
-* **Edge Decryption & Aggregation**: As the VFA catches these asynchronous chirps, it performs localized Edge Decryption, aggregating the raw electrical counts from the 15-acre lateral nodes with its own high-fidelity deep-soil data.
+* **Interference Mitigation & FHSS**: The VFA utilizes a highly sensitive onboard FHSS radio to chirp its high-fidelity data to the PMT.
+* **Firmware Logic & Interrupts**: Operates an RTOS prioritizing pressure transients (Priority 0) over sensor sampling (Priority 1) and ADC dielectric readings (Priority 2).
 * **Hardware Security & Root of Trust (RoT)**: Private Keys are generated within the nRF52840's secure hardware enclave (CryptoCell). It is injected at the RSS and never leaves the silicon.
-* **Integrated LoRa Mesh & 2.4GHz Transceiver**: The VFA utilizes a **Nordic nRF52840** combined with a **Semtech SX1262** transceiver. This enables participation in the district-wide LoRa Mesh managed by the PMT. It also incorporates BLE 5.0 for localized research access and PFA safety coordination.
+* **Integrated LoRa Mesh & 2.4GHz Transceiver**: The VFA utilizes a **Nordic nRF52840** combined with a **Semtech SX1262** transceiver. This enables participation in the district-wide LoRa Mesh managed by the PMT.
   * **Processing**: nRF52840 (Cortex-M4F @ 64MHz) for ultra-low power soil profiling.
   * **Protocol**: 900MHz LoRa Mesh (Spread Spectrum).
-  * **Encryption**: AES-256 (ESP32 Hardware Accelerator).
+  * **Encryption**: AES-256 (Hardware Accelerator).
   * **Networking Ability**: Synchronized 1:1 with PMT/DHU for uniform field-layer data reporting.
   * Output Power: +22dBm (Max LoRa). Sensitivity: -148dBm (Max LoRa). Modulated for 100% penetration through potato/corn canopies.
   * **Antenna**: Flush-mount 3-foot flexible 900MHz whip (Internalized).
