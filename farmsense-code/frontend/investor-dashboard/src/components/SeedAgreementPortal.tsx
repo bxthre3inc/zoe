@@ -76,7 +76,7 @@ export const SeedAgreementPortal: React.FC<AgreementProps> = ({ shares, price, o
                                 <ul className="list-disc pl-5 space-y-2">
                                     <li><span className="font-bold">Aerial Intelligence:</span> Acquisition of DJI Mavic 3M Multispectral UAV hardware.</li>
                                     <li><span className="font-bold">Monte Vista HQ:</span> Build-out of modular automated manufacturing and subterranean robotics R&D tunnels.</li>
-                                    <li><span className="font-bold">R&D Lab:</span> Development of hardware-agnostic, dual-use robotics IP for DoD and industrial sectors.</li>
+                                    <li><span className="font-bold">R&D Lab:</span> Development of hardware-agnostic, dual-use robotics IP for Federal and industrial sectors.</li>
                                 </ul>
                             </section>
 

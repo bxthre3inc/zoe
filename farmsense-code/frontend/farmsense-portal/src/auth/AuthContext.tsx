@@ -39,7 +39,7 @@ const DEMO_USERS: Record<string, AuthUser> = {
     'reviewer@farmsense.io':
         { id: 'u5', name: 'Internal Reviewer', email: 'reviewer@farmsense.io', org: 'FarmSense', org_type: 'internal', role: 'GRANT_REVIEWER', token: 'demo-gr-int', expires_at: 9999999999 },
     'officer@doestcp.osd.mil':
-        { id: 'u6', name: 'DoD Program Officer', email: 'officer@doestcp.osd.mil', org: 'DoD ESTCP', org_type: 'external', role: 'GRANT_REVIEWER', token: 'demo-gr-ext', expires_at: 9999999999 },
+        { id: 'u6', name: 'Federal Program Officer', email: 'officer@doestcp.osd.mil', org: 'Federal Federal ESG', org_type: 'external', role: 'GRANT_REVIEWER', token: 'demo-gr-ext', expires_at: 9999999999 },
     'programs@lorfoundation.org':
         { id: 'u7', name: 'LOR Program Officer', email: 'programs@lorfoundation.org', org: 'LOR Foundation', org_type: 'external', role: 'GRANT_REVIEWER', token: 'demo-gr-lor', expires_at: 9999999999 },
 

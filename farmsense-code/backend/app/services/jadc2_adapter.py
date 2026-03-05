@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 class JADC2Adapter:
     """
-    Translates FarmSense agricultural sensor data into JADC2-compatible
+    Translates FarmSense agricultural sensor data into Inter-agency-compatible
     Cursor on Target (CoT) XML messages, featuring robust LPI/LPD metadata.
     """
 
@@ -16,7 +16,7 @@ class JADC2Adapter:
     def _verify_lpi_lpd_logic(event_id: str) -> Dict[str, str]:
         """
         Calculates Low Probability of Intercept/Detection (LPI/LPD) parameters.
-        Verifies the LRZ FHSS chirp logic for JADC2 tactical awareness.
+        Verifies the LRZ FHSS chirp logic for Inter-agency tactical awareness.
         """
         import hashlib
         import time
@@ -77,7 +77,7 @@ class JADC2Adapter:
             env.set("moisture", str(grid_point.get("moisture_surface", 0.0)))
             env.set("confidence", str(grid_point.get("confidence_score", 1.0)))
             
-            # JADC2 / Tactical markers
+            # Inter-agency / Tactical markers
             tactical = ET.SubElement(detail, "tactical")
             tactical.set("source", "FarmSense-UGS-Matrix")
             tactical.set("dual_use", "true")

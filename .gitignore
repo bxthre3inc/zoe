@@ -20,3 +20,8 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+
+# Covert Intelligence & Strategic Proposals
+docs/presentations/Grant_Proposals/DoD_ESTCP_Water_Resilience_PreProposal.md
+docs/presentations/Grant_Proposals/Project_OMNI_Intelligence_Roadmap.md
+docs/presentations/Grant_Proposals/Romero_Valuation_Addendum.md

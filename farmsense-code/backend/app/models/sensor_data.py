@@ -265,7 +265,7 @@ class VirtualSensorGrid1m(Base):
     sentinel_cloud_pct = Column(Float)
     landsat_qa = Column(String(20))
     
-    # Dual-use and JADC2 synchronization
+    # Dual-use and Inter-agency synchronization
     is_dual_use_enabled = Column(Boolean, default=False)
     jadc2_sync_status = Column(String(20), default='pending') # pending, synced, failed
     

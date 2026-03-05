@@ -34,16 +34,16 @@ interface SubmittedApplication {
 const SEED_APPS: SubmittedApplication[] = [
     {
         id: 'SUB-001',
-        grantTitle: 'DoD ESTCP — Water Resilience on DoD Installations',
-        funder: 'DoD ESTCP',
+        grantTitle: 'Federal Federal ESG — Water Resilience on Federal Installations',
+        funder: 'Federal Federal ESG',
         submittedBy: 'FarmSense',
         submittedAt: '2026-02-20T14:30:00Z',
         ask: 2400000,
         sections: [
-            { id: 's1', title: 'Executive Summary', tags: ['overview', 'impact'], content: 'FarmSense deploys a dual-layer precision soil moisture network across DoD installation perimeters to reduce dependence on stressed Ogallala aquifer groundwater. Real-time DHU telemetry feeds an AI-driven demand forecasting model, reducing extraction by a projected 28–34% versus baseline. Phase I targets Fort Carson, CO — a high-water-stress installation with critical training corridor dependencies on SLV aquifer health.' },
-            { id: 's2', title: 'Technical Approach', tags: ['engineering', 'AI', 'sensors'], content: 'Three-tier sensor network: Precision Field Anchor (PFA) nodes at 50m spacing, District Hub Units (DHU) aggregating at section level, Regional Superstations (RSS) syncing to the cloud. ML Kriging interpolates soil moisture between nodes enabling variable-rate irrigation scheduling. Dual-layer spatial privacy ensures compliance with DoD data classification requirements for field topology.' },
+            { id: 's1', title: 'Executive Summary', tags: ['overview', 'impact'], content: 'FarmSense deploys a dual-layer precision soil moisture network across Federal installation perimeters to reduce dependence on stressed Ogallala aquifer groundwater. Real-time DHU telemetry feeds an AI-driven demand forecasting model, reducing extraction by a projected 28–34% versus baseline. Phase I targets Fort Carson, CO — a high-water-stress installation with critical training corridor dependencies on SLV aquifer health.' },
+            { id: 's2', title: 'Technical Approach', tags: ['engineering', 'AI', 'sensors'], content: 'Three-tier sensor network: Precision Field Anchor (PFA) nodes at 50m spacing, District Hub Units (DHU) aggregating at section level, Regional Superstations (RSS) syncing to the cloud. ML Kriging interpolates soil moisture between nodes enabling variable-rate irrigation scheduling. Dual-layer spatial privacy ensures compliance with Federal data classification requirements for field topology.' },
             { id: 's3', title: 'Projected Impact', tags: ['water', 'cost savings', 'metrics'], content: 'Expected outcomes over 24-month performance period: 28–34% groundwater extraction reduction (400–520 acre-feet/yr at Fort Carson scale), $1.2–1.8M annual water cost avoidance, reduction in irrigation labor hours by ~60%, and certification-ready GLOBALG.A.P. water audit trail.' },
-            { id: 's4', title: 'Team & Qualifications', tags: ['personnel', 'credentials'], content: 'Principal Investigator with 12+ years precision agriculture systems engineering. Software team experienced in DoD-compliant data handling (ITAR awareness, CUI protocols). Hardware team holds NDAA Section 889 compliance certifications for all component sourcing.' },
+            { id: 's4', title: 'Team & Qualifications', tags: ['personnel', 'credentials'], content: 'Principal Investigator with 12+ years precision agriculture systems engineering. Software team experienced in Federal-compliant data handling (ITAR awareness, CUI protocols). Hardware team holds NDAA Section 889 compliance certifications for all component sourcing.' },
         ],
         notes: [
             { id: 'n1', author: 'Internal Reviewer', org: 'FarmSense', timestamp: '2026-02-21T10:00:00Z', text: 'The 28–34% reduction claim needs a citation or pilot data reference. Add SLV aquifer drawdown rate data from the 2024 Colorado Water Conservation Board report.', section: 'Executive Summary' },

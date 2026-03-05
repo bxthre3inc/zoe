@@ -167,7 +167,7 @@ export default function FarmSenseProject() {
             <div className="w-3 h-3 rounded-full bg-amber-500" />
             <div className="flex-1">
               <div className="font-semibold">March 26, 2026</div>
-              <div className="text-sm text-zinc-400">DoD ESTCP Pre-Proposal Deadline</div>
+              <div className="text-sm text-zinc-400">Federal Federal ESG Pre-Proposal Deadline</div>
             </div>
             <span className="text-amber-400 text-sm font-medium">Fund Raising</span>
           </div>

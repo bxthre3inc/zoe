@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 @router.post("/sync/{field_id}")
 async def sync_to_federated_fabric(field_id: str, db: Session = Depends(get_db)):
     """
-    Triggers a JADC2/CoT synchronization for the specified field's 1m grid.
+    Triggers a Inter-agency/CoT synchronization for the specified field's 1m grid.
     Translates agricultural sensor data into tactical environmental observations.
     """
     try:
@@ -39,9 +39,9 @@ async def sync_to_federated_fabric(field_id: str, db: Session = Depends(get_db))
         
         cot_payload = JADC2Adapter.batch_to_cot(points_data)
 
-        # 3. Simulate broadcast to JADC2 Fabric
-        # In production, this would be an HTTP POST to a DoD sidecar or gateway
-        logger.info(f"Syncing {len(grid_points)} points to JADC2 Fabric for field {field_id}")
+        # 3. Simulate broadcast to Inter-agency Fabric
+        # In production, this would be an HTTP POST to a Federal sidecar or gateway
+        logger.info(f"Syncing {len(grid_points)} points to Inter-agency Fabric for field {field_id}")
         logger.debug(f"CoT Payload Sample: {cot_payload[:200]}...")
 
         # 4. Update sync status in DB
@@ -62,7 +62,7 @@ async def sync_to_federated_fabric(field_id: str, db: Session = Depends(get_db))
 @router.get("/status/{field_id}")
 async def get_federated_status(field_id: str, db: Session = Depends(get_db)):
     """
-    Returns the current JADC2 integration status for a field.
+    Returns the current Inter-agency integration status for a field.
     """
     count = db.query(VirtualSensorGrid1m).filter(
         VirtualSensorGrid1m.field_id == field_id,
@@ -73,6 +73,6 @@ async def get_federated_status(field_id: str, db: Session = Depends(get_db)):
         "field_id": field_id,
         "jadc2_enabled": True,
         "synced_points_count": count,
-        "protocol_affinity": "JADC2/CoT",
+        "protocol_affinity": "Inter-agency/CoT",
         "lpi_lpd_active": True
     }

@@ -47,7 +47,7 @@ function fmtSavedAt(iso: string) {
 }
 
 const SEED_APPS: Application[] = [
-    { id: 'APP-001', grant: 'DoD ESTCP — Water Resilience', agency: 'DoD ESTCP', ask: 2400000, deadline: '2026-03-26', stage: 'Drafting', owner: 'Admin', completionPct: 62, notes: 'Pre-proposal drafted. Need Fort Carson POC for site access section.', docs: ['ESTCP_PreProposal_Draft.md', 'Budget_Narrative_v1.xlsx'], contacts: [{ name: 'Col. R. Martinez', role: 'ESTCP Program Manager', email: 'r.martinez@estcp.osd.mil' }] },
+    { id: 'APP-001', grant: 'Federal Federal ESG — Water Resilience', agency: 'Federal Federal ESG', ask: 2400000, deadline: '2026-03-26', stage: 'Drafting', owner: 'Admin', completionPct: 62, notes: 'Pre-proposal drafted. Need Fort Carson POC for site access section.', docs: ['ESTCP_PreProposal_Draft.md', 'Budget_Narrative_v1.xlsx'], contacts: [{ name: 'Col. R. Martinez', role: 'Federal ESG Program Manager', email: 'r.martinez@estcp.osd.mil' }] },
     { id: 'APP-002', grant: 'LOR Foundation — Introduction Call', agency: 'LOR Foundation', ask: 0, deadline: '2026-02-26', stage: 'Under Review', owner: 'Admin', completionPct: 80, notes: 'First call Thursday Feb 26. Call brief prepared.', docs: ['LOR_Foundation_Call_Brief.md'], contacts: [{ name: 'Program Officer (TBD)', role: 'Water Program', email: '' }] },
     { id: 'APP-003', grant: 'USDA NRCS EQIP — Water Conservation', agency: 'USDA NRCS EQIP', ask: 300000, deadline: '2026-04-15', stage: 'Identified', owner: 'Admin', completionPct: 10, notes: 'Need to identify local NRCS office contact.', docs: [], contacts: [] },
 ];
