@@ -711,12 +711,12 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 | **DHU (Hubs)** | 25 | $4,594 | $114,850 |
 | **VFA (Anchors)** | 1,280 | $159.65 | $204,352 |
 | **LRZ1 (Grounding)** | 25,600 | $26.00 | $665,600 |
-| **LRZ2 (Scouts)** | 6,400 | $51.50 | $329,600 |
+| **LRZ2 (Scouts)** | 6,400 | $59.30 | $379,520 |
 | **PMT (Pivot Trackers)** | 1,280 | $985.50 | $1,261,440 |
 | **PFA (Pump Anchors)** | 1,280 | $961.50 | $1,230,720 |
 | **CSA (Corner Auditors)** | 320 | $1,850 | $592,000 |
-| **Drones (Mixed Fleet)** | 2 | $19,499 | $19,499 |
-| **TOTAL HARDWARE CAPEX** | | | **$4,628,061.00** |
+| **Drones (Mixed Fleet)** | 2 | $9,749.50 | $19,499 |
+| **TOTAL HARDWARE CAPEX** | | | **$4,679,981.00** |
 
 ### [END OF HYPER-EXPANDED SPECIFICATION]
 
@@ -736,20 +736,20 @@ This section details the procurement logic and unit costs for a standard Subdist
 | **Mounting (Tip)** | PVC Tapered Tip | $3.50 | $1.20 |
 | **Antenna** | 3ft SS-304 Whip | $3.50 | $3.50 |
 | **Other Struct./Seals** | CPVC/Seals/Desiccant | $7.70 | $11.75 |
-| **TOTAL UNIT COST** | | **$158.20** | **$59.30** |
+| **TOTAL UNIT COST** | | **$159.65** | **$59.30** |
 
 ### 7.2 Tier 1.5: Kinematic & Audit Nodes (PMT, PFA, CSA)
 
 | Component | Supplier / Part # | PMT (Field Hub) | PFA (Well) |
 | :--- | :--- | :--- | :--- |
-| **MCU Sled** | ATSAMD51 / RT1020 | $65.00 | $95.00 |
+| **MCU Sled** | ESP32-S3 / C6 (Mesh) | $45.00 | $65.00 |
 | **GNSS Module** | u-blox ZED-F9P | $140.00 | N/A |
-| **Ultrasonic Flow** | Badger Meter TFX | $648.00 | N/A |
+| **Ultrasonic Flow** | Badger Meter TFX | $548.00 | N/A |
 | **Energy Monitor** | Magnelab CT Clamps | N/A | $110.00 |
 | **Well Sounder** | Dwyer PBLTX | N/A | $185.00 |
 | **Solar / Battery** | Renogy 10W / 40Ah | $95.00 | $115.00 (AC/DC) |
 | **Housing** | Polycase IP67 / NEMA | $45.00 | $55.00 |
-| **TOTAL UNIT COST** | | **$1,112.00** | **$750.00** |
+| **TOTAL UNIT COST** | | **$985.50** | **$961.50** |
 
 ---
 
@@ -781,7 +781,7 @@ All hardware is traceable via the **AllianceChain Immutable Ledger**.
 
 ### 11.10 Manufacturing & Sourcing Strategy (Subdistrict 1 Expansion)
 
-To achieve the $4.2M CAPEX target, FarmSense utilizes a tiered sourcing model:
+To achieve the $4.6M CAPEX target, FarmSense utilizes a tiered sourcing model:
 
 * **Tier 1 (Core Silicon)**: Factory-direct from Nordic, NXP, and Microchip.
 * **Tier 2 (Sensors)**: Strategic partnerships with Badger Meter and Dwyer.
