@@ -18,7 +18,7 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 2. **The Control Tiers (VRI)**: Irrigation application is tiered logically. From **Tier 1 (Speed-VRI)** using the PMT, to **Tier 2 (Section-VRI)** using Smart Section Nodes (SSN), to the ultimate **Tier 3 (Grid-VRI)** using Integrated Smart Nozzles (ISN) for 1m-pixel precision.
 3. **Cut-Less & Conversion Kits**: While the **"Grid-Flow" Custom Pivot** offers factory-integrated VRI, our modular **Conversion Kits** allow existing hardware to be retrofitted with SSN and ISN layers in under 4 hours per pivot.
 4. **Seasonal Sled Extraction**: (Standard nodes only) High-value electronics are extracted post-season. ISNs and SSNs are designed for year-round persistence (IP69K/NEMA 4X) but support modular component swaps.
-5. **Spatial Resolution & Precision Query**: The hardware is density-optimized (1:5:20 ratio) to support the 1m "Enterprise" resolution. This enables a **1cm Precision Query** mode, where the Oracle engine calculates surgical, plant-level moisture values for any specific coordinate without the overhead of global 1cm rendering.
+5. **Spatial Resolution & Precision Query**: The hardware is density-optimized **(2:4:12 Stereo ratio)** to support the 1m "Enterprise" resolution. This enables a **1cm Precision Query** mode, where the Oracle engine calculates surgical, plant-level moisture values for any specific coordinate without the overhead of global 1cm rendering.
 6. **Accuracy Benchmarking (Architecture 2.1 vs. V1.x)**: By more than doubling the in-ground sensor density (11 to 26 nodes), Architecture 2.1 reduces Mean Absolute Error (MAE) from ~15% at 10m to **<5% at 1m**, with an uncertainty envelope of <2% at precision-query coordinates.
 
 ---
@@ -168,7 +168,7 @@ The VFA runs a Real-Time Operating System (RTOS) designed for high-availability 
 ### 4.2 Lateral Root-Zone Scout (LRZ) V1.21
 
 **Role**: High-density "Scout" node for spatial variability.
-**Density**: 5 units per 150-acre field (Pentagon Formation) plus 20 units per 150-acre field (Grounding Ring).
+**Density**: 4 units per 140-160 acre field (2:4:12 Stereo: LRZ2 Scout tier) plus 12 units per 140-160 acre field (LRZ1 Grounding Raster).
 
 #### 4.2.1 Edge Logic & Chirp Protocol
 

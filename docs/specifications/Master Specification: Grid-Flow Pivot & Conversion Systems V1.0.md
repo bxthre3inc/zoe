@@ -26,6 +26,7 @@ Designed for users wanting optimized pressure and volume management without full
 The "Precision Upgrade" for existing pivots.
 
 - **Hardware**: 10x SSN + ~125x **Integrated Smart Nozzles (ISN)**.
+- **Sensor Pairing**: Designed to pair with the **2:4:12 Stereo** field sensor standard (18 nodes/field), which provides the spatial data density needed to feed 1m-pixel prescriptions.
 - **Deployment**: Existing nozzles are swapped for ISNs; a weatherproof power bus is clipped to the pivot arm.
 - **Benefit**: Full 1m x 1m Square Pixel precision. Dynamic pressure stabilization via the SSN backbone.
 - **Target Price**: **$3,800 - $4,500 per field** (including hardware).
