@@ -21,7 +21,8 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 
 - **Depth**: Fixed at **10 inches (250mm)**.
 - **Sensor Type**: Single-depth Dielectric Capacitance (High-Frequency).
-- **Update Frequency**: 1-4 chirps per day (Managed by PMT heartbeat).
+- **Update Frequency**: 1 chirp per day (Grounding check).
+- **Lifespan**: **10+ Years**. The ultra-low duty cycle (4x lower than LRZ2) enables a "Decade Deployment" model.
 
 ## 3. Communication & Intelligence
 
@@ -39,9 +40,10 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 | **Housing** | 2" PVC Shell (10") + Friction Tip | $3.70 |
 | **PCBA** | ASR6601 High-Integration LoRa PCBA | $4.00 |
 | **Sensing** | 1U Basic Dielectric Ring (10") | $4.00 |
-| **Power** | Swappable 21700 Cell (LFP) | $8.50 |
+| **Power** | 10-Year Li-SOCl2 or LFP Cell | $8.50 |
+| **Solar Option** | Integrated 20mm Solar Cap (Opt) | +$1.50 |
 | **Seals** | Viton O-Rings + blanking cap | $4.80 |
-| **TOTAL** | **Target Unit Hardware Cost** | **$26.00** |
+| **TOTAL** | **Target Unit Hardware Cost** | **$16.50** |
 
 ---
 *Infrastructure Classification: High-Density Spatial Grounding Node*

@@ -14,7 +14,7 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 
 ### Key Philosophical Pillars
 
-1. **The "Truth" Node Mandate**: Every field has exactly one VFA (Vertical Field Anchor) that acts as the absolute calibration anchor for a stratified grid of LRZ (Lateral Root-Zone) scouts. 5x LRZ2 scouts provide deep lateral mapping, while 20x LRZ1 "Validation Truth Nodes" (available in monolithic "Disposable Marker" variant at $16.50) verify the resulting virtual sensor grid 1-4 times daily.
+1. **The "Truth" Node Mandate**: Every field has exactly **two VFAs** (Vertical Field Anchors) acting as the absolute calibration anchors for a stratified grid of LRZ (Lateral Root-Zone) scouts. These are placed at the **Hydraulic Extremes** (Driest vs. Wettest zones). 4x LRZ2 scouts provide deep lateral mapping, while 12x LRZ1 "Disposable Markers" verify the resulting virtual sensor grid.
 2. **The Control Tiers (VRI)**: Irrigation application is tiered logically. From **Tier 1 (Speed-VRI)** using the PMT, to **Tier 2 (Section-VRI)** using Smart Section Nodes (SSN), to the ultimate **Tier 3 (Grid-VRI)** using Integrated Smart Nozzles (ISN) for 1m-pixel precision.
 3. **Cut-Less & Conversion Kits**: While the **"Grid-Flow" Custom Pivot** offers factory-integrated VRI, our modular **Conversion Kits** allow existing hardware to be retrofitted with SSN and ISN layers in under 4 hours per pivot.
 4. **Seasonal Sled Extraction**: (Standard nodes only) High-value electronics are extracted post-season. ISNs and SSNs are designed for year-round persistence (IP69K/NEMA 4X) but support modular component swaps.
@@ -707,18 +707,13 @@ The CSA consists of two PMT-derived nodes that resolve the angle of the swing ar
 
 ## 12. Summary of System-Wide Scaling Costs (Subdistrict 1)
 
-| Asset Class | Install Qty | Unit Cost | Total Capital |
+| Component | Tier 1: Speed VRI | Tier 2: Section VRI (sVRI) | Tier 3: Nozzle VRI (nVRI) |
 | :--- | :--- | :--- | :--- |
-| **RSS (Superstation)** | 1 | $212,000 | $212,000 |
-| **DHU (Hubs)** | 25 | $4,594 | $114,850 |
-| **VFA (Anchors)** | 1,280 | $159.65 | $204,352 |
-| **LRZ1 (Grounding)** | 25,600 | $26.00 | $665,600 |
-| **LRZ2 (Scouts)** | 6,400 | $59.30 | $379,520 |
-| **PMT (Pivot Trackers)** | 1,280 | $985.50 | $1,261,440 |
-| **PFA (Pump Anchors)** | 1,280 | $961.50 | $1,230,720 |
-| **CSA (Corner Auditors)** | 320 | $1,850 | $592,000 |
-| **Drones (Mixed Fleet)** | 2 | $9,749.50 | $19,499 |
-| **TOTAL HARDWARE CAPEX** | | | **$4,679,981.00** |
+| **Field Sensors (18)** | $697.30 | $697.30 | $697.30 |
+| **Field Hubs (PMT/PFA)** | $1,947.00 | $1,947.00 | $1,947.00 |
+| **VRI Hardware** | $0.00 | $1,150.00 (SSN) | $3,400.00 (SSN+ISN) |
+| **Per-Field Hardware** | **$2,644.30** | **$3,794.30** | **$6,044.30** |
+| **Subdistrict 1 (Total)** | **$4,323,053** | **$5,795,053** | **$8,675,053** |
 
 ### [END OF HYPER-EXPANDED SPECIFICATION]
 
