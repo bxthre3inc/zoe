@@ -2,7 +2,12 @@
 
 > **See [`../management/MILESTONES.md`](../management/MILESTONES.md) for full definitions of the Beta and V1 Milestones.**
 
-## Path to Beta Milestone (March 10, 2026)
+## Path to Beta Development Completed (Late Feb/Early March 2026)
+
+- [ ] [ ] Deploy core ingestion pipeline for Zo Server.
+- [ ] [ ] Implement Farmer Dashboard (Beta) for field metrics.
+
+## Path to Beta Launch (March 10, 2026)
 
 - [x] [x] Rectify District Hub (DHU) BOM to include 900MHz LoRaWAN gateway.
 - [x] [x] Rectify Pivot Motion Tracker (PMT) BOM to include 2.4GHz/BLE module for PFA communication.
@@ -10,8 +15,6 @@
 - [x] [x] Integrate Hybrid Pulse Capacitor (HPC) with the PMT's LiSOCl2 battery to bypass spring passivation.
 - [x] [x] Treat Polycarbonate enclosures with fluoropolymer coatings (PVDF) or UV inhibitors to prevent radiation embrittlement at 8,000ft altitude.
 
-- [ ] [ ] Deploy core ingestion pipeline for Zo Server.
-- [ ] [ ] Implement Farmer Dashboard (Beta) for field metrics.
 - [ ] [ ] Validate Hydrodynamic evidence for Water Court (margin of error `<5%`).
 
 ## Path to V1 Milestone (Spring 2027)

@@ -6,27 +6,35 @@ This document clearly defines the "Beta Milestone" and "V1 Milestone" for FarmSe
 
 ---
 
-## 1. Beta Milestone
+## 1. Beta Development Completed Milestone
 
-**Target Date:** March 10, 2026
+**Target Date:** Late February / Early March 2026
 
-*The milestone defining readiness for the CSU SLV Pilot and subsequent Beta testing with other regional farms.*
-
-### Hardware Minimum Viable Product (MVP)
-
-- [ ] **Prototype Hardware Built:** 16-20 LRZs, 2 PMTs, 2 PFAs, and localized DHU logic deployed.
-- [ ] **Firmware Stabilized:** PMT, VFA, LRZ, and PFA nodes capable of reliable connection and data transfer.
-- [ ] **LPI/LPD Validated:** Basic FHSS radio stealth confirmed in the field.
+*The milestone defining the completion of all core software logic, cloud infrastructure, and frontend UI required for the Beta launch.*
 
 ### Software / Cloud
 
-- [ ] **Core Ingestion Pipeline:** Zo Server correctly receiving data from the DHU mesh.
+- [ ] **Core Ingestion Pipeline:** Zo Server configured to receive data from the DHU mesh.
 - [ ] **Kriging Engine:** First operational version of IDW (Edge) and k-means Kriging (Cloud) calculating field hydrology.
-- [ ] **Automated Reporting:** Basic logging of sensor data and simple visualization.
+- [ ] **Automated Reporting:** Basic logging of sensor data and simple visualization logic ready.
 
 ### Frontend / User Access
 
 - [ ] **Farmer Dashboard (Beta):** Farmers can log in, view their fields, and see basic metrics.
+
+---
+
+## 2. Beta Launch Milestone (CSU SLV Pilot)
+
+**Target Date:** March 10, 2026
+
+*The milestone defining readiness for the physical CSU SLV Pilot launch, including hardware manufacturing, deployment, and data validation.*
+
+### Hardware Minimum Viable Product (MVP)
+
+- [ ] **Prototype Hardware Built:** 16-20 LRZs, 2 PMTs, 2 PFAs, and localized DHU logic manufactured and tested.
+- [ ] **Firmware Stabilized:** PMT, VFA, LRZ, and PFA nodes capable of reliable connection and data transfer in the field.
+- [ ] **LPI/LPD Validated:** Basic FHSS radio stealth confirmed in the field.
 
 ### Validation & Outcomes
 
@@ -35,7 +43,7 @@ This document clearly defines the "Beta Milestone" and "V1 Milestone" for FarmSe
 
 ---
 
-## 2. V1 Milestone
+## 3. V1 Milestone
 
 **Target Date:** Spring 2027 (Before planting in SLV)
 
