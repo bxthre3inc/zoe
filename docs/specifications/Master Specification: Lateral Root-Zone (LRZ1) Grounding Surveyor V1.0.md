@@ -1,8 +1,8 @@
-# Master Specification: Lateral Root-Zone (LRZ1) Grounding Scout V1.0
+# Master Specification: Lateral Root-Zone (LRZ1) Grounding Surveyor V1.0
 
-**Role**: Level 1 "Grounding" Node | **Network Density**: 12 units per 140-160 acre Field (Radial Stratification)
+**Role**: Level 1 "Truth" Node | **Network Density**: 12 units per 140-160 acre Field (Radial Stratification)
 
-The Lateral Root-Zone 1 (LRZ1) is a specialized, ultra-low-cost "Validation Truth Node." Unlike the modular LRZ2 scouts, the LRZ1 is designed for high-density permanent deployment to scientifically verify the accuracy of the **Virtual Sensor Grid** (50m, 20m, 10m, and 1m resolutions).
+The Lateral Root-Zone 1 (LRZ1) is the primary **"Truth Node"** of the FarmSense architecture. Unlike the modular Foundation (VFA) and Reference (LRZ2) units, the LRZ1 is a **Monolithic, single-depth unit** designed for high-density permanent deployment to scientifically verify the accuracy of the **Virtual Sensor Grid**.
 
 By providing a periodic "Truth Check" (1-4 times daily), the LRZ1 ensures that the Bayesian models and Kriging interpolations produced by the Oracle engine remain synchronized with physical reality. This high-density grounding (1 node per 5.7 acres) enables the **1cm Precision Query** feature, allowing surgical plant-level soil analytics. If a discrepancy is detected between the virtual grid and the LRZ1's grounding readings, the system automatically triggers a recalibration of the underlying **Soil Variability Maps**.
 
@@ -10,9 +10,9 @@ By providing a periodic "Truth Check" (1-4 times daily), the LRZ1 ensures that t
 
 To achieve the $32.00 target unit cost, the LRZ1 utilizes a fixed-function internal architecture while maintaining exterior cohesion with the FarmSense fleet.
 
-- **Unified Housing**: 2" Schedule 40 UV-Stabilized PVC (18-inch length).
-- **Non-Modular PCBA**: The internal electronics are mounted to a rigid internal PET spine, eliminating the expensive Co-Extruded Alpha-Sled used in higher tier nodes.
-- **Permanent Core**: The HDPE pipe remains in the soil as a permanent "Hole Anchor."
+- **Unified Housing**: 2" HDPE SDR9 (High-Albedo White) (18-inch length).
+- **Monolithic Construction**: The internal electronics are potted directly into a rigid internal PET spine, eliminating the expensive Co-Extruded Alpha-Sled used in the Foundation and Reference tiers.
+- **Permanent Core**: The HDPE SDR9 pipe remains in the soil as a permanent "Hole Anchor."
 - **Sensing Spine**: The internal electronics (ASR6601 + Battery + Sensors) are mounted on a removable PET spine, sealed with a **Threaded High-Density Urethane (T-HDU) Plug**.
 - **Refurbishment Workflow**: After 7-10 years, the internal spine is extracted via a standard pulling tool. The factory swaps the Li-SOCl2 cell and re-potts the spine for reuse, saving 70% of the hardware value.
 - **Battery Interface**: Maintains the same **Viton-sealed battery cap** as the LRZ2, allowing for centralized maintenance using the standard 21700 battery packs.
@@ -39,7 +39,7 @@ The LRZ1 focuses on the primary active root zone to provide high-density spatial
 
 | Category | Component Detail | Unit Cost |
 | :--- | :--- | :--- |
-| **Housing** | 2" PVC Shell (10") + Friction Tip | $3.70 |
+| **Housing** | 2" HDPE SDR9 Shell (10") + Friction Tip | $3.70 |
 | **PCBA** | ASR6601 High-Integration LoRa PCBA | $4.00 |
 | **Sensing** | 1U Basic Dielectric Ring (10") | $4.00 |
 | **Power** | 10-Year Li-SOCl2 or LFP Cell | $8.50 |

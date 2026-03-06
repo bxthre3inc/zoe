@@ -2,7 +2,7 @@
 
 This document outlines the **exact, hyper-granular procurement costs** to build two (2) Single-Field Deployments (SFDs) and one (1) District Hub (DHU) from scratch.
 
-This is the "Lean Tracker" MVP strategy: we use the exact silicon specified in the Master Blueprints (NVIDIA Jetson Nano, Nordic nRF52840, Microchip ATSAMD51), but mounted on Commercial Off-The-Shelf (COTS) developer breakout boards. We substitute high-cost industrial mechanicals for hardware-store equivalents (e.g., standard PVC vs. custom extrusions) and account for every tool, wire, and zip-tie needed to execute the pilot.
+This is the "Lean Tracker" MVP strategy: we use the exact silicon specified in the Master Blueprints (NVIDIA Jetson Nano, Nordic nRF52840, Microchip ATSAMD51), but mounted on Commercial Off-The-Shelf (COTS) developer breakout boards. We substitute high-cost industrial mechanicals for hardware-store equivalents (e.g., standard HDPE SDR9 vs. custom extrusions) and account for every tool, wire, and zip-tie needed to execute the pilot.
 
 **Logistics & Build Strategy:** All sensors and hardware will be fabricated, soldered, and pre-tested at the investor-provided workshop in **Monte Vista, CO**, before being deployed for live pilot operations in **Center, CO** with CSU SLV RC.
 
@@ -67,11 +67,11 @@ The central aggregator that runs the Alliance-Chain ledger and routes data to th
 | :--- | :--- | :--- | :--- | :--- |
 | NEMA 3R/4X Polycarbonate Junction Box (12x12) | DHU Enclosure | 1 | $45.00 | $45.00 |
 | NEMA 4X Polycarbonate Junction Box (8x6) | PMT/PFA Enclosures | 4 | $25.00 | $100.00 |
-| 10-foot 2" Schedule 40 PVC Pipe Stems | VFA/LRZ Housings | 4 | $15.00 | $60.00 |
-| 2" PVC Slip Caps (Dome Top, Flat Bottom) | VFA/LRZ Seal | 28 | $1.50 | $42.00 |
+| 10-foot 2" Schedule 40 HDPE SDR9 Pipe Stems | VFA/LRZ Housings | 4 | $15.00 | $60.00 |
+| 2" HDPE SDR9 Slip Caps (Dome Top, Flat Bottom) | VFA/LRZ Seal | 28 | $1.50 | $42.00 |
 | Waterproof Cable Glands (PG9/PG11 Pack) | Sensor Pass-throughs | 1 | $20.00 | $20.00 |
 | Marine-Grade Silicone RTV Sealant (Tubes) | PMT/PFA Sealing | 3 | $8.00 | $24.00 |
-| Oatey PVC Primer and High-Strength Cement | VFA/LRZ Sealing | 1 | $15.00 | $15.00 |
+| Oatey HDPE SDR9 Primer and High-Strength Cement | VFA/LRZ Sealing | 1 | $15.00 | $15.00 |
 | 10' Galvanized TV Mast w/ Guy Wire Kit | DHU Tower | 1 | $75.00 | $75.00 |
 | Stainless Steel Band-It Straps & Clamp Kit | PMT Pivot Mounting | 1 | $45.00 | $45.00 |
 | **Subtotal: Mechanical** | | | | **$426.00** |
@@ -103,9 +103,9 @@ The central aggregator that runs the Alliance-Chain ledger and routes data to th
 | Hakko FX-888D Soldering Station | PCB Assembly | 1 | $120.00 | $120.00 |
 | Wire Strippers, Flush Cutters, Precision Kit | Wiring Fabrication | 1 | $45.00 | $45.00 |
 | Fluke 101 Digital Multimeter | Power Debugging | 1 | $60.00 | $60.00 |
-| Ratcheting PVC Pipe Cutter | VFA/LRZ Cutting | 1 | $20.00 | $20.00 |
+| Ratcheting HDPE SDR9 Pipe Cutter | VFA/LRZ Cutting | 1 | $20.00 | $20.00 |
 | Handheld 20V Power Drill & Step-Bit Set | NEMA Box Drilling | 1 | $80.00 | $80.00 |
-| Wagner Variable Temp Heat Gun | Heat Shrink / PVC Mold | 1 | $30.00 | $30.00 |
+| Wagner Variable Temp Heat Gun | Heat Shrink / HDPE SDR9 Mold | 1 | $30.00 | $30.00 |
 | **Subtotal: Tools** | | | | **$355.00** |
 
 ---
@@ -133,7 +133,7 @@ The central aggregator that runs the Alliance-Chain ledger and routes data to th
 | **Cloud Hosting & APIs** | PostgresDB snapshots, DigitalOcean droplets for public dashboard access, and Mapbox map tiles. | $100.00 | $600.00 |
 | **Field Maintenance Travel** | Fuel for weekly "truck rolls" from Monte Vista shop to the Center pivots for inspection and cleaning. | $100.00 | $600.00 |
 | **Agronomic Core Testing** | Paying a local SLV lab to physically test soil cores to validate the VFA/LRZ Kriging algorithms twice during the season. | N/A | $1,000.00 |
-| **Unforeseen Spares Bank** | 10% buffer for broken PVC, bad solder joints, or damaged sensors over the season. | N/A | $350.00 |
+| **Unforeseen Spares Bank** | 10% buffer for broken HDPE SDR9, bad solder joints, or damaged sensors over the season. | N/A | $350.00 |
 | **6-Month Operational Reserves** | A designated financial cushion to absorb unforeseen pilot execution costs (e.g. broken hardware, travel spikes) and provide a lean living stipend so the solo founder can focus 100% full-time on deployment. | N/A | $8,619.00 |
 | **Subtotal: 6-Month OpEx** | | | **$12,459.00** |
 

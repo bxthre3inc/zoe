@@ -1,8 +1,8 @@
 # Master Specification: Vertical Field Anchor (VFA) V1.21
 
-**Role**: Layer 1 "Truth" Node | **Network Density**: 1 VFA per Field (Reporting to PMT Hub)
+**Role**: Layer 1 "Foundation" Node | **Network Density**: 1 VFA per Field (Reporting to PMT Hub)
 
-As the primary field-level relay and intelligence hub of the FarmSense SFD (single field deployment) architecture, the Vertical Field Anchor (VFA) operates as a high-fidelity subsurface data logger, a secure routing node, and the critical baseline calibration tool—the absolute "Truth" node—for the **Oracle Unified Compute**.
+As the primary static sub-surface anchor of the FarmSense architecture, the Vertical Field Anchor (VFA) serves as the **"Foundation"**. It is a **Dumb Node** designed for high-fidelity vertical data collection without the overhead of localized mesh coordination or complex Bayesian processing.
 
 **Network Topology**: There is exactly one VFA deployed per field. The VFA is "Pinned" spatially by the high-precision PMT during the initial 24-hour calibration window, eliminating the need for internal GPS while maintaining sub-meter spatial integrity. This single VFA is responsible for capturing high-fidelity vertical profiles and reporting its 128-bit encrypted data **upward to the elevated PMT Field Hub**.
 **Subsurface Housing**: HDPE (High-Density Polyethylene) SDR9 or 11. Selected for zero-degradation in high-alkali San Luis Valley mineral profiles and superior impact strength at -30°F.
@@ -14,15 +14,15 @@ Instead of acting as the field aggregator, the solitary VFA focuses on its 48-in
 
 The VFA housing has been radically re-engineered using a dual-cylinder architecture designed to completely isolate external structural loads from the delicate internal electronics.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" Schedule 40 UV-Stabilized HDPE (Inside Diameter: 2.067" / 52.5mm). By utilizing an exact 4-foot (48-inch) cut, the outer 2" pipe sits completely flush with the soil surface. This shell stays in the ground over the winter, resisting sub-zero frost-shatter.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" HDPE SDR9 (High-Albedo White). By utilizing an exact 4-foot (48-inch) cut, the outer pipe sits completely flush with the soil surface. This shell stays in the ground over the winter, resisting sub-zero frost-shatter.
 * **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the VFA an exact 3-foot profile above the soil, minimizing collision risk with tractor booms while remaining highly visible to the elevated PMT hub overhead.
 * **Monolithic Chemical Fix (HDPE-to-HDPE)**: The outer shell is paired with a Custom HDPE Tapered Driving Tip, chemically fused using low-surface-energy Structural HDPE Acrylic Epoxy.
 * **The Removable Internal Sled**: The core internal structure is a 48-Inch 50mm Co-Extruded Alpha-Sled capped with precision Injection-Molded Circular End-Caps. This sled acts as a robust internal spine, clamping the 48U sequence of modular cartridges.
 * **The Seasonal Climate (+5 psi Defense)**: Upon seasonal insertion, Viton (FKM) 2" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen, creating an inert, zero-humidity environment that acts as an active defense against micro-fractures and groundwater ingress.
 
-## 2. Custom Relay Logic & Encryption (The Hub Pipeline)
+## 2. Low-Power Logic & Secure "Chirp" Protocol (Dumb Node Architecture)
 
-By stripping the VFA down to pure routing and encryption functions, we have intentionally offloaded all heavy cellular backhaul requirements and complex computations to the central Farm Hub and the **Command & Control (C&C)** backend.
+By stripping the VFA down to pure sensing and encryption functions, we have intentionally offloaded all heavy cellular backhaul requirements and complex computations to the elevated **PMT Field Aggregator**.
 
 * **Interference Mitigation & FHSS**: The VFA utilizes a highly sensitive onboard FHSS radio to chirp its high-fidelity data to the PMT.
 * **Firmware Logic & Interrupts**: Operates an RTOS prioritizing pressure transients (Priority 0) over sensor sampling (Priority 1) and ADC dielectric readings (Priority 2).
@@ -74,7 +74,7 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 
 | Category | Component Detail | MPN / Supplier | Lead Time | Unit Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| **Housing** | 2" SCH 40 UV-HDPE (4ft) | JM-602-UV | 2 Weeks | $4.00 |
+| **Housing** | 2" HDPE SDR9 (4ft) | JM-602-UV | 2 Weeks | $4.00 |
 | **Housing** | Zinc-Plated Friction-Formed Tip | FS-TIP-H8 | 4 Weeks | $4.25 |
 | **Antenna** | 3ft SS-304 Whip + Spring | Industrial Pultrusion | 2 Weeks | $3.50 |
 | **Adhesive** | Structural HDPE Acrylic Epoxy | Automated Bulk | 1 Week | $4.50 |
@@ -83,7 +83,7 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 | **Climate** | 1U Stamped Desiccant Matrix | Bulk Supply | 1 Week | $1.50 |
 | **Structure** | 48" AlphaSled Chassis | Continuous Extrusion | 3 Weeks | $3.25 |
 | **Structure** | Injection-Molded EndCaps | High-Cavity Mold | 4 Weeks | $0.60 |
-| **Structure** | Schedule 80 UV-PVC Spacers (22U) | FS-Custom-48U | 2 Weeks | $0.45 |
+| **Structure** | Schedule 80 UV-Polycarbonate Spacers (22U) | FS-Custom-48U | 2 Weeks | $0.45 |
 | **Power (x5)** | 4U Battery Cartridges (21700x3 Li-ion) | Samsung 50E | 6 Weeks | $83.75 |
 | **Adv. Sensor** | Proprietary 10-Unit Stack (NPK/EC/pH) | FS-DE-48U | 12 Weeks | $120.00 |
 | **Basic Sensor** | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | 4 Weeks | $4.00 |

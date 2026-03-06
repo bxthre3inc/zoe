@@ -164,7 +164,7 @@ See `file 'farmsenseOS/DEPENDENCY_REDUCTION.md'` for full plan.
 
 | Device | Level | Role | Density |
 |--------|-------|------|---------|
-| **LRZ** (Lateral Root-Zone Scout) | 1 | Dumb spatial mapper | 1 per 15 acres |
+| **LRZ** (Lateral Root-Zone Surveyor) | 1 | Dumb spatial mapper | 1 per 15 acres |
 | **VFA** (Vertical Field Anchor) | 1 | 48" deep-profile truth node | 1 per field |
 | **PFA** (Pressure & Flow Anchor) | Sentry | Wellhead pump telemetry | 1 per wellhead |
 | **PMT** (Pivot Motion Tracker) | 1.5 | Field hub, edge-EBK engine | 1 per pivot |
@@ -271,7 +271,7 @@ farmsense-code/frontend/
 
 ```
 specifications/
-├── Master Specification: Lateral Root-Zone Scout (LRZ) V1.21.md
+├── Master Specification: Lateral Root-Zone Surveyor (LRZ) V1.21.md
 ├── Master Specification: Vertical Field Anchor (VFA) V1.21.md
 ├── Master Specification: Pressure & Flow Anchor (PFA) V1.9.md
 ├── Master Specification: Pivot Motion Tracker (PMT) V1.6.md
@@ -420,7 +420,7 @@ reference/
 - 2x PMT (Pivot Motion Tracker)
 - 2x PFA (Pressure & Flow Anchor)
 - 2x VFA (Vertical Field Anchor)
-- 16-20x LRZ (Lateral Root-Zone Scout)
+- 16-20x LRZ (Lateral Root-Zone Surveyor)
 
 **Total Investment**: $5,382,940 (for Subdistrict 1: 19,466 devices)
 

@@ -111,8 +111,7 @@ $20,000 motor burn-out during a 100-degree heatwave.
 Well Depth Sounder (Legal & Hydrological Defense): A Vented 316-Stainless Steel
 
 Pressure Transducer (0-100m) from Dwyer, dropped down the well casing via a 300ft
-
-vented PVC tube.
+vented HDPE SDR9 tube.
 
 Vented Technology: The "vented" cable allows the sensor to automatically compensate
 

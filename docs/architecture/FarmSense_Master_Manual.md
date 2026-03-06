@@ -83,7 +83,7 @@ With the data integrity architecture established, cross-examination of the Maste
 
 ### **3.1 The VFA-to-DHU Backhaul Failure (900MHz vs. 5GHz)**
 
-The Vertical Field Anchor (VFA) serves as the primary data aggregation point for an individual field.1
+The Vertical Field Anchor (VFA) serves as the primary **sub-surface truth node** for an individual field.1
 
 * **VFA Specification:** The VFA V1.21 specification explicitly mandates the use of a "local high-gain 900MHz LoRa uplink" to bypass expensive cellular modems and transmit secure payloads to the District Hub.1  
 * **DHU Specification:** The DHU V1.1 specification dictates a "Triple-Sector Radio Spine" consisting of three Ubiquiti LTU Sector Antennas (120°) operating exclusively on the 5GHz frequency band.1  
@@ -211,7 +211,7 @@ To ensure absolute farmer operator trust and data sovereignty, the network archi
 To solidify the FarmSense architecture for premier global infrastructure grants and defense funding, the following advanced capabilities and zero-cost software frameworks are integrated into the deployment roadmap:
 
 * **LPI/LPD Positioning (FHSS):** The Lateral Root-Zone (LRZ) network's existing Frequency-Hopping Spread Spectrum (FHSS) architecture should be explicitly pitched as a "Low Probability of Intercept" (LPI) and "Low Probability of Detection" (LPD) asset. In tactical scenarios, rapidly switching frequencies makes the sensor grid highly resistant to adversarial jamming and interception.  
-* **Rapid Deployment Housings:** To dramatically expand the Federal dual-use appeal, the LRZ physical housing concept can be adapted for high-altitude (HALO) or low-orbit kinetic deployment. By engineering the 18-inch PVC shell to withstand high-G impacts and utilizing the existing 15-degree friction molded tapered driving tip, the sensors could act as kinetic penetrators that are air-dropped to autonomously bury themselves flush with the ground. This fulfills military requirements for covert, rapidly deployable unattended ground sensor (UGS) networks in contested environments.  
+* **Rapid Deployment Housings:** To dramatically expand the Federal dual-use appeal, the LRZ physical housing concept can be adapted for high-altitude (HALO) or low-orbit kinetic deployment. By engineering the 18-inch HDPE SDR9 shell to withstand high-G impacts and utilizing the existing 15-degree friction molded tapered driving tip, the sensors could act as kinetic penetrators that are air-dropped to autonomously bury themselves flush with the ground. This fulfills military requirements for covert, rapidly deployable unattended ground sensor (UGS) networks in contested environments.  
 * **Fully Homomorphic Encryption (FHE):** Upgrade the Regional Superstation (RSS) from standard AES encryption to Fully Homomorphic Encryption (FHE). FHE is a groundbreaking cryptographic technology that allows the Zo engine's complex Kriging algorithms to be executed directly on encrypted data without ever decrypting it first. This ensures absolute data confidentiality during processing.  
 * **Automated GLOBALG.A.P. Compliance:** Develop a software module that translates the platform's certified flow and moisture data into automated GLOBALG.A.P. compliance reports. This allows farmers to effortlessly prove sustainable water management to international standards, unlocking premium supply chain markets globally.
 
@@ -711,7 +711,7 @@ Hardware Fabrication & Deployment: The software architecture and "Core Compute" 
 
 Scientific Calibration (Soil Tension vs. Volumetric Content): The system correlates soil moisture tension (what the plant feels) with volumetric water content (what the sensor reads) across the highly variable profiles of the SLV. This continuous Core Sample validation actively reduces the "uncertainty envelope" of the predictive models.
 
-Extreme Environmental Hardening: The SLV is characterized by extreme temperature swings (-40°C to +35°C) and high soil alkalinity. Hardware, including LiSOCl2 batteries and PVC sensor casings, has been rigorously engineered to sustain these conditions across multi-year lifecycles.
+Extreme Environmental Hardening: The SLV is characterized by extreme temperature swings (-40°C to +35°C) and high soil alkalinity. Hardware, including LiSOCl2 batteries and HDPE SDR9 sensor casings, has been rigorously engineered to sustain these conditions across multi-year lifecycles.
 
 Computational Scaling Infrastructure: Maintaining a 1-meter resolution (Enterprise level) across Subdistrict 1 (160,000 acres) is achieved via distributed parallel processing within the Core Compute Server (Zo).
 
@@ -1440,9 +1440,9 @@ The DHU is the final staging area for the Enterprise (1m) Resolution Tier.
 
 <div style="page-break-after: always;"></div>
 
-# Master Specification: Lateral Root-Zone Scout (LRZ) V1.21
+# Master Specification: Lateral Root-Zone Surveyor (LRZ) V1.21
 
-**Role**: Lateral Variability \"Scout,\" High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting directly to the PMT Field Hub)
+**Role**: Lateral Variability \"Surveyor,\" High-Density Dumb Node, & Spatial Mapper | **Network Density**: 1 LRZ per 15 Acres (Reporting directly to the PMT Field Hub)
 
 While the Vertical Field Anchor (VFA) serves as the high-fidelity calibration anchor, the standard deployment for Architecture 2.1 utilizes the **2:4:12 "Stereo" Model**. This places **two VFAs** at the field's **Hydraulic Extremes** (the highest and lowest moisture-holding soil zones). This "Boundary Calibration" ensures the Oracle engine can accurately interpolate the virtual grid across the entire moisture spectrum.
 
@@ -1459,12 +1459,12 @@ While the Vertical Field Anchor (VFA) serves as the high-fidelity calibration an
 
 The LRZ housing is engineered for an "Invisible Presence"—a ruggedized subterranean deployment capable of withstanding the extreme mechanical stresses of 4WD tractor passes and repetitive deep-soil compaction cycles common in potato-barley rotations.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" Schedule 40 UV-Stabilized Rigid PVC. Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface and provides the extreme rigidity required to prevent bowing during deep-soil compaction.
-* **Material Science**: UV-Stabilized PVC was selected specifically for its high stiffness (flexural modulus), low cost, and total electromagnetic transparency for the capacitive sensors. It is also chemically inert to the sulfur-rich SLV alkali soils.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" HDPE SDR9 (High-Albedo White). Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface and provides the extreme rigidity required to prevent bowing during deep-soil compaction.
+* **Material Science**: HDPE SDR9 was selected specifically for its chemical resistance, longevity, and total electromagnetic transparency for the capacitive sensors. It is also chemically inert to the sulfur-rich SLV alkali soils.
 * **Installation Efficiency**: By keeping the shell at exactly 18 inches, the hydraulic auger crews only need to drill a shallow pilot hole, exponentially speeding up installation.
-* **15-Degree Friction Molded Driving Tip (Compaction-Fit)**: The 18-inch outer shell is sealed with a Custom PVC Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the PVC pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise 15-degree final tapered shape.
+* **15-Degree Friction Molded Driving Tip (Compaction-Fit)**: The 18-inch outer shell is sealed with a Custom HDPE SDR9 Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the HDPE SDR9 pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise 15-degree final tapered shape.
 * **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the LRZ an exact 3-foot profile above the soil, keeping it beneath the destructive sweep of the pivot span.
-* **The Removable Internal Sled**: The core internal structure is an 18-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CPVC** (Chlorinated Polyvinyl Chloride) to prevent high-temperature warping in the back of installation trucks. This removable payload is swiftly inserted post-planting and extracted pre-harvest.
+* **The Removable Internal Sled**: The core internal structure is an 18-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CHDPE SDR9** (Chlorinated Polyvinyl Chloride) to prevent high-temperature warping in the back of installation trucks. This removable payload is swiftly inserted post-planting and extracted pre-harvest.
 * **The Seasonal Climate (+5 psi Defense)**: Upon insertion, Viton (FKM) 2\" O-rings seal the sled against the shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen for active protection against micro-fractures.
 
 ## 2. Edge Logic & The Secure "Chirp" Protocol
@@ -1478,7 +1478,7 @@ The LRZ is an exercise in extreme power efficiency. It lacks the eMMC storage an
 
 ## 3. The High-Density Sensor Array (18-Inch / 18U Sequence)
 
-Like the VFA, the LRZ employs the advanced \"Proxy Method\" of non-contact sensing, shooting high-frequency dielectric fields directly through the 50mm CPVC sled wall, the nitrogen gap, and the permanent PVC shell.
+Like the VFA, the LRZ employs the advanced \"Proxy Method\" of non-contact sensing, shooting high-frequency dielectric fields directly through the 50mm CHDPE SDR9 sled wall, the nitrogen gap, and the permanent HDPE SDR9 shell.
 
 **Locked 18U Physical Stack Sequence**:
 
@@ -1501,16 +1501,16 @@ Like the VFA, the LRZ employs the advanced \"Proxy Method\" of non-contact sensi
 
 | Category | Component Detail | Supplier / Scale Method | Unit Cost | Ext. Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| Housing | 2\" SCH 40 UV-Stabilized PVC (18-inch) | Direct Extruder | $1.25 | $1.25 |
-| Housing | Friction Molded PVC Tapered Tip | Rotational Formed | $3.50 | $3.50 |
+| Housing | 2\" SCH 40 UV-Stabilized HDPE SDR9 (18-inch) | Direct Extruder | $1.25 | $1.25 |
+| Housing | Friction Molded HDPE SDR9 Tapered Tip | Rotational Formed | $3.50 | $3.50 |
 | Antenna | 3ft SS-304 Whip + Spring | Hub-Mount Pultruded | $3.50 | $3.50 |
-| Adhesive | Industrial PVC Cement | Automated Bulk | $0.50 | $0.50 |
+| Adhesive | Industrial HDPE SDR9 Cement | Automated Bulk | $0.50 | $0.50 |
 | Computing| nRF52840 \"Chirp\" Logic Board | Tier-1 PCBA | $6.50 | $6.50 |
 | Seals | Viton (FKM) 2\" O-Rings (x2) | Bulk Supplier | $1.20 | $2.40 |
 | Purge | Dry Nitrogen Gas Shell Fill | Automated Assembly | $0.15 | $0.15 |
 | Climate | 1U Stamped Desiccant Matrix | Bulk Supply | $1.50 | $1.50 |
-| Structure| 18\" CPVC AlphaSled Chassis | Continuous Extrusion | $1.40 | $1.40 |
-| Structure| Extruded Rigid CPVC Spacers (7U)| Recycled Bulk | $0.10 | $0.10 |
+| Structure| 18\" CHDPE SDR9 AlphaSled Chassis | Continuous Extrusion | $1.40 | $1.40 |
+| Structure| Extruded Rigid CHDPE SDR9 Spacers (7U)| Recycled Bulk | $0.10 | $0.10 |
 | Power | 4U Battery Cartridges (21700x3) | Direct Cell Sourcing | $16.75 | $33.50 |
 | Sensors | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | $2.50 | $5.00 |
 | **TOTAL** | **Per Unit Hardware Cost** | | | **$59.30** |
@@ -1722,7 +1722,7 @@ Well Depth Sounder (Legal & Hydrological Defense): A Vented 316-Stainless Steel
 
 Pressure Transducer (0-100m) from Dwyer, dropped down the well casing via a 300ft
 
-vented PVC tube.
+vented HDPE SDR9 tube.
 
 Vented Technology: The "vented" cable allows the sensor to automatically compensate
 
@@ -1831,7 +1831,7 @@ Diagnosis 400A Split-Core CT Clamps (x3) Magnelab (SCT-1250) $110.00 $110.00
 
 Hydrology Submersible Depth Sounder (SS) Dwyer (PBLTX-Vented) $185.00 $185.00
 
-Hydrology Vented Tubing (300ft roll) Dwyer (Tubing-PVC) $45.00 $45.00
+Hydrology Vented Tubing (300ft roll) Dwyer (Tubing-HDPE SDR9) $45.00 $45.00
 
 Pressure 200 PSI SS Line Transducer TE Conn (1/4" NPT) $70.00 $70.00
 
@@ -2005,11 +2005,11 @@ As the primary field-level high-fidelity subsurface data logger, the Vertical Fi
 
 The VFA housing has been radically re-engineered using a dual-cylinder architecture designed to completely isolate external structural loads from the delicate internal electronics.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" Schedule 40 UV-Stabilized Rigid PVC (Inside Diameter: 2.067\" / 52.5mm). By utilizing an exact 4-foot (48-inch) cut, the outer 2\" pipe sits completely flush with the soil surface. This rigid shell stays in the ground over the winter, resisting sub-zero frost-shatter and deep soil compaction warping.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2\" HDPE SDR9 (High-Albedo White) (Inside Diameter: 2.067\" / 52.5mm). By utilizing an exact 4-foot (48-inch) cut, the outer 2\" pipe sits completely flush with the soil surface. This rigid shell stays in the ground over the winter, resisting sub-zero frost-shatter and deep soil compaction warping.
 * **Low-Profile Antenna Mount**: The removable C&C Cap mounts a 3-foot SS-304 stainless steel whip antenna directly to its base via a heavy-duty spring. This gives the VFA an exact 3-foot profile above the soil, minimizing collision risk with tractor booms while remaining highly visible to the elevated PMT hub overhead.
-* **Friction Molded Tapered Drive Tip**: The outer shell is sealed with a Custom PVC Tapered Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the 48-inch PVC pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise final shape.
-* **The Removable Internal Sled**: The core internal structure is a 48-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CPVC** designed to prevent long-axis bowing. This sled acts as a robust internal spine, clamping the 48U sequence of modular cartridges.
-* **The Seasonal Climate (+5 psi Defense)**: Upon seasonal insertion, Viton (FKM) 2\" O-rings seal the CPVC sled against the PVC shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen, creating an inert, zero-humidity environment that acts as an active defense against micro-fractures and groundwater ingress.
+* **Friction Molded Tapered Drive Tip**: The outer shell is sealed with a Custom HDPE SDR9 Tapered Driving Tip. To ensure extreme accuracy and a permanent monolithic weld, the tip is **friction molded**: the 48-inch HDPE SDR9 pipe is spun at extremely high speeds while being pressed slowly into a tapered mold, heating and melting the plastic into its precise final shape.
+* **The Removable Internal Sled**: The core internal structure is a 48-Inch 50mm Co-Extruded Alpha-Sled constructed of **Rigid CHDPE SDR9** designed to prevent long-axis bowing. This sled acts as a robust internal spine, clamping the 48U sequence of modular cartridges.
+* **The Seasonal Climate (+5 psi Defense)**: Upon seasonal insertion, Viton (FKM) 2\" O-rings seal the CHDPE SDR9 sled against the HDPE SDR9 shell walls. The internal cavity is flushed and pressurized to +5 psi with Dry Nitrogen, creating an inert, zero-humidity environment that acts as an active defense against micro-fractures and groundwater ingress.
 
 ## 2. Custom Relay Logic & Encryption (The Hub Pipeline)
 
@@ -2021,7 +2021,7 @@ By stripping the VFA down to pure routing and encryption functions, we have inte
 
 ## 3. The "Proxy Method" Sensor Array (48-Inch / 48U Sequence)
 
-The VFA employs advanced non-contact sensing, shooting high-frequency dielectric fields directly through the removable 50mm CPVC sled wall, across the nitrogen gap, and straight through the electromagnetically transparent permanent PVC shell.
+The VFA employs advanced non-contact sensing, shooting high-frequency dielectric fields directly through the removable 50mm CHDPE SDR9 sled wall, across the nitrogen gap, and straight through the electromagnetically transparent permanent HDPE SDR9 shell.
 
 **Locked 48U Physical Stack Sequence**:
 
@@ -2046,23 +2046,23 @@ The VFA employs advanced non-contact sensing, shooting high-frequency dielectric
 
 **The Post-Planting "Rapid Deployment" & Harvest Extraction**:
 
-1. **Post-Planting Insertion**: Sensor sleds are dropped into the pre-located permanent PVC shells, locked, and pressurized in under 15 minutes.
+1. **Post-Planting Insertion**: Sensor sleds are dropped into the pre-located permanent HDPE SDR9 shells, locked, and pressurized in under 15 minutes.
 2. **Harvest Extraction**: Prior to harvest, crews pull the C&C caps, extract the sleds for warehouse charging, and cap the shells with blanking plugs.
 
 ## 5. Hyper-Granular OEM Scale BOM (1,280 Unit Tier)
 
 | Category | Component Detail | Supplier / Scale Method | Unit Cost | Ext. Cost |
 | :--- | :--- | :--- | :--- | :--- |
-| Housing | 2\" SCH 40 UV-Stabilized PVC (4ft) | Direct Extruder | $3.25 | $3.25 |
-| Housing | Friction Molded PVC Tapered Tip | Rotational Formed | $3.50 | $3.50 |
+| Housing | 2\" SCH 40 UV-Stabilized HDPE SDR9 (4ft) | Direct Extruder | $3.25 | $3.25 |
+| Housing | Friction Molded HDPE SDR9 Tapered Tip | Rotational Formed | $3.50 | $3.50 |
 | Antenna | 3ft SS-304 Whip + Spring | Hub-Mount Pultruded | $3.50 | $3.50 |
-| Adhesive | Industrial PVC Cement | Automated Bulk | $0.50 | $0.50 |
+| Adhesive | Industrial HDPE SDR9 Cement | Automated Bulk | $0.50 | $0.50 |
 | Computing| nRF52840 \"Routing\" Board | Tier-1 PCBA | $8.50 | $8.50 |
 | Seals | Viton (FKM) 2\" O-Rings (x2) | Bulk Supplier | $1.20 | $2.40 |
 | Purge | Dry Nitrogen Gas Shell Fill | Automated Assembly | $0.15 | $0.15 |
 | Climate | 1U Stamped Desiccant Matrix | Bulk Supply | $1.50 | $1.50 |
-| Structure| 48\" CPVC AlphaSled Chassis | Continuous Extrusion | $3.75 | $3.75 |
-| Structure| Extruded Rigid CPVC Spacers(22U)| Recycled Bulk | $0.35 | $0.35 |
+| Structure| 48\" CHDPE SDR9 AlphaSled Chassis | Continuous Extrusion | $3.75 | $3.75 |
+| Structure| Extruded Rigid CHDPE SDR9 Spacers(22U)| Recycled Bulk | $0.35 | $0.35 |
 | Power | 4U Battery Cartridges (21700x3) | Direct Cell Sourcing | $16.75 | $83.75 |
 | Sensors | 1U Adv Sensor (NPK/EC/pH) | Fab-Direct Assembly | $14.00 | $42.00 |
 | Sensors | 1U Basic Sensor (VWC/Temp) | Fab-Direct Assembly | $2.50 | $5.00 |
@@ -2575,9 +2575,10 @@ Relying entirely on external backhauls in rural zones creates unacceptable vulne
 
 Sensors and actuators deployed below and above ground across field zones. Equipment strictly utilizes UV-shielded (fluoropolymer coated) Polycarbonate due to altitude degradation risks and requires Hybrid Pulse Capacitors (HPC) for extreme-cold \-30°F survivability.
 
-* **Vertical Field Anchors (VFA) [Level 1 - Advanced Peer Node]:** The 48-inch deep-profile central ground-truth soil node. Downgraded from a routing hub to a highly efficient peer, it uses a flush 3-foot antenna to transmit 128-bit encrypted FHSS payload data directly to the elevated PMT.
-* **Lateral Root-Zone Scout (LRZ) [Level 1 - Spatial Mapper]:** Mass-produced "dumb nodes" deployed at a 1:15-acre density. Utilizes high-frequency Frequency-Hopping Spread Spectrum (FHSS) chirps, providing inherent Low Probability of Intercept/Detection (LPI/LPD) features natively desirable under Federal architectures. Enclosures feature 50mm non-contact capacitive telemetry fields.
-* **Pressure & Flow Anchor (PFA) [Sentry of the Source]:** Mounts at the wellhead, monitoring vibration torque ripple, cavitation, and bearing wear via 400A CT Clamps. Runs NXP Cortex-M7 edge processors preparing to process Current Harmonic Analysis signatures. Uses 2.4GHz High-Gain links to bounce data to the elevated PMT, safely bypassing canopy interference.
+* **Vertical Field Anchors (VFA) [Level 1 - Foundation]:** The 48-inch deep-profile static subsurface anchor. Redefined as a **Dumb Node** utilizing the seasonal Sled/Shell design, it focuses on high-fidelity vertical data collection for the elevated PMT.
+* **Lateral Root-Zone Reference (LRZ2) [Level 1 - Reference]:** High-density **Dumb Node** Surveyors deployed at a 1:15-acre density. Utilizes the seasonal Sled/Shell design for spatial variability mapping.
+* **Lateral Root-Zone Truth (LRZ1) [Level 1 - Truth Node]:** The primary physical verification anchor. Unlike the Foundation/Reference nodes, the LRZ1 is a **Monolithic, single-depth unit** designed for permanent spatial grounding.
+* **Pressure & Flow Anchor (PFA) [Level 1 - Sentry of the Source]:** Mounts at the wellhead and pivot station. A **Non-invasive** monitor of vibration torque ripple, cavitation, and line pressure. Acts as the primary safety actuator (Soft-Stop) for the infrastructure.
 * **Pivot Motion Trackers (PMT) [Level 1.5 - Field Hub & Edge-EBK Engine]:** The command center and Nervous System of the field, mounted 10-15 feet high on the pivot span.
   * **RF Umbrella:** Receives 900MHz FHSS chirps from the VFA/LRZs and 2.4GHz payloads from the PFA, bundling the entire field state into a single ~187-byte AES-256 payload and blasting it to the DHU via 900MHz LoRaWAN.
   * **Sensors:** Generates +/- 1% flow accuracy non-invasively using Badger Meter ultrasonic transit-time components. Contains u-blox ZED-F9P RTK GNSS modules for sub-2.5m horizontal spatial resolution and Bosch BNO055 9-Axis IMUs for vibration harmonics.
@@ -3199,7 +3200,7 @@ See `file 'farmsenseOS/DEPENDENCY_REDUCTION.0md'` for full plan.
 
 | Device | Level | Role | Density |
 |--------|-------|------|---------|
-| **LRZ** (Lateral Root-Zone Scout) | 1 | Dumb spatial mapper | 1 per 15 acres |
+| **LRZ** (Lateral Root-Zone Surveyor) | 1 | Dumb spatial mapper | 1 per 15 acres |
 | **VFA** (Vertical Field Anchor) | 1 | 48" deep-profile truth node | 1 per field |
 | **PFA** (Pressure & Flow Anchor) | Sentry | Wellhead pump telemetry | 1 per wellhead |
 | **PMT** (Pivot Motion Tracker) | 1.5 | Field hub, edge-EBK engine | 1 per pivot |
@@ -3260,7 +3261,7 @@ farmsense-code/frontend/
 
 ```
 specifications/
-├── Master Specification: Lateral Root-Zone Scout (LRZ) V1.21.md
+├── Master Specification: Lateral Root-Zone Surveyor (LRZ) V1.21.md
 ├── Master Specification: Vertical Field Anchor (VFA) V1.21.md
 ├── Master Specification: Pressure & Flow Anchor (PFA) V1.9.md
 ├── Master Specification: Pivot Motion Tracker (PMT) V1.6.md
@@ -3411,7 +3412,7 @@ reference/
 * 2x PMT (Pivot Motion Tracker)
 * 2x PFA (Pressure & Flow Anchor)
 * 2x VFA (Vertical Field Anchor)
-* 16-20x LRZ (Lateral Root-Zone Scout)
+* 16-20x LRZ (Lateral Root-Zone Surveyor)
 
 **Total Investment**: $5,382,940 (for Subdistrict 1: 19,466 devices)
 
@@ -6060,7 +6061,7 @@ Unlike traditional static IoT networks, FarmSense pushes intense computational p
 
 1. **[Pivot Motion Tracker (PMT) Firmware Specification](../specifications/firmware/PMT_Firmware_Spec.md):** The autonomous Level 1.5 Field Hub. Details the continuous execution of the 50m Empirical Bayesian Kriging (Edge-EBK) matrix and the "Fisherman's Attention" update scaling.
 2. **[Vertical Field Anchor (VFA) Firmware Specification](../specifications/firmware/VFA_Firmware_Spec.md):** The Level 1 Advanced Peer Node. Details the deep-profile ground truth telemetry generation processes and 900MHz FHSS routing.
-3. **[Lateral Root-Zone Scout (LRZ) Firmware Specification](../specifications/firmware/LRZ_Firmware_Spec.md):** The mass-produced "dumb node." Details the LPI/LPD capacitive telemetry sweeps and high-frequency chirp protocols.
+3. **[Lateral Root-Zone Surveyor (LRZ) Firmware Specification](../specifications/firmware/LRZ_Firmware_Spec.md):** The mass-produced "dumb node." Details the LPI/LPD capacitive telemetry sweeps and high-frequency chirp protocols.
 4. **[Pressure & Flow Anchor (PFA) Firmware Specification](../specifications/firmware/PFA_Firmware_Spec.md):** The "Sentry of the Source." Details the Cortex-M7 Current Harmonic Analysis of the wellhead motor, cavitation detection, and 2.4GHz High-Gain linking.
 5. **[Corner-Swing Auditor (CSA) Firmware Specification](../specifications/firmware/CSA_Firmware_Spec.md):** Details the dual-node kinematics required to resolve swing-arm transit and overlap matrices.
 
@@ -7639,11 +7640,11 @@ The core firmware challenge for the CSA is resolving the physical folding geomet
 
 <div style="page-break-after: always;"></div>
 
-# Lateral Root-Zone Scout (LRZ) Firmware Specification
+# Lateral Root-Zone Surveyor (LRZ) Firmware Specification
 
 ## Overview
 
-The Lateral Root-Zone Scout (LRZ) is the ultimate **Level 1 Spatial Mapper**. It is the heavily mass-produced, expendable "dumb node" deployed at a 1:15-acre density across the crop canopy. Its sole firmware objective is executing micro-power telemetry chirps.
+The Lateral Root-Zone Surveyor (LRZ) is the ultimate **Level 1 Spatial Mapper**. It is the heavily mass-produced, expendable "dumb node" deployed at a 1:15-acre density across the crop canopy. Its sole firmware objective is executing micro-power telemetry chirps.
 
 ## 1. Hardware Initialization Routine
 

@@ -155,9 +155,9 @@ The engine shifts monitoring intensity based on real-time risk:
 - **Logic:** Detects cavitation/bearing wear before catastrophic failure.
 - **Power:** 3.6V Saft LS14500 with Hybrid Pulse Capacitor (HPC).
 
-### **5.4 LRZ: Lateral Root-Zone Scout (Mass Spatial Node)**
+### **5.4 LRZ: Lateral Root-Zone Surveyor (Mass Spatial Node)**
 
-- **Design:** \"Invisible Presence\" physical housing. Permanent PVC shell;Seasonal Electronic Alpha-Sled.
+- **Design:** \"Invisible Presence\" physical housing. Permanent HDPE SDR9 shell;Seasonal Electronic Alpha-Sled.
 - **Protocol:** LR-FHSS (Frequency-Hopping Spread Spectrum) "Dumb Chirp".
 - **Unit Cost:** **$67.80** (Industrial Scale target).
 
@@ -204,7 +204,7 @@ The engine shifts monitoring intensity based on real-time risk:
 ### **8.1 Defense Alignment (Federal/ARPA-E)**
 
 - **LPI/LPD Positioning:** The FHSS radio stack provides "Low Probability of Intercept" for contested environments.
-- **Ballistic-grade Penetrators:** The LRZ's PVC housing is air-drop capable for rapid UGS (Unattended Ground Sensor) deployment.
+- **Ballistic-grade Penetrators:** The LRZ's HDPE SDR9 housing is air-drop capable for rapid UGS (Unattended Ground Sensor) deployment.
 
 ### **8.2 Global Philanthropy (Gates Foundation)**
 

@@ -14,7 +14,7 @@ The system operates across a **Heterogeneous Tiered Architecture**, where each l
 
 ### Key Philosophical Pillars
 
-1. **The "Truth" Node Mandate**: Every field has exactly **two VFAs** (Vertical Field Anchors) acting as the absolute calibration anchors for a stratified grid of LRZ (Lateral Root-Zone) scouts. These are placed at the **Hydraulic Extremes** (Driest vs. Wettest zones). 4x LRZ2 scouts provide deep lateral mapping, while 12x LRZ1 "Disposable Markers" verify the resulting virtual sensor grid.
+1. **The Hierarchy Matrix**: Every field has exactly **two VFAs** (Foundation) acting as the static anchors, **4x LRZ2** (Reference) for deep lateral mapping, and **12x LRZ1** (Truth) monolithic nodes for verifying the resulting virtual sensor grid.
 2. **The Control Tiers (VRI)**: Irrigation application is tiered logically. From **Tier 1 (Speed-VRI)** using the PMT, to **Tier 2 (Section-VRI)** using Smart Section Nodes (SSN), to the ultimate **Tier 3 (Grid-VRI)** using Integrated Smart Nozzles (ISN) for 1m-pixel precision.
 3. **Cut-Less & Conversion Kits**: While the **"Grid-Flow" Custom Pivot** offers factory-integrated VRI, our modular **Conversion Kits** allow existing hardware to be retrofitted with SSN and ISN layers in under 4 hours per pivot.
 4. **Seasonal Sled Extraction**: (Standard nodes only) High-value electronics are extracted post-season. ISNs and SSNs are designed for year-round persistence (IP69K/NEMA 4X) but support modular component swaps.
@@ -122,14 +122,14 @@ The Field Layer consists of specialized nodes designed for high-density spatial 
 
 ### 4.1 Vertical Field Anchor (VFA) V1.21
 
-**Role**: The solitary "Truth" node per field.
+**Role**: Level 1 Sub-surface "Truth" Node.
 **Network Structure**: Reported to the **PMT Primary Aggregator**.
 
 #### 4.1.1 Structural Architecture
 
 The VFA utilizes a **Dual-Cylinder Isolation Strategy**.
 
-* **Outer Shell**: 2\" Schedule 40 UV-Stabilized Rigid PVC (48-inch length). Remains buried year-round to preserve the spatial baseline.
+* **Outer Shell**: 2\" HDPE SDR9 (High-Albedo White) (48-inch length). Remains buried year-round to preserve the spatial baseline.
 * **Internal Sled**: 50mm Alpha-Sled co-extrusion. Houses the 48U modular cartridge sequence.
 * **Sealing**: Viton (FKM) O-rings + Nitrogen (+5 psi) active defense.
 
@@ -148,7 +148,7 @@ The VFA uses a modular "Unit" (1U) system to define sensor depth and battery cap
 
 The VFA utilizes **Non-Contact Dielectric Sensing**.
 
-* **Mechanism**: High-frequency (~100MHz) electromagnetic fields are projected through the CPVC Sled wall and the PVC shell.
+* **Mechanism**: High-frequency (~100MHz) electromagnetic fields are projected through the CHDPE SDR9 Sled wall and the HDPE SDR9 shell.
 * **Calibration**: Remotely calibrated by the RSS RDC Compute using Bayesian priors. No manual field calibration is required.
 
 #### 4.1.4 Firmware Logic & Interrupt Handling
@@ -161,14 +161,14 @@ The VFA runs a Real-Time Operating System (RTOS) designed for high-availability 
 
 #### 4.1.5 Sub-Component Manufacturing Details
 
-* **PVC Shell Extrusion**: Tolerance of ±0.005\" to ensure precise dielectric gap consistency and extreme rigidity against compaction.
+* **HDPE SDR9 Shell Extrusion**: Tolerance of ±0.005\" to ensure precise dielectric gap consistency and extreme rigidity against compaction.
 * **Nitrogen Manifold**: Chemically-etched 316-SS ports with double Viton redundancy.
 * **Driving Tip Metallurgy**: Zinc-plated friction-formed alloy (A5-H8 Hardness) to prevent oxidation in high-alkali soil.
 
-### 4.2 Lateral Root-Zone Scout (LRZ) V1.21
+### 4.2 Lateral Root-Zone Surveyor (LRZ) V1.21
 
-**Role**: High-density "Scout" node for spatial variability.
-**Density**: 4 units per 140-160 acre field (2:4:12 Stereo: LRZ2 Scout tier) plus 12 units per 140-160 acre field (LRZ1 Grounding Raster).
+**Role**: High-density "Surveyor" node for spatial variability.
+**Density**: 4 units per 140-160 acre field (2:4:12 Stereo: LRZ2 Surveyor tier) plus 12 units per 140-160 acre field (LRZ1 Grounding Raster).
 
 #### 4.2.1 Edge Logic & Chirp Protocol
 
@@ -194,7 +194,7 @@ The LRZ uses a truncated Alpha-Sled designed for shallow root-zone monitoring:
 The LRZ utilizes a "Fringe Field" approach for non-contact measurement:
 
 * **Excitation Frequency**: 80MHz Oscillator.
-* **Dielectric Barrier**: PVC 2" Shell + 2mm Nitrogen Gap.
+* **Dielectric Barrier**: HDPE SDR9 Shell + 2mm Nitrogen Gap.
 * **Calibration Matrix**: 5-point factory curve mapped against SLV Soil Series 101-B.
 
 #### 4.2.4 Airborne Ballistic-grade Penetrator Variant (AKP-LRZ)
@@ -207,8 +207,8 @@ The AKP-LRZ is a specialized tactical and emergency-deployment variant of the st
 
 ### 4.3 Pressure & Flow Anchor (PFA) V1.9
 
-**Role**: Well Sentry and Safety Actuator.
-**Integration**: Non-invasive (Cut-Less).
+**Role**: Layer 1 "Sentry of the Source" and Safety Actuator.
+**Integration**: Non-invasive (Cut-Less) Wellhead/Pivot mounting.
 
 #### 4.3.1 Sensing Array
 
@@ -457,7 +457,7 @@ Used for high-precision timing of current sampling across the 3-phase motor lead
 
 ### 8.3 Chemical Resistance & Soil Integrity (SLV Series)
 
-The PVC Shells and Polycarbonate Enclosures are rated for:
+The HDPE SDR9 Shells and Polycarbonate Enclosures are rated for:
 
 * **Sulfonated Alkali Resistance**: 1,000 hours exposure to SLV-native sulfate concentrations.
 * **UV Retention**: 92% structural integrity after 100,000 hours of high-altitude solar exposure.
@@ -570,7 +570,7 @@ The VFA "Multi-Depth" sequence uses a proprietary I2C bridge for the dielectric 
 | **PCBA** | nRF52840 Mainboard | 1 | $6.50 | $6.50 | Nordic-FS-V1.2 | 8 Weeks |
 | **Dielectric Unit** | Proprietary 5-Unit Stack | 5 | $10.00 | $50.00 | FS-DE-48U | 12 Weeks |
 | **Battery** | 21700 Li-ion Cartridge | 5 | $16.75 | $83.75 | 21700-LFP | 6 Weeks |
-| **Rigid PVC Tube** | 2\" x 48\" Sch 40 UV-Stabilized | 1 | $2.50 | $2.50 | JM-602-UV | 2 Weeks |
+| **HDPE SDR9 Shell** | 2\" x 48\" HDPE SDR9 | 1 | $2.50 | $2.50 | FS-HDPE-48 | 2 Weeks |
 | **Driving Tip** | Friction-Formed Alloy | 1 | $4.25 | $4.25 | FS-TIP-H8 | 4 Weeks |
 | **Seal Kit** | Viton O-Rings + Nitrogen Port | 1 | $0.80 | $0.80 | FS-SEAL-V1 | 3 Weeks |
 
@@ -626,7 +626,7 @@ The PFA monitors pump health by sampling the 480V/3-Phase incoming line via spli
 
 ---
 
-### 11.6 Lateral Root-Zone Scout (LRZ) V1.21 - Technical Pulse
+### 11.6 Lateral Root-Zone Surveyor (LRZ) V1.21 - Technical Pulse
 
 #### Total Unit Cost: $51.50
 
@@ -648,8 +648,8 @@ The LRZ is a cost-optimized variant of the VFA, designed for massive spatial den
 | **PCBA** | nRF52840 Embedded Sled | 1 | $12.50 | $12.50 | Nordic-FS-V1.0 | 8 Weeks |
 | **Logic Board** | Proprietary 18U PCBA | 1 | $8.00 | $8.00 | FS-LRZ-18U | 12 Weeks |
 | **Battery** | LiFePO4 18650 (1.5Ah) Cell | 2 | $6.50 | $13.00 | LFP-18650-1500 | 6 Weeks |
-| **Rigid PVC Tube** | 2\" x 18\" Sch 40 UV-Stabilized | 1 | $1.20 | $1.20 | JM-602-18 | 2 Weeks |
-| **Driving Tip** | Friction-Molded PVC Tip | 1 | $3.50 | $3.50 | FS-TIP-PVC | 4 Weeks |
+| **HDPE SDR9 Shell** | 2\" x 18\" HDPE SDR9 | 1 | $1.20 | $1.20 | FS-HDPE-18 | 2 Weeks |
+| **Driving Tip** | Friction-Molded HDPE Tip | 1 | $3.50 | $3.50 | FS-TIP-HDPE | 4 Weeks |
 | **Seal Kit** | Viton O-Rings + Cap | 1 | $4.80 | $4.80 | FS-SEAL-V0 | 3 Weeks |
 | **Nitrogen Port** | Mini-Check Valve (316-SS) | 1 | $10.00 | $10.00 | Swagelok-SS-CHK | 3 Weeks |
 
@@ -729,10 +729,10 @@ This section details the procurement logic and unit costs for a standard Subdist
 | **LoRa Transceiver** | Semtech SX1262 | Included | Included |
 | **Dielectric Sensors** | Proprietary Fab-Direct | $50.00 (x5) | $4.00 (x2) |
 | **Battery Stack** | 21700 Li-ion Cartridge | $83.75 (x5) | $33.50 (x2) |
-| **Enclosure (Shell)** | UV-PVC Shell (18" to 48") | $3.25 | $0.85 |
-| **Mounting (Tip)** | PVC Tapered Tip | $3.50 | $1.20 |
+| **Enclosure (Shell)** | UV-HDPE SDR9 Shell (18" to 48") | $3.25 | $0.85 |
+| **Mounting (Tip)** | HDPE SDR9 Tapered Tip | $3.50 | $1.20 |
 | **Antenna** | 3ft SS-304 Whip | $3.50 | $3.50 |
-| **Other Struct./Seals** | CPVC/Seals/Desiccant | $7.70 | $11.75 |
+| **Other Struct./Seals** | CHDPE SDR9/Seals/Desiccant | $7.70 | $11.75 |
 | **TOTAL UNIT COST** | | **$159.65** | **$59.30** |
 
 ### 7.2 Tier 1.5: Kinematic & Audit Nodes (PMT, PFA, CSA)
@@ -799,7 +799,7 @@ To achieve the $4.6M CAPEX target, FarmSense utilizes a tiered sourcing model:
 
 ### 15.2 Alkali Corrosion Defense
 
-* **Rigid PVC Shells**: Selected for extreme rigidity against soil compaction and total electromagnetic transparency for capacitive sensors.
+* **Rigid HDPE SDR9 Shells**: Selected for extreme rigidity against soil compaction and total electromagnetic transparency for capacitive sensors.
 * **SS-304/316 Hardware**: Mandatory for all external fasteners to prevent galvanic corrosion at the pump-house interface.
 
 ## 17. Power & Thermal Lifecycle Analysis
@@ -838,7 +838,7 @@ To prevent "Flood-Spoofing," the DHU performs PBFT consensus on all pump stops:
 
 ### 18.1 Sled Hospital Intake Checklist (SOP-09)
 
-* **Physical**: Inspect for Viton seal rolling or PVC fracturing/bowing.
+* **Physical**: Inspect for Viton seal rolling or HDPE SDR9 fracturing/bowing.
 * **Electronic**: Execute `fs-diag --full` to verify 32MHz TCXO drift is < 0.5ppm.
 * **Hydraulic**: Badger Meter TFX-5000 re-zeroing against calibrated RSS bypass loop.
 

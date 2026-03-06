@@ -1,6 +1,6 @@
 import logging
 import uuid
-from datetime import datetime, timeZone
+from datetime import datetime, timezone
 from typing import Dict, Any, List
 import xml.etree.ElementTree as ET
 
@@ -32,7 +32,7 @@ class JADC2Adapter:
         duty_cycle_pct = 0.5 + (int(hop_hash[4:6], 16) % 20) / 10.0 # 0.5% to 2.5% duty cycle (burst chirps)
         
         return {
-            "fhss_status": "VERIFIED_ACTIVE",
+            "fhss_hopping": "active",
             "hop_rate_hz": f"{hop_rate_hz}",
             "tx_power_dbm": f"{tx_power_dbm}",
             "duty_cycle_pct": f"{duty_cycle_pct:.2f}",
@@ -46,8 +46,8 @@ class JADC2Adapter:
         CoT Type: a-f-G-E-O (Atom-Friendly-Ground-Equipment-Other/Environmental)
         """
         try:
-            now = datetime.now(timeZone.utc)
-            stale = datetime.fromtimestamp(now.timestamp() + 3600, timeZone.utc) # 1 hour validity
+            now = datetime.now(timezone.utc)
+            stale = datetime.fromtimestamp(now.timestamp() + 3600, timezone.utc) # 1 hour validity
 
             event_id = f"FS-{grid_point.get('field_id', 'unknown')}-{grid_point.get('grid_id', 'unknown')}"
             

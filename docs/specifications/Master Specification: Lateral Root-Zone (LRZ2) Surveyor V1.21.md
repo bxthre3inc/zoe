@@ -1,8 +1,8 @@
-# Master Specification: Lateral Root-Zone (LRZ2) Modular Scout V1.21
+# Master Specification: Lateral Root-Zone (LRZ2) Surveyor V1.21
 
-**Role**: Level 1 "Scout" Node | **Network Density**: 4 units per 140-160 acre Field (2:4:12 Stereo Standard)
+**Role**: Layer 1 Lateral Root-Zone **Reference** | **Network Density**: 4 units per 140-160 acre Field (2:4:12 Stereo Standard)
 
-While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Truth" node for an entire field, the Lateral Root-Zone Scout (LRZ2) serves as the high-density "Spatial Mapper" of the FarmSense network. Deployed at a density of 5 units per 150-acre field, these mass-produced "Scout" nodes provide the granular moisture and temperature counts required to translate field-wide trends into sub-meter soil variability maps.
+The Lateral Root-Zone **Reference** (LRZ2) serves as the high-density spatial mapper of the FarmSense network. Deployed at a density of 5 units per 150-acre field, these mass-produced **Dumb Node** Surveyors provide the granular moisture and temperature counts required to translate field-wide trends into sub-meter soil variability maps.
  They do not process complex Worksheets or execute localized Bayesian math. They do not carry on-board GPS; instead, they are "Pinned" to the regional map by the PMT's RTK-GNSS anchor as it transits the field. This "Pin Mapping" ensures that every moisture data point is accurately geofenced with sub-meter precision. Their sole operational imperative is to capture raw dielectric and electrical conductivity (EC) counts across their specific zone, encrypt them, and "chirp" them back to the **PMT Field Aggregator** anchored on the pivot. This massive density of spatial data is what ultimately powers the FarmSense UI and **Command & Control (C&C)** logic—allowing the system to mathematically transition from the Free (50m) and Basic (20m) tiers to the highly lucrative Pro (10m) and Enterprise (1m) resolution "pops."
 
 **The Seasonal Deployment Model**: To protect the LRZ's internal electronics and guarantee a 10-year hardware lifecycle, FarmSense utilizes a two-phase seasonal deployment strategy. The outer structural shells act as ultra-cheap, geo-located permanent docking stations that remain buried in the field year-round. The internal, highly sensitive sensor sleds are dropped into these shells after spring planting and physically extracted just prior to harvest. This workflow entirely eliminates the risk of deep-freeze winter battery degradation while perfectly preserving the exact physical/spatial baseline required by the **RSS RDC Compute**. By maintaining this permanent sub-surface coordinate, the Oracle engine can flawlessly integrate the seasonal LRZ telemetry with the static **Soil Variability Maps** during the 1m Kriging generation.
@@ -11,7 +11,7 @@ While the Vertical Field Anchor (VFA) serves as the singular high-fidelity "Trut
 
 The LRZ housing is engineered for an "Invisible Presence"—a ruggedized subterranean deployment capable of withstanding the extreme mechanical stresses of 4WD tractor passes and repetitive deep-soil compaction cycles common in potato-barley rotations.
 
-* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" Schedule 40 UV-White HDPE. Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface.
+* **The Outer Shell (The Docking Station)**: Constructed from Standard 2" HDPE SDR9 (High-Albedo White). Cut precisely to 18 inches to perfectly match the internal 18U sled, this shell sits perfectly flush with the soil surface.
 * **Material Science**: White HDPE was selected specifically for its high albedo (thermal reflection) to prevent internal components from baking during surface exposure. HDPE is also chemically inert to the sulfur-rich SLV alkali soils.
 * **Installation Efficiency**: By keeping the shell at exactly 18 inches, the hydraulic auger crews only need to drill a shallow pilot hole, exponentially speeding up installation.
 * **15-Degree Tapered Driving Tip (Compaction-Fit)**: The 18-inch outer shell is chemically fused to a Custom HDPE Driving Tip featuring a precise 15-degree taper, eliminating air gaps that corrupt moisture readings.
@@ -70,7 +70,7 @@ Like the VFA, the LRZ employs the advanced "Proxy Method" of non-contact sensing
 | **Computing** | **ASR6601 LoRa SoC (Integrated)** | FS-ASR-V1.0 | 8 Weeks | $4.00 |
 | **PCBA** | Optimized 18U PCBA (Fixed-Function) | FS-LRZ2-18U | 12 Weeks | $4.95 |
 | **Climate** | 1U Stamped Desiccant Matrix | Bulk Supply | 1 Week | $1.50 |
-| **Structure** | Schedule 80 UV-PVC Shell | FS-Custom-18U | 2 Weeks | $4.25 |
+| **Structure** | HDPE SDR9 Structural Shell | FS-Custom-18U | 2 Weeks | $4.25 |
 | **Basic Sensor** | 1U Basic Sensor (VWC/Temp) (x2) | Fab-Direct Assembly | 4 Weeks | $8.00 |
 | **TOTAL** | **Per Unit Hardware Cost (Absolute OEM Scale)** | | | **$54.30** |
 
