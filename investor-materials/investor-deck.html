@@ -20,6 +20,7 @@
         .cover-metric { text-align: center; }
         .cover-metric-value { font-size: 48px; font-weight: 700; color: #00d4aa; }
         .cover-metric-label { font-size: 16px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+        .traction-banner { position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%); background: rgba(0,212,170,0.15); border: 1px solid rgba(0,212,170,0.3); padding: 16px 32px; border-radius: 8px; font-size: 16px; color: #00d4aa; }
         .content { padding: 80px 100px; background: linear-gradient(180deg, #0a0a0a 0%, #111 100%); }
         .slide-header { margin-bottom: 50px; }
         .slide-number { font-size: 14px; color: #00d4aa; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
@@ -45,6 +46,22 @@
         .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
         .progress-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
         .progress-fill { height: 100%; background: linear-gradient(90deg, #00d4aa, #00a884); border-radius: 4px; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px; }
+        .team-member { text-align: center; }
+        .team-avatar { width: 120px; height: 120px; background: linear-gradient(135deg, #1a1a2e, #0f3460); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+        .team-name { font-size: 22px; font-weight: 600; margin-bottom: 5px; }
+        .team-role { font-size: 14px; color: #00d4aa; margin-bottom: 10px; }
+        .team-bio { font-size: 14px; color: #888; max-width: 300px; margin: 0 auto; }
+        .comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 30px; }
+        .comp-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; }
+        .comp-card h4 { font-size: 18px; margin-bottom: 10px; color: #fff; }
+        .comp-card .tag { display: inline-block; background: rgba(255,100,100,0.2); color: #ff6464; padding: 4px 12px; border-radius: 4px; font-size: 12px; margin-bottom: 10px; }
+        .comp-card .tag.good { background: rgba(0,212,170,0.2); color: #00d4aa; }
+        .comp-card p { font-size: 14px; color: #888; }
+        .patent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .patent-item { background: rgba(0,212,170,0.05); border: 1px solid rgba(0,212,170,0.2); border-radius: 8px; padding: 20px; text-align: center; }
+        .patent-number { font-size: 24px; font-weight: 700; color: #00d4aa; }
+        .patent-label { font-size: 12px; color: #888; margin-top: 5px; }
         .final { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%); justify-content: center; align-items: center; text-align: center; }
         .final-cta { font-size: 64px; font-weight: 800; margin-bottom: 40px; }
         .final-subtitle { font-size: 28px; color: #aaa; max-width: 1000px; line-height: 1.5; }
@@ -55,11 +72,17 @@
         .final-contact-label { font-size: 12px; color: #888; text-transform: uppercase; }
         .final-contact-value { font-size: 18px; color: #fff; }
         .big-number { font-size: 72px; font-weight: 800; color: #00d4aa; }
+        .crisis-box { background: linear-gradient(135deg, rgba(255,100,100,0.1), rgba(255,100,100,0.05)); border-left: 4px solid #ff6464; padding: 30px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+        .crisis-box h4 { color: #ff6464; margin-bottom: 10px; font-size: 20px; }
+        .risk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 30px; }
+        .risk-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 25px; }
+        .risk-card h4 { font-size: 18px; margin-bottom: 10px; color: #ff6464; }
+        .risk-card .mitigation { color: #00d4aa; font-size: 14px; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-<!-- Slide 1: Cover -->
+<!-- SLIDE 1: Cover -->
 <div class="slide cover">
     <div class="cover-badge">SEED ROUND</div>
     <div class="cover-logo">
@@ -69,8 +92,8 @@
     <div class="cover-subtitle">The Deterministic Farming Operating System</div>
     <div class="cover-metrics">
         <div class="cover-metric">
-            <div class="cover-metric-value">$100K</div>
-            <div class="cover-metric-label">Target Investment</div>
+            <div class="cover-metric-value">$25K</div>
+            <div class="cover-metric-label">Minimum to Launch</div>
         </div>
         <div class="cover-metric">
             <div class="cover-metric-value">$2M</div>
@@ -81,13 +104,192 @@
             <div class="cover-metric-label">Max Equity</div>
         </div>
     </div>
+    <div class="traction-banner">🎯 Water Court Trial: June 29, 2026 · CSU Pilot Active</div>
 </div>
 
-<!-- Slide 2: Financial Architecture -->
+<!-- SLIDE 2: The Problem -->
 <div class="slide content">
     <div class="slide-header">
-        <div class="slide-number">01 / Financial Architecture</div>
-        <div class="slide-title">$25K Minimum to Launch Pilot · $100K for 5% Equity</div>
+        <div class="slide-number">01 / The Problem</div>
+        <div class="slide-title">The $500/AF Existential Crisis</div>
+    </div>
+    <div class="slide-body">
+        <div class="card">
+            <h3>The Hydro-Economic Emergency</h3>
+            <div class="crisis-box">
+                <h4>San Luis Valley, Colorado</h4>
+                <p>89,000 acre-feet/year aquifer depletion. Reservoirs at 26% capacity. $500/acre-foot pumping fee — a 4x increase that threatens farm viability.</p>
+            </div>
+            <ul>
+                <li>300,000 acres irrigated agriculture at risk</li>
+                <li>1,280 center-pivot fields in Subdistrict 1 alone</li>
+                <li>1938 Rio Grande Compact compliance mandates</li>
+                <li>State Water Court requires empirical proof, not estimates</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>The Existing "Solutions" Fail</h3>
+            <ul>
+                <li><strong>Satellite-only:</strong> 10-30m resolution, 3-5 day latency, no ground truth</li>
+                <li><strong>AI black-boxes:</strong> Court-inadmissible, unexplainable decisions</li>
+                <li><strong>Manual monitoring:</strong> Labor-intensive, inconsistent, non-auditable</li>
+                <li><strong>Expensive precision Ag:</strong> $50K+ per field, prohibitive at scale</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>The Stakes</h3>
+            <div class="stats-grid" style="grid-template-columns: 1fr;">
+                <div class="stat-box">
+                    <div class="stat-value">$25,200</div>
+                    <div class="stat-label">Annual savings per 126-acre pivot at 20% reduction</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">$7.6M</div>
+                    <div class="stat-label">ARR potential in Subdistrict 1 alone</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">$810M</div>
+                    <div class="stat-label">Global 5% hardware requirement</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3: The Solution -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">02 / The Solution</div>
+        <div class="slide-title">The Digital Water Ledger</div>
+    </div>
+    <div class="slide-body">
+        <div class="card">
+            <h3>Deterministic, Not AI</h3>
+            <ul>
+                <li>Rule-based, explainable logic — not black-box ML</li>
+                <li>Every decision auditable and defensible in court</li>
+                <li>11 domain-specific engines for SPAC modeling</li>
+                <li>Continuous Cost-Benefit Analysis (CBA) per irrigation event</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Cryptographic Chain of Custody</h3>
+            <ul>
+                <li>AES-256 encrypted "Audit Packets" at edge</li>
+                <li>30-day "Black Box" cache for legal defensibility</li>
+                <li>AllianceChain PBFT blockchain for water trading</li>
+                <li>Immutable record for Water Court evidence</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Resolution Tiers</h3>
+            <div class="highlight-box">
+                <h4>Free → Enterprise Upsell</h4>
+                <p>50m (free) → 20m ($49/mo) → 10m ($199/mo) → 1m (Enterprise). The "Resolution Pop" UI converts technical curiosity into immediate upgrades during high-stress events.</p>
+            </div>
+            <ul>
+                <li>20-30% water reduction validated</li>
+                <li>18-22% ROI increase for farmers</li>
+                <li>&lt;5% Kriging error vs ground truth</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4: Technology & Moat -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">03 / Technology & Moat</div>
+        <div class="slide-title">29+ Patents · Deterministic Architecture · Dual-Use Ready</div>
+    </div>
+    <div class="slide-body-full">
+        <div class="patent-grid">
+            <div class="patent-item"><div class="patent-number">29+</div><div class="patent-label">Patents Filed</div></div>
+            <div class="patent-item"><div class="patent-number">11</div><div class="patent-label">Domain Engines</div></div>
+            <div class="patent-item"><div class="patent-number">AES-256</div><div class="patent-label">Edge Encryption</div></div>
+            <div class="patent-item"><div class="patent-number">&lt;5%</div><div class="patent-label">Kriging Error</div></div>
+        </div>
+        <div class="slide-body" style="margin-top: 40px;">
+            <div class="card">
+                <h3>Hardware Stack (Our Own)</h3>
+                <ul>
+                    <li>LRZ: Lateral Root-Zone Scout ($54 OEM)</li>
+                    <li>VFA: Vertical Field Anchor (48" deep truth)</li>
+                    <li>PMT: Pivot Motion Tracker (edge compute hub)</li>
+                    <li>PFA: Pressure & Flow Anchor (wellhead actuator)</li>
+                    <li>DHU/RSS: District/Regional mesh managers</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Decentralized Resilience</h3>
+                <ul>
+                    <li>Own cloud — not AWS/Azure dependent</li>
+                    <li>900MHz FHSS LoRa Mesh (LPI/LPD for DoD)</li>
+                    <li>Offline operation during backhaul failures</li>
+                    <li>JADC2 adapter for tactical trafficability</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Competitive Moat</h3>
+                <ul>
+                    <li>Patent portfolio blocks copycats</li>
+                    <li>Water Court validation = regulatory capture</li>
+                    <li>Hardware BOM 60% below competitors</li>
+                    <li>Grant-funded scale vs VC-diluted growth</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5: Traction -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">04 / Traction</div>
+        <div class="slide-title">Pilot Deployed · Partnerships Active · Trial Date Set</div>
+    </div>
+    <div class="slide-body">
+        <div class="card">
+            <h3>CSU San Luis Valley Pilot</h3>
+            <ul>
+                <li>2 fields instrumented at CSU Research Center</li>
+                <li>2 PMTs, 2 PFAs, 2 VFAs, 16-20 LRZs deployed</li>
+                <li>Live data flowing to validation dashboard</li>
+                <li>Academic rigor for peer-reviewed publication</li>
+            </ul>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <h4>Validation Target</h4>
+                <p>&lt;5% Kriging error vs physical VFA truth nodes. This empirical evidence unlocks Federal ESG grant drawdown.</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Strategic Milestones</h3>
+            <table class="data-table">
+                <tr><th>Milestone</th><th>Date</th><th>Status</th></tr>
+                <tr><td>Hardware BOM Finalized</td><td>March 2026</td><td>✅ Complete</td></tr>
+                <tr><td>CSU Pilot Deployment</td><td>April 2026</td><td>🔄 In Progress</td></tr>
+                <tr><td>Federal ESG Submission</td><td>March 26</td><td>🔄 Drafting</td></tr>
+                <tr><td>Water Court Trial</td><td>June 29</td><td>⏳ Scheduled</td></tr>
+                <tr><td>NSF SBIR Phase I</td><td>Q2 2026</td><td>⏳ Targeted</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h3>Partnerships</h3>
+            <ul>
+                <li><strong>CSU SLV Research Center:</strong> Academic validation</li>
+                <li><strong>Rio Grande Water Conservation District:</strong> Regulatory alignment</li>
+                <li><strong>Colorado Dept of Water Resources:</strong> Compliance pathway</li>
+                <li><strong>DoD ESTCP:</strong> Dual-use validation pipeline</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6: Financial Architecture -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">05 / Financial Architecture</div>
+        <div class="slide-title">$25K Minimum to Launch · $100K for 5% Equity</div>
     </div>
     <div class="slide-body">
         <div class="card">
@@ -120,34 +322,61 @@
     </div>
 </div>
 
-<!-- Slide 3: 5% Global Scale -->
+<!-- SLIDE 7: Revenue Model -->
 <div class="slide content">
     <div class="slide-header">
-        <div class="slide-number">02 / Hardware Assessment</div>
+        <div class="slide-number">06 / Revenue Model</div>
+        <div class="slide-title">The "Resolution Pop" · $1.11B ARR at 5% Global Scale</div>
+    </div>
+    <div class="slide-body-full">
+        <div class="highlight-box">
+            <h4>How We Get to $1.11B ARR</h4>
+            <p>5% global irrigated cropland (37M acres) × $30/acre Enterprise tier = $1.11B annual recurring revenue. Free tier ensures 100% market capture; Enterprise tier monetizes high-stress legal requirements.</p>
+        </div>
+        <table class="data-table">
+            <tr><th>Tier</th><th>Resolution</th><th>Price</th><th>Target</th><th>Conversion Trigger</th></tr>
+            <tr><td>Free</td><td>50m</td><td>$0</td><td>Government baseline</td><td>100% participation</td></tr>
+            <tr><td>Basic</td><td>20m</td><td>$49/mo</td><td>Small family farmers</td><td>Initial optimization</td></tr>
+            <tr><td>Pro</td><td>10m</td><td>$199/mo</td><td>Commercial Ag / VRI</td><td>Daily actuation</td></tr>
+            <tr><td style="color: #00d4aa;">Enterprise</td><td style="color: #00d4aa;">1m</td><td style="color: #00d4aa;">$30/acre</td><td style="color: #00d4aa;">Legal / ESG / Trade</td><td style="color: #00d4aa;">Water Court evidence</td></tr>
+        </table>
+        <div class="stats-grid" style="margin-top: 40px;">
+            <div class="stat-box">
+                <div class="stat-value">$7.6M</div>
+                <div class="stat-label">ARR Subdistrict 1 (1,280 pivots)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">$117M</div>
+                <div class="stat-label">ARR 5% Global (37M acres)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">$1.11B</div>
+                <div class="stat-label">ARR 5% at Enterprise Scale</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">87%</div>
+                <div class="stat-label">Gross Margin at Scale</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8: Hardware Assessment -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">07 / Hardware Assessment</div>
         <div class="slide-title">5% of Global Irrigated Cropland = Sovereign Infrastructure</div>
     </div>
     <div class="slide-body-full">
         <div class="highlight-box">
             <h4>The 5% Target</h4>
-            <p>300M hectares global irrigated cropland × 5% = 15M hectares (37M acres). At 126 acres per pivot, this requires 294,167 center-pivot instrumentations. Hardware CAPEX: $810M. Annual ARR at scale: $1.11B.</p>
+            <p>300M hectares global irrigated cropland × 5% = 15M hectares (37M acres). At 126 acres per pivot, this requires 294,167 center-pivot instrumentations. Hardware CAPEX: $810M. Grant-funded over 5-7 years.</p>
         </div>
         <div class="stats-grid">
-            <div class="stat-box">
-                <div class="stat-value">294K</div>
-                <div class="stat-label">PMT Units</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">2.47M</div>
-                <div class="stat-label">LRZ Units</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">2,942</div>
-                <div class="stat-label">District Hubs</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">147</div>
-                <div class="stat-label">Superstations</div>
-            </div>
+            <div class="stat-box"><div class="stat-value">294K</div><div class="stat-label">PMT Units</div></div>
+            <div class="stat-box"><div class="stat-value">2.47M</div><div class="stat-label">LRZ Units</div></div>
+            <div class="stat-box"><div class="stat-value">2,942</div><div class="stat-label">District Hubs</div></div>
+            <div class="stat-box"><div class="stat-value">147</div><div class="stat-label">Superstations</div></div>
         </div>
         <table class="data-table">
             <tr><th>Hardware Component</th><th>Units</th><th>Unit Cost</th><th>Total CAPEX</th></tr>
@@ -161,10 +390,78 @@
     </div>
 </div>
 
-<!-- Slide 4: Use of Funds -->
+<!-- SLIDE 9: Competitive Landscape -->
 <div class="slide content">
     <div class="slide-header">
-        <div class="slide-number">03 / Use of Investment Funds</div>
+        <div class="slide-number">08 / Competitive Landscape</div>
+        <div class="slide-title">Why FarmSense Wins</div>
+    </div>
+    <div class="slide-body-full">
+        <div class="comp-grid">
+            <div class="comp-card">
+                <h4>CropX / Farmers Edge</h4>
+                <span class="tag">Satellite-Only</span>
+                <p>10-30m resolution, no ground truth. AI black-box decisions. Not court-admissible.</p>
+                <div style="margin-top: 10px; color: #ff6464;">❌ No legal defensibility</div>
+            </div>
+            <div class="comp-card">
+                <h4>Prospera / Arable</h4>
+                <span class="tag">Expensive Hardware</span>
+                <p>$50K+ per field. Prohibitive at scale. No subsidized deployment model.</p>
+                <div style="margin-top: 10px; color: #ff6464;">❌ Unit economics fail at scale</div>
+            </div>
+            <div class="comp-card">
+                <h4>FarmSense</h4>
+                <span class="tag good">Deterministic + Legal</span>
+                <p>Subsidized hardware, $50 LRZ target. Court-admissible evidence. Patent moat.</p>
+                <div style="margin-top: 10px; color: #00d4aa;">✅ Regulatory capture path</div>
+            </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 30px;">
+            <h4>The Winner-Take-All Dynamic</h4>
+            <p>Water Court validation creates a natural monopoly. Once FarmSense becomes the "presumed compliant" standard in Colorado (June 2026), competitors must achieve equivalent legal standing — a 3-5 year patent and validation gap they cannot close.</p>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10: Team -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">09 / Team</div>
+        <div class="slide-title">Builders · Operators · Domain Experts</div>
+    </div>
+    <div class="slide-body-full">
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-avatar">JW</div>
+                <div class="team-name">Jeremy White</div>
+                <div class="team-role">CEO & Founder</div>
+                <div class="team-bio">Systems architect, water rights strategist, grant pipeline execution. Bxthre3 Inc founder.</div>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">JM</div>
+                <div class="team-name">Johnathon Moore</div>
+                <div class="team-role">CTO & Co-Founder</div>
+                <div class="team-bio">Hardware engineering, RF systems, edge compute architecture. 29-patent portfolio lead.</div>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">FM</div>
+                <div class="team-name">Fabian Martinez</div>
+                <div class="team-role">Chief Agronomist</div>
+                <div class="team-bio">SPAC modeling, soil-plant-atmosphere continuum expertise. CSU partnership lead.</div>
+            </div>
+        </div>
+        <div class="highlight-box" style="margin-top: 40px;">
+            <h4>Advisory Network</h4>
+            <p>Colorado Water Court veterans · DoD ESTCP program officers · CSU hydrology faculty · Gates Foundation climate adaptation advisors · World Bank trans-boundary water treaty negotiators.</p>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11: Use of Funds -->
+<div class="slide content">
+    <div class="slide-header">
+        <div class="slide-number">10 / Use of Investment Funds</div>
         <div class="slide-title">$100K Funds Pilot Execution — Grants Cover Everything Else</div>
     </div>
     <div class="slide-body">
@@ -195,7 +492,7 @@
             <h3>Pilot Milestones</h3>
             <ul>
                 <li>Deploy: April 2026</li>
-                <li>Validate: <5% Kriging error</li>
+                <li>Validate: &lt;5% Kriging error</li>
                 <li>Water Court: June 29, 2026</li>
                 <li>Unlock Federal ESG drawdown</li>
             </ul>
@@ -207,7 +504,7 @@
     </div>
 </div>
 
-<!-- Slide 5: Final -->
+<!-- SLIDE 12: Final CTA -->
 <div class="slide final">
     <div class="final-cta">$25K Minimum · $100K Target</div>
     <div class="final-subtitle">Fund the validation event that unlocks $1.5M+ in grants.<br>Grants cover $810M hardware scale. Investors capture 5% of $1.11B ARR potential.</div>
