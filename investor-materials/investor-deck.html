@@ -10,8 +10,6 @@
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; }
         .slide { width: 1920px; height: 1080px; position: relative; overflow: hidden; page-break-after: always; display: flex; flex-direction: column; }
         .slide:last-child { page-break-after: auto; }
-        
-        /* Slide 1: Cover */
         .cover { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%); justify-content: center; align-items: center; text-align: center; }
         .cover-badge { position: absolute; top: 40px; right: 60px; background: linear-gradient(135deg, #00d4aa, #00a884); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .cover-logo { width: 100px; height: 100px; background: linear-gradient(135deg, #00d4aa, #00a884); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin-bottom: 40px; }
@@ -22,61 +20,31 @@
         .cover-metric { text-align: center; }
         .cover-metric-value { font-size: 48px; font-weight: 700; color: #00d4aa; }
         .cover-metric-label { font-size: 16px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
-        
-        /* Content slides */
         .content { padding: 80px 100px; background: linear-gradient(180deg, #0a0a0a 0%, #111 100%); }
         .slide-header { margin-bottom: 50px; }
         .slide-number { font-size: 14px; color: #00d4aa; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
         .slide-title { font-size: 48px; font-weight: 700; }
         .slide-body { flex: 1; display: flex; gap: 60px; }
         .slide-body-full { flex: 1; display: flex; flex-direction: column; }
-        
-        /* Cards */
         .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 40px; flex: 1; }
         .card h3 { font-size: 24px; margin-bottom: 20px; color: #00d4aa; }
         .card p, .card li { font-size: 18px; line-height: 1.7; color: #aaa; }
         .card ul { list-style: none; }
         .card li { padding: 10px 0; padding-left: 30px; position: relative; }
         .card li::before { content: "→"; position: absolute; left: 0; color: #00d4aa; }
-        
-        /* Stats grid */
-        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 40px; }
         .stat-box { background: rgba(0,212,170,0.05); border: 1px solid rgba(0,212,170,0.2); border-radius: 12px; padding: 30px; text-align: center; }
         .stat-value { font-size: 42px; font-weight: 700; color: #00d4aa; }
         .stat-label { font-size: 14px; color: #888; margin-top: 8px; text-transform: uppercase; }
-        
-        /* Table */
+        .highlight-box { background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(0,168,132,0.05)); border-left: 4px solid #00d4aa; padding: 30px; border-radius: 0 12px 12px 0; margin: 30px 0; }
+        .highlight-box h4 { color: #00d4aa; margin-bottom: 10px; font-size: 20px; }
         .data-table { width: 100%; border-collapse: collapse; margin-top: 30px; }
         .data-table th { text-align: left; padding: 20px; background: rgba(0,212,170,0.1); color: #00d4aa; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
         .data-table td { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 16px; }
-        .data-table tr:hover { background: rgba(255,255,255,0.02); }
-        
-        /* Highlight box */
-        .highlight-box { background: linear-gradient(135deg, rgba(0,212,170,0.1), rgba(0,168,132,0.05)); border-left: 4px solid #00d4aa; padding: 30px; border-radius: 0 12px 12px 0; margin: 30px 0; }
-        .highlight-box h4 { color: #00d4aa; margin-bottom: 10px; font-size: 20px; }
-        
-        /* Two column */
-        .two-col { display: flex; gap: 60px; }
-        .col { flex: 1; }
-        
-        /* Funding box */
-        .funding-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 30px; margin: 20px 0; }
-        .funding-box.grant { border-color: rgba(0,212,170,0.3); background: rgba(0,212,170,0.05); }
-        .funding-box.investment { border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.05); }
-        .funding-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .funding-type { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; padding: 6px 12px; border-radius: 6px; }
-        .funding-type.grant { background: rgba(0,212,170,0.2); color: #00d4aa; }
-        .funding-type.investment { background: rgba(59,130,246,0.2); color: #60a5fa; }
-        .funding-amount { font-size: 32px; font-weight: 700; color: #fff; }
-        
-        /* Team */
-        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px; }
-        .team-member { text-align: center; }
-        .team-avatar { width: 120px; height: 120px; background: linear-gradient(135deg, #1a1a2e, #0f3460); border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
-        .team-name { font-size: 22px; font-weight: 600; margin-bottom: 5px; }
-        .team-role { font-size: 14px; color: #00d4aa; }
-        
-        /* Final slide */
+        .progress-item { margin: 25px 0; }
+        .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 14px; }
+        .progress-bar { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #00d4aa, #00a884); border-radius: 4px; }
         .final { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f3460 100%); justify-content: center; align-items: center; text-align: center; }
         .final-cta { font-size: 64px; font-weight: 800; margin-bottom: 40px; }
         .final-subtitle { font-size: 28px; color: #aaa; max-width: 1000px; line-height: 1.5; }
@@ -86,6 +54,7 @@
         .final-contact-text { text-align: left; }
         .final-contact-label { font-size: 12px; color: #888; text-transform: uppercase; }
         .final-contact-value { font-size: 18px; color: #fff; }
+        .big-number { font-size: 72px; font-weight: 800; color: #00d4aa; }
     </style>
 </head>
 <body>
@@ -97,246 +66,159 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
     </div>
     <h1>FarmSense</h1>
-    <div class="cover-subtitle">Fund the Validation Event. Grants Do the Rest.</div>
+    <div class="cover-subtitle">The Deterministic Farming Operating System</div>
     <div class="cover-metrics">
         <div class="cover-metric">
-            <div class="cover-metric-value">\$100K</div>
-            <div class="cover-metric-label">Seed Target</div>
+            <div class="cover-metric-value">$100K</div>
+            <div class="cover-metric-label">Target Investment</div>
         </div>
         <div class="cover-metric">
-            <div class="cover-metric-value">\$1.5M+</div>
-            <div class="cover-metric-label">Grant Runway</div>
+            <div class="cover-metric-value">$2M</div>
+            <div class="cover-metric-label">Pre-Money Valuation</div>
         </div>
         <div class="cover-metric">
-            <div class="cover-metric-value">15x</div>
-            <div class="cover-metric-label">Leverage Ratio</div>
+            <div class="cover-metric-value">5%</div>
+            <div class="cover-metric-label">Max Equity</div>
         </div>
     </div>
 </div>
 
-<!-- Slide 2: The Capital Structure -->
+<!-- Slide 2: Financial Architecture -->
 <div class="slide content">
     <div class="slide-header">
         <div class="slide-number">01 / Financial Architecture</div>
-        <div class="slide-title">Grants Build. Investment Validates.</div>
-    </div>
-    <div class="slide-body-full">
-        <div class="highlight-box">
-            <h4>Zero-Dilution Infrastructure + Equity Validation Event</h4>
-            <p>FarmSense uses grants (Federal ESG, NSF SBIR, CWCB, BoR) to fund all R&D, hardware, and software. Investment covers only the 2-field pilot at CSU SLV RC — the validation event that unlocks grant scaling.</p>
-        </div>
-        
-        <div class="two-col" style="margin-top: 30px;">
-            <div class="col">
-                <div class="funding-box grant">
-                    <div class="funding-header">
-                        <span class="funding-type grant">Non-Dilutive</span>
-                        <span class="funding-amount">\$1.5M+</span>
-                    </div>
-                    <table class="data-table" style="margin-top: 0;">
-                        <tr><td>Federal ESG (DoD Dual-Use)</td><td>\$500K – \$2M</td></tr>
-                        <tr><td>CWCB Water Plan Grant</td><td>\$500K – \$2M</td></tr>
-                        <tr><td>NSF SBIR Phase I</td><td>\$275K</td></tr>
-                        <tr><td>BoR WaterSMART</td><td>\$300K</td></tr>
-                    </table>
-                    <div style="margin-top: 15px; font-size: 14px; color: #888;">
-                        <strong style="color: #00d4aa;">Covers:</strong> Hardware BOM, software dev, patents (29+), infrastructure, scaling to 1,280 fields
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="funding-box investment">
-                    <div class="funding-header">
-                        <span class="funding-type investment">Seed Round</span>
-                        <span class="funding-amount">\$100K</span>
-                    </div>
-                    <ul style="list-style: none; font-size: 16px; color: #aaa; line-height: 2;">
-                        <li style="padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #60a5fa;">→</span>CSU SLV RC Pilot Operations</li>
-                        <li style="padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #60a5fa;">→</span>2-Field Validation (Center, CO)</li>
-                        <li style="padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #60a5fa;">→</span>Academic Partnership Costs</li>
-                        <li style="padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #60a5fa;">→</span>Water Court Evidence Prep</li>
-                        <li style="padding-left: 25px; position: relative;"><span style="position: absolute; left: 0; color: #60a5fa;">→</span>Personnel & Logistics</li>
-                    </ul>
-                    <div style="margin-top: 15px; font-size: 14px; color: #888;">
-                        <strong style="color: #60a5fa;">Unlocks:</strong> Empirical proof → Grant drawdown → 1,280-field rollout
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 3: Executive Summary -->
-<div class="slide content">
-    <div class="slide-header">
-        <div class="slide-number">02 / Executive Summary</div>
-        <div class="slide-title">The \$500/AF Problem Meets Legal-Grade Precision</div>
+        <div class="slide-title">$25K Minimum to Launch Pilot · $100K for 5% Equity</div>
     </div>
     <div class="slide-body">
         <div class="card">
-            <h3>The Crisis</h3>
+            <h3>Investment Structure</h3>
             <ul>
-                <li>Colorado San Luis Valley: 89,000 AF/year aquifer depletion</li>
-                <li>\$500/acre-foot pumping fee = 4x previous costs</li>
-                <li>Farmers face existential threat without data defense</li>
-                <li>Water Court requires empirical proof</li>
+                <li>Pre-money valuation: $2M</li>
+                <li>Minimum to start pilot: $25K (pro-rated equity)</li>
+                <li>Full target: $100K = up to 5% equity</li>
+                <li>Use of funds: CSU SLV RC pilot operations only</li>
             </ul>
         </div>
         <div class="card">
-            <h3>The Solution</h3>
+            <h3>Grant Coverage</h3>
             <ul>
-                <li>Deterministic OS: Rule-based, explainable logic</li>
-                <li>Digital Water Ledger: Court-admissible, signed</li>
-                <li>50m→1m resolution tiers</li>
-                <li>20-30% water reduction = \$25K/year savings per pivot</li>
+                <li>Federal ESG: $500K-$2M (hardware/software)</li>
+                <li>NSF SBIR Phase I: $275K (R&D)</li>
+                <li>CWCB Water Plan: $500K-$2M (expansion)</li>
+                <li>BoR WaterSMART: $300K (resilience)</li>
             </ul>
         </div>
         <div class="card">
-            <h3>The Opportunity</h3>
+            <h3>Capital Efficiency</h3>
             <ul>
-                <li>Subdistrict 1: 1,280 pivots, \$7.6M ARR at scale</li>
-                <li>\$1.5M+ grant runway (non-dilutive)</li>
-                <li>\$100K investment → validation → scale</li>
-                <li>5% global cropland = 15M hectares</li>
+                <li>15x leverage: $100K unlocks $1.5M+ grants</li>
+                <li>Investors fund validation, grants fund scale</li>
+                <li>No dilution for R&D or infrastructure</li>
+                <li>Pilot success unlocks Federal ESG drawdown</li>
             </ul>
         </div>
     </div>
 </div>
 
-<!-- Slide 4: Traction -->
+<!-- Slide 3: 5% Global Scale -->
 <div class="slide content">
     <div class="slide-header">
-        <div class="slide-number">03 / Traction</div>
-        <div class="slide-title">Pilot-Ready Hardware. Grant Pipeline Active.</div>
+        <div class="slide-number">02 / Hardware Assessment</div>
+        <div class="slide-title">5% of Global Irrigated Cropland = Sovereign Infrastructure</div>
     </div>
     <div class="slide-body-full">
-        <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="highlight-box">
+            <h4>The 5% Target</h4>
+            <p>300M hectares global irrigated cropland × 5% = 15M hectares (37M acres). At 126 acres per pivot, this requires 294,167 center-pivot instrumentations. Hardware CAPEX: $810M. Annual ARR at scale: $1.11B.</p>
+        </div>
+        <div class="stats-grid">
             <div class="stat-box">
-                <div class="stat-value">29+</div>
-                <div class="stat-label">Patents Filed</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">\$12.4K</div>
-                <div class="stat-label">2-Field Pilot BOM</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-value">&lt;5%</div>
-                <div class="stat-label">Kriging Error Target</div>
+                <div class="stat-value">294K</div>
+                <div class="stat-label">PMT Units</div>
             </div>
             <div class="stat-box">
-                <div class="stat-value">Jun 29</div>
-                <div class="stat-label">Water Court Trial</div>
+                <div class="stat-value">2.47M</div>
+                <div class="stat-label">LRZ Units</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">2,942</div>
+                <div class="stat-label">District Hubs</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">147</div>
+                <div class="stat-label">Superstations</div>
             </div>
         </div>
-        
-        <div class="highlight-box" style="margin-top: 40px;">
-            <h4>CSU San Luis Valley Research Center Pilot</h4>
-            <p>2-field deployment in Center, Colorado provides empirical ground truth for June 2026 Subdistrict 1 Water Court. Federal ESG pre-proposal submitted March 26, 2026.</p>
-        </div>
-        
-        <div style="margin-top: 30px;">
-            <div style="display: flex; gap: 20px;">
-                <div style="flex: 1; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center;">
-                    <div style="font-size: 14px; color: #888; text-transform: uppercase; margin-bottom: 8px;">Hardware</div>
-                    <div style="font-size: 18px; color: #fff;">2 PMT + 2 PFA + 2 VFA + 16-20 LRZ</div>
-                </div>
-                <div style="flex: 1; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center;">
-                    <div style="font-size: 14px; color: #888; text-transform: uppercase; margin-bottom: 8px;">Validation</div>
-                    <div style="font-size: 18px; color: #fff;">Academic + Legal + Regulatory</div>
-                </div>
-                <div style="flex: 1; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 12px; text-align: center;">
-                    <div style="font-size: 14px; color: #888; text-transform: uppercase; margin-bottom: 8px;">Output</div>
-                    <div style="font-size: 18px; color: #fff;">Court-Admissible Data</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Slide 5: Market -->
-<div class="slide content">
-    <div class="slide-header">
-        <div class="slide-number">04 / Market</div>
-        <div class="slide-title">Capturing 5% of Global Irrigated Cropland</div>
-    </div>
-    <div class="slide-body-full">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px;">
-            <div class="stat-box" style="padding: 50px;">
-                <div class="stat-value" style="font-size: 72px;">300M</div>
-                <div class="stat-label" style="font-size: 16px;">Hectares Global Irrigated Cropland</div>
-            </div>
-            <div class="stat-box" style="padding: 50px; background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.4);">
-                <div class="stat-value" style="font-size: 72px;">15M</div>
-                <div class="stat-label" style="font-size: 16px; color: #00d4aa;">Target (5%) · \$11.1B TAM</div>
-            </div>
-        </div>
-        
-        <div class="highlight-box" style="margin-top: 40px;">
-            <h4>The Subsidized Penetration Model</h4>
-            <p>Governments provide <strong>free 50m baseline</strong> to ensure 100% enrollment. Enterprise tiers (1m legal-grade) cross-subsidize free tier. DoD dual-use adds defense revenue stream.</p>
-        </div>
-        
-        <table class="data-table" style="margin-top: 30px;">
-            <tr><th>Expansion Phase</th><th>Timeline</th><th>Fields</th><th>Revenue</th></tr>
-            <tr><td>Subdistrict 1 (Colorado)</td><td>2026-2027</td><td>1,280</td><td>\$7.6M ARR</td></tr>
-            <tr><td>Colorado Statewide</td><td>2027-2028</td><td>~50,000</td><td>~\$150M ARR</td></tr>
-            <tr><td>High Plains Aquifer</td><td>2028-2029</td><td>~200,000</td><td>~\$600M ARR</td></tr>
-            <tr><td>5% Global Target</td><td>2029+</td><td>~15M ha</td><td>\$11.1B TAM</td></tr>
+        <table class="data-table">
+            <tr><th>Hardware Component</th><th>Units</th><th>Unit Cost</th><th>Total CAPEX</th></tr>
+            <tr><td>PMT (Pivot Motion Tracker)</td><td>294,167</td><td>$1,112</td><td>$327M</td></tr>
+            <tr><td>LRZ (Lateral Root-Zone Scout)</td><td>2,471,000</td><td>$54</td><td>$134M</td></tr>
+            <tr><td>PFA (Pressure & Flow Anchor)</td><td>294,167</td><td>$850</td><td>$250M</td></tr>
+            <tr><td>VFA (Vertical Field Anchor)</td><td>294,167</td><td>$158</td><td>$47M</td></tr>
+            <tr><td>DHU + RSS Infrastructure</td><td>3,089</td><td>—</td><td>$52M</td></tr>
+            <tr><td colspan="3"><strong>TOTAL HARDWARE CAPEX</strong></td><td><strong style="color: #00d4aa;">$810M</strong></td></tr>
         </table>
     </div>
 </div>
 
-<!-- Slide 6: Team -->
+<!-- Slide 4: Use of Funds -->
 <div class="slide content">
     <div class="slide-header">
-        <div class="slide-number">05 / Team</div>
-        <div class="slide-title">Leadership</div>
+        <div class="slide-number">03 / Use of Investment Funds</div>
+        <div class="slide-title">$100K Funds Pilot Execution — Grants Cover Everything Else</div>
     </div>
-    <div class="slide-body-full" style="justify-content: center;">
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="team-avatar">JB</div>
-                <div class="team-name">Jeremy B. Beebe</div>
-                <div class="team-role">Founder, CTO</div>
+    <div class="slide-body">
+        <div class="card" style="flex: 2;">
+            <h3>Pilot Budget: CSU San Luis Valley Research Center</h3>
+            <div class="progress-item">
+                <div class="progress-header"><span>CSU SLV RC Operations (personnel, logistics)</span><span>$45K</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
             </div>
-            <div class="team-member">
-                <div class="team-avatar">JM</div>
-                <div class="team-name">Johnathon Montez</div>
-                <div class="team-role">CEO</div>
+            <div class="progress-item">
+                <div class="progress-header"><span>Academic Partnership & Data Validation</span><span>$25K</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 25%;"></div></div>
             </div>
-            <div class="team-member">
-                <div class="team-avatar">FG</div>
-                <div class="team-name">Fabian Gomez</div>
-                <div class="team-role">CFO</div>
+            <div class="progress-item">
+                <div class="progress-header"><span>Legal Prep & Water Court Evidence</span><span>$20K</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+            </div>
+            <div class="progress-item">
+                <div class="progress-header"><span>Contingency</span><span>$10K</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+            </div>
+            <div class="highlight-box" style="margin-top: 40px;">
+                <h4>Hardware Covered by Grants</h4>
+                <p>2 PMTs, 2 PFAs, 2 VFAs, 16-20 LRZs ($12.5K BOM) — covered by Federal ESG. Investors fund operational validation, not hardware procurement.</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3>Pilot Milestones</h3>
+            <ul>
+                <li>Deploy: April 2026</li>
+                <li>Validate: <5% Kriging error</li>
+                <li>Water Court: June 29, 2026</li>
+                <li>Unlock Federal ESG drawdown</li>
+            </ul>
+            <div style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(0,212,170,0.1); border-radius: 12px;">
+                <div class="big-number">$1.5M+</div>
+                <div style="font-size: 14px; color: #888; margin-top: 10px;">Grant runway unlocked by pilot success</div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Slide 7: Final -->
+<!-- Slide 5: Final -->
 <div class="slide final">
-    <div class="final-cta">Fund the Validation Event</div>
-    <div class="final-subtitle">
-        \$100K investment unlocks \$1.5M+ in grant runway. <br>
-        CSU SLV RC pilot generates court-admissible proof for 1,280-field rollout.
-    </div>
+    <div class="final-cta">$25K Minimum · $100K Target</div>
+    <div class="final-subtitle">Fund the validation event that unlocks $1.5M+ in grants.<br>Grants cover $810M hardware scale. Investors capture 5% of $1.11B ARR potential.</div>
     <div class="final-contact">
         <div class="final-contact-item">
             <div class="final-contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </div>
             <div class="final-contact-text">
-                <div class="final-contact-label">Email</div>
+                <div class="final-contact-label">Contact</div>
                 <div class="final-contact-value">contact@bxthre3.com</div>
-            </div>
-        </div>
-        <div class="final-contact-item">
-            <div class="final-contact-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="final-contact-text">
-                <div class="final-contact-label">Location</div>
-                <div class="final-contact-value">San Luis Valley, Colorado</div>
             </div>
         </div>
         <div class="final-contact-item">
@@ -344,8 +226,17 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div class="final-contact-text">
-                <div class="final-contact-label">Trial Date</div>
-                <div class="final-contact-value">June 29, 2026</div>
+                <div class="final-contact-label">Valuation</div>
+                <div class="final-contact-value">$2M Pre-Money</div>
+            </div>
+        </div>
+        <div class="final-contact-item">
+            <div class="final-contact-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00d4aa" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="final-contact-text">
+                <div class="final-contact-label">Equity</div>
+                <div class="final-contact-value">Up to 5% for $100K</div>
             </div>
         </div>
     </div>
