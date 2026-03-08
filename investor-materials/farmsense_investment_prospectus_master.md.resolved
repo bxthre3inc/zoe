@@ -1,0 +1,89 @@
+# FARMSENSE: THE SOVEREIGN WATER PROSPECTUS
+**Private & Confidential | Pre-Seed Investment Cycle | March 2026**
+
+---
+
+## 1. MISSION CRITICAL: THE "VALLEY-FIRST" MANDATE
+FarmSense is a **Sovereign-Grade Water Infrastructure** company based in **Monte Vista, Colorado**. 
+
+Our mission is to ensure that water data—the most valuable resource of the 21st century—stays under the control of the local community. We are building the "Operating System for Global Water," based in **Monte Vista**, with our first validation pilot starting at CSU SLV RC in **Center, Colorado**.
+
+---
+
+## 2. THE INVESTMENT OPPORTUNITY (PRE-SEED)
+**Round**: Pre-Seed ($25,000 for 1% Equity Ownership)  
+**Valuation Cap**: $2,500,000 Post-Money  
+
+### The Purpose of the $25,000
+This "Velocity Capital" is dedicated to the **90-Day CSU SLV RC Validation Pilot**. 
+- **The Success Event**: Formal certification of our 1m-fidelity Kriging engine against CSU ground-truth sensors.
+- **The Outcome**: Certification unlocks **$7.5M in non-dilutive grants** to fund the deployment of 1,500 sensors across the local subdistrict.
+
+---
+
+## 3. HYPER-GRANULAR PILOT BOM (PHASE 1-2)
+*Targeting Silicon Standardization (nRF52840 nodes, ESP32-S3 hubs) and Retail Pricing. No Bulk Discounts.*
+
+### 3.1 PMT (Pivot Motion Tracker) - Field Hub (Qty: 2)
+| Category | Part Number | Description | Unit Cost | Total |
+| :--- | :--- | :--- | :---: | :---: |
+| **Logic** | ESP32-S3-Dev-K | Espressif Dual-Core AI SoC (Edge-EBK) | $12.50 | $25.00 |
+| **GNSS** | SPK-ZED-F9P | SparkFun High-Precision RTK Breakout | $274.95 | $549.90 |
+| **IMU** | ADA-BNO055 | Adafruit 9-DOF Orientation Breakout | $34.95 | $69.90 |
+| **Flow** | KEY-FD-Q10C | Keyence Non-Invasive Clamp-on Flow | $685.00 | $1,370.00 |
+| **Radio/Pwr** | ADA-SX1262.. | LoRa Mesh + 50W Solar/LFP Kit | $365.00 | $730.00 |
+| **Encl** | POLY-WP-17 | IP67 Hinged Enclosure | $42.50 | $85.00 |
+| **TOTAL PMT** | | | | **$2,829.80** |
+
+### 3.2 PFA (Pressure & Flow Anchor) - Well Sentry (Qty: 2)
+| Category | Part Number | Description | Unit Cost | Total |
+| :--- | :--- | :--- | :---: | :---: |
+| **Logic/Sec** | NRF52840-F | Nordic SoC (Standard Tier-1 Silicon) | $24.95 | $49.90 |
+| **Depth** | DW-PBLTX-C | Dwyer Vented Submersible Depth | $520.00 | $1,040.00 |
+| **Relay** | OMR-G8P | Omron 30A Industrial Relay | $22.50 | $45.00 |
+| **Power/Radio**| BPN-LT-KIT | LoRa Mesh + 50W Solar/LFP Kit | $304.99 | $609.98 |
+| **Encl** | POLY-WP-17 | IP67 Hinged Enclosure | $42.50 | $85.00 |
+| **TOTAL PFA** | | | | **$1,854.88** |
+
+### 3.3 VFA Nodes (Subsurface Truth) & LRZ Nodes (Truth Array)
+| Unit Type | Description | Vol | Unit Cost | Total |
+| :--- | :--- | :---: | :---: | :---: |
+| **VFA Node** | Core Truth Anchor Node | 4 | $161.90 | $647.60 |
+| **LRZ2 (Ref)** | Reference Node (High-Prec TDR) | 8 | $84.65 | $677.20 |
+| **LRZ1 (Truth)**| Spatial Truth Node (Capacitive) | 24 | $82.65 | $1,983.60 |
+
+### 3.4 "Lite" Infrastructure & Tools
+| Category | Description | Qty | Cost |
+| :--- | :--- | :---: | :---: |
+| **Compute** | **Workstation Laptop / Edge Server** (Simulated DHU) | 1 | **$2,500.00** |
+| **Tools/Spares**| Nitrogen Purge kit, DIN Rails, Cables, JIGs | 1 | $1,850.00 |
+| **HARDWARE TOTAL**| **Full Pilot Capital Requirement** | | **$12,343.08** |
+
+---
+
+## 4. THE STARTUP CAPITAL STACK (STRATEGIC SEQUENCE)
+1. **Pre-Seed ($25k Equity)**: **ACTIVE**. Funds the CSU Pilot.
+2. **Hardware Scale ($7.5M Grants)**: Funds the **1,500 SFD Rollout** (No dilution).
+3. **Seed Round ($100M+ Equity)**: Raised *after* 1,500 units are in the dirt.
+4. **Series A ($100B Valuation)**: Global standard for Water Commodity Exchange.
+
+---
+
+## 5. IP MOAT & bxthre3 inc CONTROL
+- **Ownership**: All core IP is held by the **founder's holding company (bxthre3 inc)**.
+- **Security**: Hardware-root-of-trust (AES-256) ensures data admissibility in any Water Court.
+- **Kill-Switch**: In the event of a takeover attempt, the IP "Kill-Switch" ensures technology remains under **bxthre3 inc** control.
+
+---
+
+## 6. FOUNDER WEALTH & EXIT
+The $100B valuation is structured for massive upside.
+- **Secondary Sales**: Ability to take millions in liquidity during the $1B+ Seed/Series A rounds.
+- **IP Royalties**: bxthre3 inc receives a percentage of gross platform fees as a perpetual royalty.
+
+---
+
+## 7. NEXT STEPS
+1.  Review the **[Technical Audit Report](file:///home/bxthre3/.gemini/antigravity/brain/fff22871-d01c-4c62-89ef-669eda92a6de/walkthrough.md)** for architecture certification.
+2.  Review the **[Financial Master Plan](file:///home/bxthre3/.gemini/antigravity/brain/fff22871-d01c-4c62-89ef-669eda92a6de/financial_master_plan.md)** for decadal projections.
+3.  Execute the $25,000 SAFE / Equity agreement.
