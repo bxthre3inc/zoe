@@ -1,0 +1,6 @@
+{
+    "name": "Classic Blackjack",
+    "theme": "Casino",
+    "category": "cards",
+    "evaluatorType": "blackjack-single"
+}

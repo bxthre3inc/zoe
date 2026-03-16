@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Summary | FarmSense Investor Materials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+            }
+            code, pre {
+                font-family: 'JetBrains Mono', monospace;
+            }
+        }
+        @layer components {
+            .page-break {
+                break-after: page;
+            }
+            .no-break {
+                break-inside: avoid;
+            }
+        }
+    </style>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        @page :first {
+            margin: 0;
+        }
+        .prose-custom h1 {
+            @apply text-4xl font-black text-white mb-6 tracking-tight;
+        }
+        .prose-custom h2 {
+            @apply text-2xl font-bold text-white mt-12 mb-4 pb-2 border-b border-emerald-500/20;
+        }
+        .prose-custom h3 {
+            @apply text-lg font-bold text-emerald-400 mt-8 mb-3;
+        }
+        .prose-custom p {
+            @apply text-slate-300 leading-relaxed mb-4;
+        }
+        .prose-custom ul {
+            @apply list-disc list-inside text-slate-300 mb-4 space-y-1;
+        }
+        .prose-custom ol {
+            @apply list-decimal list-inside text-slate-300 mb-4 space-y-1;
+        }
+        .prose-custom li {
+            @apply leading-relaxed;
+        }
+        .prose-custom strong {
+            @apply text-white font-semibold;
+        }
+        .prose-custom a {
+            @apply text-emerald-400 hover:underline;
+        }
+        .prose-custom blockquote {
+            @apply border-l-4 border-emerald-500 pl-4 italic text-slate-400 my-6;
+        }
+        .prose-custom table {
+            @apply w-full text-left border-collapse mb-6;
+        }
+        .prose-custom th {
+            @apply bg-slate-800 text-emerald-400 font-bold text-xs uppercase tracking-widest p-3 border-b border-slate-700;
+        }
+        .prose-custom td {
+            @apply p-3 border-b border-slate-800 text-slate-300;
+        }
+        .prose-custom tr:hover td {
+            @apply bg-slate-800/50;
+        }
+        .prose-custom code {
+            @apply bg-slate-800 text-cyan-400 px-1.5 py-0.5 rounded text-sm;
+        }
+        .prose-custom pre {
+            @apply bg-slate-900 border border-slate-800 p-4 rounded-lg overflow-x-auto mb-4;
+        }
+        .prose-custom pre code {
+            @apply bg-transparent p-0;
+        }
+        /* Print optimizations */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .page-break {
+                break-after: page;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200">
+    <!-- Cover Page Template -->
+<div class="min-h-[297mm] flex flex-col justify-between bg-slate-950 relative overflow-hidden">
+    <!-- Background gradients -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_#064e3b_0%,_#020617_60%)] opacity-60"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-emerald-950/30 to-transparent"></div>
+    
+    <!-- Grid pattern -->
+    <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    
+    <div class="relative z-10 flex-1 flex flex-col px-16 py-20">
+        <!-- Top badge -->
+        <div class="flex items-center gap-3 mb-12">
+            <div class="w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center justify-center">
+                <i data-lucide="shield-check" class="w-6 h-6 text-emerald-400"></i>
+            </div>
+            <span class="text-emerald-400 font-bold text-xs uppercase tracking-[0.2em]">Strategic Capital Portal</span>
+        </div>
+        
+        <!-- Title -->
+        <div class="flex-1 flex flex-col justify-center">
+            <p class="text-slate-500 font-medium tracking-wider uppercase text-sm mb-4">FarmSense Seed Round A-1</p>
+            <h1 class="text-6xl font-black text-white tracking-tighter leading-[0.95]">
+                Executive Summary
+            </h1>
+            <div class="h-1 w-32 bg-gradient-to-r from-emerald-500 to-cyan-400 mt-8 rounded-full"></div>
+        </div>
+        
+        <!-- Metadata -->
+        <div class="grid grid-cols-3 gap-8 pt-12 border-t border-white/5">
+            <div>
+                <p class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Document Type</p>
+                <p class="text-slate-300 font-medium">Investor Material</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Classification</p>
+                <p class="text-emerald-400 font-medium">CONFIDENTIAL</p>
+            </div>
+            <div>
+                <p class="text-xs font-bold text-slate-600 uppercase tracking-widest mb-1">Date</p>
+                <p class="text-slate-300 font-medium">March 12, 2026</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="relative z-10 px-16 py-8 bg-slate-900/50 backdrop-blur border-t border-white/5">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
+                    <i data-lucide="sprout" class="w-5 h-5 text-slate-950"></i>
+                </div>
+                <span class="text-white font-bold">FarmSense</span>
+                <span class="text-slate-600">|</span>
+                <span class="text-slate-500 text-sm">FS-1 Deterministic Agriculture OS</span>
+            </div>
+            <p class="text-slate-600 text-sm">CONFIDENTIAL</p>
+        </div>
+    </div>
+</div>
+
+<div class="page-break"></div><!-- Content Page Template -->
+<div class="min-h-[297mm] bg-slate-950 px-16 py-12">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-12 pb-4 border-b border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-emerald-500/10 rounded-lg flex items-center justify-center">
+                <i data-lucide="sprout" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <span class="text-white font-bold">FarmSense</span>
+        </div>
+        <p class="text-slate-500 text-xs font-medium uppercase tracking-widest">Executive Summary</p>
+    </div>
+    
+    <!-- Main content -->
+    <div class="prose-custom max-w-none">
+        <h1>FarmSense Investor Packet</h1>
+<h2>Seed Round A-1</h2>
+<hr>
+<h1>COVER PAGE</h1>
+<p><strong>FarmSense™</strong>
+Global Water Security Infrastructure</p>
+<p><strong>Seed Round A-1: $25M at $75M Post-Money</strong></p>
+<p>Founder: Jeremy Beebe
+Email: <a href="mailto:getfarmsense@gmail.com">getfarmsense@gmail.com</a>
+Classification: CONFIDENTIAL</p>
+<hr>
+<h1>TABLE OF CONTENTS</h1>
+<ol>
+<li>Executive Summary (Page 2)</li>
+<li>The Opportunity (Page 3)</li>
+<li>The Solution (Page 4)</li>
+<li>Market Size (Page 5)</li>
+<li>Business Model (Page 6)</li>
+<li>Financial Projections (Page 7)</li>
+<li>Development Timeline (Page 8)</li>
+<li>Competitive Moat (Page 9)</li>
+<li>Use of Proceeds (Page 10)</li>
+<li>Risk Factors (Page 11)</li>
+<li>The Exit (Page 12)</li>
+<li>Glossary &amp; Index (Page 13-15)</li>
+</ol>
+<hr>
+<h1>1. EXECUTIVE SUMMARY</h1>
+<p><strong>FarmSense is the deterministic operating system for global water security.</strong></p>
+<p><strong>The Crisis:</strong> Agriculture consumes 70% of freshwater. 40 countries face acute water scarcity by 2030. Water courts require evidence that doesn’t exist.</p>
+<p><strong>The Catalyst:</strong> Colorado’s San Luis Valley — $500/acre-foot groundwater fees, 89,000 AF annual depletion, 300,000 acres at risk.</p>
+<p><strong>The Solution:</strong> A sensor-to-satellite mesh network with cryptographic chain of custody. Legally admissible in Water Court. 20-30% water reduction. 18-22% ROI increase.</p>
+<p><strong>The Model:</strong> Government grants fund 100% of infrastructure. Farmers get free compliance. Premium tiers (20m, 10m, 1m resolution) generate 100% margin SaaS revenue.</p>
+<p><strong>The Ask:</strong> $25M Seed Round at $75M post-money.</p>
+<p><strong>The Outcome:</strong> 5% global penetration (400,000 fields) by 2036 = $235M ARR at 100% margin. Exit valuation: $35-70B. Founder’s 35% = $12-25B.</p>
+<hr>
+<h1>2. THE OPPORTUNITY</h1>
+<p><strong>The $500/AF Catalyst</strong></p>
+<p>The Rio Grande Basin faces collapse:</p>
+<ul>
+<li>Annual aquifer depletion: 89,000 acre-feet</li>
+<li>Groundwater fees: $500/acre-foot (quadrupled from $75-150/AF)</li>
+<li>Reservoir storage: 26% of historical capacity</li>
+<li>Irrigated agriculture: 300,000 acres at risk</li>
+</ul>
+<p><strong>Economic Impact per 126-acre field:</strong></p>
+<ul>
+<li>20% water reduction = 50.4 AF saved</li>
+<li>50.4 AF × $500/AF = $25,200 annual savings</li>
+<li>FarmSense Enterprise: $499/month = $5,988/year</li>
+<li><strong>First-year ROI: 421%</strong></li>
+</ul>
+<p><strong>Global Context:</strong></p>
+<ul>
+<li>634M acres irrigated cropland worldwide</li>
+<li>40 countries facing acute water scarcity by 2030</li>
+<li>Interstate litigation threatening federal takeovers</li>
+<li>No existing solution provides legally defensible water accounting</li>
+</ul>
+<p>FarmSense creates the infrastructure layer that makes water management enforceable, measurable, and optimizable.</p>
+<hr>
+<h1>3. THE SOLUTION</h1>
+<p><strong>FS-1: Deterministic Farming Operating System</strong></p>
+<p>FarmSense replaces stochastic “intuition” with computational precision:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Current Standard</th>
+<th>FarmSense DFOS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Observation</td>
+<td>Visual scouting / manual probe</td>
+<td>1m centimetric Kriging + ground-truth</td>
+</tr>
+<tr>
+<td>Calculation</td>
+<td>Crop-coefficient (static)</td>
+<td>SPAC thermodynamics (real-time)</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>Intuition-based schedules</td>
+<td>Edge-calculated VRI prescription</td>
+</tr>
+<tr>
+<td>Evidence</td>
+<td>Paper logs, human memory</td>
+<td>SHA-256 sovereign ledger</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>Field-scale variable</td>
+<td>1m grid, legally admissible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Hardware Ecosystem:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Device</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Regional</td>
+<td>RSS (40ft container)</td>
+<td>Territory master, blackout-proof</td>
+</tr>
+<tr>
+<td>District</td>
+<td>DHU (35ft pole)</td>
+<td>100-pivot mesh manager</td>
+</tr>
+<tr>
+<td>Field</td>
+<td>PMT (pivot-mounted)</td>
+<td>Edge aggregator, 50m Kriging</td>
+</tr>
+<tr>
+<td>Sensors</td>
+<td>VFA/LRZ/PFA</td>
+<td>Ground-truth collection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key Metrics:</strong></p>
+<ul>
+<li>Water reduction: 20-30%</li>
+<li>ROI increase: 18-22%</li>
+<li>Grid resolution: 50m → 1m (400x improvement)</li>
+<li>Legal admissibility: Water Court ready</li>
+</ul>
+<hr>
+<h1>4. MARKET SIZE</h1>
+<p><strong>TAM/SAM/SOM Analysis</strong></p>
+<table>
+<thead>
+<tr>
+<th>Market Tier</th>
+<th>Size</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Total Market</strong></td>
+<td>$3-5T</td>
+<td>Global agriculture + water infrastructure</td>
+</tr>
+<tr>
+<td><strong>Precision Ag</strong></td>
+<td>$12.8B</td>
+<td>Irrigation tech market by 2030</td>
+</tr>
+<tr>
+<td><strong>FarmSense TAM</strong></td>
+<td>$19-44B</td>
+<td>Infrastructure + financial derivatives</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Global Penetration Target:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Fields</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLV Subdistrict 1</td>
+<td>1,280</td>
+<td>2026-2027</td>
+</tr>
+<tr>
+<td>Rio Grande Basin</td>
+<td>6,000</td>
+<td>2027-2028</td>
+</tr>
+<tr>
+<td>Colorado River Basin</td>
+<td>25,000</td>
+<td>2028-2029</td>
+</tr>
+<tr>
+<td>High Plains Aquifer</td>
+<td>50,000</td>
+<td>2029-2030</td>
+</tr>
+<tr>
+<td>Top 10 Watersheds</td>
+<td>200,000</td>
+<td>2030-2034</td>
+</tr>
+<tr>
+<td><strong>5% Global</strong></td>
+<td><strong>400,000</strong></td>
+<td><strong>2036</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Revenue Layers (Annual TAM):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Value</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core SaaS</td>
+<td>$2.94B</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Water derivatives</td>
+<td>$5-10B</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>Carbon credits</td>
+<td>$2-5B</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Insurance data</td>
+<td>$3-8B</td>
+<td>85%</td>
+</tr>
+<tr>
+<td>Commodity futures</td>
+<td>$5-15B</td>
+<td>80%</td>
+</tr>
+<tr>
+<td>Regulatory licensing</td>
+<td>$1-3B</td>
+<td>90%</td>
+</tr>
+<tr>
+<td><strong>Total TAM</strong></td>
+<td><strong>$19-44B</strong></td>
+<td><strong>82% blended</strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>5. BUSINESS MODEL</h1>
+<p><strong>G2C Infrastructure: Government-to-Consumer</strong></p>
+<p>Farmers never pay for compliance. They pay only for optimization.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Resolution</th>
+<th>Price</th>
+<th>Who Pays</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base</strong></td>
+<td>50m</td>
+<td><strong>FREE</strong></td>
+<td>Government grants</td>
+</tr>
+<tr>
+<td><strong>Plus</strong></td>
+<td>20m</td>
+<td>$99.99/mo</td>
+<td>Farmers (optional)</td>
+</tr>
+<tr>
+<td><strong>Ultra</strong></td>
+<td>10m</td>
+<td>$299.99/mo</td>
+<td>Farmers (optional)</td>
+</tr>
+<tr>
+<td><strong>Enterprise</strong></td>
+<td>1m + 10cm</td>
+<td>$499.99/mo</td>
+<td>Large operations</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Unit Economics (100% Margin):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blended ARPU</td>
+<td>$588/field/year</td>
+</tr>
+<tr>
+<td>Year 5 fields</td>
+<td>52,000</td>
+</tr>
+<tr>
+<td>Year 5 ARR</td>
+<td>$30.6M</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>LTV:CAC</td>
+<td>Infinite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Infrastructure Arbitrage:</strong> Grants deploy the network. Paid tiers capture pure margin.</p>
+<hr>
+<h1>6. FINANCIAL PROJECTIONS</h1>
+<p><strong>The $10-100B Path</strong></p>
+<p><strong>Core SaaS Revenue:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Fields</th>
+<th>Paid %</th>
+<th>ARR</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>320</td>
+<td>15%</td>
+<td>$28K</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2,560</td>
+<td>12%</td>
+<td>$180K</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>10,240</td>
+<td>10%</td>
+<td>$602K</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>52,000</td>
+<td>10%</td>
+<td>$3.06M</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>400,000</td>
+<td>10%</td>
+<td>$235M</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ancillary Revenue (Year 10):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Stream</th>
+<th>Annual Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core SaaS</td>
+<td>$235M</td>
+</tr>
+<tr>
+<td>Carbon credits</td>
+<td>$50-100M</td>
+</tr>
+<tr>
+<td>Insurance data</td>
+<td>$100-200M</td>
+</tr>
+<tr>
+<td>Commodity futures</td>
+<td>$200-500M</td>
+</tr>
+<tr>
+<td>Water derivatives</td>
+<td>$500M-1B</td>
+</tr>
+<tr>
+<td>Regulatory licensing</td>
+<td>$50-200M</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$1.14-2.34B</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Valuation Scenarios (Year 10):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Multiple</th>
+<th>Valuation</th>
+<th>Founder 35%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>50x</td>
+<td>$11.7-23.4B</td>
+<td>$4.1-8.2B</td>
+</tr>
+<tr>
+<td>Optimistic</td>
+<td>100x</td>
+<td>$23.4-46.8B</td>
+<td>$8.2-16.4B</td>
+</tr>
+<tr>
+<td>Sovereign</td>
+<td>150x</td>
+<td>$35.1-70.2B</td>
+<td>$12.3-24.6B</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1>7. DEVELOPMENT TIMELINE</h1>
+<p><strong>Validation-Driven Parallel Expansion</strong></p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Year</th>
+<th>Scope</th>
+<th>Milestone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Proof</td>
+<td>2026</td>
+<td>CSU SLV 2-Field Pilot</td>
+<td>20%+ savings, legal admissibility</td>
+</tr>
+<tr>
+<td>Capture</td>
+<td>2026-27</td>
+<td>SLV Subdistrict 1 (1,280)</td>
+<td>Water Court precedent</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>2027-28</td>
+<td>Rio Grande Basin (6,000)</td>
+<td>3-state expansion</td>
+</tr>
+<tr>
+<td>National</td>
+<td>2028-29</td>
+<td>Colorado River (25,000)</td>
+<td>Interstate compact</td>
+</tr>
+<tr>
+<td>Global</td>
+<td>2030-34</td>
+<td>Top 10 Watersheds (200,000)</td>
+<td>World Bank credibility</td>
+</tr>
+<tr>
+<td>Dominance</td>
+<td>2034-36</td>
+<td>5% Global (400,000)</td>
+<td>Network effects mature</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Grant Pipeline:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Program</th>
+<th>Amount</th>
+<th>Deadline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USDA SBIR Phase I</td>
+<td>$300K</td>
+<td>Mar 2026</td>
+</tr>
+<tr>
+<td>USDA SBIR Phase II</td>
+<td>$1.1M</td>
+<td>Sep 2026</td>
+</tr>
+<tr>
+<td>NRCS CIG</td>
+<td>$75K-$5M</td>
+<td>Apr 2026</td>
+</tr>
+<tr>
+<td>DOE Water-Energy</td>
+<td>$2M-$10M</td>
+<td>Jun 2026</td>
+</tr>
+<tr>
+<td>USAID Global Dev</td>
+<td>$50M</td>
+<td>Jul 2026</td>
+</tr>
+<tr>
+<td>Gates Foundation</td>
+<td>$100M</td>
+<td>Aug 2026</td>
+</tr>
+<tr>
+<td>World Bank IDA</td>
+<td>$75M</td>
+<td>Sep 2026</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Pipeline:</strong> 160+ grants, <strong>$810M+</strong> over 2-3 years</p>
+<hr>
+<h1>8. COMPETITIVE MOAT</h1>
+<p><strong>Determinism vs. Stochastic Estimation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Competitor</th>
+<th>Approach</th>
+<th>Weakness</th>
+<th>Our Advantage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CropX</td>
+<td>Cloud-only</td>
+<td>Latency, connectivity</td>
+<td>Edge + sovereign ledger</td>
+</tr>
+<tr>
+<td>FieldNET</td>
+<td>Pivot control only</td>
+<td>No soil/VRI</td>
+<td>Full SPAC + 1m VRI</td>
+</tr>
+<tr>
+<td>Arable</td>
+<td>Weather-only</td>
+<td>No ground-truth</td>
+<td>Sensor + satellite fusion</td>
+</tr>
+<tr>
+<td>Sat-only</td>
+<td>Trend analysis</td>
+<td>No deep-profile</td>
+<td>1m Kriging + 48&quot; VFA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Moat Durability:</strong></p>
+<ol>
+<li><strong>Data Moat:</strong> 4+ years ground-truth calibration per field</li>
+<li><strong>Regulatory Moat:</strong> Legal recognition as “approved monitoring method”</li>
+<li><strong>Network Moat:</strong> 400,000-field mesh effects</li>
+<li><strong>Infrastructure Moat:</strong> Government-funded deployment = switching costs</li>
+</ol>
+<hr>
+<h1>9. USE OF PROCEEDS</h1>
+<p><strong>$25M Seed Round Allocation</strong></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Allocation</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legal entity setup</td>
+<td>2%</td>
+<td>$500K</td>
+</tr>
+<tr>
+<td>Operations reserve</td>
+<td>8%</td>
+<td>$2M</td>
+</tr>
+<tr>
+<td>Grant application engine</td>
+<td>5%</td>
+<td>$1.25M</td>
+</tr>
+<tr>
+<td>Hardware prototype</td>
+<td>15%</td>
+<td>$3.75M</td>
+</tr>
+<tr>
+<td>Field operations team</td>
+<td>20%</td>
+<td>$5M</td>
+</tr>
+<tr>
+<td>Software/Kriging engine</td>
+<td>15%</td>
+<td>$3.75M</td>
+</tr>
+<tr>
+<td>Regulatory/Water Court</td>
+<td>10%</td>
+<td>$2.5M</td>
+</tr>
+<tr>
+<td>Business development</td>
+<td>10%</td>
+<td>$2.5M</td>
+</tr>
+<tr>
+<td>Reserve</td>
+<td>15%</td>
+<td>$3.75M</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The Seed Unlocks:</strong></p>
+<ul>
+<li>Immediate operations (no 9-12 month grant delay)</li>
+<li>AI-accelerated 160+ grant applications in 6 weeks</li>
+<li>Multi-state and international pilots</li>
+<li>Water Court evidence preparation</li>
+</ul>
+<hr>
+<h1>10. RISK FACTORS</h1>
+<p><strong>Technical:</strong></p>
+<ul>
+<li>Sensor failure (mitigated: IP67, redundant design)</li>
+<li>RF interference (mitigated: CSS LoRa, mesh topology)</li>
+<li>Kriging accuracy (mitigated: 4+ year calibration, MAPE &lt;5%)</li>
+</ul>
+<p><strong>Market:</strong></p>
+<ul>
+<li>Farmer adoption (mitigated: free compliance tier)</li>
+<li>Competitive response (mitigated: regulatory moat)</li>
+<li>Regulatory rejection (mitigated: CSU validation)</li>
+</ul>
+<p><strong>Execution:</strong></p>
+<ul>
+<li>Grant timing (mitigated: seed bridge, 18-month runway)</li>
+<li>Team scaling (mitigated: clear roadmap, equity incentives)</li>
+<li>International complexity (mitigated: phased rollout)</li>
+</ul>
+<p><strong>Confidence Level:</strong> 85-90% achievable with seed + AI-accelerated grants</p>
+<hr>
+<h1>11. THE EXIT</h1>
+<p><strong>Exit Timeline:</strong> 2036 (Year 10)</p>
+<p><strong>Strategic Buyers:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Buyer</th>
+<th>Rationale</th>
+<th>Multiple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trimble</td>
+<td>Precision ag portfolio gap</td>
+<td>50-75x</td>
+</tr>
+<tr>
+<td>Deere</td>
+<td>Farm automation ecosystem</td>
+<td>60-80x</td>
+</tr>
+<tr>
+<td>Bayer</td>
+<td>Crop science integration</td>
+<td>50-70x</td>
+</tr>
+<tr>
+<td>Microsoft/Google</td>
+<td>Climate data infrastructure</td>
+<td>75-100x</td>
+</tr>
+<tr>
+<td>Sovereign Wealth</td>
+<td>Water security strategic asset</td>
+<td>80-120x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Exit Math (Conservative):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Year 10 ARR</td>
+<td>$235M core + $1B ancillary = <strong>$1.24B</strong></td>
+</tr>
+<tr>
+<td>Infrastructure multiple</td>
+<td><strong>50-100x</strong></td>
+</tr>
+<tr>
+<td>Exit valuation</td>
+<td><strong>$62-124B</strong></td>
+</tr>
+<tr>
+<td>Founder stake (35%)</td>
+<td><strong>$21.7-43.4B</strong></td>
+</tr>
+<tr>
+<td>Angel stake (0.35%)</td>
+<td><strong>$217-434M (8,680-17,360x)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>This is Visa/Mastercard for water.</strong> The financial infrastructure layer for the world’s most scarce resource.</p>
+<hr>
+<h1>12. GLOSSARY &amp; INDEX</h1>
+<h2>A</h2>
+<p><strong>Adaptive Recalculation Engine</strong> — Dynamic computation scheduler. Modes: DORMANT, ANTICIPATORY, FOCUS RIPPLE, FOCUS COLLAPSE.</p>
+<p><strong>AES-256</strong> — Advanced Encryption Standard. Used for all field telemetry.</p>
+<p><strong>AllianceChain</strong> — FarmSense’s PBFT consensus protocol for Digital Water Ledger.</p>
+<p><strong>Alpha-Sled</strong> — Removable electronics cartridge deployed seasonally.</p>
+<p><strong>ANTICIPATORY Mode</strong> — Engine state triggered by rapid temperature rise.</p>
+<p><strong>Aquifer</strong> — Underground geological formation containing groundwater.</p>
+<h2>B</h2>
+<p><strong>Black Box Cache</strong> — 128GB SSD in DHU for 30-day encrypted audit recording.</p>
+<p><strong>BLE 5.0</strong> — Bluetooth Low Energy for technician maintenance access.</p>
+<p><strong>BOM</strong> — Bill of Materials. Complete parts list with costs.</p>
+<h2>C</h2>
+<p><strong>CSS LoRa</strong> — Chirp Spread Spectrum LoRa at 915MHz. Primary telemetry protocol.</p>
+<p><strong>CSA</strong> — Corner-Swing Arm. BLE 5.2 distance ranging device.</p>
+<p><strong>COLLAPSE Mode</strong> — Critical engine state during active irrigation.</p>
+<p><strong>Cokriging</strong> — Multivariate geostatistical interpolation.</p>
+<p><strong>Core Compute Server (Zo)</strong> — Cloud-based scientific engine.</p>
+<p><strong>Crop Coefficient (Kc)</strong> — Factor relating actual ET to reference ET.</p>
+<h2>D</h2>
+<p><strong>DHU</strong> — District Hub. Level 2 infrastructure node. 35’ pole, Orin Nano, 100-pivot radius.</p>
+<p><strong>Digital Water Ledger (DWL)</strong> — Cryptographically signed chain of custody.</p>
+<p><strong>DIL</strong> — Data Integration Layer.</p>
+<p><strong>DORMANT Mode</strong> — Low-power engine state. 4-hour polling, 8µA draw.</p>
+<h2>E</h2>
+<p><strong>Edge-EBK</strong> — Empirical Bayesian Kriging at PMT. 50m resolution.</p>
+<p><strong>ESP32-S3</strong> — MCU in PMT. Dual-core, vector FPU, LoRa.</p>
+<p><strong>ET (Evapotranspiration)</strong> — Combined water loss from soil + plants.</p>
+<h2>F</h2>
+<p><strong>FOCUS RIPPLE</strong> — Engine state triggered by &gt;5% moisture deviation.</p>
+<h2>G</h2>
+<p><strong>GNSS</strong> — Global Navigation Satellite System. Sub-cm positioning.</p>
+<p><strong>GroPoint Profile</strong> — Commercial soil moisture sensor in VFA.</p>
+<h2>H</h2>
+<p><strong>HDPE SDR9</strong> — High-Density Polyethylene pipe for VFA/LRZ shells.</p>
+<p><strong>Hydraulic Conductivity (Ksat)</strong> — Rate of water movement through saturated soil.</p>
+<h2>I</h2>
+<p><strong>IMU</strong> — Inertial Measurement Unit. 9-axis for tower stability.</p>
+<p><strong>ISLAND Mode</strong> — PMT autonomous operation when DHU offline.</p>
+<h2>K</h2>
+<p><strong>Kc</strong> — See: Crop Coefficient.</p>
+<p><strong>Kriging</strong> — Geostatistical interpolation. FarmSense uses Ordinary, Regression, Edge-EBK.</p>
+<h2>L</h2>
+<p><strong>LiFePO4</strong> — Lithium Iron Phosphate battery. DHU, PFA.</p>
+<p><strong>LiSOCl2</strong> — Lithium Thionyl Chloride. LRZ1/LRZ2 (10-year life).</p>
+<p><strong>LoRa</strong> — Long Range low-power wireless. 915MHz CSS LoRa.</p>
+<p><strong>LRZ1/LRZ2</strong> — Lateral Root-Zone Basic/Reference. $29/$54 spatial scouts.</p>
+<p><strong>LTE-M</strong> — Low-power cellular for DHU backhaul fallback.</p>
+<h2>M</h2>
+<p><strong>MAD</strong> — Management Allowable Depletion. % of available water before crop damage.</p>
+<p><strong>MAPE</strong> — Mean Absolute Percentage Error. Kriging validation target &lt;5%.</p>
+<h2>N</h2>
+<p><strong>NREP</strong> — Non-Repudiable Evidence Prime. Legal admissibility standard.</p>
+<h2>P</h2>
+<p><strong>PBFT</strong> — Practical Byzantine Fault Tolerance. Consensus algorithm.</p>
+<p><strong>PMT</strong> — Pivot Motion Tracker. Field hub with edge-EBK engine.</p>
+<p><strong>PFA</strong> — Pressure &amp; Flow Anchor. Flow measurement node.</p>
+<p><strong>PSLC</strong> — Pseudo-SLC flash. High-endurance SSD in DHU.</p>
+<h2>R</h2>
+<p><strong>RFM95W</strong> — 915MHz LoRa radio module.</p>
+<p><strong>RSS</strong> — Regional Superstation. 40ft container, Threadripper, 50TB.</p>
+<p><strong>RTK</strong> — Real-Time Kinematic. Sub-cm GNSS positioning.</p>
+<h2>S</h2>
+<p><strong>SDR9</strong> — Standard Dimension Ratio 9. HDPE pipe specification.</p>
+<p><strong>SLV</strong> — San Luis Valley. Colorado pilot location.</p>
+<p><strong>SPAC</strong> — Soil-Plant-Atmosphere Continuum. Thermodynamic model.</p>
+<h2>T</h2>
+<p><strong>TAM</strong> — Total Addressable Market. FarmSense TAM: $19-44B/year.</p>
+<p><strong>TimescaleDB</strong> — PostgreSQL extension for time-series data.</p>
+<h2>V</h2>
+<p><strong>VFA</strong> — Vertical Field Anchor. 48&quot; deep-profile truth node.</p>
+<p><strong>VRI</strong> — Variable Rate Irrigation. Prescription-based water application.</p>
+<h2>Index by Topic</h2>
+<p><strong>Business Model</strong> — Page 6
+<strong>Competitive Moat</strong> — Page 9
+<strong>Development Timeline</strong> — Page 8
+<strong>Exit Strategy</strong> — Page 12
+<strong>Financial Projections</strong> — Page 7
+<strong>Market Size</strong> — Page 5
+<strong>Risk Factors</strong> — Page 11
+<strong>Solution Architecture</strong> — Page 4
+<strong>The Opportunity</strong> — Page 3
+<strong>Use of Proceeds</strong> — Page 10</p>
+<hr>
+<p><strong>Contact</strong></p>
+<p>Jeremy Beebe, Founder &amp; CEO<br>
+<a href="mailto:getfarmsense@gmail.com">getfarmsense@gmail.com</a></p>
+<p>FarmSense™ | FS-1™ | Digital Water Ledger™<br>
+<em>© 2026 Bxthre3 Inc. — CONFIDENTIAL</em></p>
+
+    </div>
+    
+    <!-- Page number -->
+    <div class="fixed bottom-8 right-16 text-slate-600 text-xs font-medium">
+        CONFIDENTIAL — March 12, 2026
+    </div>
+</div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

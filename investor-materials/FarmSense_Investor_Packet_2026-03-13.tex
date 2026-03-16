@@ -1,0 +1,433 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% Brand colors
+\definecolor{farmsense-green}{HTML}{228B22}
+\definecolor{farmsense-gold}{HTML}{B8860B}
+\definecolor{farmsense-gray}{HTML}{2C3E50}
+
+% Header/Footer setup
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{FarmSense\textsuperscript{TM}}
+\fancyfoot[C]{\thepage}
+\fancyfoot[R]{\small CONFIDENTIAL — For review by qualified investors only}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\color{farmsense-green}}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{farmsense-gray}}{}{0em}{}
+
+% TOC formatting
+\renewcommand{\cftsecfont}{\bfseries\color{farmsense-green}}
+\renewcommand{\cftsecpagefont}{\bfseries\color{farmsense-green}}
+
+\begin{document}
+
+% ============================================
+% PAGE 1: COVER PAGE
+% ============================================
+\thispagestyle{empty}
+\begin{center}
+\vspace*{2in}
+
+{\Huge\bfseries\color{farmsense-green} FarmSense\textsuperscript{TM}}\\[0.3in]
+{\Large\color{farmsense-gray} Deterministic Farming Operating System}\\[1in]
+
+{\LARGE\bfseries Investment Opportunity}\\[0.2in]
+{\Large Validation Round}\\[1.5in]
+
+\begin{tabular}{rl}
+\textbf{Prepared for:} & Danny Romero \\[0.1in]
+\textbf{Date:} & March 13, 2026 \\[0.1in]
+\textbf{Company:} & Bxthre3 Inc. \\
+\end{tabular}
+
+\vfill
+
+{\small\color{farmsense-gold}\textbf{CONFIDENTIAL — For review by qualified investors only}}
+
+\end{center}
+
+\newpage
+
+% ============================================
+% PAGE 2: TABLE OF CONTENTS
+% ============================================
+\tableofcontents
+\newpage
+
+% ============================================
+% PAGE 3: EXECUTIVE SUMMARY
+% ============================================
+\section{Executive Summary}
+
+FarmSense is building the infrastructure protocol for traceable, compliant, and optimizable water use in agriculture. Our Deterministic Farming Operating System (DFOS) transforms farm water management from reactive guesswork into deterministic, auditable operations.
+
+\subsection{The Crisis}
+The San Luis Valley spent \$1.57 billion over 20 years paying farmers \textit{not} to grow food through fallowing programs. Result: 30,000 acres fallowed, \$1.5 billion in lost revenue, \$74 million in program costs—and the aquifer still declines 89,000 acre-feet annually.
+
+\subsection{The Solution}
+FarmSense DFOS provides sub-field precision water management:
+\begin{itemize}
+    \item \textbf{4-layer stack:} LRZ1/LRZ2 sensors, PMT edge hub, DHU processor, RSS cloud
+    \item \textbf{Edge intelligence:} EBK Kriging on \$150 hardware delivers 10-meter moisture maps
+    \item \textbf{Compliance automation:} Digital Water Ledger reduces compliance costs from \$15,000+/year to \$200/year
+\end{itemize}
+
+\subsection{Investment Terms}
+\begin{itemize}
+    \item \textbf{Round:} \$25,000 Validation Round (SAFE)
+    \item \textbf{Pre-money cap:} \$850,000
+    \item \textbf{Ownership:} 2.86\%
+    \item \textbf{Discount:} 15\%
+    \item \textbf{Exit range:} \$8.2M–\$37M
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 4: THE CRISIS
+% ============================================
+\section{The Crisis: Water Bankruptcy}
+
+\subsection{The San Luis Valley Case Study}
+
+Colorado's San Luis Valley represents the front line of American water bankruptcy:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+20-year fallowing spend & \$1.57 billion \\
+Acres fallowed & 30,000 \\
+Lost farm revenue & \$1.5 billion \\
+Program administration & \$74 million \\
+Aquifer decline rate & 89,000 AF/year \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The core problem: agricultural water management operates blind. Farmers cannot see below the surface, cannot measure actual crop water need, and cannot optimize against aquifer limits.
+
+\subsection{Why Existing Solutions Fail}
+
+Current approaches fall into three inadequate categories:
+
+\begin{enumerate}
+    \item \textbf{Fallowing:} Pay farmers not to grow. Expensive, economically destructive, and fails to stop aquifer decline.
+    \item \textbf{Precision agriculture:} Expensive hardware, no compliance integration, no water rights optimization.
+    \item \textbf{Regulatory mandates:} Unenforceable without measurement infrastructure.
+\end{enumerate}
+
+\newpage
+
+% ============================================
+% PAGE 5: THE SOLUTION
+% ============================================
+\section{The Solution: FarmSense DFOS}
+
+\subsection{System Architecture}
+
+FarmSense deploys a four-layer deterministic stack:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Layer} & \textbf{Function} & \textbf{Hardware} \\
+\midrule
+LRZ1/LRZ2 & Soil moisture @ 4''/12'' & LoRaWAN, 5-year battery \\
+PMT & Edge AI field computation & Raspberry Pi 4 + Coral TPU \\
+DHU & Zone optimization & Linear programming, SPAC modeling \\
+RSS & Cloud analytics & Compliance dashboards, API integration \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Key Technical Differentiators}
+
+\begin{itemize}
+    \item \textbf{Edge EBK Kriging:} Spatial interpolation runs on \$150 field hardware, delivering 10-meter resolution moisture maps without cloud dependency.
+    \item \textbf{Digital Water Ledger:} Automated compliance documentation reduces regulatory overhead from \$15,000+/year to \$200/year.
+    \item \textbf{Deterministic operations:} Every irrigation decision backed by measured soil-plant-atmosphere data, not guesswork.
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 6: MARKET OPPORTUNITY
+% ============================================
+\section{Market Opportunity}
+
+\subsection{This Is Water Infrastructure}
+
+FarmSense is not precision agriculture. We are building the infrastructure protocol for traceable, compliant, and optimizable water use.
+
+If water becomes the next carbon—tradeable, regulated, financialized—FarmSense is positioned to be the infrastructure layer.
+
+\subsection{Market Sizing}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lp{3in}l@{}}
+\toprule
+\textbf{Segment} & \textbf{Definition} & \textbf{Size} \\
+\midrule
+TAM & Global traceable water infrastructure & \$800B+ annually \\
+SAM & Water technology, compliance, data/payments & \$50B+ (12\% CAGR) \\
+SOM & Phase 1: Colorado, Rio Grande, High Plains & \$1B+ \\
+Beachhead & SLV validation $\rightarrow$ DWR gold standard & Scalable to \$100B \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The Bet}
+
+If FarmSense becomes the infrastructure protocol that regulators like Colorado DWR endorse, the TAM scales from a \$50B technology layer to an \$800B+ infrastructure layer as water transitions from free resource to tradeable, regulated, financialized asset class.
+
+\newpage
+
+% ============================================
+% PAGE 7: 2026 PILOT PROGRAM
+% ============================================
+\section{2026 Pilot Program}
+
+\subsection{Pilot Scope}
+
+\begin{itemize}
+    \item \textbf{Farms:} 2 pilot validation farms
+    \item \textbf{Coverage:} 100–200 acres
+    \item \textbf{Objective:} Prove water reduction without yield loss
+\end{itemize}
+
+\subsection{Timeline}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Phase} & \textbf{Activity} \\
+\midrule
+Q2 2026 & Initial deployment \\
+Q3 2026 & Data collection, system refinement \\
+Q4 2026 & DWR plan submission \\
+2027 & Scale to 10+ farms \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Success Metrics}
+
+\begin{itemize}
+    \item \textbf{Water reduction:} 15–20\% versus baseline
+    \item \textbf{Yield maintenance:} $\geq$95\% of historical average
+    \item \textbf{Regulatory acceptance:} DWR plan approval
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 8: COMPETITIVE LANDSCAPE
+% ============================================
+\section{Competitive Landscape}
+
+\subsection{Competitor Analysis}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}lp{1.8in}p{1.8in}@{}}
+\toprule
+\textbf{Competitor} & \textbf{Strengths} & \textbf{Weaknesses} \\
+\midrule
+CropX & Market presence, soil analytics & No edge compute, cloud-dependent \\
+Hortau & Tensiometer accuracy & \$800/unit cost, no court integration \\
+Phytech & Israeli ag-tech pedigree & Poor US compliance, data export issues \\
+Lindsay & Irrigation hardware scale & No soil sensing, no optimization \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{FarmSense Differentiation}
+
+\begin{itemize}
+    \item Only solution with edge AI Kriging on commodity hardware
+    \item Only solution with integrated Digital Water Ledger for DWR compliance
+    \item Only solution designed for US water rights legal frameworks
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 9: TEAM
+% ============================================
+\section{Team}
+
+\subsection{Leadership}
+
+\textbf{Jeremy Beebe — Founder/CEO}
+\begin{itemize}
+    \item 4th-generation San Luis Valley farmer
+    \item University of Colorado Boulder, Computer Science
+    \item Deep domain expertise in SLV water crisis and agricultural operations
+\end{itemize}
+
+\subsection{Advisory}
+
+\textbf{Dr. Bruce Bugbee — Technical Advisor}
+\begin{itemize}
+    \item Professor, Utah State University
+    \item NASA consultant on controlled environment agriculture
+    \item Pioneer in soil-plant-atmosphere continuum research
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 10: USE OF FUNDS
+% ============================================
+\section{Use of Funds}
+
+The \$25,000 Validation Round will be deployed as follows:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lrl@{}}
+\toprule
+\textbf{Category} & \textbf{Amount} & \textbf{Purpose} \\
+\midrule
+Hardware Engineering & \$8,000 & LRZ sensor refinement, PMT optimization \\
+Pilot Operations & \$10,000 & Field deployment, farmer coordination \\
+Regulatory/Legal & \$4,000 & DWR compliance documentation, legal review \\
+Working Capital & \$3,000 & Buffer for contingencies \\
+\midrule
+\textbf{Total} & \textbf{\$25,000} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\newpage
+
+% ============================================
+% PAGE 11: INVESTMENT TERMS
+% ============================================
+\section{Investment Terms}
+
+\subsection{SAFE Structure}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Term} & \textbf{Value} \\
+\midrule
+Instrument & Simple Agreement for Future Equity (SAFE) \\
+Round size & \$25,000 \\
+Pre-money cap & \$850,000 \\
+Discount rate & 15\% \\
+Ownership at cap & 2.86\% \\
+Exit valuation range & \$8.2M–\$37M \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Risk Factors}
+
+As with any early-stage investment, prospective investors should consider:
+
+\begin{itemize}
+    \item Technology validation risk: Pilot results may not meet targets
+    \item Regulatory risk: DWR acceptance not guaranteed
+    \item Market risk: Water rights trading development may stall
+    \item Execution risk: Team scale-up challenges
+\end{itemize}
+
+\newpage
+
+% ============================================
+% PAGE 12: NEXT STEPS
+% ============================================
+\section{Next Steps}
+
+\subsection{For Qualified Investors}
+
+\begin{enumerate}
+    \item \textbf{Data room access:} Technical specifications, pilot agreements, regulatory correspondence
+    \item \textbf{Founder call:} Direct conversation with Jeremy Beebe
+    \item \textbf{Pilot site visit:} On-farm demonstration (Spring 2026)
+\end{enumerate}
+
+\subsection{Contact}
+
+\begin{tabular}{@{}ll@{}}
+\textbf{Company:} & Bxthre3 Inc. \\
+\textbf{Email:} & getfarmsense@gmail.com \\
+\textbf{Website:} & farmsense.bxthre3.com \\
+\end{tabular}
+
+\vspace{0.5in}
+
+\begin{center}
+\color{farmsense-green}\Large\bfseries
+FarmSense: Deterministic Farming for a Water-Constrained World
+\end{center}
+
+\newpage
+
+% ============================================
+% PAGE 13: INDEX \& GLOSSARY
+% ============================================
+\section*{Index \& Glossary}
+\addcontentsline{toc}{section}{Index \& Glossary}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}lp{4.5in}@{}}
+\toprule
+\textbf{Term} & \textbf{Definition} \\
+\midrule
+AF & Acre-foot — 325,851 gallons; standard water measurement \\
+CRP & Conservation Reserve Program — pays farmers to retire land \\
+DFOS & Deterministic Farming Operating System \\
+DHU & Deterministic Hydrology Unit — zone optimization processor \\
+DWR & Division of Water Resources — Colorado state water regulator \\
+EBK & Empirical Bayesian Kriging — spatial interpolation algorithm \\
+ET₀ & Reference Evapotranspiration — baseline water loss metric \\
+FCC & Federal Communications Commission \\
+LoRaWAN & Low-power wide-area mesh network protocol \\
+LRZ1/LRZ2 & LoRaWAN Remote Zone sensors at 4'' and 12'' depths \\
+PMT & Precision Management Terminal — edge AI field hub \\
+RSS & Remote Sensing Subsystem — cloud analytics platform \\
+SAFE & Simple Agreement for Future Equity — investment instrument \\
+SAM & Serviceable Available Market — \$50B+ water technology layer \\
+SLV & San Luis Valley — Colorado potato-growing region \\
+SOM & Serviceable Obtainable Market — \$1B+ Phase 1 opportunity \\
+SPAC & Soil-Plant-Atmosphere Continuum — water movement framework \\
+SSURGO2 & USDA soil survey database \\
+TAM & Total Addressable Market — \$800B+ global water infrastructure \\
+TPU & Tensor Processing Unit — AI accelerator chip \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\vfill
+
+\begin{center}
+\small\color{farmsense-gray}
+\textit{This document contains forward-looking statements and investment projections.}\\
+\textit{Actual results may differ materially from those projected.}
+\end{center}
+
+\end{document}

@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-03-16T17:40:00Z",
+  "status": "operational",
+  "checks": {
+    "disk_space": {
+      "status": "warning",
+      "used_percent": 80,
+      "available_gb": 1400,
+      "message": "Disk space at 80% - monitor for growth"
+    },
+    "farmsense_api": {
+      "status": "up",
+      "http_status": 200,
+      "message": "Service operational on port 8001"
+    },
+    "farmsense_frontend": {
+      "status": "up",
+      "http_status": 200,
+      "message": "Service operational on port 5174"
+    },
+    "vpc_edge": {
+      "status": "up",
+      "http_status": 401,
+      "message": "Responding but requires auth"
+    },
+    "postgresql": {
+      "status": "up",
+      "message": "Database responsive"
+    },
+    "oracle_endpoint": {
+      "status": "down",
+      "http_status": null,
+      "message": "oracle.farmsense.io unreachable - external service (persistent)"
+    }
+  },
+  "heartbeat_cycle": 167,
+  "employees_due": 4,
+  "employees_awakened": ["pulse", "sentinel", "chronicler", "iris"],
+  "summary": "System operational. Cycle 167 - Awakened 4 monitors (pulse, sentinel, chronicler, iris). 15-minute interval monitors active. Next wakeup at 17:55:00Z.",
+  "next_scheduled_wakeup": "2026-03-16T17:55:00Z"
+}

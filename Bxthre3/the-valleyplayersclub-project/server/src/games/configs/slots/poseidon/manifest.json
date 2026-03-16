@@ -1,0 +1,14 @@
+{
+    "name": "Poseidon's Riches",
+    "theme": "ocean",
+    "category": "slots",
+    "evaluatorType": "slots-scatter",
+    "reels": [
+        ["TRIDENT", "PEARL", "SHELL", "SHARK", "WILD", "PEARL", "SHELL", "TRIDENT"],
+        ["TRIDENT", "PEARL", "SHELL", "SHARK", "WILD", "PEARL", "SHELL", "TRIDENT"],
+        ["TRIDENT", "PEARL", "SHELL", "SHARK", "WILD", "PEARL", "SHELL", "TRIDENT"],
+        ["TRIDENT", "PEARL", "SHELL", "SHARK", "WILD", "PEARL", "SHELL", "TRIDENT"],
+        ["TRIDENT", "PEARL", "SHELL", "SHARK", "WILD", "PEARL", "SHELL", "TRIDENT"]
+    ],
+    "rows": 4
+}

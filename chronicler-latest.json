@@ -1,0 +1,60 @@
+[
+  {
+    "timestamp": "2026-03-15T20:55:00Z",
+    "report_type": "initial",
+    "summary": {
+      "total_employees": 0,
+      "active": 0,
+      "idle": 0,
+      "idle_over_4h": 0,
+      "p1_escalations": 0,
+      "p2_escalations": 0,
+      "pattern_flags": []
+    },
+    "notes": "Initial Chronicler run - activity log initialized. No employee activity data found. System health shows DEGRADED status with P1 alerts for Oracle endpoint and PostgreSQL database."
+  },
+  {
+    "timestamp": "2026-03-16T02:25:00Z",
+    "report_type": "periodic",
+    "summary": {
+      "total_employees": 0,
+      "active": 0,
+      "idle": 0,
+      "idle_over_4h": 5,
+      "p1_escalations": 0,
+      "p2_escalations": 4,
+      "pattern_flags": [
+        "system_degraded"
+      ]
+    },
+    "notes": "No new employee activity data in activity log. System health DEGRADED - 4 active P2 alerts: oracle.farmsense.io unreachable (2), localhost:3000 internal API unreachable, localhost:8080 internal service unreachable. 5 employees (taylor, theo, raj, alex, sam) remain idle >4h (P2 alerts already queued at 01:35:00Z). Disk space at 80%. Pattern flagged: system_degraded. No new idle employees requiring P2 escalation."
+  },
+  {
+    "timestamp": "2026-03-16T02:40:00Z",
+    "report_type": "periodic",
+    "summary": {
+      "total_employees": 0,
+      "active": 0,
+      "idle": 0,
+      "idle_over_4h": 5,
+      "p1_escalations": 0,
+      "p2_escalations": 4,
+      "pattern_flags": ["system_degraded"]
+    },
+    "notes": "No new employee activity data in activity log. System health DEGRADED - 4 active P2 alerts: oracle.farmsense.io unreachable (2), localhost:3000 internal API unreachable, localhost:8080 internal service unreachable. 5 employees (taylor, theo, raj, alex, sam) remain idle >4h (P2 alerts already queued at 01:35:00Z). No new idle employees requiring additional P2 escalation. Disk space at 80%."
+  },
+  {
+    "timestamp": "2026-03-16T02:55:00Z",
+    "report_type": "periodic",
+    "summary": {
+      "total_employees": 0,
+      "active": 0,
+      "idle": 0,
+      "idle_over_4h": 5,
+      "p1_escalations": 0,
+      "p2_escalations": 4,
+      "pattern_flags": ["system_degraded"]
+    },
+    "notes": "No new employee activity data in activity log. System health DEGRADED - 4 active P2 alerts: oracle.farmsense.io unreachable (2), localhost:3000 internal API unreachable, localhost:8080 internal service unreachable. 5 employees (taylor, theo, raj, alex, sam) remain idle >4h (P2 alerts already queued). Disk space at 80%. No new idle employees requiring P2 escalation."
+  }
+]

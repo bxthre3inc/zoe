@@ -1,0 +1,7 @@
+{"type": "alert", "severity": "P2", "source": "pulse", "timestamp": "2026-03-16T01:55:00Z", "message": "oracle.farmsense.io endpoint unreachable - connection timeout", "details": {"endpoint": "https://oracle.farmsense.io", "http_code": "000"}}
+{"type": "alert", "severity": "P2", "source": "pulse", "timestamp": "2026-03-16T01:55:00Z", "message": "localhost:3000 internal API unreachable", "details": {"endpoint": "http://localhost:3000", "http_code": "000"}}
+{"type": "alert", "severity": "P2", "source": "pulse", "timestamp": "2026-03-16T01:55:00Z", "message": "localhost:8080 internal service unreachable", "details": {"endpoint": "http://localhost:8080", "http_code": "000"}}
+
+{"type": "alert", "severity": "P2", "source": "pulse", "timestamp": "2026-03-16T02:10:00Z", "message": "oracle.farmsense.io unreachable", "details": {"endpoint": "https://oracle.farmsense.io", "http_code": "000"}}
+{"type":"alert","severity":"P2","source":"pulse","target":"oracle.farmsense.io","message":"External Oracle API endpoint unreachable","timestamp":"2026-03-16T02:40:00Z"}
+{"type": "alert", "severity": "P2", "source": "pulse", "timestamp": "2026-03-16T02:55:00Z", "message": "oracle.farmsense.io unreachable", "details": {"endpoint": "https://oracle.farmsense.io", "http_code": "000"}}

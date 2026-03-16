@@ -1,0 +1,6 @@
+{
+    "name": "Lucky Flip",
+    "theme": "Classic",
+    "category": "skill",
+    "evaluatorType": "coin-toss"
+}

@@ -1,0 +1,28 @@
+{
+  "locked": false,
+  "last_active": "2026-03-16T12:25:00Z",
+  "status": "active",
+  "last_check": "2026-03-16T12:25:00Z",
+  "heartbeat_cycle": 150,
+  "work_queue_summary": {
+    "high_priority_items": 3,
+    "urgent": "ESTCP Grant Proposal (10 days to deadline)",
+    "checklist_remaining": [
+      "SAM.gov registration (CAGE Code)",
+      "DSIP registration",
+      "Letters of Support (3 required)",
+      "Legal review (ITAR, export control)",
+      "Final formatting",
+      "Upload to ESTCP portal (SEMS)"
+    ],
+    "infrastructure_alerts": {
+      "oracle_endpoint": "removed from monitoring (P2 - no service provisioned)",
+      "frontend_5173": "not responding (P2)",
+      "disk_space": "80% (warning)"
+    },
+    "idle_employees": [],
+    "employees_to_wake": [],
+    "employees_awakened_this_cycle": ["pulse", "sentinel", "chronicler", "iris"],
+    "notes": "Heartbeat cycle 150 complete. Awakened 4 monitors (pulse, sentinel, chronicler, iris) at 12:25:00Z. All systems operational except frontend 5173 and disk space warning. ESTCP deadline March 26."
+  }
+}
