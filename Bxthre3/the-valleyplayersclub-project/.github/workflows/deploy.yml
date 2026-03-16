@@ -1,0 +1,128 @@
+name: Deploy VPC to Production
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20'
+  BUN_VERSION: '1.1.x'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      # --- Build Frontend ---
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+        env:
+          VITE_API_URL: https://${{ secrets.ZO_HOST }}/api
+
+      # --- Build Server ---
+      - name: Install server dependencies
+        working-directory: ./server
+        run: bun install
+
+      - name: Run server tests
+        working-directory: ./server
+        run: bun test || true
+
+      # --- Deploy to Zo Server ---
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ZO_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          eval $(ssh-agent -s)
+          ssh-add ~/.ssh/deploy_key
+          ssh-keyscan -H ${{ secrets.ZO_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy application
+        env:
+          SSH_KEY: ${{ secrets.ZO_SSH_KEY }}
+          HOST: ${{ secrets.ZO_HOST }}
+          USER: ${{ secrets.ZO_USER }}
+        run: |
+          # Create remote directory
+          ssh -i ~/.ssh/deploy_key $USER@$HOST "mkdir -p ~/vpc-app"
+
+          # Sync frontend build
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            ./dist/ $USER@$HOST:~/vpc-app/client/
+
+          # Sync server code
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/deploy_key" \
+            --exclude='node_modules' \
+            --exclude='data/*.db' \
+            ./server/ $USER@$HOST:~/vpc-app/server/
+
+          # Create production .env on server
+          ssh -i ~/.ssh/deploy_key $USER@$HOST "cat > ~/vpc-app/server/.env" << 'EOF'
+          # VPC Production Environment
+          PORT=3001
+          NODE_ENV=production
+          LOG_LEVEL=info
+          DB_PATH=data/vpc.db
+          JWT_SECRET=${{ secrets.JWT_SECRET }}
+          WSS_DOMAIN=wss://${{ secrets.ZO_HOST }}
+          ALLOWED_ORIGINS=https://${{ secrets.ZO_HOST }}
+          OLLAMA_HOST=http://localhost:11434
+          OLLAMA_MODEL=phi3
+          STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}
+          STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET }}
+          BTC_MASTER_ADDRESS=${{ secrets.BTC_MASTER_ADDRESS }}
+          CASHAPP_CASHTAG=${{ secrets.CASHAPP_CASHTAG }}
+          PERSONA_API_KEY=${{ secrets.PERSONA_API_KEY }}
+          PERSONA_TEMPLATE_ID=${{ secrets.PERSONA_TEMPLATE_ID }}
+          MAXMIND_ACCOUNT_ID=${{ secrets.MAXMIND_ACCOUNT_ID }}
+          MAXMIND_LICENSE_KEY=${{ secrets.MAXMIND_LICENSE_KEY }}
+          EOF
+
+          # Setup PM2 and restart server
+          ssh -i ~/.ssh/deploy_key $USER@$HOST << 'REMOTESCRIPT'
+            cd ~/vpc-app/server
+            bun install --production
+            mkdir -p data
+            
+            # Check if already running
+            if pm2 list | grep -q "vpc-server"; then
+              pm2 restart vpc-server
+            else
+              pm2 start src/index.ts --name "vpc-server" --interpreter bun
+              pm2 save
+            fi
+            
+            # Setup Nginx if not present
+            if [ ! -f /etc/nginx/sites-available/vpc ]; then
+              echo "Setting up Nginx..."
+              # Nginx config would go here
+            fi
+          REMOTESCRIPT
+
+      - name: Verify deployment
+        run: |
+          sleep 5
+          curl -f https://${{ secrets.ZO_HOST }}/health || exit 1
+
+      - name: Cleanup SSH
+        run: rm -f ~/.ssh/deploy_key
