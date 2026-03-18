@@ -229,6 +229,12 @@ export class SecuredCashService {
     // Check for tier promotion
     const newTier = await this.evaluateTierPromotion(partnerId);
 
+    // Check for auto-freeze
+    const freezeResult = await this.checkAutoFreeze(partnerId);
+    if (freezeResult.frozen) {
+      return { success: true, userId, amount, commission, newPartnerTier: newTier, ...freezeResult };
+    }
+
     return { success: true, userId, amount, commission, newPartnerTier: newTier };
   }
 
@@ -423,10 +429,136 @@ export class SecuredCashService {
   }
 
   /**
-   * Initialize tables (migrations)
+   * Burn partner collateral (fraud detected)
    */
+  static async burnCollateral(partnerId: string, reason: string): Promise<{ seized: number }> {
+    const partner = await this.getPartner(partnerId);
+    if (!partner) throw new Error('Partner not found');
+    
+    const seized = partner.securedBalance;
+    
+    await db.execute({
+      sql: `UPDATE secured_cash_partners 
+            SET secured_balance = 0, pending_cash = 0, status = 'burned', 
+                updated_at = CURRENT_TIMESTAMP 
+            WHERE id = ?`,
+      args: [partnerId]
+    });
+    
+    await db.execute({
+      sql: `INSERT INTO collateral_burns (partner_id, amount, reason, burned_at) 
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)`,
+      args: [partnerId, seized, reason]
+    });
+    
+    return { seized };
+  }
+
+  /**
+   * Calculate system fraud reserve (profit if all partners ran)
+   */
+  static async getFraudReserve(): Promise<{ 
+    totalCollateral: number; 
+    totalPending: number; 
+    fraudReserve: number;
+    partnerCount: number 
+  }> {
+    const result = await db.execute({
+      sql: `SELECT 
+              COALESCE(SUM(secured_balance), 0) as total_collateral,
+              COALESCE(SUM(pending_cash), 0) as total_pending,
+              COUNT(*) as partner_count
+            FROM secured_cash_partners 
+            WHERE status IN ('active', 'frozen')`
+    });
+    
+    const row = result.rows[0];
+    const totalCollateral = Number(row.total_collateral);
+    const totalPending = Number(row.total_pending);
+    
+    return {
+      totalCollateral,
+      totalPending,
+      fraudReserve: totalCollateral - totalPending,
+      partnerCount: Number(row.partner_count)
+    };
+  }
+
+  /**
+   * Check if partner should be auto-frozen (80% threshold)
+   */
+  static async checkAutoFreeze(partnerId: string): Promise<{
+    frozen: boolean;
+    seizedAmount?: number;
+    requiresRefill?: boolean;
+  }> {
+    const partner = await this.getPartner(partnerId);
+    if (!partner || partner.status !== 'active') return { frozen: false };
+    
+    const threshold = partner.securedRequired * 0.8;
+    
+    if (partner.pendingCash >= threshold) {
+      // TRIGGER: Auto freeze and seize full collateral
+      const seizedAmount = partner.securedBalance;
+      
+      await db.execute({
+        sql: `UPDATE secured_cash_partners 
+              SET status = 'frozen', secured_balance = 0, pending_cash = 0,
+                  updated_at = CURRENT_TIMESTAMP 
+              WHERE id = ?`,
+        args: [partnerId]
+      });
+      
+      // Record the forced drop (seizure)
+      await db.execute({
+        sql: `INSERT INTO cash_drops (partner_id, amount, status, photo_verified, gps_verified, created_at) 
+              VALUES (?, ?, 'forced_seizure', true, true, CURRENT_TIMESTAMP)`,
+        args: [partnerId, seizedAmount]
+      });
+      
+      return { frozen: true, seizedAmount, requiresRefill: true };
+    }
+    
+    return { frozen: false };
+  }
+
+  /**
+   * Unfreeze partner after collateral refill
+   */
+  static async unfreezePartner(partnerId: string, newCollateral: number): Promise<SecuredPartner> {
+    const partner = await this.getPartner(partnerId);
+    if (!partner) throw new Error('Partner not found');
+    if (partner.status !== 'frozen') throw new Error('Partner not frozen');
+    
+    const tier = await this.calculateTier(partnerId, newCollateral);
+    const minRequired = this.getSecuredRequired(tier.level);
+    
+    if (newCollateral < minRequired) {
+      throw new Error(`Collateral ${newCollateral} below tier ${tier.level} minimum ${minRequired}`);
+    }
+    
+    await db.execute({
+      sql: `UPDATE secured_cash_partners 
+            SET secured_balance = ?, pending_cash = 0, status = 'active',
+                tier = ?, consecutive_active_days = 0, updated_at = CURRENT_TIMESTAMP 
+            WHERE id = ?`,
+      args: [newCollateral, tier.level, partnerId]
+    });
+    
+    return this.getPartner(partnerId) as SecuredPartner;
+  }
+
   static async initTables() {
-    // Tables created in db.ts initDatabase
-    console.log('SecuredCashService tables initialized');
+    // Add collateral_burns table
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS collateral_burns (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        partner_id TEXT NOT NULL,
+        amount INTEGER NOT NULL,
+        reason TEXT NOT NULL,
+        burned_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+    console.log('SecuredCashService tables initialized (with burns)');
   }
 }

@@ -240,6 +240,52 @@ const server = Bun.serve<{ authToken: string; userId?: string }>({
             }
         }
 
+        // Burn partner collateral (fraud detected)
+        if (pathname === '/api/cash/secured/partner/burn' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { partnerId, reason } = body;
+                
+                const result = await SecuredCashService.burnCollateral(partnerId, reason);
+                return new Response(JSON.stringify({
+                    success: true,
+                    seized: result.seized,
+                    message: `Collateral burned: $${result.seized} seized for ${reason}`
+                }), { headers });
+            } catch (err: any) {
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Get system fraud reserve
+        if (pathname === '/api/cash/secured/fraud-reserve' && method === 'GET') {
+            try {
+                const reserve = await SecuredCashService.getFraudReserve();
+                return new Response(JSON.stringify(reserve), { headers });
+            } catch (err: any) {
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Unfreeze partner after collateral refill
+        if (pathname === '/api/cash/secured/partner/unfreeze' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { partnerId, newCollateral } = body;
+                
+                const partner = await SecuredCashService.unfreezePartner(partnerId, newCollateral);
+                return new Response(JSON.stringify({
+                    success: true,
+                    partnerId: partner.id,
+                    newTier: partner.tier,
+                    securedBalance: partner.securedBalance,
+                    message: 'Partner unfrozen with new collateral'
+                }), { headers });
+            } catch (err: any) {
+                return new Response(JSON.stringify({ error: err.message }), { status: 400, headers });
+            }
+        }
+
         // --- Existing Cash Routes (legacy/simple) ---
         
         // 4. CASH DEPOSIT API ROUTES
