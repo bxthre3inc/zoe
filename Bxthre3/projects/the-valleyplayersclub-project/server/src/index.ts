@@ -15,6 +15,8 @@ import { ProfileService } from './services/ProfileService';
 import { CompetitionEngine } from './services/CompetitionEngine';
 import { MembershipService } from './services/MembershipService';
 import { SecuredCashService } from './services/SecuredCashService';
+import { RedemptionEngine } from './engine/redemption';
+import { TournamentService } from './services/TournamentService';
 import pino from 'pino';
 import * as dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
@@ -402,6 +404,134 @@ const server = Bun.serve<{ authToken: string; userId?: string }>({
             }
         }
 
+        // Redemption - request SC to USD with fee
+        if (pathname === '/api/redemption/request' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { userId, scAmount, method, destination } = body;
+                
+                const result = await RedemptionEngine.requestRedemption({ userId, scAmount, method, destination });
+                return new Response(JSON.stringify(result), { 
+                    status: result.success ? 200 : 400, 
+                    headers 
+                });
+            } catch (err: any) {
+                logger.error(err, 'Redemption request error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Redemption stats
+        if (pathname === '/api/redemption/stats' && method === 'GET') {
+            try {
+                const period = url.searchParams.get('period') as 'daily' | 'weekly' | 'monthly' || 'daily';
+                const stats = await RedemptionEngine.getRevenueStats(period);
+                return new Response(JSON.stringify(stats), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Redemption stats error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Tournament - create
+        if (pathname === '/api/tournament/create' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { name, gameId, entryFee, maxPlayers, startTime } = body;
+                
+                const tournament = await TournamentService.createTournament(
+                    name, gameId, entryFee, maxPlayers, startTime ? new Date(startTime) : undefined
+                );
+                return new Response(JSON.stringify(tournament), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Tournament create error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Tournament - enter
+        if (pathname === '/api/tournament/enter' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { tournamentId, userId } = body;
+                
+                const result = await TournamentService.enterTournament(tournamentId, userId);
+                return new Response(JSON.stringify(result), { 
+                    status: result.success ? 200 : 400, 
+                    headers 
+                });
+            } catch (err: any) {
+                logger.error(err, 'Tournament enter error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Tournament - list
+        if (pathname === '/api/tournaments' && method === 'GET') {
+            try {
+                const status = url.searchParams.get('status') as any;
+                const tournaments = await TournamentService.listTournaments(status || undefined);
+                return new Response(JSON.stringify(tournaments), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Tournament list error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Tournament - complete
+        if (pathname === '/api/tournament/complete' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { tournamentId } = body;
+                
+                const result = await TournamentService.completeTournament(tournamentId);
+                return new Response(JSON.stringify(result), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Tournament complete error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Tournament - revenue stats
+        if (pathname === '/api/tournament/revenue' && method === 'GET') {
+            try {
+                const period = url.searchParams.get('period') as 'daily' | 'weekly' | 'monthly' || 'daily';
+                const stats = await TournamentService.getRevenueStats(period);
+                return new Response(JSON.stringify(stats), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Tournament revenue error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Partner - record revenue
+        if (pathname === '/api/partner/revenue' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { partnerId, ggrAmount, period } = body;
+                
+                const partnerManager = PartnerIntegrationManager.getInstance();
+                const result = await partnerManager.recordPartnerRevenue(partnerId, ggrAmount, period);
+                return new Response(JSON.stringify(result), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Partner revenue error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // Partner - rev share stats
+        if (pathname === '/api/partner/revshare' && method === 'GET') {
+            try {
+                const period = url.searchParams.get('period') || undefined;
+                const partnerManager = PartnerIntegrationManager.getInstance();
+                const stats = await partnerManager.getPartnerRevShareStats(period);
+                return new Response(JSON.stringify(stats), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Partner revshare error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
         // WebSocket upgrade
         const success = server.upgrade(req, { 
             data: { 
@@ -473,7 +603,23 @@ const server = Bun.serve<{ authToken: string; userId?: string }>({
     },
 });
 
-// Initialize SecuredCashService tables on startup
+// Initialize all services on startup
+await initDatabase();
+await ComplianceService.initTables();
+await PaymentService.initTables();
+await CashNetworkService.initTables();
 await SecuredCashService.initTables();
+await PromotionService.initTables();
+await SocialEngine.initTables();
+await PersonalizationService.initTables();
+await ProfileService.initTables();
+await CompetitionEngine.initTables();
+await MembershipService.initTables();
+await RedemptionEngine.initTables();
+await TournamentService.initTables();
 
-logger.info(`🚀 VPC Edge Server (Full Stack) running at ${server.hostname}:${server.port}`);
+// Initialize partner revenue tables
+const partnerManager = PartnerIntegrationManager.getInstance();
+await partnerManager.initRevShareTables();
+
+logger.info(`🚀 VPC Edge Server (Full Stack + Revenue) running at ${server.hostname}:${server.port}`);

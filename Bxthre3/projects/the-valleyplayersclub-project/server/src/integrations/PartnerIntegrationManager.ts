@@ -33,6 +33,85 @@ export class PartnerIntegrationManager {
   getAllPartners(): string[] {
     return Array.from(this.partners.keys());
   }
+
+  /**
+   * Record partner Gross Gaming Revenue (GGR)
+   * Partners report their player losses to us
+   */
+  async recordPartnerRevenue(partnerId: string, ggrAmount: number, period: string): Promise<{
+    partnerGGR: number;
+    revSharePercent: number;
+    revShareAmount: number;
+  }> {
+    const revSharePercent = 0.15; // 15% of partner GGR
+    const revShareAmount = Math.floor(ggrAmount * revSharePercent);
+
+    await db.execute({
+      sql: `INSERT INTO partner_revenue (partner_id, period, ggr_amount, rev_share_amount, rev_share_percent) 
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(partner_id, period) DO UPDATE SET 
+            ggr_amount = ggr_amount + ?, rev_share_amount = rev_share_amount + ?`,
+      args: [partnerId, period, ggrAmount, revShareAmount, revSharePercent * 100, ggrAmount, revShareAmount]
+    });
+
+    return {
+      partnerGGR: ggrAmount,
+      revSharePercent,
+      revShareAmount
+    };
+  }
+
+  /**
+   * Get partner revenue share stats
+   */
+  async getPartnerRevShareStats(period?: string): Promise<{
+    totalPartnerGGR: number;
+    totalRevShare: number;
+    partnerBreakdown: { partnerId: string; ggr: number; revShare: number }[];
+  }> {
+    const timeFilter = period ? "period = ?" : "period = strftime('%Y-%m', 'now')";
+    const args = period ? [period] : [];
+
+    const result = await db.execute({
+      sql: `SELECT partner_id, SUM(ggr_amount) as ggr, SUM(rev_share_amount) as rev_share 
+            FROM partner_revenue 
+            WHERE ${timeFilter}
+            GROUP BY partner_id`,
+      args
+    });
+
+    const breakdown = result.rows.map(row => ({
+      partnerId: row.partner_id as string,
+      ggr: (row.ggr as number) || 0,
+      revShare: (row.rev_share as number) || 0
+    }));
+
+    const totalPartnerGGR = breakdown.reduce((sum, p) => sum + p.ggr, 0);
+    const totalRevShare = breakdown.reduce((sum, p) => sum + p.revShare, 0);
+
+    return { totalPartnerGGR, totalRevShare, partnerBreakdown: breakdown };
+  }
+
+  /**
+   * Initialize revenue share tables
+   */
+  async initRevShareTables() {
+    await db.execute(`
+      CREATE TABLE IF NOT EXISTS partner_revenue (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        partner_id TEXT NOT NULL,
+        period TEXT NOT NULL, -- '2026-03' format
+        ggr_amount INTEGER NOT NULL DEFAULT 0,
+        rev_share_amount INTEGER NOT NULL DEFAULT 0,
+        rev_share_percent INTEGER NOT NULL DEFAULT 15,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE(partner_id, period)
+      )
+    `);
+
+    await db.execute(`CREATE INDEX IF NOT EXISTS idx_partner_revenue_period ON partner_revenue (period)`);
+    console.log('Partner revenue share tables initialized');
+  }
 }
 
 /**
