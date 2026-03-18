@@ -17,6 +17,7 @@ import Skills from './pages/Skills';
 import Lobby from './pages/Lobby';
 import Profile from './pages/Profile';
 import Leaderboards from './pages/Leaderboards';
+import PartnerDashboard from './pages/PartnerDashboard';
 
 // Context
 import { SocketProvider, useSocket } from './contexts/SocketContext';
@@ -30,9 +31,10 @@ function AppContent() {
   const [isChallengeOpen, setIsChallengeOpen] = useState(false);
   
   // Placeholder for real user session - in production this would come from an Auth Provider
-  const [currentUser] = useState<{ id: string; username: string } | null>({
+  const [currentUser] = useState<{ id: string; username: string; role?: 'player' | 'partner' | 'admin' } | null>({
     id: 'user-' + Math.floor(Math.random() * 1000),
-    username: 'GuestPlayer'
+    username: 'GuestPlayer',
+    role: 'player' // Change to 'partner' to test partner view
   });
   
   // Psychological Analytics Hook
@@ -58,6 +60,13 @@ function AppContent() {
         break;
     }
   }, [lastMessage, navigate]);
+
+  // Redirect partners to partner dashboard
+  useEffect(() => {
+    if (currentUser?.role === 'partner' && location.pathname !== '/partner') {
+      navigate('/partner');
+    }
+  }, [currentUser, location.pathname, navigate]);
 
   const handleChallenge = (wager: number, game: string) => {
     setIsChallengeOpen(false);
@@ -91,6 +100,7 @@ function AppContent() {
             <Route path="/lobby" element={<Lobby />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/leaderboards" element={<Leaderboards />} />
+            <Route path="/partner" element={<PartnerDashboard />} />
             <Route path="/admin/architect" element={<AdminGameArchitect />} />
             <Route path="/admin/analytics" element={<AdminAnalytics />} />
           </Routes>
