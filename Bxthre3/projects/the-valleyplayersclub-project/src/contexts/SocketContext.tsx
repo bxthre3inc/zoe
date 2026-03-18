@@ -45,14 +45,12 @@ export const SocketProvider = ({ children, userId, token }: SocketProviderProps)
 
     socket.onopen = () => {
       setIsConnected(true);
-      console.log('🚀 Connected to VPC Edge Server');
+      console.log('🚀 Connected to VPC Server');
       
-      // Auto-register for session
-      send('register', {
-        username: 'NeonNinja',
-        avatar: 'N',
-        elo: 1850
-      });
+      // Register only if credentials provided
+      if (userId && token) {
+        send('auth', { userId, token });
+      }
     };
 
     socket.onmessage = (event) => {

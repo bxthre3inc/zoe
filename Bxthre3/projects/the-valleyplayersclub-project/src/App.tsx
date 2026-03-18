@@ -29,13 +29,10 @@ function AppContent() {
   const navigate = useNavigate();
   const [isFriendsOpen, setIsFriendsOpen] = useState(false);
   const [isChallengeOpen, setIsChallengeOpen] = useState(false);
+  const [selectedOpponent, setSelectedOpponent] = useState<string | null>(null);
   
   // Placeholder for real user session - in production this would come from an Auth Provider
-  const [currentUser] = useState<{ id: string; username: string; role?: 'player' | 'partner' | 'admin' } | null>({
-    id: 'user-' + Math.floor(Math.random() * 1000),
-    username: 'GuestPlayer',
-    role: 'player' // Change to 'partner' to test partner view
-  });
+  const [currentUser] = useState<{ id: string; username: string; role?: 'player' | 'partner' | 'admin' } | null>(null);
   
   // Psychological Analytics Hook
   useTelemetry(currentUser?.id || null);
@@ -70,26 +67,18 @@ function AppContent() {
 
   const handleChallenge = (wager: number, game: string) => {
     setIsChallengeOpen(false);
-    send('challenge:create', { game, wager });
     
-    // For now, let's also navigate to the lobby for demo purposes
-    navigate('/lobby', {
-      state: {
-        game,
-        wager,
-        opponent: {
-          name: 'CyberShark',
-          avatar: 'C',
-          elo: 1450,
-          isReady: false
-        }
-      }
-    });
+    if (!currentUser) {
+      navigate('/login');
+      return;
+    }
+    
+    send('challenge:create', { game, wager });
   };
 
   return (
     <>
-      <Navbar onOpenFriends={() => setIsFriendsOpen(true)} />
+      <Navbar onOpenFriends={() => setIsFriendsOpen(true)} user={currentUser} />
       <div className="page-wrapper">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
@@ -111,7 +100,7 @@ function AppContent() {
       <ChallengeModal 
         isOpen={isChallengeOpen} 
         onClose={() => setIsChallengeOpen(false)} 
-        opponentName="CyberShark"
+        opponentName={selectedOpponent}
         onChallenge={handleChallenge} 
       />
 
@@ -181,8 +170,6 @@ function AppContent() {
 }
 
 export default function App() {
-  const [user] = useState({ id: 'user-' + Math.floor(Math.random() * 1000), token: 'demo-token' });
-
   return (
     <SocketProvider>
        <AppContent />

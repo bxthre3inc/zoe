@@ -3,9 +3,10 @@ import { Gamepad2, Cherry, LayoutDashboard, Users, Trophy, User, Cpu } from 'luc
 
 interface NavbarProps {
   onOpenFriends: () => void;
+  user?: { id: string; username: string; role?: string } | null;
 }
 
-const Navbar = ({ onOpenFriends }: NavbarProps) => {
+const Navbar = ({ onOpenFriends, user }: NavbarProps) => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -133,21 +134,39 @@ const Navbar = ({ onOpenFriends }: NavbarProps) => {
           <Users size={18} />
         </button>
 
-        <Link to="/profile" style={{
-          background: 'rgba(255,255,255,0.1)',
-          border: '1px solid var(--border-glass)',
-          borderRadius: 'var(--radius-full)',
-          padding: '6px 16px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          color: 'var(--text-primary)',
-          cursor: 'pointer',
-          fontWeight: 600,
-          transition: 'all 0.2s'
-        }} className="hover:bg-white/20">
-          <User size={16} color="var(--accent-secondary)" /> NeonNinja
-        </Link>
+        {user ? (
+          <Link to="/profile" style={{
+            background: 'rgba(255,255,255,0.1)',
+            border: '1px solid var(--border-glass)',
+            borderRadius: 'var(--radius-full)',
+            padding: '6px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            fontWeight: 600,
+            transition: 'all 0.2s'
+          }} className="hover:bg-white/20">
+            <User size={16} color="var(--accent-secondary)" /> {user.username}
+          </Link>
+        ) : (
+          <Link to="/login" style={{
+            background: 'rgba(255,255,255,0.1)',
+            border: '1px solid var(--border-glass)',
+            borderRadius: 'var(--radius-full)',
+            padding: '6px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            fontWeight: 600,
+            transition: 'all 0.2s'
+          }} className="hover:bg-white/20">
+            <User size={16} color="var(--accent-secondary)" /> Login
+          </Link>
+        )}
       </div>
     </nav>
   );

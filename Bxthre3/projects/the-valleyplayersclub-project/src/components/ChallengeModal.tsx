@@ -11,7 +11,7 @@ export const ChallengeModal = ({
 }: { 
   isOpen: boolean; 
   onClose: () => void;
-  opponentName: string;
+  opponentName: string | null;
   onChallenge: (wager: number, game: string) => void;
 }) => {
   const [wager, setWager] = useState(10);
@@ -19,6 +19,7 @@ export const ChallengeModal = ({
   const { send, isConnected } = useSocket();
 
   const handleSendChallenge = () => {
+    if (!opponentName) return;
     if (isConnected) {
       send('challenge:send', {
         targetUsername: opponentName,
@@ -26,11 +27,40 @@ export const ChallengeModal = ({
         wager
       });
     }
-    // Still call the original onChallenge for local UI updates/navigation if needed
     onChallenge(wager, game);
   };
 
   if (!isOpen) return null;
+  
+  if (!opponentName) {
+    return (
+      <AnimatePresence>
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          backdropFilter: 'blur(4px)',
+          zIndex: 2000,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="glass-panel"
+            style={{ width: '100%', maxWidth: '350px', padding: '32px', textAlign: 'center' }}
+          >
+            <p style={{ color: 'var(--text-secondary)' }}>Select a player from the friends list to challenge</p>
+            <button className="btn btn-primary" onClick={onClose} style={{ marginTop: '16px' }}>
+              Close
+            </button>
+          </motion.div>
+        </div>
+      </AnimatePresence>
+    );
+  }
 
   return (
     <AnimatePresence>
