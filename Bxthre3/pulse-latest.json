@@ -1,41 +1,54 @@
 {
-  "timestamp": "2026-03-16T17:40:00Z",
-  "status": "operational",
+  "employee": "pulse",
+  "timestamp": "2026-03-18T17:00:00Z",
+  "status": "monitoring",
+  "services_checked": 5,
+  "services_up": 2,
+  "services_down": 3,
+  "active_alerts": [
+    "TASK-PULSE-202603172305-API",
+    "TASK-PULSE-202603172305-FRONTEND"
+  ],
+  "mood": "vigilant",
   "checks": {
-    "disk_space": {
-      "status": "warning",
-      "used_percent": 80,
-      "available_gb": 1400,
-      "message": "Disk space at 80% - monitor for growth"
-    },
     "farmsense_api": {
-      "status": "up",
-      "http_status": 200,
-      "message": "Service operational on port 8001"
+      "status": "down",
+      "http_status": 0,
+      "message": "Service not responding on port 8001"
     },
     "farmsense_frontend": {
-      "status": "up",
-      "http_status": 200,
-      "message": "Service operational on port 5174"
+      "status": "down",
+      "http_status": 0,
+      "message": "Service not responding on port 5174"
     },
     "vpc_edge": {
       "status": "up",
-      "http_status": 401,
-      "message": "Responding but requires auth"
+      "http_status": 200,
+      "message": "Health endpoint responding on port 3001"
     },
     "postgresql": {
       "status": "up",
-      "message": "Database responsive"
+      "http_status": null,
+      "message": "PostgreSQL accepting connections on port 5432"
     },
     "oracle_endpoint": {
       "status": "down",
-      "http_status": null,
-      "message": "oracle.farmsense.io unreachable - external service (persistent)"
+      "http_status": 0,
+      "message": "External service - connection failed (not our infra)"
     }
   },
-  "heartbeat_cycle": 167,
-  "employees_due": 4,
-  "employees_awakened": ["pulse", "sentinel", "chronicler", "iris"],
-  "summary": "System operational. Cycle 167 - Awakened 4 monitors (pulse, sentinel, chronicler, iris). 15-minute interval monitors active. Next wakeup at 17:55:00Z.",
-  "next_scheduled_wakeup": "2026-03-16T17:55:00Z"
+  "resource_checks": {
+    "disk": {
+      "usage_percent": 66,
+      "status": "healthy"
+    },
+    "memory": {
+      "usage_percent": 5,
+      "status": "healthy"
+    }
+  },
+  "changes_detected": [],
+  "changes_summary": "No changes from previous check. Services still down: API (8001), Frontend (5174). VPC Edge and PostgreSQL healthy. Oracle external down (expected). Resources healthy.",
+  "alert_logged": false,
+  "new_issues": []
 }
