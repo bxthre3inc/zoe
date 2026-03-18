@@ -28,7 +28,7 @@ export interface RedemptionResult {
  * Rate: 10 $C = $0.01 USD (1 $C = $0.001 USD)
  */
 export class RedemptionEngine {
-  private static readonly REDEMPTION_FEE_RATE = 0.10; // 10% fee
+  private static readonly REDEMPTION_FEE_RATE = 0.09999; // 9.999% fee
   private static readonly C_TO_USD_RATE = 0.001; // 1 $C = $0.001 USD (10 $C = $0.01)
   private static readonly MIN_REDEMPTION_C = 10000; // Min $10 USD (10000 $C = $10)
   private static readonly MAX_REDEMPTION_C = 10000000; // Max $10,000 USD per transaction
