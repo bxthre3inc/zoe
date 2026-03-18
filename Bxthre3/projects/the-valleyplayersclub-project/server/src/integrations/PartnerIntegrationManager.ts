@@ -1,5 +1,6 @@
 import { BasePartnerIntegration } from './types';
 import type { PartnerConfig, PartnerSession, IntegrationType } from './types';
+import { db } from '../db';
 
 export class PartnerIntegrationManager {
   private static instance: PartnerIntegrationManager;
