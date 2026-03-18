@@ -35,7 +35,7 @@ const Navbar = ({ onOpenFriends }: NavbarProps) => {
           <Gamepad2 size={24} color="white" />
         </div>
         <span style={{ fontSize: '1.25rem', fontWeight: 700, letterSpacing: '0.5px' }}>
-          Slotz<span className="text-gradient">&</span>Skillz
+          <span className="text-gradient">VPC</span>
         </span>
       </Link>
 
