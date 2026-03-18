@@ -1,55 +1,15 @@
 {
   "employee": "pulse",
-  "timestamp": "2026-03-18T19:00:00Z",
-  "status": "monitoring",
+  "timestamp": "2026-03-18T20:00:00Z",
+  "status": "investigating",
   "services_checked": 5,
-  "services_up": 1,
-  "services_down": 4,
+  "services_up": 0,
+  "services_down": 5,
   "active_alerts": [
     "TASK-PULSE-202603172305-API",
     "TASK-PULSE-202603172305-FRONTEND",
-    "TASK-PULSE-202603180600-PGSQL"
+    "TASK-PULSE-202603180600-PGSQL",
+    "TASK-PULSE-202603182000-VPCEDGE"
   ],
-  "mood": "vigilant",
-  "checks": {
-    "farmsense_api": {
-      "status": "down",
-      "http_status": 0,
-      "message": "Service not responding on port 8001"
-    },
-    "farmsense_frontend": {
-      "status": "down",
-      "http_status": 0,
-      "message": "Service not responding on port 5174"
-    },
-    "vpc_edge": {
-      "status": "up",
-      "http_status": 200,
-      "message": "Health endpoint responding on port 3001"
-    },
-    "postgresql": {
-      "status": "down",
-      "http_status": null,
-      "message": "Connection refused on port 5432 - service not running"
-    },
-    "oracle_endpoint": {
-      "status": "down",
-      "http_status": 0,
-      "message": "External service - connection failed (not our infra)"
-    }
-  },
-  "resource_checks": {
-    "disk": {
-      "usage_percent": 1,
-      "status": "healthy"
-    },
-    "memory": {
-      "usage_percent": 4,
-      "status": "healthy"
-    }
-  },
-  "changes_detected": [],
-  "changes_summary": "No changes from previous check. Services still down: API (8001), Frontend (5174), PostgreSQL (5432). VPC Edge healthy. Oracle external down (not our infra). Resources healthy.",
-  "alert_logged": false,
-  "new_issues": []
+  "mood": "vigilant"
 }

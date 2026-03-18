@@ -618,8 +618,7 @@ await MembershipService.initTables();
 await RedemptionEngine.initTables();
 await TournamentService.initTables();
 
-// Initialize partner revenue tables
-const partnerManager = PartnerIntegrationManager.getInstance();
+// Initialize partner revenue tables (use existing partnerManager from line 41)
 await partnerManager.initRevShareTables();
 
-logger.info(`🚀 VPC Edge Server (Full Stack + Revenue) running at ${server.hostname}:${server.port}`);
+logger.info(`🚀 VPC Server running at ${server.hostname}:${server.port}`);

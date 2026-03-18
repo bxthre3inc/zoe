@@ -1,6 +1,6 @@
 {
   "agent": "sentinel",
-  "last_run": "2026-03-18T19:10:00Z",
+  "last_run": "2026-03-18T20:05:00Z",
   "status": "completed",
   "findings": {
     "security": {
@@ -11,34 +11,33 @@
           "lines": "5-14",
           "severity": "P1",
           "status": "Known - task already in work queue"
-        },
-        {
-          "file": "farmsense-code/backend/start.sh",
-          "issue": "Database password embedded in fallback values",
-          "lines": "13-15",
-          "severity": "P1",
-          "status": "Known - task already in work queue"
         }
       ],
       "p2": [
         {
           "file": "farmsense-code/.env.example",
           "issue": "Default passwords that look like real credentials (farmsense_secure_password_2026, timescale_secure_password_2026, rabbit_secure_password_2026, grafana_admin_password)",
-          "lines": "5-7, 19",
+          "lines": "5, 7, 19",
           "severity": "P2",
           "status": "Known - task already in work queue"
         }
       ],
       "new_findings": [],
-      "deployment_scan": "deployment/docker-compose.yml uses env var fallbacks with 'changeme' defaults - acceptable for dev. No new issues in deployment folder.",
+      "fixes_applied": [
+        {
+          "file": "farmsense-code/backend/start.sh",
+          "issue": "Previously had embedded DB password in fallback values",
+          "fix": "Fixed - now properly validates required env vars in production mode"
+        }
+      ],
+      "deployment_scan": "deployment/docker/docker-compose.yml uses env var fallbacks with 'changeme' defaults - acceptable for dev. No new issues in deployment folder.",
       "files_scanned": [
-        "backend/start.sh",
-        "backend/start-with-env.sh",
         "backend/.env",
+        "backend/start.sh",
         ".env.example",
         "deployment/docker/docker-compose.yml"
       ],
-      "note": "No new security issues found. Existing P1 (.env, start.sh) and P2 (.env.example) issues remain in work queue awaiting resolution."
+      "note": "No new security issues found. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue awaiting resolution. start.sh was successfully fixed."
     },
     "ip": {
       "trademark_conflicts": "Existing P1 conflicts in monitoring: FarmSense Inc (farmsense.io) - active pest monitoring startup with $2.2M funding and CDC contracts, holds FlightSensor patents; FarmSense.app (soil intelligence); Skysense; FarmSolutions/dronifi; UK FARM SENSE UK00003992349. No new trademark conflicts detected in this scan.",
@@ -51,5 +50,5 @@
   },
   "work_queue_entries_added": 0,
   "inbox_entries_added": 0,
-  "notes": "Sentinel scan complete (2026-03-18 19:10 UTC). No new findings. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue. IP: No new trademark conflicts or patent threats."
+  "notes": "Sentinel scan complete (2026-03-18 20:05 UTC). No new findings. start.sh was fixed since last scan (removed embedded DB password). Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue. IP: No new trademark conflicts or patent threats."
 }
