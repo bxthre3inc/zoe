@@ -11,8 +11,10 @@ export interface TransactionResult {
 export interface PlayerWallet {
   userId: string;
   balances: {
-    cash: number;
-    bonus: number;
+    cash: number;           // Total SC (played + unplayed)
+    bonus: number;          // Bonus SC
+    played: number;         // SC wagered at least once (redeemable)
+    unplayed: number;       // SC never wagered (must play before redeem)
   };
   xp: number;
   level: number;
@@ -38,7 +40,7 @@ export class WalletProcessor {
       });
       return {
         userId,
-        balances: { cash: defaultBalance, bonus: 0 },
+        balances: { cash: defaultBalance, bonus: 0, played: 0, unplayed: defaultBalance },
         currency: 'VLY',
         xp: 0,
         level: 1,
@@ -51,7 +53,7 @@ export class WalletProcessor {
 
     return {
       userId,
-      balances: { cash: row.balance as number, bonus: 0 },
+      balances: { cash: row.balance as number, bonus: 0, played: 0, unplayed: row.balance as number },
       currency: (row.currency as string) || 'VLY',
       xp: (row.xp as number) || 0,
       level: (row.level as number) || 1,

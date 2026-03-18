@@ -28,11 +28,32 @@ export interface RedemptionResult {
  * This is the primary revenue model for sweepstakes casinos.
  */
 export class RedemptionEngine {
+  private static readonly REDEMPTION_FEE_RATE = 0.10; // 10% fee
   private static readonly SC_TO_USD_RATE = 0.01; // 1 SC = $0.01 USD
-  private static readonly REDEMPTION_FEE_RATE = 0.05; // 5% fee
   private static readonly MIN_REDEMPTION_SC = 1000; // Min $10 USD
   private static readonly MAX_REDEMPTION_SC = 1000000; // Max $10,000 USD per transaction
   private static readonly DAILY_LIMIT_SC = 2000000; // $20,000 USD daily per user
+
+  /**
+   * Check if user has met play-through requirement (wagered at least redemption amount)
+   */
+  static async checkPlayThrough(userId: string, redemptionAmount: number): Promise<{ met: boolean; lifetimeWagered: number; remaining: number }> {
+    const result = await db.execute({
+      sql: `SELECT COALESCE(SUM(amount), 0) as total_wagered 
+            FROM transactions 
+            WHERE user_id = ? AND type = 'wager'`,
+      args: [userId]
+    });
+
+    const lifetimeWagered = (result.rows[0]?.total_wagered as number) || 0;
+    const met = lifetimeWagered >= redemptionAmount;
+    
+    return {
+      met,
+      lifetimeWagered,
+      remaining: Math.max(0, redemptionAmount - lifetimeWagered)
+    };
+  }
 
   /**
    * Process SC redemption request
@@ -52,6 +73,22 @@ export class RedemptionEngine {
         redemptionId: '',
         etaHours: 0,
         error: `Minimum redemption is ${this.MIN_REDEMPTION_SC} SC ($${this.MIN_REDEMPTION_SC * this.SC_TO_USD_RATE})` 
+      };
+    }
+
+    // 2. Check play-through requirement
+    const playThrough = await this.checkPlayThrough(userId, scAmount);
+    if (!playThrough.met) {
+      return { 
+        success: false, 
+        scAmount, 
+        feeAmount: 0, 
+        netAmount: 0, 
+        usdPayout: 0,
+        status: 'rejected',
+        redemptionId: '',
+        etaHours: 0,
+        error: `Play-through requirement not met. You must wager SC at least once before redemption. Wagered: ${playThrough.lifetimeWagered} SC, Need: ${scAmount} SC, Remaining: ${playThrough.remaining} SC` 
       };
     }
 
