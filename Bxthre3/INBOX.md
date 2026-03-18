@@ -1,27 +1,38 @@
-# INBOX
+# INBOX - Pulse Health Monitor
 
-## 🔴 P0 Alert - 2026-03-18T00:00:00Z
+## 2026-03-18 18:00 UTC
 
-**Pulse - System Health Monitor**
+### 🔴 P0 Issues
 
-### Service Incidents
+1. **PostgreSQL DOWN** - `TASK-PULSE-202603180600-PGSQL`
+   - Service: PostgreSQL (localhost:5432)
+   - Status: Connection refused - service not running
+   - Previous state: UP
+   - Action: Task created for recovery
 
-| Service | Status | Severity |
-|---------|--------|----------|
-| FarmSense API (8001) | DOWN | P0 |
-| FarmSense Frontend (5174) | DOWN | P0 |
-| PostgreSQL (5432) | **NEW** - DOWN | P0 |
-| Oracle (external) | DOWN | - |
-| VPC Edge (3001) | UP | - |
+### Previous P0 (Still Active)
 
-### Resource Status
-- Disk: 65% (healthy)
-- Memory: 4% (healthy)
+2. **FarmSense API DOWN** - `TASK-PULSE-202603172305-API`
+   - Service: API (localhost:8001)
+   - Status: Not responding
+   - Action: Existing task
 
-### Active Tasks
-- TASK-PULSE-202603172305-API (FarmSense API)
-- TASK-PULSE-202603172305-FRONTEND (FarmSense Frontend)
-- **TASK-PULSE-202603180000-POSTGRES** (PostgreSQL - NEW)
+3. **FarmSense Frontend DOWN** - `TASK-PULSE-202603172305-FRONTEND`
+   - Service: Frontend (localhost:5174)
+   - Status: Not responding
+   - Action: Existing task
 
-### Notes
-PostgreSQL service transitioned from UP to DOWN since last check. This is a new P0 incident requiring immediate attention.
+### 📊 Service Status Summary
+
+| Service | Status | Port |
+|---------|--------|------|
+| VPC Edge | ✅ UP | 3001 |
+| FarmSense API | ❌ DOWN | 8001 |
+| FarmSense Frontend | ❌ DOWN | 5174 |
+| PostgreSQL | ❌ DOWN | 5432 |
+| Oracle (external) | ❌ DOWN | 443 |
+
+### 📈 Resource Status
+
+- Disk: 1% ✅
+- Memory: 4% ✅

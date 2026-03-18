@@ -14,6 +14,7 @@ import { PersonalizationService } from './services/PersonalizationService';
 import { ProfileService } from './services/ProfileService';
 import { CompetitionEngine } from './services/CompetitionEngine';
 import { MembershipService } from './services/MembershipService';
+import { SecuredCashService } from './services/SecuredCashService';
 import pino from 'pino';
 import * as dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
@@ -124,6 +125,123 @@ const server = Bun.serve<{ authToken: string; userId?: string }>({
             }
         }
 
+        // 4. HTTP API Routes
+        
+        // --- Secured Cash Partner Routes ---
+        
+        // Register new secured partner
+        if (pathname === '/api/cash/secured/partner/register' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { id, name, location } = body;
+                
+                if (!id || !name || !location) {
+                    return new Response(JSON.stringify({ error: 'Missing required fields: id, name, location' }), { status: 400, headers });
+                }
+                
+                const partner = await SecuredCashService.registerPartner({ id, name, location });
+                return new Response(JSON.stringify({ success: true, partner }), { status: 201, headers });
+            } catch (err: any) {
+                logger.error(err, 'Partner registration error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+        
+        // Add collateral to partner
+        if (pathname === '/api/cash/secured/partner/collateral' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { partnerId, amount, method } = body;
+                
+                if (!partnerId || !amount || amount <= 0) {
+                    return new Response(JSON.stringify({ error: 'Missing partnerId or invalid amount' }), { status: 400, headers });
+                }
+                
+                const result = await SecuredCashService.addCollateral(partnerId, amount, method || 'bank_transfer');
+                return new Response(JSON.stringify({ success: true, ...result }), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Collateral deposit error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+        
+        // Get partner status
+        if (pathname.startsWith('/api/cash/secured/partner/') && method === 'GET') {
+            try {
+                const partnerId = pathname.split('/').pop();
+                if (!partnerId) return new Response(JSON.stringify({ error: 'Missing partner ID' }), { status: 400, headers });
+                
+                const partner = await SecuredCashService.getPartner(partnerId);
+                if (!partner) return new Response(JSON.stringify({ error: 'Partner not found' }), { status: 404, headers });
+                
+                const tierConfig = SecuredCashService.getTierConfig(partner.tier);
+                
+                return new Response(JSON.stringify({ 
+                    success: true, 
+                    partner,
+                    tierConfig,
+                    canAcceptDeposits: partner.availableCapacity > 0 && partner.status === 'active'
+                }), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Partner fetch error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+        
+        // List all partners
+        if (pathname === '/api/cash/secured/partners' && method === 'GET') {
+            try {
+                const partners = await SecuredCashService.getAllPartners();
+                return new Response(JSON.stringify({ success: true, count: partners.length, partners }), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Partners list error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+        
+        // Log cash drop
+        if (pathname === '/api/cash/secured/drop' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { partnerId, amount, dropType, verificationMethod } = body;
+                
+                if (!partnerId || !amount || amount <= 0) {
+                    return new Response(JSON.stringify({ error: 'Missing partnerId or invalid amount' }), { status: 400, headers });
+                }
+                
+                const result = await SecuredCashService.logCashDrop(
+                    partnerId, 
+                    amount, 
+                    dropType || 'bank', 
+                    verificationMethod || 'photo'
+                );
+                return new Response(JSON.stringify({ success: true, ...result }), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Cash drop error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+        
+        // Verify cash drop
+        if (pathname === '/api/cash/secured/drop/verify' && method === 'POST') {
+            try {
+                const body = await req.json();
+                const { dropId, verifiedBy, approved } = body;
+                
+                if (!dropId || verifiedBy === undefined) {
+                    return new Response(JSON.stringify({ error: 'Missing dropId or verifiedBy' }), { status: 400, headers });
+                }
+                
+                const result = await SecuredCashService.verifyCashDrop(dropId, verifiedBy, approved === true);
+                return new Response(JSON.stringify({ success: true, ...result }), { headers });
+            } catch (err: any) {
+                logger.error(err, 'Drop verification error');
+                return new Response(JSON.stringify({ error: err.message }), { status: 500, headers });
+            }
+        }
+
+        // --- Existing Cash Routes (legacy/simple) ---
+        
         // 4. CASH DEPOSIT API ROUTES
         if (pathname.startsWith('/api/cash')) {
             try {
@@ -308,5 +426,8 @@ const server = Bun.serve<{ authToken: string; userId?: string }>({
         },
     },
 });
+
+// Initialize SecuredCashService tables on startup
+await SecuredCashService.initTables();
 
 logger.info(`🚀 VPC Edge Server (Full Stack) running at ${server.hostname}:${server.port}`);

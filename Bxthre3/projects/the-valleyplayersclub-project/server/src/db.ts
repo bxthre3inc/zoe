@@ -209,4 +209,84 @@ export async function initDatabase() {
     ('bug_hunter', 'Tektite', 'Report a bug (or find an intentional one)', 1000, 500),
     ('developer_friend', 'Dev Buddy', 'Play against a developer account', 5000, 2500)
   `);
+
+  // --- Secured Cash Partner Tables ---
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS secured_cash_partners (
+      id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      location TEXT NOT NULL,
+      tier INTEGER DEFAULT 1,
+      secured_balance INTEGER DEFAULT 0,
+      secured_required INTEGER DEFAULT 100,
+      max_cash_capacity INTEGER DEFAULT 100,
+      available_capacity INTEGER DEFAULT 100,
+      pending_cash INTEGER DEFAULT 0,
+      total_deposits_processed INTEGER DEFAULT 0,
+      total_volume_lifetime INTEGER DEFAULT 0,
+      current_month_volume INTEGER DEFAULT 0,
+      consecutive_active_days INTEGER DEFAULT 0,
+      last_activity_at DATETIME,
+      tier_achieved_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      tier_reviewed_at DATETIME,
+      status TEXT DEFAULT 'active',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS cash_drops (
+      id TEXT PRIMARY KEY,
+      partner_id TEXT NOT NULL,
+      amount INTEGER NOT NULL,
+      drop_type TEXT,
+      verification_method TEXT,
+      verified_by TEXT,
+      secured_balance_before INTEGER,
+      secured_balance_after INTEGER,
+      status TEXT DEFAULT 'pending',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      verified_at DATETIME
+    )
+  `);
+
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS partner_collateral_deposits (
+      id TEXT PRIMARY KEY,
+      partner_id TEXT NOT NULL,
+      amount INTEGER NOT NULL,
+      method TEXT,
+      status TEXT DEFAULT 'pending',
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      confirmed_at DATETIME
+    )
+  `);
+
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS partner_tier_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      partner_id TEXT NOT NULL,
+      old_tier INTEGER,
+      new_tier INTEGER,
+      reason TEXT,
+      triggered_by_volume INTEGER,
+      triggered_by_streak INTEGER,
+      triggered_by_days_inactive INTEGER,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  // --- Indexes for Secured Cash Tables ---
+  const securedIndexes = [
+    { name: 'idx_secured_partners_status', sql: 'CREATE INDEX IF NOT EXISTS idx_secured_partners_status ON secured_cash_partners (status)' },
+    { name: 'idx_secured_partners_tier', sql: 'CREATE INDEX IF NOT EXISTS idx_secured_partners_tier ON secured_cash_partners (tier)' },
+    { name: 'idx_cash_drops_partner', sql: 'CREATE INDEX IF NOT EXISTS idx_cash_drops_partner ON cash_drops (partner_id)' },
+    { name: 'idx_tier_history_partner', sql: 'CREATE INDEX IF NOT EXISTS idx_tier_history_partner ON partner_tier_history (partner_id)' }
+  ];
+
+  for (const idx of securedIndexes) {
+    try { await db.execute(idx.sql); } catch (e) { console.error(`Failed to create index ${idx.name}:`, e); }
+  }
+
+  console.log('Database initialized successfully with secured cash tables.');
 }

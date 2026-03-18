@@ -1,13 +1,20 @@
 {
   "agent": "sentinel",
-  "last_run": "2026-03-18T17:05:00Z",
+  "last_run": "2026-03-18T19:10:00Z",
   "status": "completed",
   "findings": {
     "security": {
       "p1": [
         {
+          "file": "farmsense-code/backend/.env",
+          "issue": "ONGOING - Hardcoded JWT_SECRET, SECRET_KEY, DB_PASSWORD, and DATABASE_URL with embedded credentials. This file was auto-generated but must NOT be stored in the workspace.",
+          "lines": "5-14",
+          "severity": "P1",
+          "status": "Known - task already in work queue"
+        },
+        {
           "file": "farmsense-code/backend/start.sh",
-          "issue": "Hardcoded database password embedded in fallback values on lines 13-15 (previously flagged)",
+          "issue": "Database password embedded in fallback values",
           "lines": "13-15",
           "severity": "P1",
           "status": "Known - task already in work queue"
@@ -23,14 +30,15 @@
         }
       ],
       "new_findings": [],
-      "deployment_scan": "Verified: backend/start.sh cleaned (no hardcoded JWT_SECRET/SECRET_KEY - now validates env vars only in production), backend/start-with-env.sh properly requires env vars. .env.example still has default password placeholders (P2 known issue). deployment/docker-compose.yml uses env var fallbacks with 'changeme' defaults - acceptable for dev. No new files with secrets detected.",
+      "deployment_scan": "deployment/docker-compose.yml uses env var fallbacks with 'changeme' defaults - acceptable for dev. No new issues in deployment folder.",
       "files_scanned": [
         "backend/start.sh",
         "backend/start-with-env.sh",
+        "backend/.env",
         ".env.example",
         "deployment/docker/docker-compose.yml"
       ],
-      "note": "No new security issues beyond existing P1/P2 already in work queue."
+      "note": "No new security issues found. Existing P1 (.env, start.sh) and P2 (.env.example) issues remain in work queue awaiting resolution."
     },
     "ip": {
       "trademark_conflicts": "Existing P1 conflicts in monitoring: FarmSense Inc (farmsense.io) - active pest monitoring startup with $2.2M funding and CDC contracts, holds FlightSensor patents; FarmSense.app (soil intelligence); Skysense; FarmSolutions/dronifi; UK FARM SENSE UK00003992349. No new trademark conflicts detected in this scan.",
@@ -43,5 +51,5 @@
   },
   "work_queue_entries_added": 0,
   "inbox_entries_added": 0,
-  "notes": "Sentinel scan complete (2026-03-18 17:05 UTC). Security: No new findings beyond existing P1 (start.sh) and P2 (.env.example) already in work queue. IP: No new trademark conflicts or patent threats. All clear."
+  "notes": "Sentinel scan complete (2026-03-18 19:10 UTC). No new findings. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue. IP: No new trademark conflicts or patent threats."
 }

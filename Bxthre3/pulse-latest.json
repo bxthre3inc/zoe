@@ -1,13 +1,14 @@
 {
   "employee": "pulse",
-  "timestamp": "2026-03-18T17:00:00Z",
+  "timestamp": "2026-03-18T19:00:00Z",
   "status": "monitoring",
   "services_checked": 5,
-  "services_up": 2,
-  "services_down": 3,
+  "services_up": 1,
+  "services_down": 4,
   "active_alerts": [
     "TASK-PULSE-202603172305-API",
-    "TASK-PULSE-202603172305-FRONTEND"
+    "TASK-PULSE-202603172305-FRONTEND",
+    "TASK-PULSE-202603180600-PGSQL"
   ],
   "mood": "vigilant",
   "checks": {
@@ -27,9 +28,9 @@
       "message": "Health endpoint responding on port 3001"
     },
     "postgresql": {
-      "status": "up",
+      "status": "down",
       "http_status": null,
-      "message": "PostgreSQL accepting connections on port 5432"
+      "message": "Connection refused on port 5432 - service not running"
     },
     "oracle_endpoint": {
       "status": "down",
@@ -39,16 +40,16 @@
   },
   "resource_checks": {
     "disk": {
-      "usage_percent": 66,
+      "usage_percent": 1,
       "status": "healthy"
     },
     "memory": {
-      "usage_percent": 5,
+      "usage_percent": 4,
       "status": "healthy"
     }
   },
   "changes_detected": [],
-  "changes_summary": "No changes from previous check. Services still down: API (8001), Frontend (5174). VPC Edge and PostgreSQL healthy. Oracle external down (expected). Resources healthy.",
+  "changes_summary": "No changes from previous check. Services still down: API (8001), Frontend (5174), PostgreSQL (5432). VPC Edge healthy. Oracle external down (not our infra). Resources healthy.",
   "alert_logged": false,
   "new_issues": []
 }
