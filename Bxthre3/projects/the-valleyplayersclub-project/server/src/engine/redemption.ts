@@ -3,16 +3,16 @@ import { logger } from '../index';
 
 export interface RedemptionRequest {
   userId: string;
-  scAmount: number; // Amount in SC (sweepstakes coins)
+  cAmount: number; // Amount in $C (Sweeps Credits)
   method: 'cash_partner' | 'crypto' | 'ach';
   destination: string; // Partner ID, wallet address, or bank account
 }
 
 export interface RedemptionResult {
   success: boolean;
-  scAmount: number;
-  feeAmount: number; // Fee in SC
-  netAmount: number; // SC after fee
+  cAmount: number;
+  feeAmount: number; // Fee in $C
+  netAmount: number; // $C after fee
   usdPayout: number;
   status: 'pending' | 'processing' | 'completed' | 'rejected';
   redemptionId: string;
@@ -21,18 +21,18 @@ export interface RedemptionResult {
 }
 
 /**
- * SC Redemption Engine - Fee collection on cashouts
+ * $C Redemption Engine - Fee collection on cashouts
  * 
- * Business Model: Players get free SC (AMOE - alternate method of entry).
- * When they win and want to redeem for real money, we charge 5-10% fee.
- * This is the primary revenue model for sweepstakes casinos.
+ * Business Model: Players get free $C (Sweeps Credits via AMOE).
+ * When they win and want to redeem for real money, we charge 10% fee.
+ * Rate: 10 $C = $0.01 USD (1 $C = $0.001 USD)
  */
 export class RedemptionEngine {
   private static readonly REDEMPTION_FEE_RATE = 0.10; // 10% fee
-  private static readonly SC_TO_USD_RATE = 0.01; // 1 SC = $0.01 USD
-  private static readonly MIN_REDEMPTION_SC = 1000; // Min $10 USD
-  private static readonly MAX_REDEMPTION_SC = 1000000; // Max $10,000 USD per transaction
-  private static readonly DAILY_LIMIT_SC = 2000000; // $20,000 USD daily per user
+  private static readonly C_TO_USD_RATE = 0.001; // 1 $C = $0.001 USD (10 $C = $0.01)
+  private static readonly MIN_REDEMPTION_C = 10000; // Min $10 USD (10000 $C = $10)
+  private static readonly MAX_REDEMPTION_C = 10000000; // Max $10,000 USD per transaction
+  private static readonly DAILY_LIMIT_C = 20000000; // $20,000 USD daily per user
 
   /**
    * Check if user has met play-through requirement (wagered at least redemption amount)
@@ -56,98 +56,98 @@ export class RedemptionEngine {
   }
 
   /**
-   * Process SC redemption request
+   * Process $C redemption request
    */
   static async requestRedemption(request: RedemptionRequest): Promise<RedemptionResult> {
-    const { userId, scAmount, method, destination } = request;
+    const { userId, cAmount, method, destination } = request;
 
     // 1. Validate amount
-    if (scAmount < this.MIN_REDEMPTION_SC) {
+    if (cAmount < this.MIN_REDEMPTION_C) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount: 0, 
         netAmount: 0, 
         usdPayout: 0,
         status: 'rejected',
         redemptionId: '',
         etaHours: 0,
-        error: `Minimum redemption is ${this.MIN_REDEMPTION_SC} SC ($${this.MIN_REDEMPTION_SC * this.SC_TO_USD_RATE})` 
+        error: `Minimum redemption is ${this.MIN_REDEMPTION_C} $C ($${(this.MIN_REDEMPTION_C * this.C_TO_USD_RATE).toFixed(2)})` 
       };
     }
 
     // 2. Check play-through requirement
-    const playThrough = await this.checkPlayThrough(userId, scAmount);
+    const playThrough = await this.checkPlayThrough(userId, cAmount);
     if (!playThrough.met) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount: 0, 
         netAmount: 0, 
         usdPayout: 0,
         status: 'rejected',
         redemptionId: '',
         etaHours: 0,
-        error: `Play-through requirement not met. You must wager SC at least once before redemption. Wagered: ${playThrough.lifetimeWagered} SC, Need: ${scAmount} SC, Remaining: ${playThrough.remaining} SC` 
+        error: `Play-through requirement not met. You must wager $C at least once before redemption. Wagered: ${playThrough.lifetimeWagered} $C, Need: ${cAmount} $C, Remaining: ${playThrough.remaining} $C` 
       };
     }
 
-    if (scAmount > this.MAX_REDEMPTION_SC) {
+    if (cAmount > this.MAX_REDEMPTION_C) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount: 0, 
         netAmount: 0, 
         usdPayout: 0,
         status: 'rejected',
         redemptionId: '',
         etaHours: 0,
-        error: `Maximum redemption per transaction is ${this.MAX_REDEMPTION_SC} SC` 
+        error: `Maximum redemption per transaction is ${this.MAX_REDEMPTION_C} $C` 
       };
     }
 
     // 2. Check daily limits
     const dailyRedeemed = await this.getDailyRedemptionTotal(userId);
-    if (dailyRedeemed + scAmount > this.DAILY_LIMIT_SC) {
+    if (dailyRedeemed + cAmount > this.DAILY_LIMIT_C) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount: 0, 
         netAmount: 0, 
         usdPayout: 0,
         status: 'rejected',
         redemptionId: '',
         etaHours: 0,
-        error: `Daily redemption limit exceeded. Remaining: ${this.DAILY_LIMIT_SC - dailyRedeemed} SC` 
+        error: `Daily redemption limit exceeded. Remaining: ${this.DAILY_LIMIT_C - dailyRedeemed} $C` 
       };
     }
 
     // 3. Check user balance
     const { WalletProcessor } = await import('./wallet');
     const wallet = await WalletProcessor.getWallet(userId);
-    if (wallet.balances.cash < scAmount) {
+    if (wallet.balances.cash < cAmount) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount: 0, 
         netAmount: 0, 
         usdPayout: 0,
         status: 'rejected',
         redemptionId: '',
         etaHours: 0,
-        error: 'Insufficient SC balance' 
+        error: 'Insufficient $C balance' 
       };
     }
 
     // 4. Calculate fees
-    const feeAmount = Math.floor(scAmount * this.REDEMPTION_FEE_RATE);
-    const netAmount = scAmount - feeAmount;
-    const usdPayout = netAmount * this.SC_TO_USD_RATE;
+    const feeAmount = Math.floor(cAmount * this.REDEMPTION_FEE_RATE);
+    const netAmount = cAmount - feeAmount;
+    const usdPayout = netAmount * this.C_TO_USD_RATE;
 
     // 5. Debit wallet
     const debitResult = await WalletProcessor.processTransaction(
       userId, 
-      scAmount, 
+      cAmount, 
       'withdrawal', 
       'redemption', 
       `REDEMPTION-${Date.now()}`
@@ -156,7 +156,7 @@ export class RedemptionEngine {
     if (!debitResult.success) {
       return { 
         success: false, 
-        scAmount, 
+        cAmount, 
         feeAmount, 
         netAmount, 
         usdPayout,
@@ -173,26 +173,26 @@ export class RedemptionEngine {
 
     await db.execute({
       sql: `INSERT INTO redemptions 
-            (id, user_id, sc_amount, fee_amount, net_amount, usd_payout, 
+            (id, user_id, c_amount, fee_amount, net_amount, usd_payout, 
              method, destination, status, eta_hours, created_at) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, CURRENT_TIMESTAMP)`,
-      args: [redemptionId, userId, scAmount, feeAmount, netAmount, usdPayout, method, destination, etaHours]
+      args: [redemptionId, userId, cAmount, feeAmount, netAmount, usdPayout, method, destination, etaHours]
     });
 
     // 7. Log revenue event
     logger.info({ 
       redemptionId, 
       userId, 
-      scAmount, 
+      cAmount, 
       feeAmount, 
       usdPayout,
       method,
-      revenue: feeAmount * this.SC_TO_USD_RATE
+      revenue: feeAmount * this.C_TO_USD_RATE
     }, 'Redemption Requested - Fee Collected');
 
     return {
       success: true,
-      scAmount,
+      cAmount,
       feeAmount,
       netAmount,
       usdPayout,
@@ -207,7 +207,7 @@ export class RedemptionEngine {
    */
   static async getDailyRedemptionTotal(userId: string): Promise<number> {
     const result = await db.execute({
-      sql: `SELECT COALESCE(SUM(sc_amount), 0) as total 
+      sql: `SELECT COALESCE(SUM(c_amount), 0) as total 
             FROM redemptions 
             WHERE user_id = ? 
             AND DATE(created_at) = DATE('now') 
@@ -240,8 +240,8 @@ export class RedemptionEngine {
    */
   static async getRevenueStats(period: 'daily' | 'weekly' | 'monthly'): Promise<{
     totalRedemptions: number;
-    totalVolumeSC: number;
-    totalFeesSC: number;
+    totalVolumeC: number;
+    totalFeesC: number;
     totalRevenueUSD: number;
     averageRedemption: number;
   }> {
@@ -252,9 +252,9 @@ export class RedemptionEngine {
     const result = await db.execute({
       sql: `SELECT 
               COUNT(*) as total_redemptions,
-              COALESCE(SUM(sc_amount), 0) as total_volume,
+              COALESCE(SUM(c_amount), 0) as total_volume,
               COALESCE(SUM(fee_amount), 0) as total_fees,
-              COALESCE(AVG(sc_amount), 0) as avg_redemption
+              COALESCE(AVG(c_amount), 0) as avg_redemption
             FROM redemptions 
             WHERE ${timeFilter} 
             AND status IN ('pending', 'processing', 'completed')`
@@ -269,9 +269,9 @@ export class RedemptionEngine {
 
     return {
       totalRedemptions: row.total_redemptions || 0,
-      totalVolumeSC: row.total_volume || 0,
-      totalFeesSC: row.total_fees || 0,
-      totalRevenueUSD: (row.total_fees || 0) * this.SC_TO_USD_RATE,
+      totalVolumeC: row.total_volume || 0,
+      totalFeesC: row.total_fees || 0,
+      totalRevenueUSD: (row.total_fees || 0) * this.C_TO_USD_RATE,
       averageRedemption: row.avg_redemption || 0
     };
   }
@@ -284,7 +284,7 @@ export class RedemptionEngine {
       CREATE TABLE IF NOT EXISTS redemptions (
         id TEXT PRIMARY KEY,
         user_id TEXT NOT NULL,
-        sc_amount INTEGER NOT NULL,
+        c_amount INTEGER NOT NULL,
         fee_amount INTEGER NOT NULL,
         net_amount INTEGER NOT NULL,
         usd_payout REAL NOT NULL,
@@ -307,6 +307,6 @@ export class RedemptionEngine {
       CREATE INDEX IF NOT EXISTS idx_redemptions_status ON redemptions (status, created_at)
     `);
 
-    console.log('RedemptionEngine tables initialized');
+    console.log('$C RedemptionEngine tables initialized');
   }
 }
