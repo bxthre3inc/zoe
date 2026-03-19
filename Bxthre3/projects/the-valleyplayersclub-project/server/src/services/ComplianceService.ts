@@ -199,4 +199,45 @@ export class ComplianceService {
       )
     `);
   }
+
+  /**
+   * Check if state is allowed for gameplay
+   */
+  static isStateAllowedForGameplay(state: string): { allowed: boolean; reason?: string } {
+    const prohibitedStates = ['WA', 'ID', 'GU', 'PR', 'VI'];
+    if (prohibitedStates.includes(state)) {
+      return { allowed: false, reason: 'Permanent prohibition' };
+    }
+    return { allowed: true };
+  }
+
+  /**
+   * Check if state is allowed for redemption (separate from gameplay)
+   */
+  static isStateAllowedForRedemption(state: string): { allowed: boolean; reason?: string } {
+    // First check gameplay prohibition
+    const gameplayCheck = this.isStateAllowedForGameplay(state);
+    if (!gameplayCheck.allowed) {
+      return gameplayCheck;
+    }
+
+    // States requiring bond before redemption
+    const bondRequiredStates = ['FL', 'NY'];
+    if (bondRequiredStates.includes(state)) {
+      return { allowed: false, reason: 'Redemptions coming soon - bond pending' };
+    }
+
+    return { allowed: true };
+  }
+
+  /**
+   * Get user state from IP or account
+   */
+  static async getUserState(userId: string): Promise<string | null> {
+    const result = await db.execute({
+      sql: 'SELECT state FROM user_profiles WHERE user_id = ?',
+      args: [userId]
+    });
+    return (result.rows[0]?.state as string) || null;
+  }
 }

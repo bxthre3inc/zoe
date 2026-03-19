@@ -1,13 +1,13 @@
 {
   "agent": "sentinel",
-  "last_run": "2026-03-18T23:05:00Z",
+  "last_run": "2026-03-19T04:05:00Z",
   "status": "completed",
   "findings": {
     "security": {
       "p1": [
         {
           "file": "farmsense-code/backend/.env",
-          "issue": "ONGOING - Hardcoded JWT_SECRET, SECRET_KEY, DB_PASSWORD, and DATABASE_URL with embedded credentials. File still present in workspace despite .gitignore exclusion.",
+          "issue": "ONGOING - Hardcoded JWT_SECRET, SECRET_KEY, DB_PASSWORD, and DATABASE_URL with embedded credentials. File still present in workspace despite previous alerts. Already in work queue.",
           "lines": "5-14",
           "severity": "P1",
           "status": "Known - task already in work queue"
@@ -24,20 +24,27 @@
       ],
       "new_findings": [],
       "files_scanned": [
-        "backend/.env",
-        "backend/.gitignore",
-        "backend/start.sh",
-        ".env.example",
-        "deployment/docker/docker-compose.yml"
+        "backend/*.py (98 files)",
+        "deployment/docker/*.yml (4 files)",
+        "deployment/kubernetes/*.yaml (3 files)",
+        "deployment/nginx/*.conf (1 file)"
       ],
       "recently_modified": [
-        "backend/start.sh (production validation added)",
-        "backend/.gitignore (correctly excludes .env)"
+        {
+          "file": "backend/.gitignore",
+          "change": "NEW - Added .gitignore excluding .env files (good progress)",
+          "timestamp": "2026-03-19T03:17:00Z"
+        },
+        {
+          "file": "backend/start.sh",
+          "change": "Modified - Added production validation for JWT_SECRET and SECRET_KEY",
+          "timestamp": "2026-03-19T03:17:00Z"
+        }
       ],
-      "note": "No new security issues found. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue awaiting resolution."
+      "note": "No new security issues found. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue awaiting resolution. Positive: .gitignore now excludes .env files, start.sh validates secrets in production."
     },
     "ip": {
-      "trademark_conflicts": "Existing P1 conflicts in monitoring: FarmSense Inc (farmsense.io) - active pest monitoring startup with $2.2M funding and CDC contracts, holds FlightSensor patents; FarmSense.app (soil intelligence); Skysense; FarmSolutions/dronifi; UK FARM SENSE UK00003992349. No new trademark conflicts detected.",
+      "trademark_conflicts": "Existing P1 conflicts in monitoring: FarmSense Inc (farmsense.io) - active pest monitoring startup now with $4.77M funding (up from $2.2M) and holds FlightSensor patents; FarmSense.app (soil intelligence); Skysense; FarmSolutions/dronifi; UK FARM SENSE UK00003992349. No new trademark conflicts detected.",
       "patents": {
         "new": [],
         "existing": "Patent watchlist unchanged: farmsense.io FlightSensor patents (pest detection), LandScan digital twin (US 12,092,625), Deere AI (US 12,315,249). General agricultural AI patents (US11775828B2, US12182709B2, etc.) but none are immediate threats to FarmSense deterministic farming OS approach.",
@@ -47,5 +54,5 @@
   },
   "work_queue_entries_added": 0,
   "inbox_entries_added": 0,
-  "notes": "Sentinel scan complete (2026-03-18 23:05 UTC). No new findings. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue. IP: No new trademark conflicts or patent threats."
+  "notes": "Sentinel scan complete (2026-03-19 04:05 UTC). No new findings. Existing P1 (.env file with credentials) and P2 (.env.example) issues remain in work queue. IP: No new trademark conflicts or patent threats. Positive: .gitignore added to exclude .env files, start.sh validates secrets in production."
 }

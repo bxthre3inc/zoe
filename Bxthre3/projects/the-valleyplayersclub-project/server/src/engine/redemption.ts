@@ -25,14 +25,15 @@ export interface RedemptionResult {
  * 
  * Business Model: Players get free $C (Sweeps Credits via AMOE).
  * When they win and want to redeem for real money, we charge 10% fee.
- * Rate: 10 $C = $0.01 USD (1 $C = $0.001 USD)
+ * - Exchange rate: 1 $C = $1.00 USD
+ * - Fee: 10.009% on all redemptions
  */
 export class RedemptionEngine {
   private static readonly REDEMPTION_FEE_RATE = 0.10009; // 10.009% fee
-  private static readonly C_TO_USD_RATE = 0.001; // 1 $C = $0.001 USD (10 $C = $0.01)
-  private static readonly MIN_REDEMPTION_C = 10000; // Min $10 USD (10000 $C = $10)
-  private static readonly MAX_REDEMPTION_C = 10000000; // Max $10,000 USD per transaction
-  private static readonly DAILY_LIMIT_C = 20000000; // $20,000 USD daily per user
+  private static readonly C_TO_USD_RATE = 1.0; // 1 $C = $1.00 USD (1:1)
+  private static readonly MIN_REDEMPTION_C = 50; // Min $50 USD (50 $C = $50)
+  private static readonly MAX_REDEMPTION_C = 10000; // Max $10,000 USD per transaction
+  private static readonly DAILY_LIMIT_C = 20000; // $20,000 USD daily per user
 
   /**
    * Check if user has met play-through requirement (wagered at least redemption amount)

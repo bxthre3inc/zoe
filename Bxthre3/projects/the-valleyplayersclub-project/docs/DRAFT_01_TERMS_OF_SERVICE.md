@@ -25,7 +25,7 @@
 "Sweeps Credits" or "$C" are promotional sweepstakes entries that:
 - Have no cash value until redeemed in accordance with these Terms
 - Are earned through gameplay, promotional offers, or Alternative Method of Entry (AMOE)
-- May be redeemed for USD at the exchange rate of 10,000 $C = $1.00 USD
+- May be redeemed for USD at the exchange rate of 1 $C = $1.00 USD
 - Are subject to a 10.009% processing fee upon redemption
 - Require minimum 10,000 $C balance for redemption ($10.00 USD minimum)
 - Require minimum 1x playthrough (wagered at least once) before redemption
@@ -70,21 +70,19 @@ Any individual aged 18+ may obtain $C without purchase by:
    - Requests must be postmarked from within the United States
 
 ### 2.2 $C Award for AMOE
-**DRAFTING NOTE:** *5:1 ratio (5 $C free vs 1 $C per $1 GC purchased) is industry standard. Chumba uses this ratio.*
+**DRAFTING NOTE:** *5:1 ratio (5 $C free vs 1 $C per $1 GC purchased) is industry standard. Chumba uses this ratio. This is your free entry method — no purchase required.*
 
 For each compliant postal entry:
-- Player receives 5 $C (equivalent to $0.00050 USD redemption value)
+- Player receives **5 $C** ($5.00 USD redemption value)
 - $C credited within 5-7 business days of receipt
-- No limit on total AMOE $C (subject to monthly request cap above)
+- Maximum 50 requests per person per calendar month
+- **NO PROCESSING FEE** — all AMOE entries are 100% free
 - AMOE $C subject to same redemption terms (10.009% fee, 1x playthrough, KYC)
 
-### 2.3 Handling Fee for AMOE
-**DRAFTING NOTE:** *Courts allow reasonable processing fees. See *State ex rel. Nixon v. Telemarketing Associates* (2003). $1.00 is conservative.*
+**IMPORTANT:** Every player has equal chance of winning whether they enter via AMOE (free) or GC purchase. No purchase improves your odds.
 
-To offset processing costs, VPC may charge a $1.00 handling fee per AMOE request:
-- Fee waived for first 5 AMOE requests per calendar month
-- Fee must be paid via check or money order included with request
-- Fee does not increase $C award (still 5 $C)
+### 2.3 AMOE Record Retention
+VPC retains AMOE requests for 3 years per sweepstakes regulations. Records include envelope, index card, and processing date.
 
 ---
 
@@ -177,12 +175,12 @@ To redeem $C for USD:
 2. Maximum single redemption: 1,000,000 $C ($100.00 USD value pre-fee)
 3. Daily limit: 2,000,000 $C ($200.00 USD value pre-fee)
 4. Processing fee: 10.009% of redemption amount
-5. Exchange rate: 10,000 $C = $1.00 USD (1 $C = $0.00010 USD)
+5. Exchange rate: 1 $C = $1.00 USD
 
 **Example:** Redeeming 50,000 $C:
-- Gross value: $5.00 USD
-- Fee (10.009%): 5,005 $C = $0.50 USD
-- Net payout: 44,995 $C = $4.50 USD
+- Gross value: $50,000 USD
+- Fee (10.009%): 5,005 $C = $5,005 USD
+- Net payout: 44,995 $C = $44,995 USD
 
 ### 5.4 Redemption Methods
 $C may be redeemed via:
