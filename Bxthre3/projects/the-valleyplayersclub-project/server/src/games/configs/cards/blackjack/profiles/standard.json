@@ -1,9 +1,0 @@
-{
-    "profileName": "standard",
-    "minBet": 10,
-    "maxBet": 10000,
-    "deckCount": 6,
-    "paytable": {
-        "blackjack": 2.5
-    }
-}
